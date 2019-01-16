@@ -2,7 +2,7 @@
 'user strict';
 import appBase from '../../static/common/app_base.js';
 import router from '../router/index';
-import {SERVER_BASE_URL} from '../http/config';
+import {SERVER_BASE_URL} from '../http/conf';
 // let SERVER_BASE_URL = '';
 let createXMLHttp = function () {
     // 创建一个新变量并赋值false，使用false作为判断条件说明还没有创建XMLHTTPRequest对象

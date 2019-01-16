@@ -14,7 +14,7 @@ import '../static/common/animate.css';
 import store from '@/store/store.js';
 import './assets/style/base/reset.css';
 import './assets/style/base/common.css';
-import './assets/style/cover/cover.scss';
+// import './assets/style/cover/cover.scss';
 import './assets/style/common/style.scss';
 import './assets/font/iconfont.css';
 import 'element-ui/lib/theme-chalk/index.css';

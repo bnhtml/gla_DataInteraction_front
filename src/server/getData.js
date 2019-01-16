@@ -1,5 +1,5 @@
 
-import { SERVER_BASE_URL } from '@/http/config.js'; // url 配置
+import { SERVER_BASE_URL } from '@/http/conf.js'; // url 配置
 import { httpApi, httpMock, MockUrl} from '../http/axios.js'; // 请求
 
 export const routerInfo = (params) => {

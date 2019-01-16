@@ -2,7 +2,7 @@
 <template>
     <div class="home">
         <Layout>
-            <HeaderBar :bg='"transparent"'></HeaderBar>
+            <HeaderBar :bg='"#fff"'></HeaderBar>
             <Layout class="wrapper">
                 <router-view></router-view>
             </Layout>

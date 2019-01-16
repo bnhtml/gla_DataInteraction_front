@@ -46,11 +46,13 @@ function fetch(host){
             axiosCase[type.toLowerCase()](url, params).then(
                 (res) => {
                     if (res.status == 200||res.state == 200) {
-                        // console.log('POST-SUCCESS-MOCK')
-                        // console.log(res.data.result)
-                        resolve(res.data.result);
+                        if(res.data.code === 200){
+                            resolve(res.data.result);
+                        }else{
+                            reject(res.data.msg);
+                        }
                     } else {
-                        alert(err)
+                        reject(err)
                         // 可根据后台errCode进行具体提示  后续和后台对接
                     }
                 }
