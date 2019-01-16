@@ -1,14 +1,14 @@
 import axios from 'axios';
-import { SERVER_BASE_URL } from '../http/conf';
+import { SERVER_BASE_URL } from './conf';
 const baseUrl = SERVER_BASE_URL; 
-const MockUrl = 'http://39.107.233.177:36743';
+export const MockUrl = 'http://39.107.233.177:36743';
 
 // var fd = new FormData();
 // fd.append('file', params);
 
 let axiosCase = axios.create({
     headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'application/x-www-form-urlencoded'
     }
 });
 axiosCase.defaults.timeout = 6000;
@@ -63,10 +63,5 @@ function fetch(host){
         })
     }
 }
-const httpApi = fetch(baseUrl);
-const httpMock = fetch(MockUrl)
-export {
-    httpApi,
-    httpMock,
-    MockUrl
-}
+export const httpApi = fetch(baseUrl);
+export const httpMock = fetch(MockUrl);
