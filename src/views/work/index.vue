@@ -2,27 +2,6 @@
 <template>
     <div class="home">
         <Layout class="wrapper">
-            <!-- <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-                <Menu v-show='!MenuShow' :active-name="activeName" width='auto' theme="dark" @on-select="handleSelect">
-                    <div v-for="(item,index) in leftMenu" :key="index">
-                        <Submenu :name="index" v-if="item.children && item.children.length>0 && !item.hidden">
-                            <template slot="title"><i v-if='item.mdliconcss' :class="'iconfont '+ item.mdliconcss"></i>{{item.mdlname}}
-                            </template>
-                            <Menu-item :name="JSON.stringify(sub)" v-for="(sub,i) in item.children" :key="i" v-if="!sub.hidden" :class='(indexClass==item.shorthref)?"ivu-menu-item-active ivu-menu-item ivu-menu-item-selected":"ivu-menu-item"'>
-                                <i v-if='sub.mdliconcss' :class="'iconfont '+ sub.mdliconcss"></i>{{sub.mdlname}}
-                            </Menu-item>
-                        </Submenu>
-                        <div>
-                            <Menu-item :class='(indexClass==item.shorthref)?"ivu-menu-item-active ivu-menu-item ivu-menu-item-selected":"ivu-menu-item"' :name="JSON.stringify(item)" :key="index" v-if="item.children&&item.children.length==0 && !item.hidden && item.level!=0 " >
-                                <i v-if='item.mdliconcss' :class="'iconfont '+ item.mdliconcss"></i>{{item.mdlname}}
-                            </Menu-item>
-                        </div>
-                    </div>
-                </Menu>
-                <div v-show='MenuShow'>
-                    <div v-for='(v,i) in leftMenu'  :key='i'><i v-if='v.mdliconcss' :class="'iconfont '+ v.mdliconcss"></i>{{v.mdlname}}</div>
-                </div>
-            </Sider> -->
             
             <layout style='paddding: 20px' class="container-layout" ref="containerLayout">
                 <Content class="content" >
@@ -34,7 +13,6 @@
 </template>
 
 <script type="text/javascript">
-    import breadcrumb from '@/views/breadcrumb/breadcrumb.vue'
     export default {
         name: 'navBar',
         data() {
@@ -77,7 +55,6 @@
             }
         },
         components: {
-            breadcrumb
         },
         beforeRouteUpdate(to, from, next){
             let {fullPath} = to;

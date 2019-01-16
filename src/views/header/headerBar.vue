@@ -1,28 +1,7 @@
 <template>
     <div class="header-bar">
         <Header :style="{padding: 0,'background':bg}" class="layout-header-bar">
-            <span class="left">{{time}}</span>
-            <h1 class="title"><img src="../../assets/img/logo/logo_v2_text.png" alt="" srcset=""></h1>
-            <div class="userInfo-wrapper">
-                <i class="iconfont icon-xiaoxi mr20"></i>
-                <Dropdown>
-                    <a href="javascript:void(0)">
-                        <span> <img src="../../assets/img/logo/user.png" alt=""> {{$store.state.userInfo && $store.state.userInfo.name || ''}} </span>
-                    </a>
-                    <DropdownMenu slot="list" trigger='click' v-if="$store.state.userInfo.name">
-                        <DropdownItem v-if='this.$store.state.routerList&&this.$store.state.routerList.length'>
-                            <p @click='consoleDesk'>后台管理</p>
-                        </DropdownItem>
-                        <DropdownItem>
-                            <p @click='goMe'>个人中心</p>
-                        </DropdownItem>
-                        <DropdownItem>
-                            <p @click='goOut'>退出登录</p>
-                        </DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
-            </div>
-            <!-- <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px'}" type="md-menu" size="24"></Icon> -->
+            数据上架系统
         </Header>
         <!-- 横向菜单 -->
         <div class="g-menu" v-if="isWorkPage">
@@ -40,21 +19,16 @@
                 </li>
             </ul>
         </div>
-        <!-- 面包屑 -->
-        <span v-if='isShowBack&&isWorkPage' @click='goBack' class="back"> <i class="iconfont icon-fanhui"></i> </span>
-        <Breadcrumb v-if="isWorkPage"></Breadcrumb>
     </div>
 </template>
 
 <script type = 'text/javascript'>
-    import Breadcrumb from '@/components/Breadcrumb';
     export default {
         name: 'headerBar',
         props: ['bg'],
         data() {
             return {
                 isCascader: false,
-                titleBg: require('@/assets/img/bg/special_title_bg.png'),
                 routerInfo: [],
                 show: false,
                 indexClass: this.$route.name,
@@ -65,7 +39,6 @@
             }
         },
         components: {
-            Breadcrumb
         },
         computed: {
             isWorkPage() {
@@ -95,8 +68,23 @@
             },
             leftMenu() {
                 return [{
-                    mdlhref: 'homepage',
-                    mdlname: '首页',
+                    mdlhref: '/',
+                    mdlname: '领导驾驶舱',
+                    children: [],
+                    mdliconcss: 'icon-shouye',
+                },{
+                    mdlhref: '/',
+                    mdlname: '数据集成',
+                    children: [],
+                    mdliconcss: 'icon-shouye',
+                },{
+                    mdlhref: '/',
+                    mdlname: '数据上架',
+                    children: [],
+                    mdliconcss: 'icon-shouye',
+                },{
+                    mdlhref: '/',
+                    mdlname: '系统管理',
                     children: [],
                     mdliconcss: 'icon-shouye',
                 }, ...this.$store.state.homeRouterList];

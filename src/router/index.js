@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 Vue.use(Router);
 import home from '@/views/home'; // 
-import homepage from '@/views/homePage/homePage.vue'; // 首页
 import index from '../views/work/index.vue'; // 
 
 
@@ -10,10 +9,13 @@ import leaderCockpit from '../views/work/leaderCockpit/leaderCockpit.vue';
 export default new Router({
     routes: [
         {
+            path: '/',
+            redirect: '/home/index/leaderCockpit',
+        },
+        {
             path: '/home',
             name: 'home',
             component: home,
-            redirect: '/home/index/leaderCockpit',
             meta: {
                 keepAlive: false,
             },
