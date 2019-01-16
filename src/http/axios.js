@@ -1,8 +1,6 @@
 import axios from 'axios';
-// import config from '../../config/index';
-// const baseUrl = 'http://192.168.22.202:8012/assets'; //build
-const baseUrl = 'http://192.168.25.82:8012/assets'; // 
-// const baseUrl = 'http://39.107.233.177:8012/assets'; 
+import { SERVER_BASE_URL } from '../http/conf';
+const baseUrl = SERVER_BASE_URL; 
 const MockUrl = 'http://39.107.233.177:36743';
 
 // var fd = new FormData();
