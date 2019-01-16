@@ -1,0 +1,122 @@
+{
+  "status": 200,
+  "msg": "success",
+  "result": {
+    "nodes": [
+      {
+        "id": "Myriel",
+        "group": 1
+      },
+      {
+        "id": "Napoleon",
+        "group": 2
+      },
+      {
+        "id": "Napoleon1",
+        "group": 3
+      },
+      {
+        "id": "Napoleon2",
+        "group": 4
+      },
+      {
+        "id": "Napoleon3",
+        "group": 5
+      },
+      {
+        "id": "Napoleon4",
+        "group": 6
+      },
+      {
+        "id": "Napoleon5",
+        "group": 7
+      },
+      {
+        "id": "Napoleon6",
+        "group": 8
+      },
+      {
+        "id": "Napoleon7",
+        "group": 9
+      },
+      {
+        "id": "Napoleon77",
+        "group": 9
+      },
+      {
+        "id": "Napoleon71",
+        "group": 9
+      },
+      {
+        "id": "Napoleon72",
+        "group": 9
+      },
+      {
+        "id": "Napoleon73",
+        "group": 9
+      }
+    ],
+    "links": [
+      {
+        "source": "Napoleon71",
+        "target": "Napoleon7",
+        "value": 2
+      },
+      {
+        "source": "Napoleon72",
+        "target": "Napoleon7",
+        "value": 2
+      },
+      {
+        "source": "Napoleon73",
+        "target": "Napoleon7",
+        "value": 2
+      },
+      {
+        "source": "Napoleon77",
+        "target": "Napoleon7",
+        "value": 2
+      },
+      {
+        "source": "Myriel",
+        "target": "Napoleon",
+        "value": 2
+      },
+      {
+        "source": "Myriel",
+        "target": "Napoleon1",
+        "value": 2
+      },
+      {
+        "source": "Myriel",
+        "target": "Napoleon2",
+        "value": 2
+      },
+      {
+        "source": "Myriel",
+        "target": "Napoleon3",
+        "value": 2
+      },
+      {
+        "source": "Myriel",
+        "target": "Napoleon4",
+        "value": 2
+      },
+      {
+        "source": "Myriel",
+        "target": "Napoleon5",
+        "value": 2
+      },
+      {
+        "source": "Myriel",
+        "target": "Napoleon6",
+        "value": 2
+      },
+      {
+        "source": "Myriel",
+        "target": "Napoleon7",
+        "value": 2
+      }
+    ]
+  }
+}
