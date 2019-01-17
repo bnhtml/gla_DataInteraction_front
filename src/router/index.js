@@ -6,6 +6,9 @@ import index from '../views/work/index.vue'; //
 
 
 import leaderCockpit from '../views/work/leaderCockpit/leaderCockpit.vue';
+import datainteration from '../views/work/datainteration';
+import dataUpperShelf from '../views/work/dataUpperShelf';
+import systemManagement from '../views/work/systemManagement';
 export default new Router({
     routes: [
         {
@@ -36,6 +39,33 @@ export default new Router({
                             meta: {
                                 keepAlive: true,
                                 title: '领导驾驶舱'
+                            }
+                        },
+                        {
+                            path: 'datainteration',
+                            name: 'datainteration',
+                            component: datainteration,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据集成'
+                            }
+                        },
+                        {
+                            path: 'dataUpperShelf',
+                            name: 'dataUpperShelf',
+                            component: dataUpperShelf,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据上架'
+                            }
+                        },
+                        {
+                            path: 'systemManagement',
+                            name: 'systemManagement',
+                            component: systemManagement,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理'
                             }
                         }
 
