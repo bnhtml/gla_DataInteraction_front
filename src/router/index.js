@@ -8,6 +8,7 @@ import index from '../views/work/index.vue'; //
 import leaderCockpit from '../views/work/leaderCockpit/leaderCockpit.vue';
 import datainteration from '../views/work/datainteration';
 import dataUpperShelf from '../views/work/dataUpperShelf';
+import dataUpperShelfAdmin from '../views/work/dataUpperShelf/admin';
 import systemManagement from '../views/work/systemManagement';
 export default new Router({
     routes: [
@@ -54,6 +55,15 @@ export default new Router({
                             path: 'dataUpperShelf',
                             name: 'dataUpperShelf',
                             component: dataUpperShelf,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据上架'
+                            }
+                        },
+                        {
+                            path: 'dataUpperShelfAdmin',
+                            name: 'dataUpperShelfAdmin',
+                            component: dataUpperShelfAdmin,
                             meta: {
                                 keepAlive: true,
                                 title: '数据上架'

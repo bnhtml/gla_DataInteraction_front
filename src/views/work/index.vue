@@ -14,9 +14,9 @@
                         
                     </Menu>
                 </div>
-                </Sider>
+            </Sider>
             <layout style='paddding: 20px' class="container-layout" ref="containerLayout">
-                <Content class="content" >
+                <Content class="content">
                     <router-view v-if="show"></router-view>
                 </Content>
             </layout>

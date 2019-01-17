@@ -92,7 +92,7 @@ website: http://code.google.com/p/jquerytree/
   line-height:21px;
   margin-right:2px;
   margin-left:4px;
-  color: rgba(255,255,255,0.85);
+  /* color: rgba(255,255,255,0.85); */
 }
 .ztree li span.button {
   line-height:0;
@@ -190,8 +190,8 @@ website: http://code.google.com/p/jquerytree/
   background-position: -68px -89px;
 }
 .ztree li span.button.switch {
-  width:21px;
-  height:21px;
+  width:12px;
+  height:12px;
   margin: 0 -10px 0 0;
 }
 .ztree li span.button.root_open {
@@ -202,12 +202,12 @@ website: http://code.google.com/p/jquerytree/
 }
 .ztree li span.button.roots_open {
   /*background-position: -105px 0;*/
-  background:url("./img/icons/logo_13_white.png");
+  background:url("./img/icons/logo_15.png");
   background-size: 100% 100%;
 }
 .ztree li span.button.roots_close {
   /*background-position: -126px 0;*/
-  background:url("./img/icons/logo_14_white.png");
+  background:url("./img/icons/logo_09.png");
   background-size: 100% 100%;
 }
 .ztree li span.button.center_open {
@@ -250,26 +250,30 @@ website: http://code.google.com/p/jquerytree/
   background:none;
 }
 .ztree li span.button.ico_open {
+  display: none;
   margin-right:2px;
   /*background-position: -147px -21px;*/
-  background:url("./img/my_icons/my_icon_r6_c13.png");
+  background:url("./img/icons/logo_09.png");
+  /* background:url("./img/my_icons/my_icon_r6_c13.png"); */
   background-size: 100% 100%;
   vertical-align:middle;
   *vertical-align:middle
 }
 .ztree li span.button.ico_close {
+  display: none;
   margin-right:2px;
   margin-right:2px;
   /*background-position: -147px 0;*/
   vertical-align:middle;
   *vertical-align:middle;
   /*color: pink;*/
-  /*background:url("./img/icons/logo_05.png");*/
-   background:url("./img/my_icons/my_icon_r2_c13.png") ;
+  background:url("./img/icons/logo_11.png");
+   /* background:url("./img/my_icons/my_icon_r2_c13.png") ; */
 
  background-size: 100% 100%;
 }
 .ztree li span.button.ico_docu {
+  display: none;
   margin-right:2px;
   /* background-position: -147px -42px; */
   background:url("./img/my_icons/my_icon_r11_c13.png");
