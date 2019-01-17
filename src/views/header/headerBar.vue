@@ -68,22 +68,22 @@
             },
             leftMenu() {
                 return [{
-                    mdlhref: '/',
+                    mdlhref: 'leaderCockpit',
                     mdlname: '领导驾驶舱',
                     children: [],
                     mdliconcss: 'icon-shouye',
                 },{
-                    mdlhref: '/',
+                    mdlhref: 'datainteration',
                     mdlname: '数据集成',
                     children: [],
                     mdliconcss: 'icon-shouye',
                 },{
-                    mdlhref: '/',
+                    mdlhref: 'dataUpperShelf',
                     mdlname: '数据上架',
                     children: [],
                     mdliconcss: 'icon-shouye',
                 },{
-                    mdlhref: '/',
+                    mdlhref: 'systemManagement',
                     mdlname: '系统管理',
                     children: [],
                     mdliconcss: 'icon-shouye',

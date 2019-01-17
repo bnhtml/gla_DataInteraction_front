@@ -2,34 +2,18 @@
 <template>
     <div class="home">
         <Layout class="wrapper">
-            <Sider hide-trigger :style="{background: '#fff'}">
-                    <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
-                        <Submenu name="1">
-                            <template slot="title">
-                                <Icon type="ios-navigate"></Icon>
-                                Item 1
-                            </template>
-                            <MenuItem name="1-1">Option 1</MenuItem>
-                            <MenuItem name="1-2">Option 2</MenuItem>
-                            <MenuItem name="1-3">Option 3</MenuItem>
-                        </Submenu>
-                        <Submenu name="2">
-                            <template slot="title">
-                                <Icon type="ios-keypad"></Icon>
-                                Item 2
-                            </template>
-                            <MenuItem name="2-1">Option 1</MenuItem>
-                            <MenuItem name="2-2">Option 2</MenuItem>
-                        </Submenu>
-                        <Submenu name="3">
-                            <template slot="title">
-                                <Icon type="ios-analytics"></Icon>
-                                Item 3
-                            </template>
-                            <MenuItem name="3-1">Option 1</MenuItem>
-                            <MenuItem name="3-2">Option 2</MenuItem>
-                        </Submenu>
+            <Sider hide-trigger :style="{background: '#fff'}" v-if="isMenuShow">
+                <div v-for="(menus, index) in leftMenu" :key="index">
+                    <router-link :to="menus.url" class="g-bigmenu">{{menus.name}}</router-link>
+                    <Menu v-if="menus.children && menus.children.length" v-for="(menu, idx) in menus.children" :key="idx" active-name="" theme="light" width="auto" :open-names="['1']">
+                        
+                            <router-link :to="menu.url" class="g-centermenu">
+                                {{menu.name}}
+                            </router-link>
+                            <MenuItem :to="o.url" v-if="menu.children && menu.children.length" v-for="(o, i) in menu.children" :key="i" :name="o.name">{{o.name}}</MenuItem>
+                        
                     </Menu>
+                </div>
                 </Sider>
             <layout style='paddding: 20px' class="container-layout" ref="containerLayout">
                 <Content class="content" >
@@ -41,6 +25,142 @@
 </template>
 
 <script type="text/javascript">
+
+    const leftMenus = {
+        'leaderCockpit': [
+            {
+                url: 'leaderCockpit',
+                name: '领导驾驶舱（业务局委）',
+                icon: 'icon-shouye',
+                children: []
+            },
+            {
+                url: 'leaderCockpit',
+                name: '领导驾驶舱（大数据局）',
+                icon: 'icon-shouye',
+                children: [
+                    {
+                        url: 'leaderCockpit',
+                        name: '数据区概况',
+                        icon: '',
+                        children: []
+                    },
+                    {
+                        url: 'leaderCockpit',
+                        name: '接口概况',
+                        icon: '',
+                        children: [
+                            {
+                                url: 'leaderCockpit',
+                                name: '国家接口',
+                                icon: '',
+                                children: []
+                            },
+                            {
+                                url: 'leaderCockpit',
+                                name: '省直接口',
+                                icon: '',
+                                children: []
+                            },
+                            {
+                                url: 'leaderCockpit',
+                                name: '市州接口',
+                                icon: '',
+                                children: []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        'datainteration': [
+            {
+                url: 'datainteration',
+                name: '数据库类',
+                icon: 'icon-shouye',
+                children: []
+            },
+            {
+                url: 'datainteration',
+                name: '文件类',
+                icon: 'icon-shouye',
+                children: []
+            },],
+        'dataUpperShelf': [
+            {
+                url: 'dataUpperShelf',
+                name: '已发布接口-大数据局',
+                icon: 'icon-shouye',
+                children: [
+                {
+                    url: 'dataUpperShelf',
+                    name: '国家接口',
+                    icon: '',
+                    children: []
+                },
+                {
+                    url: 'dataUpperShelf',
+                    name: '省直接口',
+                    icon: '',
+                    children: []
+                },
+                {
+                    url: 'dataUpperShelf',
+                    name: '市州接口',
+                    icon: '',
+                    children: []
+                }]
+            },
+            {
+                url: 'dataUpperShelf',
+                name: '已发布接口-业务局委',
+                icon: 'icon-shouye',
+                children: []
+            },
+            {
+                url: 'dataUpperShelf',
+                name: '未发布接口',
+                icon: 'icon-shouye',
+                children: []
+            }],
+        'systemManagement': [
+            {
+                url: 'systemManagement',
+                name: '数据区管理-业务局委',
+                icon: 'icon-shouye',
+                children: []
+            },
+            {
+                url: 'systemManagement',
+                name: '数据区管理-大数据局',
+                icon: 'icon-shouye',
+                children: []
+            },
+            {
+                url: 'systemManagement',
+                name: '接口路径管理',
+                icon: 'icon-shouye',
+                children: []
+            },
+            {
+                url: 'systemManagement',
+                name: '单位域名管理',
+                icon: 'icon-shouye',
+                children: []
+            },
+            {
+                url: 'systemManagement',
+                name: '配置管理',
+                icon: 'icon-shouye',
+                children: []
+            },
+            {
+                url: 'systemManagement',
+                name: '状态管理',
+                icon: 'icon-shouye',
+                children: []
+            }],
+    }
     export default {
         name: 'navBar',
         data() {
@@ -48,38 +168,8 @@
                 show: true,
                 indexClass: this.$route.name,
                 isCollapsed: false,
-                isMenuShow: false,
-                routerInfo: [/* {
-                        shorthref: 'homepage',
-                        mdlname: '首页',
-                        mdliconcss: 'icon-shouye',
-                        children: []
-                    },
-                    {
-                        shorthref: '/specialIndex',
-                        mdlname: '数据资产综合分析',
-                        mdliconcss: 'icon-zhuanti',
-                        children: []
-                    },
-                    {
-                        shorthref: 'ITBasicResources',
-                        mdlname: 'IT基础资源分析',
-                        mdliconcss: 'icon-xinxixitongfenxi',
-                        children: []
-                    },
-                    {
-                        shorthref: 'businessIndex',
-                        mdlname: '业务系统分析',
-                        mdliconcss: 'icon-zhuantifenxi',
-                        children: []
-                    },
-                    {
-                        shorthref: 'assetWarning',
-                        mdlname: '资产填报预警',
-                        mdliconcss: 'icon-zichantianbaoyujing',
-                        children: []
-                    }, */
-                ],
+                isMenuShow: true,
+                routerInfo: leftMenus[this.$route.name],
             }
         },
         components: {
@@ -89,8 +179,13 @@
             if(fullPath !== from.fullPath){
                 let dom = this.$refs.containerLayout.$el;
                 dom.scrollTop = 0;
+
             }
             next();
+            if(fullPath !== from.fullPath){
+                this.showMenu();
+
+            }
         },
         computed: {
             rotateIcon() {
@@ -105,17 +200,15 @@
                     this.isCollapsed ? 'collapsed-menu' : '',
                 ]
             },
-            MenuShow() {
-                return this.isCollapsed ? this.isMenuShow == false : this.isMenuShow == true
-            },
             leftMenu() {
-                this.routerInfo = window.sessionStorage.getItem('homeRouterList') && JSON.parse(window.sessionStorage.getItem('homeRouterList'));
-                 this.routerInfo && this.routerInfo.unshift({
-                        shorthref: 'homepage',
-                        mdlname: '首页',
-                        children:[],
-                        mdliconcss: 'icon-shouye',
-                    })
+                // this.routerInfo = window.sessionStorage.getItem('homeRouterList') && JSON.parse(window.sessionStorage.getItem('homeRouterList'));
+                //  this.routerInfo && this.routerInfo.unshift({
+                //         shorthref: 'homepage',
+                //         mdlname: '首页',
+                //         children:[],
+                //         mdliconcss: 'icon-shouye',
+                //     })
+                console.log(this.routerInfo, '====')
                 return this.routerInfo
             },
             activeName() {
@@ -131,6 +224,11 @@
         mounted() {
         },
         methods: {
+            showMenu(){
+                this.isMenuShow = false;
+                this.routerInfo = leftMenus[this.$route.name];
+                this.$nextTick(() => this.isMenuShow = true);
+            },
             collapsedSider() {
                 this.$refs.side1.toggleCollapse();
             },
@@ -146,6 +244,22 @@
 
 <style lang='scss' scoped>
     @import '../../assets/style/base/index.scss';
+    .g-bigmenu{
+        display: block;
+        background: #000;
+        color: #fff;
+        line-height: 40px;
+        font-size: 16px;
+        padding-left: 5px;
+    }
+    .g-centermenu{
+        padding-left: 15px;
+        display: block;
+        background: #333;
+        color: #fff;
+        line-height: 40px;
+        font-size: 14px;
+    }
     .home {
         position: absolute;
         left: 0;
