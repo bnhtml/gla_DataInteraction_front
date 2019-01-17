@@ -19,6 +19,6 @@
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     @include nums($w: 100%, $h:100%);
-    color:rgba(255,255,255,0.85);
+    color: #333;
   }
 </style>

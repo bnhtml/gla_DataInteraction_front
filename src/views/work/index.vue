@@ -2,7 +2,35 @@
 <template>
     <div class="home">
         <Layout class="wrapper">
-            
+            <Sider hide-trigger :style="{background: '#fff'}">
+                    <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
+                        <Submenu name="1">
+                            <template slot="title">
+                                <Icon type="ios-navigate"></Icon>
+                                Item 1
+                            </template>
+                            <MenuItem name="1-1">Option 1</MenuItem>
+                            <MenuItem name="1-2">Option 2</MenuItem>
+                            <MenuItem name="1-3">Option 3</MenuItem>
+                        </Submenu>
+                        <Submenu name="2">
+                            <template slot="title">
+                                <Icon type="ios-keypad"></Icon>
+                                Item 2
+                            </template>
+                            <MenuItem name="2-1">Option 1</MenuItem>
+                            <MenuItem name="2-2">Option 2</MenuItem>
+                        </Submenu>
+                        <Submenu name="3">
+                            <template slot="title">
+                                <Icon type="ios-analytics"></Icon>
+                                Item 3
+                            </template>
+                            <MenuItem name="3-1">Option 1</MenuItem>
+                            <MenuItem name="3-2">Option 2</MenuItem>
+                        </Submenu>
+                    </Menu>
+                </Sider>
             <layout style='paddding: 20px' class="container-layout" ref="containerLayout">
                 <Content class="content" >
                     <router-view v-if="show"></router-view>
@@ -111,24 +139,6 @@
             },
             handleSelect(e) {
                 e = JSON.parse(e);
-                if (e.mdlname === '数据资产综合分析') {
-                    this.indexClass = '';
-                    let routeData = this.$router.resolve({
-                        name: 'specialIndex'
-                    });
-                    window.localStorage.removeItem('checked');
-                    window.open(routeData.href, "_blank");
-                } else {
-                    window.sessionStorage.removeItem('openUrl');
-                    this.indexClass = e.shorthref;
-                    this.$store.commit('get_bread', {
-                        pathName: e.shorthref,
-                        name: e.mdlname
-                    });
-                    this.$router.push({
-                        name: e.shorthref
-                    })
-                }
             }
         }
     }
@@ -154,7 +164,7 @@
         }
     }
     .layout-header-bar {
-        background: #0F193D!important;
+        background: #0F193D;
         img {
             padding: 17px 0 17px 8px;
         }
@@ -218,7 +228,7 @@
     }
     .ivu-menu-item-active,
     .ivu-menu-item-selected {
-        color: #fff!important;
+        color: #fff;
         box-sizing: border-box;
     }
     .ivu-menu-item-selected::before {

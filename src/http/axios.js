@@ -1,16 +1,14 @@
 import axios from 'axios';
-// import config from '../../config/index';
-// const baseUrl = 'http://192.168.22.202:8012/assets'; //build
-const baseUrl = 'http://192.168.25.82:8012/assets'; // 
-// const baseUrl = 'http://39.107.233.177:8012/assets'; 
-const MockUrl = 'http://39.107.233.177:36743';
+import { SERVER_BASE_URL } from './conf';
+const baseUrl = SERVER_BASE_URL; 
+export const MockUrl = 'http://39.107.233.177:36743';
 
 // var fd = new FormData();
 // fd.append('file', params);
 
 let axiosCase = axios.create({
     headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'application/x-www-form-urlencoded'
     }
 });
 axiosCase.defaults.timeout = 6000;
@@ -46,11 +44,13 @@ function fetch(host){
             axiosCase[type.toLowerCase()](url, params).then(
                 (res) => {
                     if (res.status == 200||res.state == 200) {
-                        // console.log('POST-SUCCESS-MOCK')
-                        // console.log(res.data.result)
-                        resolve(res.data.result);
+                        if(res.data.code === 200){
+                            resolve(res.data.result);
+                        }else{
+                            reject(res.data.msg);
+                        }
                     } else {
-                        alert(err)
+                        reject(err)
                         // 可根据后台errCode进行具体提示  后续和后台对接
                     }
                 }
@@ -63,10 +63,5 @@ function fetch(host){
         })
     }
 }
-const httpApi = fetch(baseUrl);
-const httpMock = fetch(MockUrl)
-export {
-    httpApi,
-    httpMock,
-    MockUrl
-}
+export const httpApi = fetch(baseUrl);
+export const httpMock = fetch(MockUrl);

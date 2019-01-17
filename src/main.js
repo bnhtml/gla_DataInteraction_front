@@ -14,14 +14,11 @@ import '../static/common/animate.css';
 import store from '@/store/store.js';
 import './assets/style/base/reset.css';
 import './assets/style/base/common.css';
-import './assets/style/cover/cover.scss';
+// import './assets/style/cover/cover.scss';
 import './assets/style/common/style.scss';
 import './assets/font/iconfont.css';
 import 'element-ui/lib/theme-chalk/index.css';
-import list from '@/server/getData.js';
-import api from '@/server'
-import { actionRequiresAuth } from '@/http/fetch'
-import { httpApi } from '@/http/axios'
+import * as list from '@/server/getData.js';
 import axios from "axios";
 import VueAxios from 'vue-axios';
 import { debounce, getrandom, numberFormat } from './utils'
@@ -40,7 +37,7 @@ Vue.use(ElementUI, 'small')
 Vue.use(iView);
 
 Vue.prototype.$echarts = echarts;
-Vue.prototype.$api = { ...list, ...api };
+Vue.prototype.$api = list;
 Vue.prototype.$appBase = appBase;
 Vue.prototype.$appClient = appClient;
 

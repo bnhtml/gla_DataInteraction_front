@@ -6,12 +6,12 @@ var path = require('path')
 var HOSTDATA = [{
   index: '../dataAssets/index.html',
   assetsRoot: '../dataAssets',
-  baseServerUrl: 'http://58.132.200.3:8888/assets'
+  baseServerUrl: 'http://58.132.200.3:8888/datalink'
   // baseServerUrl: 'http://192.168.22.202:8013/v1/assets',
 }, {
   index: '../chart/index.html',
   assetsRoot: '../chart',
-  baseServerUrl: 'http://192.168.22.202:8012/assets'
+  baseServerUrl: 'http://192.168.22.202:8012/datalink'
 }][0];
 
 module.exports = {
@@ -25,15 +25,8 @@ dev: {
     // Various Dev Server settings
     host: '0.0.0.0', // can be overwritten by process.env.HOST
     port: 8013, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    // baseServerUrl: 'http://192.168.22.160:8012/assets',//张德昌
-    // baseServerUrl: 'http://192.168.25.42:8012/assets',//张德昌wifi
-    // baseServerUrl: 'http://192.168.22.159:8012/assets',//朝阳
-    // baseServerUrl: 'http://192.168.25.123:8012/assets',//志金
-    // baseServerUrl: 'http://192.168.25.125:8012/assets', //中原
-    // baseServerUrl: 'http://192.168.22.150:8012/assets', //中原
-    baseServerUrl: 'http://192.168.22.202:2002/assets',
-    // baseServerUrl: 'http://www.xjy520.vip:8888/assets',
-    // baseServerUrl: 'http://58.132.200.3:8888/assets',//dataAssets
+    // baseServerUrl: 'http://192.168.22.202:2002/assets',
+    baseServerUrl: 'http://192.168.25.40:8000',
     autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,

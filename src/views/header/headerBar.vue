@@ -1,6 +1,6 @@
 <template>
     <div class="header-bar">
-        <Header :style="{padding: 0,'background':bg}" class="layout-header-bar">
+        <Header :style="{'background':bg}" class="layout-header-bar">
             数据上架系统
         </Header>
         <!-- 横向菜单 -->
@@ -248,73 +248,10 @@
         position: relative; // height: 61px;
     }
     .layout-header-bar {
-        // background: #0F193D;
         height: 61px;
         position: relative;
-        .title {
-            @include nums($w: 461px, $h:61px);
-            line-height: 61px;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            margin-left: -230.5px;
-            img {
-                @include nums($w: 100%, $h:100%);
-            }
-        }
-        .left {
-            position: absolute;
-            left: 30px;
-            top: 0;
-            @include font($fz: 18px, $color:#fff);
-            font-family: 'xiaobozhe';
-            letter-spacing: 0px;
-        }
-        .userInfo-wrapper {
-            float: right;
-            margin-right: 24px;
-            height: 61px;
-            .ivu-dropdown {
-                width: 150px;
-                line-height: 61px;
-                a {
-                    font-size: 14px;
-                    color: rgba(255, 255, 255, 0.85);
-                    padding-left: 40px;
-                    img {
-                        @include nums($w: 25px, $h:25px);
-                        border-radius: 50%;
-                        position: absolute;
-                        top: 20px;
-                        left: 0;
-                    }
-                    b {
-                        display: inline-block;
-                        @include nums($w: 25px, $h:25px);
-                        text-align: center;
-                        line-height: 25px;
-                        background: #fff;
-                        border-radius: 50%;
-                        position: absolute;
-                        top: 40px;
-                        left: 0;
-                        i {
-                            color: #0F193D;
-                            z-index: 999;
-                        }
-                    }
-                }
-                .ivu-dropdown-item {
-                    padding: 0;
-                    color: rgba(255, 255, 255, 0.85);
-                    p {
-                        @include nums($w: 100%, $h:30px);
-                        line-height: 30px;
-                        text-align: center;
-                    }
-                }
-            }
-        }
+        padding: 0 20px;
+        font-size: 28px;
     }
     .ivu-select-dropdown {
         background: #1C2851!important;
@@ -355,7 +292,6 @@
     }
     .g-menu {
         @include nums($w: 100%, $h:36px);
-        margin-top: 27px;
         background-image: radial-gradient(51% 100%, rgba(34, 235, 251, 0.2) 20%, transparent 100%)!important;
         border-top: rgba(34, 235, 251, 0.4) solid 1px;
         .ul {
@@ -363,26 +299,26 @@
             .li {
                 line-height: 36px;
                 padding: 0 40px;
-                @include font($fz: 18px, $color:#e5e5e5);
+                @include font($fz: 18px, $color:#333);
                 cursor: pointer;
                 span.hover {
-                    color: #00ffe7;
+                    color: #111;
                 }
                 span:hover{
-                    color: #00ffe7;
+                    color: #111;
                 }
             }
             .ivu-dropdown-item-selected {
                 background: transparent;
                 .g-menu-down {
-                    color: #00ffe7;
+                    color: #111;
                 }
             }
             .g-menu-down {
                 @include nums($w: 100%);
-                @include font($fz: 18px, $color:#fff);
+                @include font($fz: 18px, $color:#333);
                 &:hover {
-                    color: #00ffe7;
+                    color: #111;
                 }
             }
         }

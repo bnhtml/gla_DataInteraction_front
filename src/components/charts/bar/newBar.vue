@@ -11,7 +11,7 @@
   import echarts from "echarts";
   import {
     SERVER_BASE_URL
-  } from '@/http/config.js';
+  } from '@/http/conf.js';
   let colorLineArr = [{
       color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
           offset: 0,
