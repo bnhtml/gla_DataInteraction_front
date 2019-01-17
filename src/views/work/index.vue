@@ -88,7 +88,7 @@
             },],
         'dataUpperShelf': [
             {
-                url: 'dataUpperShelf',
+                url: 'published',
                 name: '已发布接口-大数据局',
                 icon: 'icon-shouye',
                 children: [
