@@ -7,7 +7,10 @@ import index from '../views/work/index.vue'; //
 
 import leaderCockpit from '../views/work/leaderCockpit/leaderCockpit.vue';
 import datainteration from '../views/work/datainteration';
+/* 数据上架 */
 import dataUpperShelf from '../views/work/dataUpperShelf';
+import published  from '../views/work/dataUpperShelf/published.vue';// 已发布
+import unpublished from '../views/work/dataUpperShelf/unpublished.vue';//未发布
 import systemManagement from '../views/work/systemManagement';
 export default new Router({
     routes: [
@@ -57,7 +60,25 @@ export default new Router({
                             meta: {
                                 keepAlive: true,
                                 title: '数据上架'
-                            }
+                            },
+                        },
+                        {
+                            path: 'published',
+                            name: 'published',
+                            component: published,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据上架-已发布'
+                            },
+                        },
+                        {
+                            path: 'unpublished',
+                            name: 'unpublished',
+                            component: unpublished,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据上架-未发布'
+                            },
                         },
                         {
                             path: 'systemManagement',

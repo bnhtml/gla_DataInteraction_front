@@ -4,57 +4,56 @@
     <div class="nomaltable" :class="{noborder: !border}">
       <div class="right-button table-button" :class="{tabletabs: tableJson.excelButton && tableJson.excelButton.tableTabs}">
         <span v-for="(excel, excelIndex) in tableJson.excelButton" :key="excelIndex"> 
-          <el-upload
-              v-if="excel.type == 'upload'"
-              class="upload-button"
-              action="https://jsonplaceholder.typicode.com/posts/" 
-              :show-file-list="false">
-              <el-button plain size="mini" class="el-icon-document"> 导入</el-button>
-          </el-upload>
-          <div plain size="mini" class="between-p" @click="export2Excel(tableJson, excel)"> <span v-if="excel.type == 'export'" >查询结果导出 <i class="iconfont icon-daochu"></i></span></div>
+              <el-upload
+                  v-if="excel.type == 'upload'"
+                  class="upload-button"
+                  action="https://jsonplaceholder.typicode.com/posts/" 
+                  :show-file-list="false">
+                  <el-button plain size="mini" class="el-icon-document"> 导入</el-button>
+              </el-upload>
+              <div plain size="mini" class="between-p" @click="export2Excel(tableJson, excel)"> <span v-if="excel.type == 'export'" >查询结果导出 <i class="iconfont icon-daochu"></i></span></div>
       </span>
-      </div>
-      <el-table v-if="isShow" :data="tableData" :border='border' :row-class-name="tableRow" :span-method="tableJson.spanMethod" :cell-style="tableJson.cellstyle" header-row-class-name="head-row" :show-header="!nohead" v-loading="loading" ref="multipleTable" @sort-change="sortable"
-        @selection-change="handleSelectionChange"
-        :height="height">
-        <el-table-column v-if="!noid" type="index" label="序号" width="50">
-        </el-table-column>
-        <el-table-column v-if="tableJson.selectBox" type="selection" :align="tableJson.selectBox.center || 'left'" :width="tableJson.selectBox.width">
-        </el-table-column>
-        <el-table-column v-for="(column, columnIndex) in tableJson.column" :key="columnIndex" :sortable="column.sortable || false" :label="column.label" :prop="column.prop" :width="column.width || ''" :fixed="column.fixed || false" :min-width="column.minWidth"
-          :align="column.align || 'left'" :header-align="column.headerAlign" :class-name="column['class-name'] || ''">
-          <template slot-scope="scope">
-            <p v-if="column.type == 'text'" v-html="formatter(scope.row,column,columnIndex,scope.$index)"></p>
-            <!-- <p v-if="column.type == 'text'" v-html="formatter(scope.row[column.prop])"></p> -->
-            <el-popover
-                v-if="column.type == 'hover'"
-                :placement="column.hover.placement || 'bottom'"
-                :title="column.hover.title || ''"
-                :width="column.hover.width || 150"
-                :trigger="column.hover.trigger || 'hover'"
-                :popper-class="column.hover.popperClass || ''"
-                :content="scope.row[column.prop]">
-                <el-button type="text" size="small" slot="reference" v-html="column.hover.label"></el-button>
-            </el-popover>
-            <el-button 
-                v-if="column.type == 'handle'" 
-                v-for="(handle, handleIndex) in column.list" 
-                :key="handleIndex" 
-                size="small" 
-                type="text" 
-                @click="handleButtons(handle, scope)"
-                v-html="handle.label || handle.formatter(scope.row,column,columnIndex,scope.$index)">
-            </el-button>
-            <el-switch
-                v-if="column.type == 'switch'"
-                v-model="scope.row[column.prop]"
-                :active-color="column.config.activeColoe || '#7224D8'"
-                :inactive-color="column.config.inactiveColor || '#999'"
-                :active-value="column.config.value[1]"
-                :inactive-value="column.config.value[0]"
-                @change="switchChange(scope.row, column)">
-            </el-switch>
-            </template>
+    </div>
+    <el-table v-if="isShow" :data="tableData" :border='border' :row-class-name="tableRow" :span-method="tableJson.spanMethod" :cell-style="tableJson.cellstyle" header-row-class-name="head-row" :show-header="!nohead" v-loading="loading" ref="multipleTable"
+      @sort-change="sortable" @selection-change="handleSelectionChange" :height="height">
+      <el-table-column v-if="!noid" type="index" label="序号" width="50">
+      </el-table-column>
+      <el-table-column v-if="tableJson.selectBox" type="selection" :align="tableJson.selectBox.center || 'left'" :width="tableJson.selectBox.width">
+      </el-table-column>
+      <el-table-column v-for="(column, columnIndex) in tableJson.column" :key="columnIndex" :sortable="column.sortable || false" :label="column.label" :prop="column.prop" :width="column.width || ''" :fixed="column.fixed || false" :min-width="column.minWidth"
+        :align="column.align || 'left'" :header-align="column.headerAlign" :class-name="column['class-name'] || ''">
+        <template slot-scope="scope">
+                <p v-if="column.type == 'text'" v-html="formatter(scope.row,column,columnIndex,scope.$index)"></p>
+                <!-- <p v-if="column.type == 'text'" v-html="formatter(scope.row[column.prop])"></p> -->
+                <el-popover
+                    v-if="column.type == 'hover'"
+                    :placement="column.hover.placement || 'bottom'"
+                    :title="column.hover.title || ''"
+                    :width="column.hover.width || 150"
+                    :trigger="column.hover.trigger || 'hover'"
+                    :popper-class="column.hover.popperClass || ''"
+                    :content="scope.row[column.prop]">
+                    <el-button type="text" size="small" slot="reference" v-html="column.hover.label"></el-button>
+                </el-popover>
+                <el-button 
+                    v-if="column.type == 'handle'" 
+                    v-for="(handle, handleIndex) in column.list" 
+                    :key="handleIndex" 
+                    size="small" 
+                    type="text" 
+                    @click="handleButtons(handle, scope)"
+                    v-html="handle.label || handle.formatter(scope.row,column,columnIndex,scope.$index)">
+                </el-button>
+                <el-switch
+                    v-if="column.type == 'switch'"
+                    v-model="scope.row[column.prop]"
+                    :active-color="column.config.activeColoe || '#7224D8'"
+                    :inactive-color="column.config.inactiveColor || '#999'"
+                    :active-value="column.config.value[1]"
+                    :inactive-value="column.config.value[0]"
+                    @change="switchChange(scope.row, column)">
+                </el-switch>
+</template>
           </el-table-column>
         </el-table>
             <div class="pagination" v-if="page.totalCount > page.pageSize">
@@ -81,7 +80,7 @@
   export default {
     name: "nomaltable",
     data() {
-      let pageNumber = this.$route.query.pageNumber||1;
+      let pageNumber = this.$route.query.pageNumber || 1;
       return {
         loading: false,
         tableData: [], //表格数据
@@ -98,7 +97,7 @@
       url: String,
       query: {
         type: Object,
-        default: function(){
+        default: function() {
           return {}
         }
       },
@@ -126,7 +125,9 @@
       eventBus.$on('RESIZE', () => {
         // debugger
         this.isShow = false;
-        this.$nextTick(() => {this.isShow = true;})
+        this.$nextTick(() => {
+          this.isShow = true;
+        })
       })
     },
     computed: {
@@ -135,7 +136,7 @@
       }
     },
     methods: {
-      search(query){
+      search(query) {
         Object.assign(this.query, query);
         this.getData();
       },
@@ -161,17 +162,24 @@
           pageSize: this.page.pageSize
         });
       },
-      setRouter(query){
-        let {params, name} = this.$route;
-        this.$router.replace({name, params, query});
+      setRouter(query) {
+        let {
+          params,
+          name
+        } = this.$route;
+        this.$router.replace({
+          name,
+          params,
+          query
+        });
       },
       // 获取数据
       getData(params = {}, type) {
         let _this = this;
         params.pageNumber = params.pageNumber || 1;
         params.pageSize = params.pageSize || this.page.pageSize || 10;
-        if(this.$route.query.areaids==undefined){
-           this.$route.query.areaids=0;
+        if (this.$route.query.areaids == undefined) {
+          this.$route.query.areaids = 0;
         }
         params = Object.assign({}, this.$route.query, this.query, params);
         // console.log(this.$route.query)
@@ -187,7 +195,6 @@
             //   _this.$alert(d.msg, "温馨提示");
             //   return;
             // }
-
             _this.$emit('receive', d);
             if (
               _this.tableJson.formatter &&
@@ -226,15 +233,18 @@
         }
       },
       export2Excel(table, item) {
-
         let _this = this;
-        let {url, fileName = this.fileTitle} = item;
-        
-        let params = {fileName};
+        let {
+          url,
+          fileName = this.fileTitle
+        } = item;
+        let params = {
+          fileName
+        };
         params.pageNumber = params.pageNumber || 1;
         params.pageSize = params.pageSize || this.page.pageSize || 10;
-        if(this.$route.query.areaids==undefined){
-           this.$route.query.areaids=0;
+        if (this.$route.query.areaids == undefined) {
+          this.$route.query.areaids = 0;
         }
         params = Object.assign({}, this.$route.query, this.query, params);
         this.loading = true;
@@ -403,7 +413,7 @@
         path = path || this.$route.path;
         session[path] = page;
         // sessionStorage.setItem("page", JSON.stringify(session));
-         sessionStorage.setItem("page", JSON.stringify({}));
+        sessionStorage.setItem("page", JSON.stringify({}));
       },
       Axios({
         url,
@@ -440,12 +450,10 @@
           });
       }
     },
-
-
   };
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
   .nomaltable .el-table,
   .nomaltable .el-table__expanded-cell,
   .nomaltable /deep/ .el-table th,
@@ -454,23 +462,27 @@
   }
   .nomaltable /deep/ .has-gutter {
     color: #abaebb;
-    background: #1a2247;
+    background: #EFF2F5;
     border-radius: 4px;
     height: 40px;
     line-height: 40px;
   }
-  .nomaltable /deep/ .has-gutter th {
-    border: none;
-    padding: 0;
+  .nomaltable /deep/ {
+    .has-gutter th {
+      border: none;
+      padding: 0;
+    }
+    .el-table__row td {
+      border-bottom: 1px solid #EBEEF5;
+    }
+    .el-button {
+      font-size: 14px;
+      color: #33ABFB;
+    }
   }
-  .nomaltable /deep/ .el-table__row td {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 12px 0;
-   
-  }
-  
   .nomaltable /deep/ .el-table__row {
-    color: rgba(255, 255, 255, .85);
+    color: #333;
+    font-size: 14px;
   }
   .pagination {
     color: rgba(255, 255, 255, .85);
@@ -513,9 +525,10 @@
   .el-table::before {
     background: rgba(255, 255, 255, 0.15);
   }
-  .table-button{
+  .table-button {
     text-align: right;
-    height: 50px;
+    // height: 50px;
+    height: 10px;
   }
   .between-p {
     font-size: 16px;
@@ -528,5 +541,4 @@
   .between-p:hover {
     color: #2d8cf0;
   }
-  
 </style>

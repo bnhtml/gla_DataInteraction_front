@@ -22,248 +22,29 @@
     background: #2D8CF0;
     border-radius: 5px;
 }
-/* card的标题 */
 
-.card-title {
-    font-size: 16px; // color: #2d8cf0;
-    color: #fffefc;
-    &>span,
-    &>a>span {
-        font-size: 14px;
-        float: right;
-        cursor: pointer; // color: #2d8cf0;
-        &>i {
-            font-size: 12px; // color: #2d8cf0;
-            padding-left: 5px;
-            padding-right: 5px;
-        }
-    }
-}
-
-.cancel {
-    &>span,
-    &>a>span {
-        font-size: 12px;
-        float: right;
-        cursor: pointer;
-        color: #2d8cf0;
-        &>i {
-            font-size: 16px;
-            color: #2d8cf0;
-            padding-right: 5px;
-        }
-    }
-    i {
-        font-size: 16px!important;
-        color: #2d8cf0;
-        padding-right: 5px;
-    }
-}
 
 .cur-p {
     cursor: pointer;
 }
 
-.legendItemWrapper {
-    width: 260px;
-}
 
-/* 标题样式 */
-
-.titleBar {
-    position: relative;
-    .right {
-        position: absolute;
-        right: 80px;
-        top: 10px;
-        width: 97px;
-        height: 29px;
-        text-align: center;
-        line-height: 29px;
-        border-radius: 15px;
-        border: solid 1px #00ffe7;
-        font-size: 16px;
-        color: #00ffe7;
-    }
-    .right:hover {
-        color: #22ebfb;
-        cursor: pointer;
-    }
-    .right-more {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        font-size: 15px;
-        color: #fff;
-        cursor: pointer;
-        i {
-            margin-left: 5px;
-        }
-        &:hover{
-            color: #00ffe7;
-        }
-    }
-    .right-radio {
-        position: absolute;
-        right: 80px;
-        top: 10px;
-        li {
-            width: 100px;
-            text-align: center;
-            line-height: 29px;
-            height: 31px;
-            display: inline-block;
-            font-size: 16px;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 15px;
-            border: solid 1px transparent;
-            box-sizing: border-box;
-            &:last-child {
-                margin-left: 20px;
-            }
-            
-        }
-        li.hover {
-            border: solid 1px #00ffe7;
-            color: #00ffe7;
-        }
-        li:hover{
-            color: #00ffe7;
-        }
-    }
-}
 /* 小标题左侧蓝色边框 */
 .titleLeftBorder{
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.85);
     height: 15px;
     line-height: 15px;
-    border-left: solid 2px #00ffe7;
-    padding-left: 6px;
-
-}
-/* 标题按钮切换样式 */
-.tabTitleBtn {
-    position: absolute;
-    background-color: #051646;
-    right: 14px;
-    border-radius: 20px;
-    top:10px;
-    border:solid 1px #5d8cb1;
-    z-index: 10;
-    li {
-      display: inline-block;
-      padding: 4px 24px;
-      text-align: center;
-      font-size: 14px;
-      color: #fff;
-      cursor: pointer;
-    }
-    .active,
-    .hover {
-      border-radius: 16px;
-      color:#fff;
-      background-color: #01b6a7;
-    }
-  }
-/* 数据资产综合分析标题 */
-
-.special-title {
-    text-align: center;
-    height: 61px;
-    line-height: 61px;
-    margin: 10px 0 30px 0;
+    border-left: solid 6px #58CAFD;
+    padding-left: 14px;
+    margin-left: -20px;
+    color: #333;
     position: relative;
-    .back {
-        cursor: pointer;
+    .right{
+        font-size: 12px;
         position: absolute;
-        right: 0px;
-        top: 15px;
-        font-size: 16px;
-        color: #fff;
-        i {
-            font-size: 16px;
-            color: #fff;
-            position: relative;
-            top: -2px;
-        }
+        right: 0;
     }
-    .back:hover {
-        color: #2d8cf0;
-        i {
-            color: #2d8cf0;
-        }
-    }
-    a {
-        display: inline-block;
-        width: 461px;
-        height: 61px;
-        font-family: 'zhanghaishan';
-        font-size: 36px;
-        color: #fff;
-        cursor: pointer;
-    }
-}
 
-/* 合规度 - 异常数据标红显示 */
-
-.color-red {
-    color: #BC4C50!important;
-}
-
-.border-red {
-    border: #BC4C50 solid 1px!important;
-    display: inline-block;
-    width: 100%;
-    border-radius: 5px;
-    padding: 0 5px;
-    height: 30px;
-    line-height: 30px;
-}
-
-/* 数据资产综合分析 - 详情页面 */
-
-.table-left-label {
-    background: -webkit-linear-gradient(#091A54, #001647);
-    /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(#091A54, #001647);
-    /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(#091A54, #001647);
-    /* Firefox 3.6 - 15 */
-    background: linear-gradient(#091A54, #001647);
-    /* 标准的语法 */
-    border-left: 1px solid #2A365D;
-    border-right: 1px solid #2A365D;
-}
-
-.table-left-label-inside {
-    background: #1A2247;
-    border-left: 1px solid #2A365D;
-    border-right: 1px solid #2A365D;
-}
-
-.table-right-value-inside,
-.table-right-value {
-    border-right: 1px solid #2A365D;
-}
-.table-left-label-err {
-    background: -webkit-linear-gradient(#ca5d55, #d56c59)!important;
-    /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(#ca5d55, #d56c59);
-    /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(#ca5d55, #d56c59);
-    /* Firefox 3.6 - 15 */
-    background: linear-gradient(#ca5d55, #d56c59);
-    /* 标准的语法 */
-    border-left: 1px solid #3b4a71;
-    border-right: 1px solid #3b4a71;
-}
-.page {
-    .nomaltable .el-table__row td {
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
-        border-bottom: 0!important;
-    }
 }
 
 @font-face {
@@ -279,27 +60,4 @@
 @font-face {
     font-family: 'PangMenZhengDao';
     src: url('../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.ttf') format("truetype"), url('../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.woff'), url('../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.woff2'), url('../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.svg'), url('../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.eot'), url('../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.otf');
-}
-/* 暂无数据 */
-.noData {
-    display: flex;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-/* 柱状图label 小圆点 */
-.circle-color{
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    margin-right: 5px;
-  }
-/* 针对  搜索按钮和导出结果 占位的高*/
-.table-cont{
-margin-top: -50px;
 }
