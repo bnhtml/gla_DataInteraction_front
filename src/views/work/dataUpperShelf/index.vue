@@ -1,7 +1,7 @@
 <!-- 数据上架 -->
 <template>
 <div class='datainteration'>
-  数据上架
+  
 </div>
 </template>
 

@@ -9,15 +9,16 @@ import echarts from 'echarts'; // 引入echarts
 import appBase from '../static/common/app_base.js';
 import appClient from '../static/common/app_client.js';
 import 'iview/dist/styles/iview.css';
+import 'element-ui/lib/theme-chalk/index.css';
+
 // import '../static/common/app_base.js';
 import '../static/common/animate.css';
 import store from '@/store/store.js';
 import './assets/style/base/reset.css';
 import './assets/style/base/common.css';
-// import './assets/style/cover/cover.scss';
+import './assets/style/cover/cover.scss';
 import './assets/style/common/style.scss';
 import './assets/font/iconfont.css';
-import 'element-ui/lib/theme-chalk/index.css';
 import * as list from '@/server/getData.js';
 import axios from "axios";
 import VueAxios from 'vue-axios';
