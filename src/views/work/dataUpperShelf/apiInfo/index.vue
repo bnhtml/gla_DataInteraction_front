@@ -3,12 +3,13 @@
 <div class='g-api-info'>
   <el-card>
     <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="API基本信息" name="info">API基本信息</el-tab-pane>
-      <el-tab-pane label="API参数" name="params">API参数</el-tab-pane>
-      <el-tab-pane label="API使用情况" name="usage">API使用情况</el-tab-pane>
+      <el-tab-pane label="API基本信息" name="info"></el-tab-pane>
+      <el-tab-pane label="API参数" name="params"></el-tab-pane>
+      <el-tab-pane label="API使用情况" name="usage"></el-tab-pane>
     </el-tabs>
+
     <div>
-      
+      <router-view></router-view>
     </div>
   </el-card>
 </div>
@@ -24,7 +25,7 @@ export default {
   data() {
     //这里存放数据
     return {
-      activeName: 'second'
+      activeName: this.$route.name
     };
   },
   //监听属性 类似于data概念
@@ -34,8 +35,9 @@ export default {
   //方法集合
   methods: {
     handleClick(tab, event) {
-      console.log(tab, event);
-      
+      this.$router.push({
+        name: tab.name
+      })
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）

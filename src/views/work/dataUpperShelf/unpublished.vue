@@ -1,7 +1,7 @@
 // 未发布
 <template>
     <div class="published">
-        <c-admin :deptType="deptType">
+        <!-- <c-admin :deptType="deptType"> -->
             <el-card shadow="always" class="published-header">
                 <p class="titleLeftBorder">筛选条件</p>
                 <TableSearch :searchs='searchs'></TableSearch>
@@ -15,7 +15,7 @@
                     <NomalTable :table-json="tableJson" :data="data"></NomalTable>
                 </div>
             </el-card>
-        </c-admin>
+        <!-- </c-admin> -->
     </div>
 </template>
 

@@ -15,7 +15,7 @@
             </div>
         </div>
       </el-aside>
-      <el-main style="padding: 0 20px;" ref="containerLayout">
+      <el-main ref="containerLayout">
         <router-view></router-view>
       </el-main>
     </el-container>
