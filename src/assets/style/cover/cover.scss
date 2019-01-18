@@ -82,3 +82,32 @@
 //     color: #333;
 //     font-size: 14px;
 // }
+
+/* 宽 */
+.el-message-box{
+    width: 430px;;
+    padding: 17px 32px 24px 32px;
+}
+.el-message-box__title{
+    padding-left: 20px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    color: #333333;
+}
+.el-message-box__status{
+    top: -25px;
+}
+.el-message-box__message p{
+    padding-left: 0px;
+    font-size: 14px;
+    color: #666;
+}
+.el-message-box__content{
+    padding: 0;
+}
+.el-message-box__status+.el-message-box__message{
+    padding-right: 0;
+}
+.el-message-box__btns{
+    padding-top: 24px;
+}
