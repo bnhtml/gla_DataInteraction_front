@@ -21,7 +21,7 @@
       <el-table-column v-if="tableJson.selectBox" type="selection" :align="tableJson.selectBox.center || 'left'" :width="tableJson.selectBox.width">
       </el-table-column>
       <el-table-column v-for="(column, columnIndex) in tableJson.column" :key="columnIndex" :sortable="column.sortable || false" :label="column.label" :prop="column.prop" :width="column.width || ''" :fixed="column.fixed || false" :min-width="column.minWidth"
-        :align="column.align || 'left'" :header-align="column.headerAlign" :class-name="column['class-name'] || ''">
+        :align="column.align || 'left'" :header-align="column.headerAlign" :class-name="column['class-name'] || ''" :show-overflow-tooltip="column['show-overflow-tooltip']||false">
         <template slot-scope="scope">
                 <p v-if="column.type == 'text'" v-html="formatter(scope.row,column,columnIndex,scope.$index)"></p>
                 <!-- <p v-if="column.type == 'text'" v-html="formatter(scope.row[column.prop])"></p> -->
@@ -56,16 +56,16 @@
 </template>
           </el-table-column>
         </el-table>
-            <div class="pagination" v-if="page.totalCount > page.pageSize">
+            <div class="pagination" v-if="page.totalCount > page.pageSize"> <!--  -->
                 <!-- <el-pagination @current-change="handleCurrentChange" layout="prev, pager, next" :total="page.total" :current-page="page.pageNumber">
                 </el-pagination> -->
-                <div class="pageInfo">共{{page.totalCount}}条记录 第{{page.pageNumber}}/{{allPage}}页</div>
+                <div class="pageInfo"><!-- 共{{page.totalCount}}条记录 第{{page.pageNumber}}/{{allPage}}页 --></div>
                 <el-pagination
                   @current-change="handleCurrentChange"
                   :current-page.sync="page.pageNumber"
                   :page-size="page.pageSize"
                   :total="page.totalCount"
-                  layout="prev, pager, next, jumper">
+                  layout="prev, pager, next">
                 </el-pagination>
             </div>
 
@@ -117,6 +117,7 @@
       window.eventBus.$on('search', this.search);
     },
     mounted() {
+      // this.page.totalCount=100
       if (!this.data) {
         this.init();
       } else {
@@ -478,6 +479,13 @@
     .el-button {
       font-size: 14px;
       color: #33ABFB;
+      padding: 0;
+      .green{
+        color: #01D19F;
+      }
+      .orange{
+        color: #FC8635;
+      }
     }
   }
   .nomaltable /deep/ .el-table__row {
@@ -485,10 +493,10 @@
     font-size: 14px;
   }
   .pagination {
-    color: rgba(255, 255, 255, .85);
+    // color: rgba(255, 255, 255, .85);
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin: 30px 0;
   }
   .el-pagination {
     color: rgba(255, 255, 255, .85);
@@ -497,28 +505,29 @@
   .el-pagination /deep/ .btn-prev,
   .pagination /deep/ .el-pager li {
     background: transparent;
-    border: 1px solid #495374;
-    color: rgba(255, 255, 255, .85);
-    min-width: 22px;
+    border: 1px solid rgba(0,0,0,0.15);
+    color: #333;
+    min-width: 32px;
     border-radius: 4px;
-    height: 22px;
-    line-height: 18px;
+    height: 32px;
+    line-height: 30px;
     margin-right: 8px;
   }
   .pagination /deep/ .el-pager li.active {
     background: #3196fa;
+    border-color: transparent;
+    color: #fff;
   }
-  .pagination /deep/ .el-pagination__jump {
-    color: rgba(255, 255, 255, .85);
-  }
+ 
   .pagination /deep/ .el-pagination__editor.el-input {
     width: 30px;
   }
   .pagination /deep/ .el-pagination__editor,
   .pagination /deep/ .el-pagination__editor.el-input .el-input__inner,
   .pagination /deep/ .el-pagination span:not([class*=suffix]) {
-    height: 20px;
-    line-height: 20px;
+    height: 30px;
+    line-height: 30px;
+    
   }
   .el-table--border::after,
   .el-table--group::after,

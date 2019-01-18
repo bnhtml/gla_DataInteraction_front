@@ -32,7 +32,7 @@
 
 .el-select .el-input.is-focus .el-input__inner,
 .el-select .el-input__inner:focus {
-    border-color: #d4d6db;
+    // border-color: #d4d6db;
 }
 
 /* 按钮 */
@@ -56,6 +56,27 @@
 
 .el-table th>.cell {
     color: #666;
+}
+ .el-pagination .btn-prev .el-icon{
+    position: relative;
+    left: 4px;
+    color: #666;
+}
+.el-pagination .btn-next .el-icon{
+    position: relative;
+    left: -2px;
+    color: #666;
+}
+.el-pagination__jump{
+    color: #333;
+
+}
+/*溢出省略号 */
+.el-tooltip{
+    P{
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 // .el-table_1_column_3, .is-center {
 //     color: #333;

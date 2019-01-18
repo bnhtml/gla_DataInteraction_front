@@ -1,3 +1,5 @@
+import { Collapse } from "element-ui";
+
 let data=
 [{
     apiName:'数据接口名称',
@@ -199,35 +201,35 @@ let data=
 let tableJson={
     column: [{
             type: "text",
-            align: "center",
+            align: "",
             label: "数据接口名称",
             prop: "apiName",
             width: "",
         },
         {
             type: "text",
-            align: "center",
+            align: "",
             label: "资源ID",
             prop: "id",
             width: "",
         },
         {
             type: "text",
-            align: "center",
-            label: "资源名呢",
+            align: "",
+            label: "资源名称",
             prop: "name",
             width: "",
         },
         {
             type: "text",
-            align: "center",
+            align: "",
             label: "资源描述",
             prop: "describe",
             width: "",
         },
         {
             type: "text",
-            align: "center",
+            align: "",
             label: "资源接口地址",
             prop: "apiAddress",
             width: ""
@@ -246,10 +248,11 @@ let tableJson={
             type: "handle",
             align: "center",
             label: "操作",
-            width: "",
+            width: "80",
             list: [{
                 label: "查看详情",
                 onClick(_this, self, row) {
+                    console.log('查看详情')
                     // self.nomal = !self.nomal;
                     // _this.isShow = !_this.isShow;
                     // _this.$router.push({
@@ -266,7 +269,110 @@ let tableJson={
         }
     ]
 }
+let unpublishedData=[{
+    apiName:'数据接口名称',
+    id:'WERMKL345III0',
+    status:'0',
+    describe:'描述描述',
+    applyNum:'中软申请流程的单据号',
+    applyDate:'2019-01-10 13:56:23',
+},{
+    apiName:'数据接口名称',
+    id:'WERMKL345III0',
+    status:'1',
+    describe:'描述描述',
+    applyNum:'中软申请流程的单据号',
+    applyDate:'2019-01-10 13:56:23',
+},]
+let unpublishedTableJson={
+    column: [{
+        type: "text",
+        align: "",
+        label: "资源ID",
+        prop: "id",
+        width: "",
+    },{
+            type: "text",
+            align: "",
+            label: "数据接口名称",
+            prop: "apiName",
+            width: "",
+        },
+        
+        {
+            type: "text",
+            align: "",
+            label: "状态",
+            prop: "status",
+            width: "100",
+            formatter(row){
+                return ['已封装','未封装'][row.status]
+            }
+        },
+        {
+            type: "text",
+            align: "",
+            label: "资源描述",
+            prop: "describe",
+            width: "",
+            'show-overflow-tooltip':true
+        },
+        {
+            type: "text",
+            align: "",
+            label: "申请单号",
+            prop: "applyNum",
+            width: "",
+            'show-overflow-tooltip':true
+        },
+        {
+            type: "text",
+            align: "",
+            label: "申请日期",
+            prop: "applyDate",
+            width: "",
+            'show-overflow-tooltip':true
+            
+        },
+        
+        
+        {
+            type: "handle",
+            align: "",
+            label: "操作",
+            width: "140",
+            list: [{
+                formatter(row, column, columnIndex, rowIndex) {
+                    return ["<span class='green'>封装接口</span>", "<span class='orange'>修改接口</span>"][row.status]
+                },
+                onClick(_this, self, row) {
+                    if(row.status == 0){
+                        console.log('封装接口')
+
+                    }else{
+                        console.log('修改接口')
+                    }
+                    
+                }
+            },{
+                formatter(row, column, columnIndex, rowIndex) {
+                    return ['', "发布"][row.status]
+                },
+                onClick(_this, self, row) {
+                    if(row.status == 1){
+                        console.log('发布')
+
+                    }
+                    
+                }
+            }]
+        }
+    ]
+}
 export {
     data,
-    tableJson
+    tableJson,
+    unpublishedData,
+    unpublishedTableJson,
+
 }

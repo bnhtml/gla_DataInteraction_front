@@ -2,11 +2,11 @@
   <!-- 筛选 -->
   <div class="nomaltable">
     <!-- <div class="search-header">筛选查询</div> -->
-    <div class="search-box" v-loading="loading" :style="{'height':serachBH.flag,position:changePos().position,bottom:changePos().bottom}">
+    <div class="search-box" v-loading="loading" >
       <el-form :inline="true" :model="searchVal" class='search-box-cont' > 
         <el-form-item :label="search.label" v-for="(search, searchIndex) in searchs.list" :key="searchIndex">
           <!-- 输入框 -->
-          <el-input v-if="search.type == 'input-text'" v-model="search.value" :placeholder="search.placeholder" ></el-input>
+          <el-input v-if="search.type == 'input-text'" v-model="search.value" :placeholder="search.placeholder" style='width:300px'></el-input>
           <!-- 下拉框 -->
           <el-select @change="selectChange(arguments[0], search)" v-else-if="search.type == 'input-select'" v-model="search.value" :placeholder="search.placeholder">
             <el-option v-for="(option, optionIndex) in search.options" :key="optionIndex" :label="option.name" :value="option.value"></el-option>
@@ -20,24 +20,24 @@
               <el-radio v-for="(radio, index) in search.options" :key="index" v-model="search.value" :label="radio.value">{{radio.name}}</el-radio>
           </span>
         </el-form-item>
-        <el-form-item  v-if='searchs.list.length<4'>
-            <el-button size="small" class="buttonStyle " @click="search(searchs)">
+        <el-form-item  >
+            <el-button type="primary"   @click="search(searchs)">
                 {{searchs.btn && searchs.btn.label || '查询'}}
             </el-button>
-            <el-button size="small" plain @click="resetForm(searchs)" class="buttonStyle reset">重置</el-button>
+            <!-- <el-button size="small" plain @click="resetForm(searchs)" class="buttonStyle reset">重置</el-button> -->
         </el-form-item>
-        <p class='more' v-if='searchs.list.length>4' @click="changeMore">更多查询条件 <i :class="'iconfont '+ moreIcon.flag "></i></p>
+        <!-- <p class='more' v-if='searchs.list.length>4' @click="changeMore">更多查询条件 <i :class="'iconfont '+ moreIcon.flag "></i></p> -->
       </el-form>
     </div>
     <!--  操作按钮-->
-    <el-form  style='paddingTop:12px;' class="search-btn" v-if='searchs.list.length>=4'>
+    <!-- <el-form  style='paddingTop:12px;' class="search-btn" v-if='searchs.list.length>=4'>
       <el-form-item>
         <el-button size="small" class="buttonStyle" @click="search(searchs)" >
           {{searchs.btn && searchs.btn.label || '查询'}}
         </el-button>
         <el-button size="small" plain @click="resetForm(searchs)" class="buttonStyle reset">重置</el-button>
       </el-form-item>
-    </el-form>
+    </el-form> -->
   </div>
 </template>
 
@@ -107,7 +107,7 @@
       
     },
     mounted() {
-      console.log(this.changePos())
+      // console.log(this.changePos())
       this.resetForm(this.searchs);
     },
     methods: {
@@ -122,6 +122,7 @@
           this.searchVal[e.name] = e.value;
         });
         window.eventBus.$emit('search', this.searchVal);
+        console.log('搜索内容', this.searchVal)
       },
       resetForm(search) {
         //重置
@@ -199,13 +200,13 @@
           })
         }
       },
-      changePos(){
-        if(this.searchs.list.length<4){
-          return this.posBottom
-        }else{
-          return {position:'',bottom:''}
-      }
-      }
+      // changePos(){
+      //   if(this.searchs.list.length<4){
+      //     return this.posBottom
+      //   }else{
+      //     return {position:'',bottom:''}
+      // }
+      // }
     },
     computed: {},
     watch: {},
@@ -228,11 +229,9 @@
   }
   .search-box {
     position: relative;
-    /*padding-right: 100px;*/
-    padding: 20px 0 10px 0px; // margin-bottom: 10px;
+    margin: 20px 0 -5px 0px; 
   }
   .search-box /deep/ .el-form-item__label {
-    color: rgba(255, 255, 255, 0.65);
     font-size: 16px;
   }
   .buttonStyle.el-button {
@@ -248,14 +247,13 @@
   .search-box /deep/ .el-form-item__label,
   .search-box /deep/ .el-input__icon {
     line-height: 30px;
-    background: transparent;
+    // background: transparent;
   }
   .search-box /deep/ .el-input__inner {
     height: 30px;
-    color: rgba(255, 255, 255, 0.85);
   }
   .nomaltable .el-form-item {
-    margin-right: 25px;
+    margin-right: 10px;
   }
   .search-box /deep/ .el-date-editor {
     i.el-icon-date {
@@ -263,77 +261,13 @@
     }
     input {
       background: transparent;
-      color: #fff;
+      // color: #fff;
     }
   }
 </style>
 
 <style lang='less' scoped>
-  .el-select-dropdown,
-  .el-picker-panel {
-    background: #182142; // background:#25325f;
-    ul li {
-      color: #eee;
-    }
-    .el-date-range-picker__header {
-      color: #ccc;
-      .el-picker-panel__icon-btn {
-        color: #eee;
-      }
-    }
-    table {
-      color: #eee;
-      th {
-        color: #ccc;
-      }
-      .in-range {
-        color: #333;
-      }
-    }
-    ul li.hover {
-      // color: #409EFF;
-      color: #cfe7ff;
-    }
-  }
-  .el-select-dropdown__item.hover,
-  .el-select-dropdown__item:hover {
-    // background-color:#cfe7ff;
-    background: #2d8cd6; // color:#cfe7ff;
-  }
-  /* 更多查询条件 */
-  .search-box {
-    overflow: hidden;
-  }
-  .search-box-cont {
-    position: relative;
-    padding-right: 100px;
-    overflow: hidden;
-  }
-  .more {
-    position: absolute;
-    top: 0px;
-    right: 0;
-    font-size: 16px;
-    cursor: default;
-    color: #2d8cf0;
-    i {
-      font-size: 12px;
-    }
-  }
-  .reset.el-button {
-    color: #bfcc4e;
-    border-color: #bfcc4e;
-  }
-  .nomaltable {
-    position: relative;
-    .search-btn {
-      position: absolute;
-      bottom: -70px;
-      left: 0;
-    }
-    // .search-box{
-    //   position: absolute;
-    //   bottom:-50px;
-    // }
-  }
+
+  
+  
 </style>

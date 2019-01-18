@@ -4,14 +4,7 @@
         <c-admin :deptType="deptType">
             <el-card shadow="always" class="published-header">
                 <p class="titleLeftBorder">筛选条件</p>
-                <div class="search">
-                    <el-select v-model="selectValue" placeholder="请选择" class='mr8'>
-                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                        </el-option>
-                    </el-select>
-                    <el-input v-model="searchValue" placeholder="请输入内容" style='width:300px' class='mr8'></el-input>
-                    <el-button type="primary">查询</el-button>
-                </div>
+                <TableSearch :searchs='searchs'></TableSearch>
             </el-card>
             <el-card shadow="always" class="published-header">
                 <p class="titleLeftBorder">
@@ -28,42 +21,57 @@
 
 <script>
     import NomalTable from '@/components/table/NomalTable.vue';
+    import TableSearch from '../../../components/table/TableSearch.vue';
     import cAdmin from '../admin.vue';
-    import {data,tableJson} from './JSON/default.js';
+    import {
+        data,
+        tableJson
+    } from './JSON/default.js';
     export default {
         data() {
             return {
                 deptType: this.$route.query.deptType - 0,
-                options: [{
-                    value: '数据接口名称',
-                    label: '数据接口名称'
-                }, {
-                    value: '数据接口地址',
-                    label: '数据接口地址'
-                }, {
-                    value: '资源名称',
-                    label: '资源名称'
-                }, {
-                    value: '资源ID',
-                    label: '资源ID'
-                }, ],
-                selectValue: '', // 下拉框内容
-                searchValue: '', // 搜索条件
-                tableJson: tableJson,
-                data:data,
+                searchs: {
+                    list: [{
+                        "type": "input-select", //输入文本
+                        label: "",
+                        "name": "apiName",
+                        "value": "",
+                        "placeholder": "请选择",
+                        options: [{
+                            value: '数据接口名称',
+                            label: '数据接口名称'
+                        }, {
+                            value: '数据接口地址',
+                            label: '数据接口地址'
+                        }, {
+                            value: '资源名称',
+                            label: '资源名称'
+                        }, {
+                            value: '资源ID',
+                            label: '资源ID'
+                        }, ]
+                    },{
+                        type:'input-text',
+                        label:'',
+                        name:'name',
+                        value:'',
+                        "placeholder": "请输入",
+                    }]
+                },// 搜索类型数据
+                tableJson: tableJson, // 表头标题
+                data: data, //表格数据
             }
         },
         components: {
             NomalTable,
-            cAdmin
+            cAdmin,
+            TableSearch,
         },
-        mounted() {
-            console.log(this.tableJson,this.data)
-        },
+        mounted() {},
         methods: {
         },
         beforeRouteUpdate(to, from, next) {
-            
             this.deptType = to.query.deptType - 0;
             next();
         }
@@ -74,10 +82,6 @@
     .published {
         .published-header {
             margin-top: 20px;
-            .search {
-                margin-top: 7px;
-                span {}
-            }
         }
     }
 </style>
