@@ -361,7 +361,22 @@ let unpublishedTableJson={
                 onClick(_this, self, row) {
                     if(row.status == 1){
                         console.log('发布')
-
+                        _this.$confirm('数据资源发布后，将会再对外公布，请确认是否发布数据接口。', '数据接口发布', {
+                            confirmButtonText: '确定',
+                            cancelButtonText: '取消',
+                            type: 'warning',
+                            showClose:false
+                          }).then(() => {
+                            _this.$message({
+                              type: 'success',
+                              message: '删除成功!'
+                            });
+                          }).catch(() => {
+                            _this.$message({
+                              type: 'info',
+                              message: '已取消删除'
+                            });          
+                          });
                     }
                     
                 }

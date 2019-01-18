@@ -8,7 +8,7 @@
           <!-- 输入框 -->
           <el-input v-if="search.type == 'input-text'" v-model="search.value" :placeholder="search.placeholder" style='width:300px'></el-input>
           <!-- 下拉框 -->
-          <el-select @change="selectChange(arguments[0], search)" v-else-if="search.type == 'input-select'" v-model="search.value" :placeholder="search.placeholder">
+          <el-select @change="selectChange(arguments[0], search)" v-else-if="search.type == 'input-select'" v-model="search.value" :placeholder="search.placeholder" style='width:140px'>
             <el-option v-for="(option, optionIndex) in search.options" :key="optionIndex" :label="option.name" :value="option.value"></el-option>
           </el-select>
           <!-- 日期 -->

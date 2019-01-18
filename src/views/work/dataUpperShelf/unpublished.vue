@@ -39,6 +39,22 @@
                         "value": "",
                         "placeholder": "请选择",
                         options: [{
+                            value: '全部',
+                            label: '全部'
+                        }, {
+                            value: '已封装',
+                            label: '已封装'
+                        }, {
+                            value: '未封装',
+                            label: '未封装'
+                        }, ]
+                    },{
+                        "type": "input-select", //输入文本
+                        label: "",
+                        "name": "apiName",
+                        "value": "",
+                        "placeholder": "请选择",
+                        options: [{
                             value: '数据接口名称',
                             label: '数据接口名称'
                         }, {
