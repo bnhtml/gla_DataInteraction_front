@@ -81,7 +81,7 @@ export default new Router({
                             component: unpublished,
                             meta: {
                                 keepAlive: true,
-                                title: '数据接口封装'
+                                title: '数据上架-未发布'
                             },
                         },
                         {
@@ -90,7 +90,7 @@ export default new Router({
                             component: interfacePackage,
                             meta: {
                                 keepAlive: true,
-                                title: '数据上架-未发布'
+                                title: '数据接口封装'
                             },
                         },
                         {
