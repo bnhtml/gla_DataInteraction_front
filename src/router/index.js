@@ -11,6 +11,7 @@ import datainteration from '../views/work/datainteration';
 import dataUpperShelf from '../views/work/dataUpperShelf';
 import published  from '../views/work/dataUpperShelf/published.vue';// 已发布
 import unpublished from '../views/work/dataUpperShelf/unpublished.vue';//未发布
+import interfacePackage from '../views/work/dataUpperShelf/interfacePackage'; //数据接口封装
 
 
 /* 系统管理 */
@@ -81,6 +82,15 @@ export default new Router({
                             meta: {
                                 keepAlive: true,
                                 title: '数据上架-未发布'
+                            },
+                        },
+                        {
+                            path: 'interfacePackage',
+                            name: 'interfacePackage',
+                            component: interfacePackage,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据接口封装'
                             },
                         },
                         {
