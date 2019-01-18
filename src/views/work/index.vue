@@ -1,7 +1,25 @@
  // 首页展示
 <template>
     <div class="home">
-        <Layout class="wrapper">
+    <el-container class="wrapper">
+      <el-aside style="width: 220px;" v-if="isMenuShow">
+        <div v-for="(menus, index) in leftMenu" :key="index">
+            <router-link :to="menus.url" class="g-bigmenu">{{menus.name}}</router-link>
+            <div v-if="menus.children && menus.children.length" v-for="(menu, idx) in menus.children" :key="idx">
+                
+                    <router-link :to="menu.url" class="g-centermenu">
+                        {{menu.name}}
+                    </router-link>
+                    <router-link :to="o.url" v-if="menu.children && menu.children.length" v-for="(o, i) in menu.children" :key="i" class="g-smallmenu">{{o.name}}</router-link>
+                
+            </div>
+        </div>
+      </el-aside>
+      <el-main style="padding: 0 20px;" ref="containerLayout">
+        <router-view></router-view>
+      </el-main>
+    </el-container>
+        <!-- <Layout>
             <Sider hide-trigger :style="{background: '#fff'}" v-if="isMenuShow">
                 <div v-for="(menus, index) in leftMenu" :key="index">
                     <router-link :to="menus.url" class="g-bigmenu">{{menus.name}}</router-link>
@@ -20,14 +38,13 @@
                     <router-view v-if="show"></router-view>
                 </Content>
             </layout>
-        </Layout>
+        </Layout> -->
     </div>
 </template>
 
 <script type="text/javascript">
-
-    const leftMenus = {
-        'leaderCockpit': [
+    const leftMenus = [
+        [
             {
                 url: 'leaderCockpit',
                 name: '领导驾驶舱（业务局委）',
@@ -73,7 +90,7 @@
                 ]
             }
         ],
-        'datainteration': [
+        [
             {
                 url: 'datainteration',
                 name: '数据库类',
@@ -85,45 +102,71 @@
                 name: '文件类',
                 icon: 'icon-shouye',
                 children: []
-            },],
-        'dataUpperShelf': [
+            },
+        ],
+        [
             {
-                url: 'published',
+                url: {
+                    name: 'published',
+                    query: {
+                        user: 'admin',
+                        deptType: 0
+                    }
+                },
                 name: '已发布接口-大数据局',
                 icon: 'icon-shouye',
                 children: [
                 {
-                    url: 'dataUpperShelf',
+                    url: {
+                        name: 'published',
+                        query: {
+                            user: 'admin',
+                            deptType: 0
+                        }
+                    },
                     name: '国家接口',
                     icon: '',
                     children: []
                 },
                 {
-                    url: 'dataUpperShelf',
+                    url: {
+                        name: 'published',
+                        query: {
+                            user: 'admin',
+                            deptType: 1
+                        }
+                    },
                     name: '省直接口',
                     icon: '',
                     children: []
                 },
                 {
-                    url: 'dataUpperShelf',
+                    url: {
+                        name: 'published',
+                        query: {
+                            user: 'admin',
+                            deptType: 2
+                        }
+                    },
                     name: '市州接口',
                     icon: '',
                     children: []
                 }]
             },
             {
-                url: 'dataUpperShelf',
+                url: 'published',
                 name: '已发布接口-业务局委',
                 icon: 'icon-shouye',
                 children: []
             },
             {
-                url: 'dataUpperShelf',
+                url: 'unpublished',
                 name: '未发布接口',
                 icon: 'icon-shouye',
                 children: []
-            }],
-        'systemManagement': [
+            }
+        ],
+        [
             {
                 url: 'systemManagement',
                 name: '数据区管理-业务局委',
@@ -159,17 +202,26 @@
                 name: '状态管理',
                 icon: 'icon-shouye',
                 children: []
-            }],
-    }
+            }
+        ],
+    ]
     export default {
         name: 'navBar',
         data() {
+            let routerNames = [
+                ['leaderCockpit'],
+                ['datainteration'],
+                ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished'],
+                ['systemManagement']
+            ]
+            let idx = routerNames.map((o, i) => o.indexOf(this.$route.name) > -1).indexOf(true);
             return {
+                routerNames,
                 show: true,
                 indexClass: this.$route.name,
                 isCollapsed: false,
                 isMenuShow: true,
-                routerInfo: leftMenus[this.$route.name],
+                routerInfo: leftMenus[idx],
             }
         },
         components: {
@@ -226,7 +278,8 @@
         methods: {
             showMenu(){
                 this.isMenuShow = false;
-                this.routerInfo = leftMenus[this.$route.name];
+                let idx = this.routerNames.map((o, i) => o.indexOf(this.$route.name) > -1).indexOf(true);
+                this.routerInfo = leftMenus[idx];
                 this.$nextTick(() => this.isMenuShow = true);
             },
             collapsedSider() {
@@ -259,6 +312,15 @@
         color: #fff;
         line-height: 40px;
         font-size: 14px;
+    }
+    .g-smallmenu{
+        padding-left: 22px;
+        display: block;
+        background: #444;
+        color: #fff;
+        line-height: 40px;
+        font-size: 12px;
+
     }
     .home {
         position: absolute;

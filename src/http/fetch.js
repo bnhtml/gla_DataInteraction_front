@@ -63,7 +63,7 @@ let submitForm = function (url, type, bodyContent,dataType) {
                 obj = JSON.parse(obj);
             }
             if (this.status === 200) {
-                if (obj.status === 200) {
+                if (obj.code === 200) {
                     resolve(obj.result)
                 } else {
                     reject(obj.msg)

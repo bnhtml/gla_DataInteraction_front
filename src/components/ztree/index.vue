@@ -1,6 +1,10 @@
 <!-- ztree封装 -->
 <template>
-<div class=''>ztree封装
+<div class=''>
+  <div class="g-search">
+    <p>{{searchTitle}}</p>
+    <el-input suffix-icon="el-icon-search" placeholder="请输入" style="margin-top: 10px;"></el-input>
+  </div>
   <div class="g-ztreedom ztree" ref="ztree"></div>
 </div>
 </template>
@@ -17,6 +21,27 @@
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {},
+  props: {
+    searchTitle: {
+      type: String,
+      default: '贵州省组织机构'
+    },
+    node: {
+      type: Array,
+      default: () => {
+        return [{
+          id: 0,
+          name: 'smsm',
+          children: [
+          { "id":3, "name":"test3"},
+          { "id":4, "name":"test4"},
+          { "id":5, "name":"test5"}
+          ]
+        },
+        { "id":2, "name":"test2"  }]
+      }
+    }
+  },
   data() {
     //这里存放数据
     return {};
@@ -28,23 +53,14 @@ export default {
   //方法集合
   methods: {
     getSelectDept(e, a, node){
-      console.log(e, a, node)
+      console.log(e, a, node);
+      this.$emit('onClick', node);
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-    let nodes = [{
-      id: 0,
-      name: 'smsm',
-      children: [
-      { "id":3, "name":"test3"},
-      { "id":4, "name":"test4"},
-      { "id":5, "name":"test5"}
-      ]
-    },
-    { "id":2, "name":"test2"  }]
     let deptDomeObj = $.fn.zTree.init($(this.$refs.ztree), {
 					data: {
 						simpleData: {
@@ -53,8 +69,8 @@ export default {
 					},
 					callback: {
 						onClick: this.getSelectDept
-          }}, nodes);
-          deptDomeObj.expandAll(true);
+          }}, this.node);
+          // deptDomeObj.expandAll(true);
   },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前
@@ -67,9 +83,15 @@ export default {
 </script>
 <style lang='scss' scoped>
 //@import url(); 引入公共css类
-.g-ztreedom{
-  width: 200px;
-  height: 300px;
-  background: #eee;
+.g-ztreedom {
+  width: 100%;
+  min-height: 500px;
 }
+.g-search{
+  padding-top: 40px;
+  font-size: 16px;
+  line-height: 20px;
+
+}
+
 </style>

@@ -27,3 +27,16 @@ export const get_seconddir = (params) => {
 export const get_thirddir = (params) => {
     return httpApi('/new_interface/get_thirddir', params, 'post')
 }
+
+// 获取部门区域信息
+export const getdep_region = (params) => {
+    return httpApi('/new_interface/getdep_region', params, 'post')
+}
+// 获取部门信息
+export const get_depart = (params) => {
+    return httpApi('/new_interface/get_depart', params, 'post')
+}
+// 组织机构搜索功能
+export const sear_depcode = (params) => {
+    return httpApi('/new_interface/sear_depcode', params, 'post')
+}

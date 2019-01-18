@@ -192,7 +192,7 @@ website: http://code.google.com/p/jquerytree/
 .ztree li span.button.switch {
   width:12px;
   height:12px;
-  margin: 0 -10px 0 0;
+  /* margin: 0 -10px 0 0; */
 }
 .ztree li span.button.root_open {
   background-position:-105px -63px
@@ -200,12 +200,12 @@ website: http://code.google.com/p/jquerytree/
 .ztree li span.button.root_close {
   background-position:-126px -63px
 }
-.ztree li span.button.roots_open {
+.ztree li span.button.roots_open, .ztree li span.button.root_open {
   /*background-position: -105px 0;*/
   background:url("./img/icons/logo_15.png");
   background-size: 100% 100%;
 }
-.ztree li span.button.roots_close {
+.ztree li span.button.roots_close,.ztree li span.button.root_close {
   /*background-position: -126px 0;*/
   background:url("./img/icons/logo_09.png");
   background-size: 100% 100%;

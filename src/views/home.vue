@@ -61,10 +61,10 @@ import HeaderBar from '../views/header/headerBar.vue';
         top: 0;
         bottom: 0;
         display: flex;
-        background-image: radial-gradient(51% 150%, #04236C 44%, #000D24 100%)!important;
+        // background-image: radial-gradient(51% 150%, #04236C 44%, #000D24 100%)!important;
         .wrapper {
             position: relative;
-            background-image: radial-gradient(51% 150%, #04236C 44%, #000D24 100%)!important;
+            // background-image: radial-gradient(51% 150%, #04236C 44%, #000D24 100%)!important;
             // padding: 0 30px;
             overflow-y: auto;
         }

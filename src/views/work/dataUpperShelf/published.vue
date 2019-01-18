@@ -1,35 +1,39 @@
 // 已发布
 <template>
     <div class="published">
-        <el-card shadow="always" class="published-header">
-            <p class="titleLeftBorder">筛选条件</p>
-            <div class="search">
-                <el-select v-model="selectValue" placeholder="请选择" class='mr8'>
-                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                    </el-option>
-                </el-select>
-                <el-input v-model="searchValue" placeholder="请输入内容" style='width:300px' class='mr8'></el-input>
-                <el-button type="primary">查询</el-button>
-            </div>
-        </el-card>
-        <el-card shadow="always" class="published-header">
-            <p class="titleLeftBorder">
-                已发布数据接口列表
-                <span class="right">共有数据接口XXX个</span>
-            </p>
-            <div>
-                <NomalTable :table-json="tableJson" :data="data"></NomalTable>
-            </div>
-        </el-card>
+        <c-admin :deptType="deptType">
+            <el-card shadow="always" class="published-header">
+                <p class="titleLeftBorder">筛选条件</p>
+                <div class="search">
+                    <el-select v-model="selectValue" placeholder="请选择" class='mr8'>
+                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
+                    <el-input v-model="searchValue" placeholder="请输入内容" style='width:300px' class='mr8'></el-input>
+                    <el-button type="primary">查询</el-button>
+                </div>
+            </el-card>
+            <el-card shadow="always" class="published-header">
+                <p class="titleLeftBorder">
+                    已发布数据接口列表
+                    <span class="right">共有数据接口XXX个</span>
+                </p>
+                <div>
+                    <NomalTable :table-json="tableJson" :data="data"></NomalTable>
+                </div>
+            </el-card>
+        </c-admin>
     </div>
 </template>
 
 <script>
     import NomalTable from '@/components/table/NomalTable.vue';
+    import cAdmin from '../admin.vue';
     import {data,tableJson} from './JSON/default.js';
     export default {
         data() {
             return {
+                deptType: this.$route.query.deptType - 0,
                 options: [{
                     value: '数据接口名称',
                     label: '数据接口名称'
@@ -50,12 +54,18 @@
             }
         },
         components: {
-            NomalTable
+            NomalTable,
+            cAdmin
         },
         mounted() {
             console.log(this.tableJson,this.data)
         },
         methods: {
+        },
+        beforeRouteUpdate(to, from, next) {
+            
+            this.deptType = to.query.deptType - 0;
+            next();
         }
     }
 </script>
