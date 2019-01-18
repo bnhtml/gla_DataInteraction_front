@@ -154,13 +154,23 @@
                 }]
             },
             {
-                url: 'published',
+                url: {
+                    name: 'published',
+                    query: {
+                        user: 'abc'
+                    }
+                },
                 name: '已发布接口-业务局委',
                 icon: 'icon-shouye',
                 children: []
             },
             {
-                url: 'unpublished',
+                url: {
+                    name: 'unpublished',
+                    query: {
+                        user: 'abc'
+                    }
+                },
                 name: '未发布接口',
                 icon: 'icon-shouye',
                 children: []
@@ -211,7 +221,7 @@
             let routerNames = [
                 ['leaderCockpit'],
                 ['datainteration'],
-                ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished'],
+                ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage'],
                 ['systemManagement']
             ]
             let idx = routerNames.map((o, i) => o.indexOf(this.$route.name) > -1).indexOf(true);

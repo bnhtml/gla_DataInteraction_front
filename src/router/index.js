@@ -12,6 +12,10 @@ import dataUpperShelf from '../views/work/dataUpperShelf';
 import published  from '../views/work/dataUpperShelf/published.vue';// 已发布
 import unpublished from '../views/work/dataUpperShelf/unpublished.vue';//未发布
 import interfacePackage from '../views/work/dataUpperShelf/interfacePackage'; //数据接口封装
+import api from '../views/work/dataUpperShelf/apiInfo/index'; //详情
+import info from '../views/work/dataUpperShelf/apiInfo/info'; //详情
+import params from '../views/work/dataUpperShelf/apiInfo/params'; //详情
+import usage from '../views/work/dataUpperShelf/apiInfo/usage'; //详情
 
 
 /* 系统管理 */
@@ -92,6 +96,44 @@ export default new Router({
                                 keepAlive: true,
                                 title: '数据接口封装'
                             },
+                        },
+                        {
+                            path: 'api',
+                            name: 'api',
+                            component: api,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据接口-详情'
+                            },
+                            children: [
+                                {
+                                    path: 'info',
+                                    name: 'info',
+                                    component: info,
+                                    meta: {
+                                        keepAlive: true,
+                                        title: '数据接口-基本信息'
+                                    },
+                                },
+                                {
+                                    path: 'params',
+                                    name: 'params',
+                                    component: params,
+                                    meta: {
+                                        keepAlive: true,
+                                        title: '数据接口-参数'
+                                    },
+                                },
+                                {
+                                    path: 'usage',
+                                    name: 'usage',
+                                    component: usage,
+                                    meta: {
+                                        keepAlive: true,
+                                        title: '数据接口-使用情况'
+                                    },
+                                }
+                            ]
                         },
                         {
                             path: 'systemManagement',
