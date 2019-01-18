@@ -1,9 +1,9 @@
 <!-- 大数据局 -->
 <template>
 <div class='g-admin-page'>
-    <el-container>
-      <el-aside v-if="$route.query.user === 'admin'" style="padding-top: 20px;width: 300px; height: 100%">
-        <el-card shadow="always" class="published-header">
+    <el-container style="padding-bottom: 20px;">
+      <el-aside v-if="$route.query.user === 'admin'" style="padding-top: 20px;width: 300px;">
+        <el-card shadow="always" class="published-header" style="height: 100%;">
             <p class="titleLeftBorder">已发布数据接口-国家接口</p>
             <z-tree v-if="isShow" :node="node" :searchTitle="title" on-onClick="$emit('checked', auguments[0])"></z-tree>
         </el-card>

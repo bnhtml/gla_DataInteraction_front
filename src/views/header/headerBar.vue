@@ -78,7 +78,7 @@
                     children: [],
                     mdliconcss: 'icon-shouye',
                 },{
-                    mdlhref: 'dataUpperShelf',
+                    mdlhref: 'published',
                     mdlname: '数据上架',
                     children: [],
                     mdliconcss: 'icon-shouye',
