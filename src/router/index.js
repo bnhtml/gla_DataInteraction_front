@@ -98,6 +98,15 @@ export default new Router({
                             },
                         },
                         {
+                            path: 'interfaceUpdate',
+                            name: 'interfaceUpdate',
+                            component: interfacePackage,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据接口修改'
+                            },
+                        },
+                        {
                             path: 'api',
                             name: 'api',
                             component: api,

@@ -1,8 +1,8 @@
 <template>
    <div class="stepTwo">
-       <el-row>
-           <el-col :span="4" class="label-name">选择数据区:</el-col>
-           <el-col :span="10">
+       <div class="flex-block">
+           <div class="label-name">选择数据区:</div>
+           <div>
                 <el-select v-model="dataArea" placeholder="请选择" @change='selectDataArea'>
                     <el-option
                         v-for="item in areaData"
@@ -11,11 +11,11 @@
                         :value="item.value">
                     </el-option>
                 </el-select>
-            </el-col>
-       </el-row>
-       <el-row>
-           <el-col :span="4" class="label-name">选择数据源:</el-col>
-           <el-col :span="10">
+            </div>
+       </div>
+       <div class="flex-block">
+           <div class="label-name">选择数据源:</div>
+           <div>
                <el-select v-model="dataArea" placeholder="请选择" @change='selectDataArea'>
                     <el-option
                         v-for="item in areaData"
@@ -24,11 +24,11 @@
                         :value="item.value">
                     </el-option>
                 </el-select>
-           </el-col>
-           <el-col :span="6"><el-button type="primary" @click="updateSource">更新数据源</el-button></el-col>
-       </el-row>
-       <el-row>
-           <el-col :span="6" class="tabel-left">
+           </div>
+           <div><el-button type="primary" @click="updateSource">更新数据源</el-button></div>
+       </div>
+       <div class="flex-block">
+           <div class="tabel-left">
                <p>源数据资字段</p>
                <el-table
                     :data="sourceData"
@@ -41,8 +41,8 @@
                     <el-table-column prop="1" label="字段类型" width="80"></el-table-column>
 
                </el-table>
-           </el-col>
-           <el-col :span="14" class="tabel-right">
+           </div>
+           <div class="tabel-right">
                <p>接口封装字段</p>
                <el-table
                     :data="interfaceData"
@@ -57,18 +57,20 @@
                         :width="item.width">
                     </el-table-column>
                </el-table>
-           </el-col>
-       </el-row>
-       <el-row>
-           <el-col :span="12" class="sqlHead">SQL语句</el-col>
-           <el-col :span="3" class="">
+           </div>
+       </div>
+       <div class="flex-block">
+           <div class="sqlHead">SQL语句</div>
+           <div class="createSql">
                <el-button type="success" @click="createSql">生成sql语句</el-button>
-           </el-col>
-           <el-col :span="3" class="">
+           </div>
+           <div class="testSql">
                <el-button type="warning" @click="testSql">sql语句测试</el-button>
-           </el-col>
-
-       </el-row>
+           </div>
+       </div>
+       <div class="flex-block">
+           <el-input type="textarea" v-model="remarks"></el-input>
+       </div>
    </div>
 </template>
 
@@ -96,7 +98,8 @@ export default {
             {props:'a8', label:'值', width:''},
             {props:'a9', label:'关系', width:''},
             {props:'a0', label:'操作', width:''},
-        ]
+        ],
+        remarks:'',
 
       }
    },
@@ -124,8 +127,9 @@ export default {
 
 <style lang="scss" scoped>
 .stepTwo{
-    .el-row{
-        padding: 10px 0;
+    .flex-block{
+        display: flex;
+        padding: 10px 0 10px 153px;
         .label-name{
             font-family: PingFangSC-Regular;
             font-size: 14px;
@@ -136,9 +140,10 @@ export default {
         }
         .el-select{
             width: 468px;
+            margin-right: 10px;
         }
         .tabel-left{
-            margin-left: 121px;
+            margin-right: 70px;
         }
         .tabel-left,.tabel-right{
             p{
@@ -149,11 +154,17 @@ export default {
             }
         }
         .sqlHead{
-            margin-left: 121px;
             font-family: PingFangSC-Medium;
             font-size: 16px;
             color: #333333;
             margin-bottom: 10px;
+            margin-right: 640px;
+        }
+        .createSql{
+            margin-right: 10px;
+        }
+        .testSql{
+
         }
     }
 }
