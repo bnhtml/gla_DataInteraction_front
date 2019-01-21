@@ -24,8 +24,7 @@ export default {
   components: { zTree },
   props: {
     deptType: {
-      type: Number,
-      default: 0
+      type: Number
     }
   },
   data() {
@@ -54,6 +53,7 @@ export default {
   //方法集合
   methods: {
     setFirst(n){
+      if(isNaN(n))return;
       this.node = [];
       if(n < 2){
         let firstleval = [['国家部门'], ['省直部门']][n];

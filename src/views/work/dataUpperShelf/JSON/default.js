@@ -253,17 +253,18 @@ let tableJson={
                 label: "查看详情",
                 onClick(_this, self, row) {
                     console.log('查看详情')
-                    // self.nomal = !self.nomal;
-                    // _this.isShow = !_this.isShow;
-                    // _this.$router.push({
-                    //     resourceName: 'completeDetail',
-                    //     query: {
-                    //         backQuery: JSON.stringify(_this.$route.query),
-                    //         resourceId: row.resourceId,
-                    //         tableTitle: row.resourceName,
-                    //         type: row.type,
-                    //     }
-                    // })
+
+                    self.nomal = !self.nomal;
+                    _this.isShow = !_this.isShow;
+                    _this.$router.push({
+                        name: 'info',
+                        query: {
+                            backQuery: JSON.stringify(_this.$route.query),
+                            id: row.id,
+                            tableTitle: row.name,
+                            type: row.type,
+                        }
+                    })
                 }
             }]
         }
@@ -352,6 +353,15 @@ let unpublishedTableJson={
                     }else{
                         console.log('修改接口')
                     }
+                    _this.$router.push({
+                        name: 'interfacePackage',
+                        query: {
+                            backQuery: JSON.stringify(_this.$route.query),
+                            id: row.id,
+                            tableTitle: row.name,
+                            type: row.type,
+                        }
+                    })
                     
                 }
             },{
