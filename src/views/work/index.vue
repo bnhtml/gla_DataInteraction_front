@@ -221,7 +221,7 @@
             let routerNames = [
                 ['leaderCockpit'],
                 ['datainteration'],
-                ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage'],
+                ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage','interfacePackage'],
                 ['systemManagement']
             ]
             let idx = routerNames.map((o, i) => o.indexOf(this.$route.name) > -1).indexOf(true);

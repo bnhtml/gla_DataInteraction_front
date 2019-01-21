@@ -40,3 +40,46 @@ export const get_depart = (params) => {
 export const sear_depcode = (params) => {
     return httpApi('/new_interface/sear_depcode', params, 'post')
 }
+
+/* 数据上架 已发布数据接口 查询 */
+export const getDone_interface = (params) => {
+    return httpApi('/new_interface/getDone_interface', params, 'post')
+}
+/* 数据上架 已发布数据接口 查看数据上架已封装数据接口单条数据详情 */
+export const query_resources = (params) => {
+    return httpApi('/new_interface/query_resources', params, 'post')
+}
+/* 数据上架 未发布数据接口 查询未发布接口 */
+export const getUnpublished_interface = (params) => {
+    return httpApi('/new_interface/getUnpublished_interface', params, 'post')
+}
+/* 数据上架 未发布数据接口 提交（封装接口） */
+export const make_interface = (params) => {
+    return httpApi('/new_interface/getUnpublished_intemake_interfacerface', params, 'post')
+}
+/* 数据上架 未发布数据接口 提交（封接口文件模板下载装接口） */
+export const template_download = (params) => {
+    return httpApi('/new_interface/template_download', params, 'post')
+}
+// 三级目录（用系统管理-接口路径管理中的接口）
+/* 数据上架 未发布数据接口 上传接口文件 */
+export const upload_interFile = (params) => {
+    return httpApi('/new_interface/upload_interFile', params, 'post')
+}
+// 提交（见封装接口下的“提交”）
+/* 数据上架 未发布数据接口 sql语句测试 */
+export const sql_test = (params) => {
+    return httpApi('/new_interface/sql_test', params, 'post')
+}
+/* 数据上架 未发布数据接口 生成sql语句 */
+export const make_sql = (params) => {
+    return httpApi('/new_interface/make_sql', params, 'post')
+}
+/* 数据上架 未发布数据接口 获取数据源 字段信息 */
+export const get_fieldMsg = (params) => {
+    return httpApi('/new_interface/get_fieldMsg', params, 'post')
+}
+/* 数据上架 未发布数据接口 获取数据源 表信息 */
+export const get_tabMsg = (params) => {
+    return httpApi('/new_interface/get_tabMsg', params, 'post')
+}
