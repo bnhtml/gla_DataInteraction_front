@@ -152,6 +152,7 @@ export default {
             ],
             dataType: 1, //封装数据类型
             pageFlag: 'stepOne',
+            // pageFlag: 'stepTwo',
 
         }
     },
@@ -193,8 +194,6 @@ export default {
 
 <style lang="scss" scoped>
 .page{
-    width: 1096px;
-    height: 100%;
     background: #fff;
     .title{
         font-family: PingFangSC-Medium;
