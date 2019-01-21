@@ -211,21 +211,21 @@ website: http://code.google.com/p/jquerytree/
   background-size: 100% 100%;
 }
 .ztree li span.button.center_open {
-  background:url("./img/icons/logo_13_white.png");
+  background:url("./img/icons/logo_15.png");
   background-size: 100% 100%;
 }
 .ztree li span.button.center_close {
   /*background-position: -126px -21px;*/
-  background:url("./img/icons/logo_14_white.png");
+  background:url("./img/icons/logo_09.png");
   background-size: 100% 100%;
 }
 .ztree li span.button.bottom_open {
-  background:url("./img/icons/logo_14_white.png");
+  background:url("./img/icons/logo_15.png");
   background-size: 100% 100%;
 }
 .ztree li span.button.bottom_close {
  /* background-position: -126px -42px;*/
- background:url("./img/icons/logo_14_white.png");
+ background:url("./img/icons/logo_09.png");
  background-size: 100% 100%;
 }
 .ztree li span.button.noline_open {

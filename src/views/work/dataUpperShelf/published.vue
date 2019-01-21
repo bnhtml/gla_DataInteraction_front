@@ -1,7 +1,7 @@
 // 已发布
 <template>
     <div class="published">
-        <c-admin :deptType="deptType">
+        <c-admin :deptType="deptType" v-on:checked="handelClick">
             <el-card shadow="always" class="published-header">
                 <p class="titleLeftBorder">筛选条件</p>
                 <TableSearch :searchs='searchs'></TableSearch>
@@ -70,6 +70,9 @@
         },
         mounted() {},
         methods: {
+            handelClick(name){
+                console.log(name);
+            }
         },
         beforeRouteUpdate(to, from, next) {
             this.deptType = to.query.deptType - 0;
