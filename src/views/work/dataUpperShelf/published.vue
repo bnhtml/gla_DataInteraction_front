@@ -35,7 +35,7 @@
                     list: [{
                         "type": "input-select", //输入文本
                         label: "",
-                        "name": "apiName",
+                        "name": "conditionPa",
                         "value": "",
                         "placeholder": "请选择",
                         options: [{
@@ -54,7 +54,7 @@
                     },{
                         type:'input-text',
                         label:'',
-                        name:'name',
+                        name:'conditionSo',
                         value:'',
                         "placeholder": "请输入",
                     }]
@@ -68,8 +68,21 @@
             cAdmin,
             TableSearch,
         },
-        mounted() {},
+        mounted() {
+            this.getDoneInterface();
+        },
         methods: {
+            /* 获得表格数据以及查询 */
+            getDoneInterface(){
+                this.$api.getDone_interface({
+                    region:'',//区域
+                    depaprt:'',//部门
+                    // conditionPa:'',//查询方式（例按数据接口名称查询）
+                    // conditionSo:'',//查询具体
+                }).then(res=>{
+                    console.log(res)
+                })
+            }
         },
         beforeRouteUpdate(to, from, next) {
             this.deptType = to.query.deptType - 0;
