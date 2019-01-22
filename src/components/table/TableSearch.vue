@@ -107,7 +107,6 @@
       
     },
     mounted() {
-      // console.log(this.changePos())
       this.resetForm(this.searchs);
     },
     methods: {
@@ -122,7 +121,6 @@
           this.searchVal[e.name] = e.value;
         });
         window.eventBus.$emit('search', this.searchVal);
-        console.log('搜索内容', this.searchVal)
       },
       resetForm(search) {
         //重置

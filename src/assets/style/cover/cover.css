@@ -115,3 +115,7 @@
   background-color: #EBEEF5;
   height: 1px;
 }
+
+.el-tabs, .el-tabs--top {
+  margin-left: -15px;
+}

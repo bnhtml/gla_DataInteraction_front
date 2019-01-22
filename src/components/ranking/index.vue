@@ -25,7 +25,6 @@ export default {
   props: ['data'],
   methods: {
     handelClick(e) {
-      console.log(e, "点了地图");
     }
   }
 };

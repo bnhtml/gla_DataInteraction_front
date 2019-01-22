@@ -50,6 +50,12 @@
   right: 0;
 }
 
+.titleLeftBorder .right i {
+  color: #58CAFD;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
 @font-face {
   font-family: 'zhanghaishan';
   src: url("../../font-face/ZHSRXT2011-GB/zhanghaishan.ttf") format("truetype"), url("../../font-face/ZHSRXT2011-GB/zhanghaishan.woff"), url("../../font-face/ZHSRXT2011-GB/zhanghaishan.woff2"), url("../../font-face/ZHSRXT2011-GB/zhanghaishan.svg"), url("../../font-face/ZHSRXT2011-GB/zhanghaishan.eot"), url("../../font-face/ZHSRXT2011-GB/zhanghaishan.otf");

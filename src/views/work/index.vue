@@ -294,7 +294,7 @@
                 //         children:[],
                 //         mdliconcss: 'icon-shouye',
                 //     })
-                console.log(this.routerInfo, '====')
+                // console.log(this.routerInfo, '====')
                 return this.routerInfo
             },
             activeName() {
