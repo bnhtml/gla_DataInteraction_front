@@ -68,28 +68,28 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="设置接口路径:" class="interface-path">
-                <el-select v-model="onePath" placeholder="一级路径">
+                <el-select v-model="onePath" placeholder="一级路径" @change="selectFirstDir">
                     <el-option
-                        v-for="item in requestWay"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
+                        v-for="item in firstDir"
+                        :key="item.firstdir_mapping"
+                        :label="item.first_dir"
+                        :value="item.first_dir">
                     </el-option>
                 </el-select>
-                <el-select v-model="twoPath" placeholder="二级路径">
+                <el-select v-model="twoPath" placeholder="二级路径" @change="selectSecondtDir">
                     <el-option
-                        v-for="item in requestWay"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
+                        v-for="item in secondDir"
+                        :key="item.sedir_map"
+                        :label="item.second_dir"
+                        :value="item.second_dir">
                     </el-option>
                 </el-select>
                 <el-select v-model="threePath" placeholder="三级路径">
                     <el-option
-                        v-for="item in requestWay"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
+                        v-for="item in thirdDir"
+                        :key="item.thdir_map"
+                        :label="item.third_dir"
+                        :value="item.third_dir">
                     </el-option>
                 </el-select>
             </el-form-item>
@@ -107,11 +107,11 @@
         <div v-if='pageFlag=="stepOne"' class="oneSub"> 
             <el-button v-if='dataType!="type1"' type="primary" @click="onSubmit">提交</el-button>
             <el-button v-else type="primary" @click="nextStep">下一步</el-button>
-            <el-button>取消</el-button>
+            <el-button @click="cancel">取消</el-button>
         </div>
         <div v-else class="twoSub">
             <div><el-button type="primary" @click="preStep">上一步</el-button></div>
-            <div><el-button type="primary" @click="submit">提交</el-button></div>
+            <div><el-button type="primary" @click="onSubmit">提交</el-button></div>
             <div><el-button @click="cancel">取消</el-button></div>
         </div>
    </div>
@@ -135,22 +135,13 @@ export default {
                 requestInterMode:'',
                 departDomain: '',
                 requestHeader:'',
-                interfaceAddress:'',
+                interfaceAddress:'',  //接口路经
                 descRibe:'',
             },
             onePath:'',
             twoPath:'',
             threePath:'',
-            rules:{
-            //     dataInterfaceName: [ { required: true, message: '请输入数据接口名称', trigger: 'blur' },],
-            //     dataInterfaceType: [ { required: true, message: '请选择封装数据类型', trigger: 'change' },],
-            //     urlAddress: [ { required: true, message: '请输入接口URL源地址', trigger: 'blur' },],
-            //     requestInterType: [ { required: true, message: '请选择请求数据类型', trigger: 'blur' },],
-            //     responseInterType: [ { required: true, message: '请选择响应数据类型', trigger: 'blur' },],
-            //     requestInterMode: [ { required: true, message: '请选择接口请求方式', trigger: 'blur' },],
-            //     requestHeader: [ { required: true, message: '请输入请求头', trigger: 'blur' },],
-            //     descRibe: [ { required: true, message: '请输入描述/备注', trigger: 'blur' },],
-            },
+            rules:{},
             potDataType:[
                 {value: '数据库表', label: '数据库表'},
                 {value: '文件', label: '文件'},
@@ -168,16 +159,17 @@ export default {
                 {value: 'POST', label: 'POST'},
                 {value: 'GET', label: 'GET'},
             ],
+            firstDir: [],
+            secondDir: [],
+            thirdDir: [],
             dataType: 1, //封装数据类型
             pageFlag: 'stepOne',
-            // pageFlag: 'stepTwo',
 
         }
     },
     methods: {
         //切换数据类型
         changeDataType(value){
-        //    console.log(value)
             if(value == '数据库表'){
                 //数据库类型：请求数据类型和响应数据类型固定为json
                 this.dataType = "type1";
@@ -191,21 +183,43 @@ export default {
                 this.dataType = "type3";
             }
         },
+        //切换一级路经
+        selectFirstDir(value){
+            //获取二级目录
+            this.$api.get_seconddir({depart:'贵州省大数据局',first_dir: value}).then(res=>{
+                this.secondDir = res.data;
+                this.twoPath = '';
+                this.threePath = '';
+            })
+        },
+        //切换二级路经
+        selectSecondtDir(value){
+            //获取三级目录
+            this.$api.get_thirddir({depart:'贵州省大数据局',second_dir: value}).then(res=>{
+                this.thirdDir = res.data;
+                this.threePath = '';
+            })
+        },
         //下一步
         nextStep() {
             this.pageFlag='stepTwo';
         },
         //提交
         onSubmit(){
-            console.log(this.formModels)
+            console.log(this.formModels);
+            let _this = this;
+            this.$api.submit_interface(this.formModels).then(res=>{
+                console.log(res,'ddd');
+                if(res.status=='200'){
+                    _this.$router.push({path:'api/info',query:{a:'s'}})
+                }else{
+
+                }
+            })
         },
         //上一步
        preStep() {
            this.pageFlag='stepOne';
-       },
-       //提交
-       submit() {
-
        },
        //取消
        cancel() {
@@ -213,22 +227,58 @@ export default {
        }
    },
    mounted(){
-       this.$api.query_resources().then((res)=>{
-           console.log(res);
-           for(var key in res.data){
-               console.log(res.data[key])
-               for(var list in this.formModels){
-                   if(list==key){
-                       this.formModels[list]=res.data[key]
-                   }
-               }
-           }
-           this.formModels.resourceName = res.data.resourceName;
-           this.formModels.resourceId = res.data.resourceId;
-           this.formModels.departName = res.data.departName;
-           this.formModels.dataInterfaceName = res.data.dataInterfaceName;
-           this.formModels.dataInterfaceType = res.data.dataInterfaceType;
+       console.log(this.$route.name)
+       if(this.$route.name=='interfacePackage'){
+        //接口封装;  通过query携带数据过来
+        // this.formModels.resourceName = ; //资源名称
+        // this.formModels.resourceId = ;  //资源id
+        // this.formModels.departName = ;  //部门名称
+        // this.formModels.departDomain = ; //单位域名
+       
+       }else if(this.$route.name=='interfaceUpdate'){
+        //接口修改;  通过接口查询数据
+        //    let id = this.$route.query.resourceId;
+           this.$api.query_resources().then((res)=>{
+        //    this.$api.query_resources({resourceId: id}).then((res)=>{
+                for(var key in res.data){
+                    for(var list in this.formModels){
+                        if(list==key){
+                            if(key=='interfaceAddress'){
+                                this.onePath = res.data[key].firstCatalog;
+                                this.twoPath = res.data[key].secondCatalog;
+                                this.threePath = res.data[key].thirdCatalog;
+                                this.formModels[list] = res.data[key].firstCatalog+res.data[key].secondCatalog+res.data[key].thirdCatalog;
+                                // this.$api.get_seconddir({depart:'贵州省大数据局',first_dir: this.onePath}).then(res=>{
+                                //     this.secondDir = res.data;
+                                // })
+                                // this.$api.get_thirddir({depart:'贵州省大数据局',second_dir: this.twoPath}).then(res=>{
+                                //     this.thirdDir = res.data;
+                                // })
+                            }else{
+                                this.formModels[list]=res.data[key];
+                            }
+                            
+                        }
+                    }
+                }
+           })
+       };
+       //获取一级目录
+       this.$api.get_firstdir({depart:'贵州省大数据局'}).then(res=>{
+           this.firstDir = res.data;
        })
+   },
+
+   //监听接口路径
+   computed:{
+       fullPath: function(){
+           return this.onePath+this.twoPath+this.threePath;
+       }
+   },
+   watch:{
+       fullPath: function(newValue,oldValue){
+           this.formModels.interfaceAddress = newValue;
+       }
    }
 }
 </script>
