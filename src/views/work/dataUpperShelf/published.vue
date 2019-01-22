@@ -1,7 +1,7 @@
 // 已发布
 <template>
     <div class="published">
-        <c-admin :deptType="deptType">
+        <c-admin :deptType="deptType" v-on:checked="handelClick">
             <el-card shadow="always" class="published-header">
                 <p class="titleLeftBorder">筛选条件</p>
                 <TableSearch :searchs='searchs'></TableSearch>
@@ -72,6 +72,9 @@
             this.getDoneInterface();
         },
         methods: {
+            handelClick(name){
+                console.log(name);
+            },
             /* 获得表格数据以及查询 */
             getDoneInterface(){
                 debugger

@@ -4,8 +4,8 @@
     <el-container style="padding-bottom: 20px;">
       <el-aside v-if="$route.query.user === 'admin'" style="padding-top: 20px;width: 300px;">
         <el-card shadow="always" class="published-header" style="height: 100%;">
-            <p class="titleLeftBorder">已发布数据接口-国家接口</p>
-            <z-tree v-if="isShow" :node="node" :searchTitle="title" on-onClick="$emit('checked', auguments[0])"></z-tree>
+            <p class="titleLeftBorder">已发布数据接口</p>
+            <z-tree v-if="isShow" :node="node" :searchTitle="title" :deptType="deptType" v-on:onClick="checked"></z-tree>
         </el-card>
       </el-aside>
       <el-main style="padding: 0 20px;">
@@ -52,6 +52,10 @@ export default {
   },
   //方法集合
   methods: {
+    checked(name){
+      this.$emit('checked', name)
+
+    },
     setFirst(n){
       if(isNaN(n))return;
       this.node = [];
@@ -71,6 +75,7 @@ export default {
         arr.push({name: o, children: []});
         if(noChild && idx === this.firstleval.length - 1 && (i === firstleval.length - 1 || firstleval.length === 0)){
           this.isShow = true;
+          console.log(this.node, '===')
         }
         if(!noChild){
           this.$api.get_depart({region_name: o}).then(res => {

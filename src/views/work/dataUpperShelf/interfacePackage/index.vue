@@ -98,9 +98,9 @@
             <el-form-item label="描述/备注:">
                 <el-input type="textarea" v-model="formModels.name"></el-input>
             </el-form-item>
-            <el-form-item label="接口说明文档:">
+            <!-- <el-form-item label="接口说明文档:"> -->
                 <!-- <el-input v-model="formModels.name"></el-input> -->
-                <el-upload
+                <!-- <el-upload
                     class="upload-file"
                     action="https://jsonplaceholder.typicode.com/posts/"
                     :before-upload='beforeUpload'>
@@ -110,9 +110,9 @@
                         <div class="el-upload__tip">支持扩展名：.rar .zip .doc .docx .pdf</div>
                     </span>
                     
-                </el-upload>
+                </el-upload> -->
                 <!-- <a href="">模版下载</a> -->
-            </el-form-item>
+            <!-- </el-form-item> -->
             <el-form-item>
                 <el-button v-if='dataType' type="primary" @click="onSubmit">提交</el-button>
                 <el-button v-else type="primary" @click="nextStep">下一步</el-button>
@@ -152,24 +152,25 @@ export default {
             ],
             dataType: 1, //封装数据类型
             pageFlag: 'stepOne',
+            // pageFlag: 'stepTwo',
 
         }
     },
     methods: {
         // 上传文件之前   
-        beforeUpload(fileinfo){
-            console.log(fileinfo)
-            var str = fileinfo.name;
-            var index = fileinfo.name.lastIndexOf(".");
-            var suffix = str.substring(index+1, str.length);
-            console.log(suffix)
-            if(suffix=='rar'||suffix=='zip'||suffix=='doc'||suffix=='docx'||suffix=='pdf'){
-                this.$message.success('文件类型对了');                
-            }else{
-                this.$message.error('文件类型错误');
-            }
-            return false;
-        },
+        // beforeUpload(fileinfo){
+        //     console.log(fileinfo)
+        //     var str = fileinfo.name;
+        //     var index = fileinfo.name.lastIndexOf(".");
+        //     var suffix = str.substring(index+1, str.length);
+        //     console.log(suffix)
+        //     if(suffix=='rar'||suffix=='zip'||suffix=='doc'||suffix=='docx'||suffix=='pdf'){
+        //         this.$message.success('文件类型对了');                
+        //     }else{
+        //         this.$message.error('文件类型错误');
+        //     }
+        //     return false;
+        // },
         //切换数据类型
         changeDataType(value){
         //    console.log(value)
@@ -193,14 +194,22 @@ export default {
 
 <style lang="scss" scoped>
 .page{
-    width: 1096px;
-    height: 100%;
+    min-width: 1096px;
     background: #fff;
     .title{
         font-family: PingFangSC-Medium;
         font-size: 16px;
         color: #333333;
-        margin-bottom: 43px;
+        margin-bottom: 35px;
+        padding-top: 15px;
+        &::before{
+            content: ' ';
+            width: 6px;
+            display: inline-block;
+            height: 12px;
+            margin-right: 15px;
+            background: #58CAFD;
+        }
     }
     .form-list{
         .el-select,.el-input,.el-textarea{

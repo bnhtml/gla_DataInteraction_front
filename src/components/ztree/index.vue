@@ -3,7 +3,15 @@
 <div class=''>
   <div class="g-search">
     <p>{{searchTitle}}</p>
-    <el-input suffix-icon="el-icon-search" placeholder="请输入" style="margin-top: 10px;"></el-input>
+    <el-autocomplete
+      suffix-icon="el-icon-search" 
+      v-model="searchValue"
+      :fetch-suggestions="querySearchAsync"
+      placeholder="请输入"
+      style="margin-top: 10px;"
+      @select="searchDept"
+    ></el-autocomplete>
+    <!-- <el-input suffix-icon="el-icon-search" placeholder="请输入" style="margin-top: 10px;" on-change="searchDept"></el-input> -->
   </div>
   <div class="g-ztreedom ztree" ref="ztree"></div>
 </div>
@@ -22,6 +30,9 @@ export default {
   //import引入的组件需要注入到对象中才能使用
   components: {},
   props: {
+    deptType: {
+      type: Number
+    },
     searchTitle: {
       type: String,
       default: '贵州省组织机构'
@@ -30,6 +41,7 @@ export default {
       type: Array,
       default: () => {
         return [{
+          searchValue: '',
           id: 0,
           name: 'smsm',
           children: [
@@ -44,17 +56,34 @@ export default {
   },
   data() {
     //这里存放数据
-    return {};
+    return {
+      searchValue: '',
+      searchData: []
+    };
   },
   //监听属性 类似于data概念
-  computed: {},
+  computed: {
+    isSearch(){
+      return !!this.searchValue;
+    }
+  },
   //监控data中的数据变化
   watch: {},
   //方法集合
   methods: {
+    querySearchAsync(depart, cb) {
+      let region_name = ['国家部门', '省直部门', '市州部门', '省内部门'][this.deptType];
+      this.$api.sear_depcode({depart, region_name }).then(res => {
+        let data = res.data.map(value => ({value}))
+        cb(data);
+      })
+    },
+    searchDept(depart){
+      this.$emit('onClick', {depaprt: depart.value});
+    },
     getSelectDept(e, a, node){
-      console.log(e, a, node);
-      this.$emit('onClick', node);
+      let param = ['region', 'depaprt'][node.level];
+      this.$emit('onClick', {[param]: node.name});
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
@@ -62,15 +91,15 @@ export default {
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
     let deptDomeObj = $.fn.zTree.init($(this.$refs.ztree), {
-					data: {
-						simpleData: {
-							enable: true
-						}
-					},
-					callback: {
-						onClick: this.getSelectDept
-          }}, this.node);
-          // deptDomeObj.expandAll(true);
+    data: {
+      simpleData: {
+        enable: true
+      }
+    },
+    callback: {
+      onClick: this.getSelectDept
+    }}, this.node);
+    deptDomeObj.expandAll(true);
   },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前
