@@ -1,9 +1,9 @@
 // 未发布
 <template>
     <div class="published">
-        <c-admin :deptType="deptType">
+        <!-- <c-admin :deptType="deptType"> -->
             <el-card shadow="always" class="published-header">
-                <p class="titleLeftBorder">筛选条件</p>
+                <p class="titleLeftBorder">筛选查询</p>
                 <TableSearch :searchs='searchs'></TableSearch>
             </el-card>
             <el-card shadow="always" class="published-header">
@@ -15,7 +15,7 @@
                     <NomalTable :table-json="tableJson" :data="data"></NomalTable>
                 </div>
             </el-card>
-        </c-admin>
+        <!-- </c-admin> -->
     </div>
 </template>
 
@@ -30,7 +30,7 @@
     export default {
         data() {
             return {
-                deptType: this.$route.query.deptType - 0,
+                // deptType: this.$route.query.deptType - 0,
                 searchs: {
                     list: [{
                         "type": "input-select", //输入文本
@@ -86,6 +86,40 @@
         },
         mounted() {},
         methods: {
+            fileUpload(){
+                const h = this.$createElement;
+                this.$confirm(h('div', null, [
+                    h('span', null, '接口说明文档：'),
+                    h('fileUpload', null),
+                    h('a', {
+                        src: 'a.txt',
+                        style: {
+                            color: '#33ABFB'
+                        }
+                    }, '模板下载'),
+                    h('p', {
+                        style: {
+                            color: '#999'
+                        }
+                    }, '支持扩展名：.rar .zip .doc .docx .pdf')
+                ]), "数据接口文档上传", {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    showCancelButton: true,
+                    showConfirmButton:true,
+                    showClose:false,
+                    }).then(() => {
+                    this.$message({
+                        type: 'success',
+                        message: '删除成功!'
+                    });
+                    }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });          
+                    });
+            }
         },
         beforeRouteUpdate(to, from, next) {
             this.deptType = to.query.deptType - 0;
@@ -101,4 +135,5 @@
         }
     }
 </style>
+
 

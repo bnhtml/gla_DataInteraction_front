@@ -26,7 +26,7 @@ dev: {
     host: '0.0.0.0', // can be overwritten by process.env.HOST
     port: 8013, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     // baseServerUrl: 'http://192.168.22.202:2002/assets',
-    baseServerUrl: 'http://192.168.25.40:8000',
+    baseServerUrl: 'http://192.168.30.113:8000', //向宇
     autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,

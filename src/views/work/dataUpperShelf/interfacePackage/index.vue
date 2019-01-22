@@ -7,21 +7,22 @@
             class='form-list' 
             label-position="right" 
             label-width="25%" size="mini" 
+            :rules="rules"
             :model="formModels">
             <el-form-item label="资源名称:">
-                <el-input v-model="formModels.name"></el-input>
+                <el-input v-model="formModels.resourceName" disabled></el-input>
             </el-form-item>
             <el-form-item label="资源ID:">
-                <el-input v-model="formModels.name"></el-input>
+                <el-input v-model="formModels.resourceId" disabled></el-input>
             </el-form-item>
             <el-form-item label="部门单位:">
-                <el-input v-model="formModels.name"></el-input>
+                <el-input v-model="formModels.departName" disabled></el-input>
             </el-form-item>
             <el-form-item label="数据接口名称:">
-                <el-input v-model="formModels.name"></el-input>
+                <el-input v-model="formModels.dataInterfaceName"></el-input>
             </el-form-item>
             <el-form-item label="封装数据类型:">
-                <el-select v-model="formModels.name" placeholder="请选择" @change='changeDataType'>
+                <el-select v-model="formModels.dataInterfaceType" placeholder="请选择" @change='changeDataType'>
                     <el-option
                         v-for="item in potDataType"
                         :key="item.value"
@@ -30,11 +31,12 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="接口URL源地址:">
-                <el-input v-model="formModels.name"></el-input>
+            <el-form-item v-if="dataType!='type1'" label="接口URL源地址:">
+                <el-input v-model="formModels.urlAddress"></el-input>
             </el-form-item>
-            <el-form-item label="请求数据类型:">
-                <el-select v-model="formModels.name" placeholder="请选择">
+            <el-form-item v-if="dataType!='type2'" label="请求数据类型:">
+                <el-input v-if='dataType=="type1"' value='JSON' disabled></el-input>
+                <el-select v-else v-model="formModels.requestInterType" placeholder="请选择">
                     <el-option
                         v-for="item in requestType"
                         :key="item.value"
@@ -43,8 +45,9 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="响应数据类型:">
-                <el-select v-model="formModels.name" placeholder="请选择">
+            <el-form-item v-if="dataType!='type2'" label="响应数据类型:">
+                <el-input v-if='dataType=="type1"' value='JSON' disabled></el-input>
+                <el-select v-else v-model="formModels.responseInterType" placeholder="请选择">
                     <el-option
                         v-for="item in responseType"
                         :key="item.value"
@@ -54,7 +57,8 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="接口请求方式:">
-                <el-select v-model="formModels.name" placeholder="请选择">
+                <el-input v-if='dataType=="type2"' value='GET' disabled></el-input>
+                <el-select v-else v-model="formModels.requestInterMode" placeholder="请选择">
                     <el-option
                         v-for="item in requestWay"
                         :key="item.value"
@@ -64,7 +68,7 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="设置接口路径:" class="interface-path">
-                <el-select v-model="formModels.name" placeholder="一级路径">
+                <el-select v-model="onePath" placeholder="一级路径">
                     <el-option
                         v-for="item in requestWay"
                         :key="item.value"
@@ -72,7 +76,7 @@
                         :value="item.value">
                     </el-option>
                 </el-select>
-                <el-select v-model="formModels.name" placeholder="二级路径">
+                <el-select v-model="twoPath" placeholder="二级路径">
                     <el-option
                         v-for="item in requestWay"
                         :key="item.value"
@@ -80,7 +84,7 @@
                         :value="item.value">
                     </el-option>
                 </el-select>
-                <el-select v-model="formModels.name" placeholder="三级路径">
+                <el-select v-model="threePath" placeholder="三级路径">
                     <el-option
                         v-for="item in requestWay"
                         :key="item.value"
@@ -90,36 +94,26 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="单位域名:">
-                <el-input v-model="formModels.name"></el-input>
+                <el-input v-model="formModels.departDomain" disabled></el-input>
             </el-form-item>
             <el-form-item label="请求头:">
-                <el-input v-model="formModels.name"></el-input>
+                <el-input v-model="formModels.requestHeader"></el-input>
             </el-form-item>
             <el-form-item label="描述/备注:">
-                <el-input type="textarea" v-model="formModels.name"></el-input>
-            </el-form-item>
-            <el-form-item label="接口说明文档:">
-                <!-- <el-input v-model="formModels.name"></el-input> -->
-                <el-upload
-                    class="upload-file"
-                    action="https://jsonplaceholder.typicode.com/posts/"
-                    :before-upload='beforeUpload'>
-                    <el-button size="small"><i class="el-icon-upload2"></i>上传文件</el-button>
-                    <span slot="tip">
-                        <a href="#" class="download-model">模版下载</a>
-                        <div class="el-upload__tip">支持扩展名：.rar .zip .doc .docx .pdf</div>
-                    </span>
-                    
-                </el-upload>
-                <!-- <a href="">模版下载</a> -->
-            </el-form-item>
-            <el-form-item>
-                <el-button v-if='dataType' type="primary" @click="onSubmit">提交</el-button>
-                <el-button v-else type="primary" @click="nextStep">下一步</el-button>
-                <el-button>取消</el-button>
+                <el-input type="textarea" v-model="formModels.descRibe"></el-input>
             </el-form-item>
         </el-form>
         <stepTwo v-else/>
+        <div v-if='pageFlag=="stepOne"' class="oneSub"> 
+            <el-button v-if='dataType!="type1"' type="primary" @click="onSubmit">提交</el-button>
+            <el-button v-else type="primary" @click="nextStep">下一步</el-button>
+            <el-button>取消</el-button>
+        </div>
+        <div v-else class="twoSub">
+            <div><el-button type="primary" @click="preStep">上一步</el-button></div>
+            <div><el-button type="primary" @click="submit">提交</el-button></div>
+            <div><el-button @click="cancel">取消</el-button></div>
+        </div>
    </div>
 </template>
 
@@ -130,53 +124,71 @@ export default {
     data() {
         return {
             formModels:{
-                name:""
+                resourceName:'',
+                resourceId:'',
+                departName:'',
+                urlAddress:'',
+                dataInterfaceName:'',
+                dataInterfaceType:'',
+                requestInterType:'',
+                responseInterType:'',
+                requestInterMode:'',
+                departDomain: '',
+                requestHeader:'',
+                interfaceAddress:'',
+                descRibe:'',
+            },
+            onePath:'',
+            twoPath:'',
+            threePath:'',
+            rules:{
+            //     dataInterfaceName: [ { required: true, message: '请输入数据接口名称', trigger: 'blur' },],
+            //     dataInterfaceType: [ { required: true, message: '请选择封装数据类型', trigger: 'change' },],
+            //     urlAddress: [ { required: true, message: '请输入接口URL源地址', trigger: 'blur' },],
+            //     requestInterType: [ { required: true, message: '请选择请求数据类型', trigger: 'blur' },],
+            //     responseInterType: [ { required: true, message: '请选择响应数据类型', trigger: 'blur' },],
+            //     requestInterMode: [ { required: true, message: '请选择接口请求方式', trigger: 'blur' },],
+            //     requestHeader: [ { required: true, message: '请输入请求头', trigger: 'blur' },],
+            //     descRibe: [ { required: true, message: '请输入描述/备注', trigger: 'blur' },],
             },
             potDataType:[
-                {value: '0', label: '数据库表'},
-                {value: '1', label: '文件'},
-                {value: '2', label: '接口'},
+                {value: '数据库表', label: '数据库表'},
+                {value: '文件', label: '文件'},
+                {value: '接口', label: '接口'},
             ],
             requestType: [
-                {value: '0', label: 'XML'},
-                {value: '1', label: 'JSON'},
-                {value: '2', label: 'form-data'},
+                {value: 'XML', label: 'XML'},
+                {value: 'JSON', label: 'JSON'},
             ],
             responseType: [
-                {value: '0', label: 'XML'},
-                {value: '1', label: 'JSON'},
+                {value: 'XML', label: 'XML'},
+                {value: 'JSON', label: 'JSON'},
             ],
             requestWay: [
-                {value: '0', label: 'POST'},
-                {value: '1', label: 'GET'},
+                {value: 'POST', label: 'POST'},
+                {value: 'GET', label: 'GET'},
             ],
             dataType: 1, //封装数据类型
             pageFlag: 'stepOne',
+            // pageFlag: 'stepTwo',
 
         }
     },
     methods: {
-        // 上传文件之前   
-        beforeUpload(fileinfo){
-            console.log(fileinfo)
-            var str = fileinfo.name;
-            var index = fileinfo.name.lastIndexOf(".");
-            var suffix = str.substring(index+1, str.length);
-            console.log(suffix)
-            if(suffix=='rar'||suffix=='zip'||suffix=='doc'||suffix=='docx'||suffix=='pdf'){
-                this.$message.success('文件类型对了');                
-            }else{
-                this.$message.error('文件类型错误');
-            }
-            return false;
-        },
         //切换数据类型
         changeDataType(value){
         //    console.log(value)
-            if(value=='0'){
-                this.dataType = 0;
-            }else{
-                this.dataType = 1;
+            if(value == '数据库表'){
+                //数据库类型：请求数据类型和响应数据类型固定为json
+                this.dataType = "type1";
+                this.formModels.requestInterType == 'JSON';
+                this.formModels.responseInterType == 'JSON';
+                //文件类型：请求方式固定为get请求数据类型和响应数据类型不显示
+            }else if(value == '文件'){
+                this.dataType = "type2";
+                this.formModels.requestInterMode = "GET";
+            }else if(value == '接口'){
+                this.dataType = "type3";
             }
         },
         //下一步
@@ -185,22 +197,60 @@ export default {
         },
         //提交
         onSubmit(){
-           
-        }
+            console.log(this.formModels)
+        },
+        //上一步
+       preStep() {
+           this.pageFlag='stepOne';
+       },
+       //提交
+       submit() {
+
+       },
+       //取消
+       cancel() {
+
+       }
    },
+   mounted(){
+       this.$api.query_resources().then((res)=>{
+           console.log(res);
+           for(var key in res.data){
+               console.log(res.data[key])
+               for(var list in this.formModels){
+                   if(list==key){
+                       this.formModels[list]=res.data[key]
+                   }
+               }
+           }
+           this.formModels.resourceName = res.data.resourceName;
+           this.formModels.resourceId = res.data.resourceId;
+           this.formModels.departName = res.data.departName;
+           this.formModels.dataInterfaceName = res.data.dataInterfaceName;
+           this.formModels.dataInterfaceType = res.data.dataInterfaceType;
+       })
+   }
 }
 </script>
 
 <style lang="scss" scoped>
 .page{
-    width: 1096px;
-    height: 100%;
+    min-width: 1096px;
     background: #fff;
     .title{
         font-family: PingFangSC-Medium;
         font-size: 16px;
         color: #333333;
-        margin-bottom: 43px;
+        margin-bottom: 35px;
+        padding-top: 15px;
+        &::before{
+            content: ' ';
+            width: 6px;
+            display: inline-block;
+            height: 12px;
+            margin-right: 15px;
+            background: #58CAFD;
+        }
     }
     .form-list{
         .el-select,.el-input,.el-textarea{
@@ -212,24 +262,20 @@ export default {
                 font-size: 14px;
                 color: #333;
             }
-            .upload-file{
-                .download-model{
-                    font-family: PingFangSC-Regular;
-                    font-size: 14px;
-                    color: #33ABFB;
-                    line-height: 22px;
-                    margin-left: 10px;
-                }
-                .el-upload__tip{
-                    font-family: PingFangSC-Regular;
-                    font-size: 14px;
-                    color: #999999;
-                    line-height: 22px;
-                }
-            }
         }
         .interface-path .el-select{
             width: 154px;
+        }
+    }
+    .oneSub{
+        width: 445px;
+        text-align: right;
+    }
+    .twoSub{
+        display: flex;
+        padding: 20px 0 20px 153px;
+        .el-button{
+            margin-right: 15px;
         }
     }
     

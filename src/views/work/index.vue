@@ -15,7 +15,7 @@
             </div>
         </div>
       </el-aside>
-      <el-main style="padding: 0 20px;" ref="containerLayout">
+      <el-main ref="containerLayout">
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -154,13 +154,23 @@
                 }]
             },
             {
-                url: 'published',
+                url: {
+                    name: 'published',
+                    query: {
+                        user: 'abc'
+                    }
+                },
                 name: '已发布接口-业务局委',
                 icon: 'icon-shouye',
                 children: []
             },
             {
-                url: 'unpublished',
+                url: {
+                    name: 'unpublished',
+                    query: {
+                        user: 'abc'
+                    }
+                },
                 name: '未发布接口',
                 icon: 'icon-shouye',
                 children: []
@@ -168,37 +178,61 @@
         ],
         [
             {
-                url: 'systemManagement',
+                url: {
+                    name:'dataAreaManagement',
+                    query:{
+                        user: 'abc',
+                        type:2
+                    }
+                },
                 name: '数据区管理-业务局委',
                 icon: 'icon-shouye',
                 children: []
             },
             {
-                url: 'systemManagement',
+                url: {
+                    name:'dataAreaManagement',
+                    query:{
+                        user: 'admin',
+                        type:1
+                    }
+                },
                 name: '数据区管理-大数据局',
                 icon: 'icon-shouye',
                 children: []
             },
             {
-                url: 'systemManagement',
+                url: {
+                    name:'interfacePathManagement',
+                    query:{
+                        user:'admin',
+                        type:1
+                    }
+                },
                 name: '接口路径管理',
                 icon: 'icon-shouye',
                 children: []
             },
             {
-                url: 'systemManagement',
+                url: {
+                    name:'unitDomainNameManagement',
+                    query:{
+                        user:'admin',
+                        type:1
+                    }
+                },
                 name: '单位域名管理',
                 icon: 'icon-shouye',
                 children: []
             },
             {
-                url: 'systemManagement',
+                url: 'configManagement',
                 name: '配置管理',
                 icon: 'icon-shouye',
                 children: []
             },
             {
-                url: 'systemManagement',
+                url: 'stateManagement',
                 name: '状态管理',
                 icon: 'icon-shouye',
                 children: []
@@ -211,8 +245,8 @@
             let routerNames = [
                 ['leaderCockpit'],
                 ['datainteration'],
-                ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished'],
-                ['systemManagement']
+                ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage','interfacePackage','interfaceUpdate'],
+                ['systemManagement','dataAreaManagement','dataSheetDetails','configManagement','stateManagement','unitDomainNameManagement','interfacePathManagement']
             ]
             let idx = routerNames.map((o, i) => o.indexOf(this.$route.name) > -1).indexOf(true);
             return {

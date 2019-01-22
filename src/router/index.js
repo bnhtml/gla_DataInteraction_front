@@ -12,10 +12,20 @@ import dataUpperShelf from '../views/work/dataUpperShelf';
 import published  from '../views/work/dataUpperShelf/published.vue';// 已发布
 import unpublished from '../views/work/dataUpperShelf/unpublished.vue';//未发布
 import interfacePackage from '../views/work/dataUpperShelf/interfacePackage'; //数据接口封装
+import api from '../views/work/dataUpperShelf/apiInfo/index'; //详情
+import info from '../views/work/dataUpperShelf/apiInfo/info'; //详情
+import params from '../views/work/dataUpperShelf/apiInfo/params'; //详情
+import usage from '../views/work/dataUpperShelf/apiInfo/usage'; //详情
 
 
 /* 系统管理 */
 import systemManagement from '../views/work/systemManagement';
+import dataAreaManagement from '../views/work/systemManagement/dataAreaManagement.vue';//数据区管理
+import dataSheetDetails from'../views/work/systemManagement/dataSheetDetails.vue';// 数据表详情
+import configManagement from '../views/work/systemManagement/configManagement.vue';//配置管理
+import stateManagement  from '../views/work/systemManagement/stateManagement.vue';//状态管理
+import unitDomainNameManagement from '../views/work/systemManagement/unitDomainNameManagement.vue';// 单位域名管理
+import interfacePathManagement from '../views/work/systemManagement/interfacePathManagement.vue';// 接口路径管理
 export default new Router({
     routes: [
         {
@@ -94,6 +104,53 @@ export default new Router({
                             },
                         },
                         {
+                            path: 'interfaceUpdate',
+                            name: 'interfaceUpdate',
+                            component: interfacePackage,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据接口修改'
+                            },
+                        },
+                        {
+                            path: 'api',
+                            name: 'api',
+                            component: api,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据接口-详情'
+                            },
+                            children: [
+                                {
+                                    path: 'info',
+                                    name: 'info',
+                                    component: info,
+                                    meta: {
+                                        keepAlive: true,
+                                        title: '数据接口-基本信息'
+                                    },
+                                },
+                                {
+                                    path: 'params',
+                                    name: 'params',
+                                    component: params,
+                                    meta: {
+                                        keepAlive: true,
+                                        title: '数据接口-参数'
+                                    },
+                                },
+                                {
+                                    path: 'usage',
+                                    name: 'usage',
+                                    component: usage,
+                                    meta: {
+                                        keepAlive: true,
+                                        title: '数据接口-使用情况'
+                                    },
+                                }
+                            ]
+                        },
+                        {
                             path: 'systemManagement',
                             name: 'systemManagement',
                             component: systemManagement,
@@ -101,8 +158,61 @@ export default new Router({
                                 keepAlive: true,
                                 title: '系统管理'
                             }
-                        }
-
+                        },
+                        {
+                            path: 'dataAreaManagement',
+                            name: 'dataAreaManagement',
+                            component: dataAreaManagement,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-数据区管理'
+                            }
+                        },
+                        {
+                            path: 'dataSheetDetails',
+                            name: 'dataSheetDetails',
+                            component: dataSheetDetails,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-数据表详情'
+                            }
+                        },
+                        {
+                            path: 'configManagement',
+                            name: 'configManagement',
+                            component: configManagement,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-配置管理'
+                            }
+                        },
+                        {
+                            path: 'stateManagement',
+                            name: 'stateManagement',
+                            component: stateManagement,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-状态管理'
+                            }
+                        },
+                        {
+                            path: 'unitDomainNameManagement',
+                            name: 'unitDomainNameManagement',
+                            component: unitDomainNameManagement,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-单位域名管理'
+                            }
+                        },
+                        {
+                            path: 'interfacePathManagement',
+                            name: 'interfacePathManagement',
+                            component: interfacePathManagement,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-接口路径管理'
+                            }
+                        },
                     ]
                 },
             ]
