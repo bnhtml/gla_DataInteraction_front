@@ -179,9 +179,6 @@
         let _this = this;
         params.pageNumber = params.pageNumber || 1;
         params.pageSize = params.pageSize || this.page.pageSize || 10;
-        if (this.$route.query.areaids == undefined) {
-          this.$route.query.areaids = 0;
-        }
         params = Object.assign({}, this.$route.query, this.query, params);
         // console.log(this.$route.query)
         this.setRouter(params);
@@ -244,9 +241,6 @@
         };
         params.pageNumber = params.pageNumber || 1;
         params.pageSize = params.pageSize || this.page.pageSize || 10;
-        if (this.$route.query.areaids == undefined) {
-          this.$route.query.areaids = 0;
-        }
         params = Object.assign({}, this.$route.query, this.query, params);
         this.loading = true;
         let httpobj = {

@@ -257,10 +257,9 @@ let tableJson = {
                 _this.$router.push({
                     name: 'info',
                     query: {
-                        backQuery: JSON.stringify(_this.$route.query),
-                        id: row.id,
-                        tableTitle: row.interfaceName,
-                        type: row.type,
+                        fromName: _this.$route.name,
+                        user: _this.$route.query.user,
+                        deptType: _this.$route.query.deptType,
                     }
                 })
             }

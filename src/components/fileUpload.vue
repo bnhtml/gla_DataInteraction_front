@@ -1,28 +1,21 @@
-<!-- api接口配置详情 -->
+<!-- 上传文件按钮 -->
 <template>
-<div class=''>
-  <NomalTable :table-json="params" :data="data"></NomalTable>
+<div class='g-upload'>
+  <el-upload action="/api/upload" list-type="text"><i class="iconfont icon-shangchuan"></i>上传文档</el-upload>
 </div>
 </template>
 
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import NomalTable from "@/components/table/NomalTable.vue";
-import {params} from "../JSON/apiinfo"
-    import {
-        data,
-        tableJson
-    } from '../JSON/default.js';
 
 export default {
 //import引入的组件需要注入到对象中才能使用
-components: {NomalTable},
+components: {},
 data() {
 //这里存放数据
 return {
-  params,
-  data
+
 };
 },
 //监听属性 类似于data概念
@@ -52,5 +45,16 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 </script>
 <style lang='scss' scoped>
 //@import url(); 引入公共css类
-
+.g-upload{
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 30px;
+  i{
+    margin-right: 6px;
+  }
+}
 </style>
