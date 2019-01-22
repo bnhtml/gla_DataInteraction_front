@@ -117,5 +117,17 @@
 }
 
 .el-tabs, .el-tabs--top {
-  margin-left: -15px;
+  margin: 0 -20px;
+}
+
+.el-main {
+  height: 100%;
+}
+
+.el-main .el-container {
+  height: 100%;
+}
+
+.g-admin-page {
+  height: 100%;
 }

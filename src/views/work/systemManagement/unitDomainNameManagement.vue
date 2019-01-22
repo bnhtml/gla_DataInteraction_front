@@ -2,7 +2,7 @@
 <template>
     <div class="unitDomainNameManagement">
         <c-admin :deptType="deptType">
-            <el-card shadow="always" class="unitDomainNameManagement-header mt20">
+            <el-card shadow="always" class="unitDomainNameManagement-header ">
                 <p class="titleLeftBorder mt5">筛选查询</p>
                 <TableSearch :searchs='searchs' v-if='isShow'></TableSearch>
             </el-card>

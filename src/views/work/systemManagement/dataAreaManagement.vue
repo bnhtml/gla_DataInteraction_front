@@ -1,8 +1,8 @@
 //数据区管理
 <template>
     <div class="dataAreaManagement">
-        <c-admin :deptType="deptType">
-            <el-card shadow="always" class="dataAreaManagement-header mt20">
+        <c-admin :deptType="deptType" v-on:checked="handelClick">
+            <el-card shadow="always" class="dataAreaManagement-header ">
                 <el-tabs v-model="activeTab" @tab-click="changeTab">
                     <el-tab-pane v-for='(v,i) in tabList' :key='i' :label="v.label" :name="v.name"></el-tab-pane>
                 </el-tabs>
@@ -63,8 +63,12 @@
         },
         mounted() {
             this.changeTab(this.tabList[0]);
+            // this.getFirstdir();
         },
         methods: {
+            handelClick(e){
+                console.log(e)
+            },
             /* 更新表格数据信息 */
             init() {
                 this.isShow = false;
@@ -83,7 +87,9 @@
                 this.activeTab = tab.name;
                 this.activeTabTitle = tab.label;
                 this.init();
-            }
+            },
+            
+            
         }
     }
 </script>

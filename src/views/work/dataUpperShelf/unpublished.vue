@@ -6,7 +6,7 @@
                 <p class="titleLeftBorder">筛选查询</p>
                 <TableSearch :searchs='searchs'></TableSearch>
             </el-card>
-            <el-card shadow="always" class="published-header">
+            <el-card shadow="always" class="published-cont mt20">
                 <p class="titleLeftBorder">
                     未发布数据接口列表
                     <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span>
@@ -131,7 +131,7 @@
 <style scoped lang="scss">
     .published {
         .published-header {
-            margin-top: 20px;
+            // margin-top: 20px;
         }
     }
 </style>

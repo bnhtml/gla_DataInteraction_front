@@ -1,7 +1,7 @@
 // 状态管理
 <template>
     <div class="stateManagement">
-        <el-card shadow="always" class="stateManagement-cont mt20">
+        <el-card shadow="always" class="stateManagement-cont ">
             <p class="titleLeftBorder">
                 状态日志
                 <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span>
