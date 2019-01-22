@@ -2,13 +2,13 @@
 <template>
 <div class='g-admin-page'>
     <el-container style="padding-bottom: 20px;">
-      <el-aside v-if="$route.query.user === 'admin'" style="padding-top: 20px;width: 300px;">
+      <el-aside v-if="$route.query.user === 'admin'" style="width: 300px;margin-right:20px">
         <el-card shadow="always" class="published-header" style="height: 100%;">
             <p class="titleLeftBorder">已发布数据接口</p>
             <z-tree v-if="isShow" :node="node" :searchTitle="title" :deptType="deptType" v-on:onClick="checked"></z-tree>
         </el-card>
       </el-aside>
-      <el-main style="padding: 0 20px;">
+      <el-main style="padding: 0 ;">
         <slot class="pos-bottom"></slot>
       </el-main>
     </el-container>

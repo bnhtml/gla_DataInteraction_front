@@ -1,8 +1,8 @@
 // interfacePathManagement.vue
 <template>
     <div class="interfacePathManagement">
-        <c-admin :deptType="deptType">
-            <el-card shadow="always" class="interfacePathManagement-cont mt20">
+        <c-admin :deptType="deptType" v-on:checked="deptChecked">
+            <el-card shadow="always" class="interfacePathManagement-cont ">
                 <p class="titleLeftBorder mt5">服务目录</p>
                 <div class="cont-wrapper">
                     <div>
@@ -10,27 +10,30 @@
                         <ul class='ul-header'>
                             <li><span>序号</span><span>一级目录</span><span>映射路径</span></li>
                         </ul>
-                        <ul class="ul-cont">
-                            <li v-for='(v,i) in data.one' :key='i'><span>{{i+1}}</span><span>{{v.catalog}}</span><span>{{v.path}}</span></li>
+                        <ul class="ul-cont" v-if='deptData.one.length'>
+                            <li v-for='(v,i) in deptData.one' :key='i' @click='getSeconddir(v)'><span>{{i+1}}</span><span>{{v.first_dir}}</span><span>{{v.firstdir_mapping}}</span></li>
                         </ul>
+                        <div class="noData" v-else>暂无数据</div>
                     </div>
                     <div>
                         <p>二级路径</p>
                         <ul class='ul-header'>
                             <li><span>序号</span><span>二级目录</span><span>映射路径</span></li>
                         </ul>
-                        <ul class="ul-cont">
-                            <li v-for='(v,i) in data.two' :key='i'><span>{{i+1}}</span><span>{{v.catalog}}</span><span>{{v.path}}</span></li>
+                        <ul class="ul-cont" v-if='deptData.two.length'>
+                            <li v-for='(v,i) in deptData.two' :key='i' @click='getThirddir(v)'><span>{{i+1}}</span><span>{{v.second_dir}}</span><span>{{v.sedir_map}}</span></li>
                         </ul>
+                        <div class="noData" v-else>暂无数据</div>
                     </div>
                     <div>
                         <p>三级路径</p>
-                        <ul class='ul-header'>
+                        <ul class='ul-header '>
                             <li><span>序号</span><span>三级目录</span><span>映射路径</span></li>
                         </ul>
-                        <ul class="ul-cont">
-                            <li v-for='(v,i) in data.three' :key='i'><span>{{i+1}}</span><span>{{v.catalog}}</span><span>{{v.path}}</span></li>
+                        <ul class="ul-cont ul-three" v-if='deptData.three.length'>
+                            <li v-for='(v,i) in deptData.three' :key='i'><span>{{i+1}}</span><span>{{v.third_dir}}</span><span>{{v.thdir_map}}</span></li>
                         </ul>
+                        <div class="noData" v-else>暂无数据</div>
                     </div>
                 </div>
             </el-card>
@@ -53,85 +56,13 @@
                 }],
                 activeTab: 'dataArea',
                 activeTabTitle: '数据库',
-                data: {
-                    one: [{
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, ],
-                    two: [{
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, ],
-                    three: [{
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, {
-                        catalog: '工商局',
-                        path: '路径'
-                    }, ],
+                deptData: {
+                    one: [],
+                    two: [],
+                    three: [],
+                    depart: '', // 部门名称
+                    first_dir: '', //一级目录
+                    second_dir: '', //二级目录
                 }
             }
         },
@@ -140,19 +71,65 @@
         },
         computed: {},
         mounted() {},
-        methods: {}
+        methods: {
+            deptChecked(e) {
+                if (e.depaprt) {
+                    this.deptData.depart = e.depaprt;
+                    this.getFirstdir({
+                        depart: e.depaprt
+                    });
+                    this.deptData.two = [];
+                    this.deptData.three = [];
+                    this.deptData.second_dir = [];
+                }
+            },
+            /* 一级目录 */
+            getFirstdir(params) {
+                this.$api.get_firstdir(params).then(res => {
+                    this.deptData.one = res.data;
+                })
+            },
+            /* 二级目录 */
+            getSeconddir(e) {
+                let params = {
+                    depart: this.deptData.depart,
+                    first_dir: e.first_dir
+                }
+                this.$api.get_seconddir(params).then(res => {
+                    this.deptData.two = res.data;
+                    this.deptData.second_dir = [];
+                    this.deptData.three = [];
+                })
+            },
+            /* 三级目录 */
+            getThirddir(e) {
+                let params = {
+                    depart: this.deptData.depart,
+                    second_dir: e.second_dir
+                }
+                this.$api.get_thirddir(params).then(res => {
+                    this.deptData.three = res.data;
+                })
+            }
+        }
     }
 </script>
 
 <style scoped lang="scss">
     @import '@/assets/style/base/index.scss';
     .interfacePathManagement {
+        height: 100%;
         .interfacePathManagement-cont {
+            height: 100%;
+            /deep/ .el-card__body {
+                height: 100%;
+            }
             .cont-wrapper {
                 display: flex;
                 justify-content: space-between;
                 margin: 0 -10px;
-                margin-bottom: 20px;
+                // margin-bottom: 20px;
+                height: 100%;
                 div {
                     flex: 1;
                     padding: 0 10px;
@@ -162,26 +139,24 @@
                         line-height: 30px;
                     }
                     ul {
-                        border: 1px solid #CCC;
-                        border-top: 0;
-                        &.ul-header {
-                            border-top: solid 1px #ccc;
-                            border-bottom: 0;
-                            li {
-                                &:first-child {
-                                    background: #EFF2F5;
-                                }
-                            }
-                        }
-                        &.ul-cont{
-                            max-height: 600px;
-                            overflow-y: auto;
-                        }
+                        border: 1px solid #dcdfe6;
+                        border-top: 0; // width: call(100%-100px);
                         li {
                             height: 30px;
                             line-height: 30px;
                             display: flex;
                             justify-content: space-between;
+                            &:hover {
+                                span {
+                                    background: #f8f8f8;
+                                }
+                                cursor: pointer;
+                            }
+                            &:last-child {
+                                span {
+                                    // border-bottom: 0;
+                                }
+                            }
                             span {
                                 border-right: solid 1px #EBEEF5;
                                 border-bottom: solid 1px #EBEEF5;
@@ -199,12 +174,36 @@
                                     text-align: center;
                                 }
                             }
-                            // &:last-child {
-                            //     span {
-                            //         border-bottom: 0;
-                            //     }
-                            // }
                         }
+                        &.ul-header {
+                            border-top: solid 1px #dcdfe6;
+                            border-bottom: 0;
+                            li {
+                                &:first-child {
+                                    background: #EFF2F5;
+                                }
+                            }
+                        }
+                        &.ul-cont {
+                            height: -moz-calc(100% - 100px);
+                            height: -webkit-calc(100% - 100px);
+                            height: calc(100% - 100px);
+                            overflow-y: auto;
+                        }
+                        &.ul-three {
+                            li:hover {
+                                cursor: default;
+                            }
+                        }
+                    }
+                    .noData {
+                        border: solid 1px #dcdfe6;
+                        border-top-color: #EBEEF5;
+                        height: -moz-calc(100% - 100px);
+                        height: -webkit-calc(100% - 100px);
+                        height: calc(100% - 100px);
+                        @include flex($j:center);
+                        text-align: center;
                     }
                 }
             }

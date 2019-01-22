@@ -83,7 +83,7 @@
                     children: [],
                     mdliconcss: 'icon-shouye',
                 },{
-                    mdlhref: 'systemManagement',
+                    mdlhref: 'dataAreaManagement',
                     mdlname: '系统管理',
                     children: [],
                     mdliconcss: 'icon-shouye',

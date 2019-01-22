@@ -182,7 +182,7 @@
                     name:'dataAreaManagement',
                     query:{
                         user: 'abc',
-                        type:2
+                        deptType:3
                     }
                 },
                 name: '数据区管理-业务局委',
@@ -194,7 +194,7 @@
                     name:'dataAreaManagement',
                     query:{
                         user: 'admin',
-                        type:1
+                        deptType:3
                     }
                 },
                 name: '数据区管理-大数据局',
@@ -206,7 +206,7 @@
                     name:'interfacePathManagement',
                     query:{
                         user:'admin',
-                        type:1
+                        deptType:3
                     }
                 },
                 name: '接口路径管理',
@@ -218,7 +218,7 @@
                     name:'unitDomainNameManagement',
                     query:{
                         user:'admin',
-                        type:1
+                        deptType:3
                     }
                 },
                 name: '单位域名管理',
@@ -294,7 +294,7 @@
                 //         children:[],
                 //         mdliconcss: 'icon-shouye',
                 //     })
-                console.log(this.routerInfo, '====')
+                // console.log(this.routerInfo, '====')
                 return this.routerInfo
             },
             activeName() {

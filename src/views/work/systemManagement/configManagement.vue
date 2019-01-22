@@ -1,10 +1,10 @@
 // 配置管理
 <template>
     <div class="configManagement">
-        <el-card shadow="always" class="configManagement-cont mt20">
+        <el-card shadow="always" class="configManagement-cont ">
             <p class="titleLeftBorder">
                 配置日志
-                <span class="right">共有数据接口XXX个</span>
+                <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span>
             </p>
             <div>
                 <NomalTable :table-json="tableJson" :data="data" v-if='isShow'></NomalTable>

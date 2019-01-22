@@ -1,7 +1,7 @@
 // 数据表详情
 <template>
     <div class="dataSheetDetails">
-        <el-card shadow="always" class="dataSheetDetails-header mt20">
+        <el-card shadow="always" class="dataSheetDetails-header ">
             <h6>数据表详情 <span @click='back'>返回 <i class="icon iconfont icon-shuangjiantou"></i> </span> </h6>
             <p class="titleLeftBorder mt5">筛选查询</p>
             <TableSearch :searchs='searchs' v-if='isShow'></TableSearch>
@@ -9,7 +9,7 @@
         <el-card shadow="always" class="dataSheetDetails-cont mt20">
             <p class="titleLeftBorder">
                 数据表列表
-                <span class="right">共有数据接口XXX个</span>
+                <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span>
             </p>
             <div>
                 <NomalTable :table-json="tableJson" :data="data" v-if='isShow'></NomalTable>

@@ -126,3 +126,16 @@
     background-color: #EBEEF5;
     height: 1px;
 }
+.el-tabs, .el-tabs--top{
+margin:0 -20px;
+}
+
+.el-main{
+    height: 100%;
+    .el-container{
+        height: 100%;
+    }
+}
+.g-admin-page{
+    height: 100%;
+}

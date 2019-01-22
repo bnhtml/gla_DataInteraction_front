@@ -1,0 +1,45 @@
+﻿#将以下内容添加到 hosts文件中（不包含本行描述）
+
+# 贵州省信息中心6节点数据库集群
+
+59.215.191.30 gjxxzx-sj01.gjxxzx.com 
+59.215.191.30 gjxxzx-sj01 
+59.215.191.30 virtualnode-1
+
+59.215.191.31 gjxxzx-sj02.gjxxzx.com 
+59.215.191.31 gjxxzx-sj02 
+59.215.191.31 virtualnode-2
+
+59.215.191.26 gjxxzx-sj03.gjxxzx.com 
+59.215.191.26 gjxxzx-sj03 
+59.215.191.26 virtualnode-3
+
+59.215.191.27 gjxxzx-sj04.gjxxzx.com 
+59.215.191.27 gjxxzx-sj04 
+59.215.191.27 virtualnode-4
+
+59.215.191.28 gjxxzx-sj05.gjxxzx.com 
+59.215.191.28 gjxxzx-sj05 
+59.215.191.28 virtualnode-5
+
+59.215.191.29 gjxxzx-sj06.gjxxzx.com 
+59.215.191.29 gjxxzx-sj06 
+59.215.191.29 virtualnode-6
+
+# 贵州省信息中心4节点数据库集群
+
+59.215.191.32 gjxxzx-sz01.gjxxzx.com 
+59.215.191.32 gjxxzx-sz01 
+59.215.191.32 virtualnode2-1
+
+59.215.191.33 gjxxzx-sz02.gjxxzx.com 
+59.215.191.33 gjxxzx-sz02 
+59.215.191.33 virtualnode2-2
+
+59.215.191.34 gjxxzx-sz03.gjxxzx.com 
+59.215.191.34 gjxxzx-sz03 
+59.215.191.34 virtualnode2-3
+
+59.215.191.35 gjxxzx-sz04.gjxxzx.com 
+59.215.191.35 gjxxzx-sz04 
+59.215.191.35 virtualnode2-4
