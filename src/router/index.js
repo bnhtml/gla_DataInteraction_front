@@ -194,6 +194,15 @@ export default new Router({
                                 title: '系统管理-状态管理'
                             }
                         },
+                        {
+                            path: 'unitDomainNameManagement',
+                            name: 'unitDomainNameManagement',
+                            component: unitDomainNameManagement,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-单位域名管理'
+                            }
+                        },
                     ]
                 },
             ]

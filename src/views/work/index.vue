@@ -202,7 +202,13 @@
                 children: []
             },
             {
-                url: 'systemManagement',
+                url: {
+                    name:'unitDomainNameManagement',
+                    query:{
+                        user:'admin',
+                        type:1
+                    }
+                },
                 name: '单位域名管理',
                 icon: 'icon-shouye',
                 children: []
@@ -228,7 +234,7 @@
                 ['leaderCockpit'],
                 ['datainteration'],
                 ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage','interfacePackage','interfaceUpdate'],
-                ['systemManagement','dataAreaManagement','dataSheetDetails','configManagement','stateManagement']
+                ['systemManagement','dataAreaManagement','dataSheetDetails','configManagement','stateManagement','unitDomainNameManagement']
             ]
             let idx = routerNames.map((o, i) => o.indexOf(this.$route.name) > -1).indexOf(true);
             return {

@@ -339,10 +339,10 @@ let unpublishedTableJson={
             type: "handle",
             align: "",
             label: "操作",
-            width: "140",
+            width: "300",
             list: [{
                 formatter(row, column, columnIndex, rowIndex) {
-                    return ["<span class='green'>封装接口</span>", "<span class='orange'>修改接口</span>"][row.applyStatus]
+                    return ['封装接口', "修改接口"][row.applyStatus]
                 },
                 onClick(_this, self, row) {
                     if(row.applyStatus == 0){
@@ -364,16 +364,43 @@ let unpublishedTableJson={
                 }
             },{
                 formatter(row, column, columnIndex, rowIndex) {
+                    return ['', "接口文档"][row.applyStatus]
+                },
+                onClick(_this, self, row) {
+                    if(row.applyStatus == 1){
+                        // _this.$confirm('数据资源发布后，将会再对外公布，请确认是否发布数据接口。', "数据接口文档上传", {
+                        //     confirmButtonText: '确定',
+                        //     cancelButtonText: '取消',
+                        //     showCancelButton: true,
+                        //     showConfirmButton:true,
+                        //     showClose:false,
+                        //   }).then(() => {
+                        //     _this.$message({
+                        //       type: 'success',
+                        //       message: '删除成功!'
+                        //     });
+                        //   }).catch(() => {
+                        //     _this.$message({
+                        //       type: 'info',
+                        //       message: '已取消删除'
+                        //     });          
+                        //   });
+                    }
+                    
+                }
+            },{
+                formatter(row, column, columnIndex, rowIndex) {
                     return ['', "发布"][row.applyStatus]
                 },
                 onClick(_this, self, row) {
                     if(row.applyStatus == 1){
-                        console.log('发布')
-                        _this.$confirm('数据资源发布后，将会再对外公布，请确认是否发布数据接口。', '数据接口发布', {
+                        _this.$confirm('数据资源发布后，将会再对外公布，请确认是否发布数据接口。', "数据接口发布", {
                             confirmButtonText: '确定',
                             cancelButtonText: '取消',
-                            type: 'warning',
-                            showClose:false
+                            showCancelButton: true,
+                            showConfirmButton:true,
+                            showClose:false,
+                            type: 'warning'
                           }).then(() => {
                             _this.$message({
                               type: 'success',
@@ -386,6 +413,13 @@ let unpublishedTableJson={
                             });          
                           });
                     }
+                    
+                }
+            },{
+                formatter(row, column, columnIndex, rowIndex) {
+                    return ['', "测试apikey"][row.applyStatus]
+                },
+                onClick(_this, self, row) {
                     
                 }
             }]

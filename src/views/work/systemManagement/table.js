@@ -72,18 +72,18 @@ let dataArea = {
             "placeholder": "请输入",
         }]
     },// 搜索类型数据
-    data:[{
-        tableName:'表名',
-        dataAreaDec:'描述',
-        num:'0',
-        resourceDescribe:'34',
-        storageSpace:'457',
-    },{
-        tableName:'表名',
-        dataAreaDec:'描述',
-        num:'0',
-        resourceDescribe:'34',
-        storageSpace:'457',
+    data: [{
+        tableName: '表名',
+        dataAreaDec: '描述',
+        num: '0',
+        resourceDescribe: '34',
+        storageSpace: '457',
+    }, {
+        tableName: '表名',
+        dataAreaDec: '描述',
+        num: '0',
+        resourceDescribe: '34',
+        storageSpace: '457',
     },]
 }
 /* 文件类 */
@@ -137,16 +137,16 @@ let dataAreaFile = {
             "placeholder": "请输入",
         }]
     },// 搜索类型数据
-    data:[{
-        filename:'文件名',
-        resourceId:'size',
-        time:'0',
-        address:'描述描述',
-    },{
-        filename:'文件名',
-        resourceId:'size',
-        time:'0',
-        address:'描述描述',
+    data: [{
+        filename: '文件名',
+        resourceId: 'size',
+        time: '0',
+        address: '描述描述',
+    }, {
+        filename: '文件名',
+        resourceId: 'size',
+        time: '0',
+        address: '描述描述',
     },]
 }
 /* 数据表详情 */
@@ -179,7 +179,7 @@ let dataSheetDetails = {
         }]
     },
     searchs: {
-        list:[{
+        list: [{
             "type": "input-select", //输入文本
             label: "",
             "name": "conditionPa",
@@ -200,16 +200,16 @@ let dataSheetDetails = {
             "placeholder": "请输入",
         }]
     },// 搜索类型数据
-    data:[{
-        filename:'文件名',
-        resourceId:'size',
-        time:'0',
-        address:'描述描述',
-    },{
-        filename:'文件名',
-        resourceId:'size',
-        time:'0',
-        address:'描述描述',
+    data: [{
+        filename: '文件名',
+        resourceId: 'size',
+        time: '0',
+        address: '描述描述',
+    }, {
+        filename: '文件名',
+        resourceId: 'size',
+        time: '0',
+        address: '描述描述',
     },]
 }
 /* 配置管理 */
@@ -254,18 +254,18 @@ let configManagement = {
         }]
     },
     searchs: {
-        list:[]
+        list: []
     },// 搜索类型数据
-    data:[{
-        filename:'文件名',
-        resourceId:'size',
-        time:'0',
-        address:'描述描述',
-    },{
-        filename:'文件名',
-        resourceId:'size',
-        time:'0',
-        address:'描述描述',
+    data: [{
+        filename: '文件名',
+        resourceId: 'size',
+        time: '0',
+        address: '描述描述',
+    }, {
+        filename: '文件名',
+        resourceId: 'size',
+        time: '0',
+        address: '描述描述',
     },]
 }
 let stateManagement = {
@@ -309,18 +309,99 @@ let stateManagement = {
         }]
     },
     searchs: {
-        list:[]
+        list: []
     },// 搜索类型数据
-    data:[{
-        filename:'文件名',
-        resourceId:'size',
-        time:'0',
-        address:'描述描述',
-    },{
-        filename:'文件名',
-        resourceId:'size',
-        time:'0',
-        address:'描述描述',
+    data: [{
+        filename: '文件名',
+        resourceId: 'size',
+        time: '0',
+        address: '描述描述',
+    }, {
+        filename: '文件名',
+        resourceId: 'size',
+        time: '0',
+        address: '描述描述',
+    },]
+}
+let unitDomainNameManagement = {
+    tableJson: {
+        column: [{
+            type: "text",
+            align: "",
+            label: "单位名称",
+            prop: "filename",
+            width: "",
+        }, {
+            type: "text",
+            align: "",
+            label: "单位域名",
+            prop: "size",
+            width: "",
+        }, {
+            type: "text",
+            align: "",
+            label: "最后修改时间",
+            prop: "time",
+            width: "",
+        }, {
+            type: "handle",
+            align: "center",
+            label: "操作",
+            width: "100",
+            list: [{
+                label: "修改",
+                onClick(_this, self, row) {
+                    _this.$prompt('', '修改单位域名', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        showClose: false
+                    }).then(({ value }) => {
+                        _this.$message({
+                            type: 'success',
+                            message: '修改域名成功 '
+                        });
+                    }).catch(() => {
+                        _this.$message({
+                            type: 'info',
+                            message: '取消输入'
+                        });
+                    });
+                }
+            }]
+        }]
+    },
+    searchs: {
+        list: [{
+            "type": "input-select", //输入文本
+            label: "",
+            "name": "conditionPa",
+            "value": "",
+            "placeholder": "请选择",
+            options: [{
+                value: '单位名称',
+                label: '单位名称'
+            }, {
+                value: '单位域名',
+                label: '单位域名'
+            }]
+        }, {
+            type: 'input-text',
+            label: '',
+            name: 'conditionSo',
+            value: '',
+            "placeholder": "请输入",
+        }]
+    },// 搜索类型数据
+    data: [{
+        filename: '文件名',
+        resourceId: 'size',
+        time: '0',
+        address: '描述描述',
+    }, {
+        filename: '文件名',
+        resourceId: 'size',
+        time: '0',
+        address: '描述描述',
     },]
 }
 export {
@@ -329,4 +410,5 @@ export {
     dataSheetDetails,
     configManagement,
     stateManagement,
+    unitDomainNameManagement,
 }

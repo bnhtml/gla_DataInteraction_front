@@ -67,7 +67,7 @@
   text-overflow: ellipsis;
 }
 
-/* 宽 */
+/* 弹框 */
 .el-message-box {
   width: 430px;
   padding: 17px 32px 24px 32px;
@@ -75,13 +75,8 @@
 
 .el-message-box__title {
   padding-left: 20px;
-  padding-bottom: 10px;
   font-size: 16px;
   color: #333333;
-}
-
-.el-message-box__status {
-  top: -25px;
 }
 
 .el-message-box__message p {
@@ -99,7 +94,12 @@
 }
 
 .el-message-box__btns {
+  padding: 0;
   padding-top: 24px;
+}
+
+.el-message-box__header {
+  margin-left: -35px;
 }
 
 /* tab切换 */

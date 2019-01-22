@@ -1,9 +1,9 @@
 // 数据表详情
 <template>
     <div class="dataSheetDetails">
-        <el-card shadow="always" class="dataSheetDetails-header ">
+        <el-card shadow="always" class="dataSheetDetails-header mt20">
             <h6>数据表详情 <span @click='back'>返回 <i class="icon iconfont icon-shuangjiantou"></i> </span> </h6>
-            <p class="titleLeftBorder mt5">筛选条件</p>
+            <p class="titleLeftBorder mt5">筛选查询</p>
             <TableSearch :searchs='searchs' v-if='isShow'></TableSearch>
         </el-card>
         <el-card shadow="always" class="dataSheetDetails-cont mt20">

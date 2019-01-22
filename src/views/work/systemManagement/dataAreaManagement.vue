@@ -2,11 +2,11 @@
 <template>
     <div class="dataAreaManagement">
         <c-admin :deptType="deptType">
-            <el-card shadow="always" class="dataAreaManagement-header ">
+            <el-card shadow="always" class="dataAreaManagement-header mt20">
                 <el-tabs v-model="activeTab" @tab-click="changeTab">
                     <el-tab-pane v-for='(v,i) in tabList' :key='i' :label="v.label" :name="v.name"></el-tab-pane>
                 </el-tabs>
-                <p class="titleLeftBorder mt5">筛选条件</p>
+                <p class="titleLeftBorder mt5">筛选查询</p>
                 <TableSearch :searchs='searchs' v-if='isShow'></TableSearch>
             </el-card>
             <el-card shadow="always" class="dataAreaManagement-cont mt20">

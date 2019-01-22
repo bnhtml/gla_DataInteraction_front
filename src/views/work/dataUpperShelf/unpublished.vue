@@ -3,7 +3,7 @@
     <div class="published">
         <!-- <c-admin :deptType="deptType"> -->
             <el-card shadow="always" class="published-header">
-                <p class="titleLeftBorder">筛选条件</p>
+                <p class="titleLeftBorder">筛选查询</p>
                 <TableSearch :searchs='searchs'></TableSearch>
             </el-card>
             <el-card shadow="always" class="published-header">

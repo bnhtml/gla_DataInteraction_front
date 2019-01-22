@@ -1,7 +1,7 @@
 // 配置管理
 <template>
     <div class="configManagement">
-        <el-card shadow="always" class="configManagement-cont ">
+        <el-card shadow="always" class="configManagement-cont mt20">
             <p class="titleLeftBorder">
                 配置日志
                 <span class="right">共有数据接口XXX个</span>
