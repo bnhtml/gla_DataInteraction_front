@@ -86,6 +86,40 @@
         },
         mounted() {},
         methods: {
+            fileUpload(){
+                const h = this.$createElement;
+                this.$confirm(h('div', null, [
+                    h('span', null, '接口说明文档：'),
+                    h('fileUpload', null),
+                    h('a', {
+                        src: 'a.txt',
+                        style: {
+                            color: '#33ABFB'
+                        }
+                    }, '模板下载'),
+                    h('p', {
+                        style: {
+                            color: '#999'
+                        }
+                    }, '支持扩展名：.rar .zip .doc .docx .pdf')
+                ]), "数据接口文档上传", {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    showCancelButton: true,
+                    showConfirmButton:true,
+                    showClose:false,
+                    }).then(() => {
+                    this.$message({
+                        type: 'success',
+                        message: '删除成功!'
+                    });
+                    }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });          
+                    });
+            }
         },
         beforeRouteUpdate(to, from, next) {
             this.deptType = to.query.deptType - 0;
@@ -101,4 +135,5 @@
         }
     }
 </style>
+
 

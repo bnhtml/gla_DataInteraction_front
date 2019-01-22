@@ -345,14 +345,17 @@ let unpublishedTableJson={
                     return ['封装接口', "修改接口"][row.applyStatus]
                 },
                 onClick(_this, self, row) {
-                    if(row.applyStatus == 0){
+									let name = 'interfaceUpdate'
+									if (row.applyStatus == 0) {
+										name = 'interfacePackage'
+
                         console.log('封装接口')
 
                     }else{
                         console.log('修改接口')
                     }
                     _this.$router.push({
-                        name: 'interfacePackage',
+                        name,
                         query: {
                             backQuery: JSON.stringify(_this.$route.query),
                             id: row.id,
@@ -368,23 +371,7 @@ let unpublishedTableJson={
                 },
                 onClick(_this, self, row) {
                     if(row.applyStatus == 1){
-                        // _this.$confirm('数据资源发布后，将会再对外公布，请确认是否发布数据接口。', "数据接口文档上传", {
-                        //     confirmButtonText: '确定',
-                        //     cancelButtonText: '取消',
-                        //     showCancelButton: true,
-                        //     showConfirmButton:true,
-                        //     showClose:false,
-                        //   }).then(() => {
-                        //     _this.$message({
-                        //       type: 'success',
-                        //       message: '删除成功!'
-                        //     });
-                        //   }).catch(() => {
-                        //     _this.$message({
-                        //       type: 'info',
-                        //       message: '已取消删除'
-                        //     });          
-                        //   });
+											self.$parent.fileUpload();
                     }
                     
                 }
