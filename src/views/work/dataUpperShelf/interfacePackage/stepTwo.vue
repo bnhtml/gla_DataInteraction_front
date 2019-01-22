@@ -69,7 +69,12 @@
            </div>
        </div>
        <div class="flex-block">
-           <el-input type="textarea" v-model="remarks"></el-input>
+           <el-input 
+                type="textarea" 
+                resize='none'
+                :rows="4"
+                placeholder="请输入备注"
+                v-model="remarks"></el-input>
        </div>
    </div>
 </template>
@@ -119,7 +124,7 @@ export default {
        //sql语句测试
        testSql() {
 
-       }
+       },
 
    },
 }
@@ -163,8 +168,8 @@ export default {
         .createSql{
             margin-right: 10px;
         }
-        .testSql{
-
+        .el-textarea{
+            width: 930px;
         }
     }
 }
