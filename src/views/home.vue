@@ -16,9 +16,6 @@ import HeaderBar from '../views/header/headerBar.vue';
         name: 'navBar',
         data() {
             return {
-                isCollapsed: false,
-                isMenuShow: false,
-                routerInfo: [],
             }
         },
         components: {

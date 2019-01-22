@@ -31,7 +31,7 @@
     export default {
         data() {
             return {
-                deptType: this.$route.query.deptType - 0,
+                // deptType: this.$route.query.deptType - 0,
                 searchs: {
                     list: [{
                         "type": "input-select", //输入文本
