@@ -178,7 +178,13 @@
         ],
         [
             {
-                url: 'systemManagement',
+                url: {
+                    name:'dataAreaManagement',
+                    query:{
+                        user: 'abc',
+                        type:2
+                    }
+                },
                 name: '数据区管理-业务局委',
                 icon: 'icon-shouye',
                 children: []
@@ -202,13 +208,13 @@
                 children: []
             },
             {
-                url: 'systemManagement',
+                url: 'configManagement',
                 name: '配置管理',
                 icon: 'icon-shouye',
                 children: []
             },
             {
-                url: 'systemManagement',
+                url: 'stateManagement',
                 name: '状态管理',
                 icon: 'icon-shouye',
                 children: []
@@ -222,7 +228,7 @@
                 ['leaderCockpit'],
                 ['datainteration'],
                 ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage'],
-                ['systemManagement']
+                ['systemManagement','dataAreaManagement','dataSheetDetails','configManagement','stateManagement']
             ]
             let idx = routerNames.map((o, i) => o.indexOf(this.$route.name) > -1).indexOf(true);
             return {

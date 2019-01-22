@@ -20,6 +20,11 @@ import usage from '../views/work/dataUpperShelf/apiInfo/usage'; //详情
 
 /* 系统管理 */
 import systemManagement from '../views/work/systemManagement';
+import dataAreaManagement from '../views/work/systemManagement/dataAreaManagement.vue';//数据区管理
+import dataSheetDetails from'../views/work/systemManagement/dataSheetDetails.vue';// 数据表详情
+import configManagement from '../views/work/systemManagement/configManagement.vue';//配置管理
+import stateManagement  from '../views/work/systemManagement/stateManagement.vue';//状态管理
+import unitDomainNameManagement from '../views/work/systemManagement/unitDomainNameManagement.vue';// 单位域名管理
 export default new Router({
     routes: [
         {
@@ -143,8 +148,43 @@ export default new Router({
                                 keepAlive: true,
                                 title: '系统管理'
                             }
-                        }
-
+                        },
+                        {
+                            path: 'dataAreaManagement',
+                            name: 'dataAreaManagement',
+                            component: dataAreaManagement,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-数据区管理'
+                            }
+                        },
+                        {
+                            path: 'dataSheetDetails',
+                            name: 'dataSheetDetails',
+                            component: dataSheetDetails,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-数据表详情'
+                            }
+                        },
+                        {
+                            path: 'configManagement',
+                            name: 'configManagement',
+                            component: configManagement,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-配置管理'
+                            }
+                        },
+                        {
+                            path: 'stateManagement',
+                            name: 'stateManagement',
+                            component: stateManagement,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-状态管理'
+                            }
+                        },
                     ]
                 },
             ]

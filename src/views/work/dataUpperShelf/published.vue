@@ -21,7 +21,7 @@
 
 <script>
     import NomalTable from '@/components/table/NomalTable.vue';
-    import TableSearch from '../../../components/table/TableSearch.vue';
+    import TableSearch from '@/components/table/TableSearch.vue';
     import cAdmin from '../admin.vue';
     import {
         data,
@@ -74,6 +74,7 @@
         methods: {
             /* 获得表格数据以及查询 */
             getDoneInterface(){
+                debugger
                 this.$api.getDone_interface({
                     region:'',//区域
                     depaprt:'',//部门

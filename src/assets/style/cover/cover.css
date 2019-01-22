@@ -101,3 +101,17 @@
 .el-message-box__btns {
   padding-top: 24px;
 }
+
+/* tab切换 */
+.el-tabs__item {
+  font-size: 16px;
+}
+
+.el-tabs__nav-wrap {
+  padding-left: 20px;
+}
+
+.el-tabs__nav-wrap::after {
+  background-color: #EBEEF5;
+  height: 1px;
+}

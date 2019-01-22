@@ -242,8 +242,6 @@ let tableJson={
             width: "",
             
         },
-        
-        
         {
             type: "handle",
             align: "center",
@@ -261,7 +259,7 @@ let tableJson={
                         query: {
                             backQuery: JSON.stringify(_this.$route.query),
                             id: row.id,
-                            tableTitle: row.name,
+                            tableTitle: row.interfaceName,
                             type: row.type,
                         }
                     })
