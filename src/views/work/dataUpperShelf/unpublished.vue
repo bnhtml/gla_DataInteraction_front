@@ -22,6 +22,7 @@
 <script>
     import NomalTable from '@/components/table/NomalTable.vue';
     import TableSearch from '../../../components/table/TableSearch.vue';
+    import FileUpload from '@/components/fileUpload';
     import cAdmin from '../admin.vue';
     import {
          unpublishedData,
@@ -83,6 +84,7 @@
             NomalTable,
             cAdmin,
             TableSearch,
+            FileUpload
         },
         mounted() {},
         methods: {
@@ -90,7 +92,7 @@
                 const h = this.$createElement;
                 this.$confirm(h('div', null, [
                     h('span', null, '接口说明文档：'),
-                    h('fileUpload', null),
+                    h('FileUpload', null),
                     h('a', {
                         src: 'a.txt',
                         style: {

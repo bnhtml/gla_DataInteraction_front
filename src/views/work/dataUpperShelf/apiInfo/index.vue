@@ -1,7 +1,9 @@
 <!-- api详情 -->
 <template>
 <div class='g-api-info'>
-  <el-card>
+  <el-card class="pos-relative">
+
+    <router-link :to="{name: $route.query.fromName || '', query: {user: $route.query.user || '', deptType: $route.query.deptType || 0}}" class="g-routerlink">返回列表页<i class="iconfont icon-shuangjiantou"></i></router-link>
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="API基本信息" name="info"></el-tab-pane>
       <el-tab-pane label="API参数" name="params"></el-tab-pane>
@@ -55,4 +57,14 @@ export default {
 </script>
 <style lang='scss' scoped>
 //@import url(); 引入公共css类
+.g-routerlink{
+  color: #33abfb;
+  font-size: 16px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  i{
+    margin-left: 10px;
+  }
+}
 </style>
