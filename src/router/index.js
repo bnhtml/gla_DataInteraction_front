@@ -25,6 +25,7 @@ import dataSheetDetails from'../views/work/systemManagement/dataSheetDetails.vue
 import configManagement from '../views/work/systemManagement/configManagement.vue';//配置管理
 import stateManagement  from '../views/work/systemManagement/stateManagement.vue';//状态管理
 import unitDomainNameManagement from '../views/work/systemManagement/unitDomainNameManagement.vue';// 单位域名管理
+import interfacePathManagement from '../views/work/systemManagement/interfacePathManagement.vue';// 接口路径管理
 export default new Router({
     routes: [
         {
@@ -201,6 +202,15 @@ export default new Router({
                             meta: {
                                 keepAlive: true,
                                 title: '系统管理-单位域名管理'
+                            }
+                        },
+                        {
+                            path: 'interfacePathManagement',
+                            name: 'interfacePathManagement',
+                            component: interfacePathManagement,
+                            meta: {
+                                keepAlive: true,
+                                title: '系统管理-接口路径管理'
                             }
                         },
                     ]
