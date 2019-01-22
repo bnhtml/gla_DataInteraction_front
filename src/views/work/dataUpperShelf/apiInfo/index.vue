@@ -38,7 +38,8 @@ export default {
   methods: {
     handleClick(tab, event) {
       this.$router.push({
-        name: tab.name
+        name: tab.name,
+        query: this.$route.query
       })
     }
   },
@@ -63,6 +64,7 @@ export default {
   position: absolute;
   right: 20px;
   top: 20px;
+  z-index: 10;
   i{
     margin-left: 10px;
   }
