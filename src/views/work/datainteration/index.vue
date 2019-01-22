@@ -1,7 +1,10 @@
 <!-- 数据集成 -->
 <template>
 <div class='datainteration'>
-  数据集成
+  <el-card shadow="always" class="datainteration-header">
+    <p class="titleLeftBorder">数据集成操作指南</p>
+    <TableSearch :searchs='searchs'></TableSearch>
+</el-card>
 </div>
 </template>
 
@@ -36,5 +39,10 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-//@import url(); 引入公共css类
+.datainteration {
+        .datainteration-header {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+    }
 </style>

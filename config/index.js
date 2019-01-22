@@ -58,9 +58,9 @@ dev: {
 
     /**
      * Source Maps
-     */
-    host: '192.168.22.202',
-    // host: '192.168.25.82',
+    //  */
+    // host: '192.168.22.202',
+    host: '192.168.0.8',
     port: 8012,
     baseServerUrl: HOSTDATA.baseServerUrl,
     productionSourceMap: true,
