@@ -5,20 +5,20 @@ let dataArea = {
         column: [{
             type: "text",
             align: "",
-            label: "数据表名",
-            prop: "tableName",
+            label: "schema库名",
+            prop: "databaseName",
             width: "",
         }, {
             type: "text",
             align: "",
-            label: "数据表描述",
-            prop: "dataAreaDec",
+            label: "schema库描述",
+            prop: "databaseDescribe",
             width: "",
         }, {
             type: "text",
             align: "",
             label: "数据量(行)",
-            prop: "num",
+            prop: "tableNum",
             width: "",
         }, {
             type: "text",
@@ -55,14 +55,14 @@ let dataArea = {
             "type": "input-select", //输入文本
             label: "",
             "name": "conditionPa",
-            "value": "",
+            "value": "schema库名",
             "placeholder": "请选择",
             options: [{
-                value: '数据库名',
-                label: '数据库名'
+                value: 'schema库名',
+                label: 'schema库名'
             }, {
-                value: '数据库描述',
-                label: '数据库描述'
+                value: 'schema库描述',
+                label: 'schema库描述'
             }]
         }, {
             type: 'input-text',
@@ -93,25 +93,25 @@ let dataAreaFile = {
             type: "text",
             align: "",
             label: "文件名",
-            prop: "filename",
+            prop: "fileName",
             width: "",
         }, {
             type: "text",
             align: "",
             label: "文件大小(MB)",
-            prop: "size",
+            prop: "fileSize",
             width: "",
         }, {
             type: "text",
             align: "",
             label: "修改时间",
-            prop: "time",
+            prop: "updateTime",
             width: "",
         }, {
             type: "text",
             align: "",
             label: "路径地址",
-            prop: "address",
+            prop: "filePath",
             width: "",
         }, {
             type: "handle",
@@ -132,7 +132,7 @@ let dataAreaFile = {
         list: [{
             type: 'input-text',
             label: '文件名',
-            name: 'conditionSo',
+            name: 'fileName',
             value: '',
             "placeholder": "请输入",
         }]
@@ -156,41 +156,41 @@ let dataSheetDetails = {
             type: "text",
             align: "",
             label: "数据表名",
-            prop: "filename",
+            prop: "tableName",
             width: "",
         }, {
             type: "text",
             align: "",
             label: "数据表描述",
-            prop: "size",
+            prop: "tableDesc",
             width: "",
         }, {
             type: "text",
             align: "",
             label: "数据量(行)",
-            prop: "time",
+            prop: "dataNum",
             width: "",
         }, {
             type: "text",
             align: "",
             label: "存储空间(MB)",
-            prop: "address",
+            prop: "storageSpace",
             width: "",
-        }]
+        }, ]
     },
     searchs: {
         list: [{
             "type": "input-select", //输入文本
             label: "",
             "name": "conditionPa",
-            "value": "",
+            "value": "schema表名",
             "placeholder": "请选择",
             options: [{
-                value: '数据表名',
-                label: '数据表名'
+                value: 'schema表名',
+                label: 'schema表名'
             }, {
-                value: '数据表描述',
-                label: '数据表描述'
+                value: 'schema表描述',
+                label: 'schema表描述'
             }]
         }, {
             type: 'input-text',
@@ -268,6 +268,7 @@ let configManagement = {
         address: '描述描述',
     },]
 }
+/* 状态管理 */
 let stateManagement = {
     tableJson: {
         column: [{
@@ -323,6 +324,7 @@ let stateManagement = {
         address: '描述描述',
     },]
 }
+/* 单位域名管理 */
 let unitDomainNameManagement = {
     tableJson: {
         column: [{
@@ -337,7 +339,7 @@ let unitDomainNameManagement = {
             label: "单位域名",
             prop: "size",
             width: "",
-        }, {
+        }, /* {
             type: "text",
             align: "",
             label: "最后修改时间",
@@ -368,14 +370,14 @@ let unitDomainNameManagement = {
                     });
                 }
             }]
-        }]
+        } */]
     },
     searchs: {
         list: [{
             "type": "input-select", //输入文本
             label: "",
             "name": "conditionPa",
-            "value": "",
+            "value": "单位名称",
             "placeholder": "请选择",
             options: [{
                 value: '单位名称',

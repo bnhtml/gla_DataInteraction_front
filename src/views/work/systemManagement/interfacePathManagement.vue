@@ -70,7 +70,13 @@
             cAdmin,
         },
         computed: {},
-        mounted() {},
+        mounted() {
+            if(this.$route.query.user == 'admin'){
+                this.getFirstdir({
+                        depart: '贵州省大数据局'
+                    });
+            }
+        },
         methods: {
             deptChecked(e) {
                 if (e.depaprt) {
