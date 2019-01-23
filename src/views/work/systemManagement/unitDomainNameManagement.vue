@@ -9,7 +9,7 @@
             <el-card shadow="always" class="unitDomainNameManagement-cont mt20">
                 <p class="titleLeftBorder">
                     单位域名管理列表
-                    <span class="right">共有数据接口XXX个</span>
+                    <!-- <span class="right">共有数据接口XXX个</span> -->
                 </p>
                 <div>
                     <NomalTable :table-json="tableJson" :data="data" v-if='isShow'></NomalTable>
@@ -25,8 +25,6 @@
     import TableSearch from '@/components/table/TableSearch.vue';
     import cAdmin from '../admin.vue';
     import {
-        dataArea,
-        dataAreaFile,
         unitDomainNameManagement
     } from './table.js'
     export default {

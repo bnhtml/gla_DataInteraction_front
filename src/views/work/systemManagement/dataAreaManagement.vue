@@ -12,7 +12,7 @@
             <el-card shadow="always" class="dataAreaManagement-cont mt20">
                 <p class="titleLeftBorder">
                     {{activeTabTitle}}列表
-                    <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span>
+                    <!-- <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span> -->
                 </p>
                 <div>
                     <NomalTable :table-json="tableJson" :data="data" v-if='isShow'></NomalTable>
@@ -42,14 +42,14 @@
                     name: 'dataAreaFile'
                 }],
                 activeTab: 'dataArea',
-                activeTabTitle:'数据库',
+                activeTabTitle: '数据库',
                 tableQuery: {
                     dataArea,
                     dataAreaFile
                 },
-                searchs:{},
-                tableJson:{},
-                data:[],
+                searchs: {},
+                tableJson: {},
+                data: [],
                 isShow: false,
             }
         },
@@ -58,15 +58,26 @@
             TableSearch,
             cAdmin,
         },
-        computed: {
-           
+        computed: {},
+        beforeRouteUpdate(to, from, next) {
+            const newUser = to.query.user;
+            const oldUser = from.query.user;
+            if (oldUser !== newUser) {
+                this.init();
+            }
+            next();
+        },
+        watch: {
+            user: function() {
+                this.init()
+            }
         },
         mounted() {
             this.changeTab(this.tabList[0]);
             // this.getFirstdir();
         },
         methods: {
-            handelClick(e){
+            handelClick(e) {
                 console.log(e)
             },
             /* 更新表格数据信息 */
@@ -88,9 +99,7 @@
                 this.activeTabTitle = tab.label;
                 this.init();
             },
-            
-            
-        }
+        },
     }
 </script>
 

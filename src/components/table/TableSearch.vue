@@ -2,8 +2,8 @@
   <!-- 筛选 -->
   <div class="nomaltable">
     <!-- <div class="search-header">筛选查询</div> -->
-    <div class="search-box" v-loading="loading" >
-      <el-form :inline="true" :model="searchVal" class='search-box-cont' > 
+    <div class="search-box" v-loading="loading">
+      <el-form :inline="true" :model="searchVal" class='search-box-cont'>
         <el-form-item :label="search.label" v-for="(search, searchIndex) in searchs.list" :key="searchIndex">
           <!-- 输入框 -->
           <el-input v-if="search.type == 'input-text'" v-model="search.value" :placeholder="search.placeholder" style='width:300px'></el-input>
@@ -17,27 +17,27 @@
           </el-date-picker>
           <!-- 单选框 -->
           <span v-else-if="search.type == 'input-radio'">
-              <el-radio v-for="(radio, index) in search.options" :key="index" v-model="search.value" :label="radio.value">{{radio.name}}</el-radio>
-          </span>
+                <el-radio v-for="(radio, index) in search.options" :key="index" v-model="search.value" :label="radio.value">{{radio.name}}</el-radio>
+            </span>
         </el-form-item>
-        <el-form-item  >
-            <el-button type="primary"   @click="search(searchs)">
-                {{searchs.btn && searchs.btn.label || '查询'}}
-            </el-button>
-            <!-- <el-button size="small" plain @click="resetForm(searchs)" class="buttonStyle reset">重置</el-button> -->
+        <el-form-item>
+          <el-button type="primary" @click="search(searchs)">
+            {{searchs.btn && searchs.btn.label || '查询'}}
+          </el-button>
+          <!-- <el-button size="small" plain @click="resetForm(searchs)" class="buttonStyle reset">重置</el-button> -->
         </el-form-item>
         <!-- <p class='more' v-if='searchs.list.length>4' @click="changeMore">更多查询条件 <i :class="'iconfont '+ moreIcon.flag "></i></p> -->
       </el-form>
     </div>
     <!--  操作按钮-->
     <!-- <el-form  style='paddingTop:12px;' class="search-btn" v-if='searchs.list.length>=4'>
-      <el-form-item>
-        <el-button size="small" class="buttonStyle" @click="search(searchs)" >
-          {{searchs.btn && searchs.btn.label || '查询'}}
-        </el-button>
-        <el-button size="small" plain @click="resetForm(searchs)" class="buttonStyle reset">重置</el-button>
-      </el-form-item>
-    </el-form> -->
+        <el-form-item>
+          <el-button size="small" class="buttonStyle" @click="search(searchs)" >
+            {{searchs.btn && searchs.btn.label || '查询'}}
+          </el-button>
+          <el-button size="small" plain @click="resetForm(searchs)" class="buttonStyle reset">重置</el-button>
+        </el-form-item>
+      </el-form> -->
   </div>
 </template>
 
@@ -94,9 +94,9 @@
           flag: '50px',
         },
         searchFlag: 3,
-        posBottom:{
-          position:'absolute',
-          bottom:'-50px'
+        posBottom: {
+          position: 'absolute',
+          bottom: '-50px'
         }
       };
     },
@@ -104,7 +104,6 @@
       searchs: Object
     },
     computed: {
-      
     },
     mounted() {
       this.resetForm(this.searchs);
@@ -125,7 +124,12 @@
       resetForm(search) {
         //重置
         search.list.forEach((e, i) => {
-          e.value = "";
+          if (e.type === 'input-select') {
+            e.value == e.options[0].value
+          } else {
+            e.value = "";
+          }
+          // e.value = "";
           this.searchVal[e.name] = e.value;
         });
       },
@@ -227,7 +231,7 @@
   }
   .search-box {
     position: relative;
-    margin: 20px 0 -5px 0px; 
+    margin: 20px 0 -5px 0px;
   }
   .search-box /deep/ .el-form-item__label {
     font-size: 16px;
@@ -244,8 +248,7 @@
   .search-box /deep/ .el-input__inner,
   .search-box /deep/ .el-form-item__label,
   .search-box /deep/ .el-input__icon {
-    line-height: 30px;
-    // background: transparent;
+    line-height: 30px; // background: transparent;
   }
   .search-box /deep/ .el-input__inner {
     height: 30px;
@@ -258,14 +261,11 @@
       margin-top: -6px;
     }
     input {
-      background: transparent;
-      // color: #fff;
+      background: transparent; // color: #fff;
     }
   }
 </style>
 
 <style lang='less' scoped>
 
-  
-  
 </style>
