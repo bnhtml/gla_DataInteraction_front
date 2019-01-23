@@ -2,10 +2,7 @@
 <template>
     <div class="configManagement">
         <el-card shadow="always" class="configManagement-cont ">
-            <p class="titleLeftBorder">
-                配置日志
-                <!-- <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span> -->
-            </p>
+            <p class="titleLeftBorder">配置日志</p>
             <div>
                 <NomalTable :table-json="tableJson" :data="data" v-if='isShow'></NomalTable>
             </div>
@@ -66,21 +63,7 @@
     @import '@/assets/style/base/index.scss';
     .configManagement {
         .configManagement-header {
-            // h6 {
-            //     @include font($fz: 18px, $color:#333);
-            //     border-bottom: solid 1px #EBEEF5;
-            //     margin: 0 -20px 10px -20px;
-            //     padding: 0 0 5px 20px;
-            //     span {
-            //         position: absolute;
-            //         right: 40px;
-            //         @include font($fz: 16px, $color:#33ABFB);
-            //         cursor: pointer;
-            //         i {
-            //             font-size: 12px;
-            //         }
-            //     }
-            // }
+            
         }
     }
 </style>

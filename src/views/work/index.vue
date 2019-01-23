@@ -98,7 +98,7 @@
                 children: []
             },
             {
-                url: 'datainteration',
+                url: 'fileGuide',
                 name: '文件类',
                 icon: 'icon-shouye',
                 children: []
@@ -244,7 +244,7 @@
         data() {
             let routerNames = [
                 ['leaderCockpit'],
-                ['datainteration'],
+                ['datainteration','fileGuide','fileOperation'],
                 ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage','interfacePackage','interfaceUpdate'],
                 ['systemManagement','dataAreaManagement','dataSheetDetails','configManagement','stateManagement','unitDomainNameManagement','interfacePathManagement']
             ]

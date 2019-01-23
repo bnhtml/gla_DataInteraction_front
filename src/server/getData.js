@@ -49,9 +49,17 @@ export const sear_depcode = (params) => {
 export const getDone_interface = (params) => {
     return httpApi('/new_interface/getDone_interface', params, 'post')
 }
-/* 数据上架 已发布数据接口 查看数据上架已封装数据接口单条数据详情 */
+/* 数据上架 已发布数据接口 API基本信息 查看数据上架已封装数据接口单条数据详情 */
 export const query_resources = (params) => {
     return httpApi('/new_interface/query_resources', params, 'post')
+}
+/* 数据上架 已发布数据接口 API参数 */
+export const api_desc = (params) => {
+    return httpApi('/new_interface/api_desc', params, 'post')
+}
+/* 数据上架 已发布数据接口 API使用情况 */
+export const api_status = (params) => {
+    return httpApi('/new_interface/api_status', params, 'post')
 }
 /* 数据上架 未发布数据接口 查询未发布接口 */
 export const getUnpublished_interface = (params) => {
@@ -86,4 +94,21 @@ export const get_fieldMsg = (params) => {
 /* 数据上架 未发布数据接口 获取数据源 表信息 */
 export const get_tabMsg = (params) => {
     return httpApi('/new_interface/get_tabMsg', params, 'post')
+}
+/* 数据上架 查看接口说明文档（点击后直接打开文档） */
+export const get_interfaceFile = (params) => {
+    return httpApi('/new_interface/get_interfaceFile', params, 'post')
+}
+
+/* 系统管理  数据区管理 数据库类查询 */
+export const query_databaseClass = (params) => {
+    return httpApi(' /new_interface/query_databaseClass', params, 'post')
+}
+/* 系统管理  数据区管理 数据表查询 */
+export const query_table = (params) => {
+    return httpApi(' /new_interface/query_table', params, 'post')
+}
+/* 系统管理  数据区管理 查询文件 */
+export const query_file = (params) => {
+    return httpApi(' /new_interface/query_file', params, 'post')
 }

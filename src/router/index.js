@@ -6,7 +6,11 @@ import index from '../views/work/index.vue'; //
 
 
 import leaderCockpit from '../views/work/leaderCockpit/leaderCockpit.vue';
+/* 数据集成 */
 import datainteration from '../views/work/datainteration';
+import fileGuide from '../views/work/datainteration/fileGuide.vue';//文件指南
+import fileOperation from '../views/work/datainteration/fileOperation.vue';//文件集成操作
+
 /* 数据上架 */
 import dataUpperShelf from '../views/work/dataUpperShelf';
 import published  from '../views/work/dataUpperShelf/published.vue';// 已发布
@@ -65,6 +69,24 @@ export default new Router({
                             meta: {
                                 keepAlive: true,
                                 title: '数据集成'
+                            }
+                        },
+                        {
+                            path: 'fileGuide',
+                            name: 'fileGuide',
+                            component: fileGuide,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据集成 - 文件类操作指南'
+                            }
+                        },
+                        {
+                            path: 'fileOperation',
+                            name: 'fileOperation',
+                            component: fileOperation,
+                            meta: {
+                                keepAlive: true,
+                                title: '数据集成 - 文件类操作'
                             }
                         },
                         {
