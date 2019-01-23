@@ -62,7 +62,7 @@
                     </el-table-column>
                     <el-table-column label="修饰符" width="120px">
                         <template slot-scope="scope">
-                            <el-select v-model="modifier" placeholder="请选择" size="mini">
+                            <el-select v-model="scope.row.modifier" placeholder="请选择" size="mini">
                                 <el-option
                                     v-for="item in modifierData"
                                     :key="item.value"
@@ -74,12 +74,12 @@
                     </el-table-column>
                     <el-table-column label="值" width="120px">
                         <template slot-scope="scope">
-                            <el-input v-model="tValue" placeholder="请输入值" size="mini"></el-input>
+                            <el-input v-model="scope.row.value" placeholder="请输入值" size="mini"></el-input>
                         </template>
                     </el-table-column>
                     <el-table-column label="关系" width="120px">
                         <template slot-scope="scope">
-                            <el-select v-model="relation" placeholder="请选择" size="mini">
+                            <el-select v-model="scope.row.relation" placeholder="请选择" size="mini">
                                 <el-option label="or" value="or"></el-option>
                                 <el-option label="and" value="and"></el-option>
                             </el-select>
@@ -181,7 +181,7 @@ export default {
                 this.sourceData = res.data.map(o => {
                     let idKey = this.dataArea + '_' + this.dataSource + '_' + o.fieldName;
                     
-                    return {...o, idKey }
+                    return {...o, idKey, modifier: '', value: '', relation: '' }
                 });
                 this.tableShow = true;
                 this.sourceData.forEach(o => {
@@ -196,12 +196,10 @@ export default {
            
        },
        selectAll(selection){
-           console.log(this.sourceData, '====')
            this.sourceData.forEach(o => this.selectList(this.sourceData, o, !!selection.length));
        },
        // 选择表数据
        selectList(selection, row, isPush){
-           console.log(selection, '----')
         //    在数组中的位置，为-1不再里面
            let inThisIdx = this.interfaceData.map(o => o.idKey).indexOf(row.idKey);
            if(isPush === undefined){
@@ -225,7 +223,10 @@ export default {
        //生成sql语句
        createSql() {
            if(this.interfaceData.length === 0){
-               this.$msgbox('请选择要封装的字段');
+                this.$message({
+                message: '请选择要封装的字段',
+                type: 'warning'
+                });
                return;
            }
            this.$api.make_sql({fieldData: JSON.stringify(this.interfaceData)}).then(res => {
