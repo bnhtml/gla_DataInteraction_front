@@ -36,7 +36,9 @@
                     border
                     style="width: 100%"
                     v-if="tableShow"
-                    @select	='selectList'>
+                    ref="selectionTable"
+                    @select	='selectList'
+                    @select-all="selectAll">
                     <el-table-column type="selection"></el-table-column>
                     <el-table-column prop="fieldName" label="字段" show-overflow-tooltip></el-table-column>
                     <el-table-column prop="fieldDesc" label="字段描述" show-overflow-tooltip></el-table-column>
@@ -60,7 +62,7 @@
                     </el-table-column>
                     <el-table-column label="修饰符" width="120px">
                         <template slot-scope="scope">
-                            <el-select v-model="modifier" placeholder="请选择" size="mini">
+                            <el-select v-model="scope.row.modifier" placeholder="请选择" size="mini">
                                 <el-option
                                     v-for="item in modifierData"
                                     :key="item.value"
@@ -72,12 +74,12 @@
                     </el-table-column>
                     <el-table-column label="值" width="120px">
                         <template slot-scope="scope">
-                            <el-input v-model="tValue" placeholder="请输入值" size="mini"></el-input>
+                            <el-input v-model="scope.row.value" placeholder="请输入值" size="mini"></el-input>
                         </template>
                     </el-table-column>
                     <el-table-column label="关系" width="120px">
                         <template slot-scope="scope">
-                            <el-select v-model="relation" placeholder="请选择" size="mini">
+                            <el-select v-model="scope.row.relation" placeholder="请选择" size="mini">
                                 <el-option label="or" value="or"></el-option>
                                 <el-option label="and" value="and"></el-option>
                             </el-select>
@@ -105,10 +107,11 @@
        </div>
        <div class="flex-block">
            <el-input 
+            
                 type="textarea" 
                 resize='none'
                 :rows="4"
-                placeholder="请输入备注"
+                placeholder="请输入sql语句"
                 v-model="remarks"></el-input>
        </div>
    </div>
@@ -118,7 +121,7 @@
 export default {
    data() {
       return {
-        dataArea:'',
+        dataArea:'Mysql',
         areaData: [
             {value: 'Mysql', label: 'Mysql'},
             {value: 'Oracle', label: 'Oracle'},
@@ -156,6 +159,9 @@ export default {
       }
    },
    components: {},
+   mounted(){
+       this.selectDataArea(this.dataArea);
+   },
    methods: {
        //选择数据区
        selectDataArea(value) {
@@ -164,22 +170,51 @@ export default {
                this.tabMsg = res.data;
            })
        },
+       setSelected(o){
+        //    console.log(this.$refs, '====')
+           this.$nextTick(() => this.$refs.selectionTable.toggleRowSelection(o, true));
+       },
         //选择数据源
        selectDataSource(value){
-           this.tableShow = false;
-           this.$api.get_fieldMsg({departName:'贵州省大数据局',tabName: value}).then(res=>{
-               this.sourceData = res.data;
+            this.tableShow = false;
+            this.$api.get_fieldMsg({departName:'贵州省大数据局',tabName: value}).then(res=>{
+                this.sourceData = res.data.map(o => {
+                    let idKey = this.dataArea + '_' + this.dataSource + '_' + o.fieldName;
+                    
+                    return {...o, idKey, modifier: '', value: '', relation: '' }
+                });
                 this.tableShow = true;
+                this.sourceData.forEach(o => {
+                    let idKey = o.idKey;
+
+                    this.interfaceData.map(o => o.idKey).indexOf(idKey) > -1 && this.setSelected(o);
+                })
            })
        },
        //更新数据源
        updateSource(){
            
        },
+       selectAll(selection){
+           this.sourceData.forEach(o => this.selectList(this.sourceData, o, !!selection.length));
+       },
        // 选择表数据
-       selectList(selection, row){
-           console.log(selection,row)
-            this.interfaceData.push(row);
+       selectList(selection, row, isPush){
+        //    在数组中的位置，为-1不再里面
+           let inThisIdx = this.interfaceData.map(o => o.idKey).indexOf(row.idKey);
+           if(isPush === undefined){
+            if(inThisIdx > -1){
+                this.interfaceData.splice(inThisIdx, 1);
+            }else{
+                    this.interfaceData.push(row);
+            }
+           }else{
+               if(isPush && inThisIdx === -1){
+                   this.interfaceData.push(row);
+               }else if(!isPush && inThisIdx > -1){
+                   this.interfaceData.splice(inThisIdx, 1);
+               }
+           }
        },
        // 删除数据
        deleteRow(index, rows){
@@ -187,7 +222,17 @@ export default {
        },
        //生成sql语句
        createSql() {
-
+           if(this.interfaceData.length === 0){
+                this.$message({
+                message: '请选择要封装的字段',
+                type: 'warning'
+                });
+               return;
+           }
+           this.$api.make_sql({fieldData: JSON.stringify(this.interfaceData)}).then(res => {
+               console.log(res);
+               this.remarks = res.data.sqlVal;
+           })
        },
        //sql语句测试
        testSql() {
