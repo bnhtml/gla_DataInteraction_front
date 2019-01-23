@@ -16,12 +16,12 @@
        <div class="flex-block">
            <div class="label-name">选择数据源:</div>
            <div>
-               <el-select v-model="dataArea" placeholder="请选择" @change='selectDataArea'>
+               <el-select v-model="dataSource" placeholder="请选择" @change='selectDataSource'>
                     <el-option
-                        v-for="item in areaData"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
+                        v-for="item in tabMsg"
+                        :key="item.tabName"
+                        :label="item.tabName"
+                        :value="item.tabName">
                     </el-option>
                 </el-select>
            </div>
@@ -34,12 +34,13 @@
                     :data="sourceData"
                     height="250"
                     border
-                    style="width: 261px">
-                    <el-table-column prop="1" label="选择" width="50"></el-table-column>
-                    <el-table-column prop="1" label="字段" width="50"></el-table-column>
-                    <el-table-column prop="1" label="字段描述" width="80"></el-table-column>
-                    <el-table-column prop="1" label="字段类型" width="80"></el-table-column>
-
+                    style="width: 100%"
+                    v-if="tableShow"
+                    @select	='selectList'>
+                    <el-table-column type="selection"></el-table-column>
+                    <el-table-column prop="fieldName" label="字段" show-overflow-tooltip></el-table-column>
+                    <el-table-column prop="fieldDesc" label="字段描述" show-overflow-tooltip></el-table-column>
+                    <el-table-column prop="fieldTyep" label="字段类型" show-overflow-tooltip></el-table-column>
                </el-table>
            </div>
            <div class="tabel-right">
@@ -48,24 +49,58 @@
                     :data="interfaceData"
                     height="250"
                     border
-                    style="width: 600px">
+                    style="width: 100%">
+                    <el-table-column type="index"></el-table-column>
                     <el-table-column 
                         v-for="item in tHeadDatas" 
                         :key="item.props"
                         :prop='item.props'
                         :label='item.label'
-                        :width="item.width">
+                        show-overflow-tooltip>
+                    </el-table-column>
+                    <el-table-column label="修饰符" width="120px">
+                        <template slot-scope="scope">
+                            <el-select v-model="modifier" placeholder="请选择" size="mini">
+                                <el-option
+                                    v-for="item in modifierData"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="值" width="120px">
+                        <template slot-scope="scope">
+                            <el-input v-model="tValue" placeholder="请输入值" size="mini"></el-input>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="关系" width="120px">
+                        <template slot-scope="scope">
+                            <el-select v-model="relation" placeholder="请选择" size="mini">
+                                <el-option label="or" value="or"></el-option>
+                                <el-option label="and" value="and"></el-option>
+                            </el-select>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="操作">
+                        <template slot-scope="scope">
+                            <!-- <el-button
+                                @click.native.prevent="deleteRow(scope.$index, tableData4)"
+                                type="text"
+                                size="small">
+                                移除
+                            </el-button> -->
+                        </template>
                     </el-table-column>
                </el-table>
            </div>
        </div>
-       <div class="flex-block">
+       <div class="flex-block sql-btn">
            <div class="sqlHead">SQL语句</div>
-           <div class="createSql">
-               <el-button type="success" @click="createSql">生成sql语句</el-button>
-           </div>
-           <div class="testSql">
-               <el-button type="warning" @click="testSql">sql语句测试</el-button>
+           <div >
+               <el-button type="success" class="createSql" @click="createSql">生成sql语句</el-button>
+               <el-button type="warning" class="testSql" @click="testSql">sql语句测试</el-button>
            </div>
        </div>
        <div class="flex-block">
@@ -83,39 +118,72 @@
 export default {
    data() {
       return {
-          areaData: [
-            {value: '0', label: 'Mysql'},
-            {value: '1', label: 'Oracle'},
-            {value: '2', label: '易鲸捷'},
-        ],
-        sourceData: [],
-        interfaceData: [],
         dataArea:'',
-        tHeadDatas:[
-            {props:'a', label:'序号', width:''},
-            {props:'a1', label:'字段', width:''},
-            {props:'a2', label:'字段描述', width:''},
-            {props:'a3', label:'字段类型', width:''},
-            {props:'a4', label:'库名', width:''},
-            {props:'a5', label:'库名描述', width:''},
-            {props:'a6', label:'表名', width:''},
-            {props:'a7', label:'表描述', width:''},
-            {props:'a8', label:'值', width:''},
-            {props:'a9', label:'关系', width:''},
-            {props:'a0', label:'操作', width:''},
+        areaData: [
+            {value: 'Mysql', label: 'Mysql'},
+            {value: 'Oracle', label: 'Oracle'},
+            {value: '易鲸捷', label: '易鲸捷'},
         ],
+        dataSource:'',
+        tabMsg:[],
+        tableShow: true,
+        sourceData: [],
+        sourceDataFlag: true,
+        interfaceData: [],
+        tHeadDatas:[
+            {props:'fieldName', label:'字段'},
+            {props:'fieldDesc', label:'字段描述'},
+            {props:'fieldTyep', label:'字段类型'},
+            {props:'dabaName', label:'库名'},
+            {props:'dabaDesc', label:'库名描述'},
+            {props:'tabName', label:'表名'},
+            {props:'tabDesc', label:'表描述'},
+        ],
+        modifier:'',
+        modifierData:[
+            {label:'-',value:'-'},
+            {label:'=',value:'='},
+            {label:'!=',value:'!='},
+            {label:'>',value:'>'},
+            {label:'<',value:'<'},
+            {label:'>=',value:'>='},
+            {label:'<=',value:'<='},
+        ],
+        tValue:'',
+        relation:'',
         remarks:'',
 
       }
    },
    components: {},
    methods: {
+       //选择数据区
        selectDataArea(value) {
-
+           this.dataSource = '';
+           this.$api.get_tabMsg({departName:'贵州省大数据局', dataArea: value}).then(res=>{
+               this.tabMsg = res.data;
+           })
+       },
+        //选择数据源
+       selectDataSource(value){
+           this.tableShow = false;
+           this.$api.get_fieldMsg({departName:'贵州省大数据局',tabName: value}).then(res=>{
+               this.sourceData = res.data;
+                this.tableShow = true;
+           })
        },
        //更新数据源
        updateSource(){
-
+           
+       },
+       // 选择表数据
+       selectList(selection, row){
+           console.log(selection,row)
+            this.interfaceData.push(row);
+       },
+       // 删除数据
+       deleteRow(index, rows){
+           rows.splice(index, 1);
        },
        //生成sql语句
        createSql() {
@@ -125,8 +193,11 @@ export default {
        testSql() {
 
        },
-
-   },
+       //
+       handleClick(value){
+           console.log(value)
+       },
+   }
 }
 </script>
 
@@ -134,7 +205,7 @@ export default {
 .stepTwo{
     .flex-block{
         display: flex;
-        padding: 10px 0 10px 153px;
+        padding: 10px 0 10px 20px;
         .label-name{
             font-family: PingFangSC-Regular;
             font-size: 14px;
@@ -149,6 +220,14 @@ export default {
         }
         .tabel-left{
             margin-right: 70px;
+            width: 30%;
+        }
+        .tabel-right{
+            margin-right: 15px;
+            width: 62%;
+            .el-select,.el-input{
+                width: 90px;
+            }
         }
         .tabel-left,.tabel-right{
             p{
@@ -158,18 +237,20 @@ export default {
                 margin-bottom: 10px;
             }
         }
+        .el-textarea{
+            width: 100%;
+            margin-right: 15px;
+        }
+    }
+    .sql-btn{
+        justify-content: space-between;
         .sqlHead{
             font-family: PingFangSC-Medium;
             font-size: 16px;
             color: #333333;
-            margin-bottom: 10px;
-            margin-right: 640px;
         }
-        .createSql{
-            margin-right: 10px;
-        }
-        .el-textarea{
-            width: 930px;
+        .createSql,.testSql{
+            margin-right: 15px;
         }
     }
 }

@@ -27,6 +27,10 @@ export const get_seconddir = (params) => {
 export const get_thirddir = (params) => {
     return httpApi('/new_interface/get_thirddir', params, 'post')
 }
+// 提交（封装接口）
+export const submit_interface = (params) => {
+    return httpApi('/new_interface/make_interface', params, 'post')
+}
 
 // 获取部门区域信息
 export const getdep_region = (params) => {
