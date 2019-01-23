@@ -211,7 +211,7 @@ export default {
             this.$api.submit_interface(this.formModels).then(res=>{
                 console.log(res,'ddd');
                 if(res.status=='200'){
-                    _this.$router.push({path:'api/info',query:{a:'s'}})
+                    _this.$router.push({path:'api/info',query:{fromName: 'unpublished'}})
                 }else{
 
                 }
