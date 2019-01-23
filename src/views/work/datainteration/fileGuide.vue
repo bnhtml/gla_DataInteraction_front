@@ -7,7 +7,7 @@
                 <dl v-for='(v,i) in fileGuide' :key='i'>
                     <dt>{{i+1}}. {{v.title}}</dt>
                     <dd v-if='v.cont'>{{v.cont}}</dd>
-                    <dd><img :src="val" alt="" v-for='(val,ind) in v.img' :key='ind'> </dd>
+                    <dd v-for='(val,ind) in v.img' :key='ind'><img :src="val" alt="" > </dd>
                 </dl>
             </div>
         </el-card>
@@ -52,21 +52,27 @@
                     @include font($fz: 16px, $color:#33ABFB);
                     cursor: pointer;
                     i {
-                        @include font($fz: 14px, $color:#33ABFB);
+                        @include font($fz: 12px, $color:#33ABFB);
                     }
                 }
             }
             div {
                 border: solid 1px #ccc;
                 margin-top: 25px;
-                dl {
                     padding: 20px;
+
+                dl {
                     dt {
                         @include font($fz: 16px, $color:#333);
                     }
                     dd{
-                        padding: 10px 0 8px 0;
+                        padding: 8px 0;
                         @include font($fz: 12px, $color:#666);
+                        img{
+                            width: 100%;
+                            height: auto;
+                            max-width: 1200px;
+                        }
 
                     }
                 }
