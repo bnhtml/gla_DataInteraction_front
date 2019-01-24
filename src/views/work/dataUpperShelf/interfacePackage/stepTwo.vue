@@ -20,7 +20,7 @@
                     <el-option
                         v-for="item in tabMsg"
                         :key="item.tabName"
-                        :label="item.tabName"
+                        :label="item.tabName+'  '+item.tabDesc"
                         :value="item.tabName">
                     </el-option>
                 </el-select>
@@ -118,6 +118,7 @@
 
 <script>
 export default {
+	props: ['urlData'],
   data() {
     return {
       dataArea: "Mysql",
@@ -158,6 +159,10 @@ export default {
   components: {},
   mounted() {
 		this.selectDataArea(this.dataArea);
+		if(this.urlData!=''){
+			this.remarks = this.urlData;
+			this.changeSql(this.remarks);
+		}
   },
   methods: {
     //选择数据区
