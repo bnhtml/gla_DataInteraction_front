@@ -77,7 +77,7 @@ export default {
           value:'',
         }, {
           label: "单位域名",
-          props: "name",
+          props: "departDomain",
           value:'',
         },
         {
@@ -112,6 +112,13 @@ export default {
           this.infolist.forEach((v,i) => {
             if(res.data[0][v.props]){
               v.value = res.data[0][v.props]
+              if(v.props == 'dataInterfaceType'){
+                let valueArr = ['db','interface','file'];
+                let labelArr=['数据库类','接口类','文件']
+                if(valueArr.indexOf(res.data[0][v.props])!=-1){
+                  v.value = labelArr[valueArr.indexOf(res.data[0][v.props])]
+                }
+              }
             }else{
               if(v.label=='设置接口路径'){
                 v.value = res.data[0].firstAddress+res.data[0].secondAddress+res.data[0].thirdAddress

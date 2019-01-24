@@ -62,7 +62,8 @@ let published = {
                             user: _this.$route.query.user,
                             deptType: _this.$route.query.deptType,
                             resourceId: row.resourceId,
-                            depart:_this.$route.query.depart
+                            depart:_this.$route.query.depart,
+                            dataInterfaceType:row.dataInterfaceType
                         }
                     })
                 }
