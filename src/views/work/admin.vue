@@ -35,6 +35,7 @@ export default {
     return {
       isShow: false,
       title,
+      loadedLength: 0,
       node: [],
       firstleval: []
     };
@@ -46,6 +47,7 @@ export default {
     deptType(n, o){
       // n新的 0 国家， 1省直， 2市州， 3全省
       this.isShow = false;
+      this.loadedLength = 0;
       this.title = ["国家部委组织机构", "贵州省组织机构", "贵州省组织机构"][n];
       this.setFirst(n);
     },
@@ -73,9 +75,14 @@ export default {
     setNode(firstleval, arr, noChild, idx){
       firstleval.forEach((o, i) => {
         arr.push({name: o, children: []});
-        if(noChild && idx === this.firstleval.length - 1 && (i === firstleval.length - 1 || firstleval.length === 0)){
+        if(noChild && (i === firstleval.length - 1 || firstleval.length === 0)){
+          // this.isShow = true;
+          console.log(this.loadedLength, '====')
+          this.loadedLength ++;
+        }
+        console.log(this.loadedLength === this.firstleval.length)
+        if(this.loadedLength === this.firstleval.length){
           this.isShow = true;
-          console.log(this.node, '===')
         }
         if(!noChild){
           this.$api.get_depart({region_name: o}).then(res => {

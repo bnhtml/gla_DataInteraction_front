@@ -206,7 +206,6 @@ export default {
         },
         //提交
         onSubmit(){
-            console.log(this.formModels);
             let _this = this;
             this.$api.submit_interface(this.formModels).then(res=>{
                 console.log(res,'ddd');

@@ -4,7 +4,7 @@
     <!-- <c-admin :deptType="deptType"> -->
     <el-card shadow="always" class="unpublished-header">
       <p class="titleLeftBorder">筛选查询</p>
-      <TableSearch :searchs='searchs' v-if='isShow'></TableSearch>
+      <TableSearch :searchs='searchs'></TableSearch>
     </el-card>
     <el-card shadow="always" class="unpublished-cont mt20">
       <p class="titleLeftBorder">
@@ -12,7 +12,7 @@
         <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span>
       </p>
       <div>
-        <NomalTable :table-json="tableJson" :data="data" v-if='isShow'></NomalTable>
+        <NomalTable :table-json="tableJson" :url="url" axiosType="post"></NomalTable>
       </div>
     </el-card>
     <!-- </c-admin> -->
@@ -26,15 +26,13 @@
   import cAdmin from "../admin.vue";
   import {
     unpublished
-  } from './JSON/table.js'
+  } from './JSON/table.js';
+  import { SERVER_BASE_URL } from '@/http/conf.js';
   export default {
     data() {
       return {
-        searchs: {}, // 搜索类型数据
-        tableJson: {}, // 表头标题
-        data: [], //表格数据
-        tableQuery: unpublished,
-        isShow: false,
+        url: SERVER_BASE_URL + '/new_interface/getUnpublished_interface',
+        ...unpublished
       };
     },
     components: {
@@ -130,16 +128,7 @@
           });
       },
       init() {
-                this.isShow = false;
-                let tableJson = this.tableQuery.tableJson;
-                let searchs = this.tableQuery.searchs;
-                let data = this.tableQuery.data;
-                this.searchs = searchs;
-                this.tableJson = tableJson;
-                this.data = data;
-                this.$nextTick(() => {
-                    this.isShow = true;
-                })
+                
             },
     },
     beforeRouteUpdate(to, from, next) {
