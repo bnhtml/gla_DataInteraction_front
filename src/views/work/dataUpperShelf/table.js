@@ -4,7 +4,7 @@ let published = {
             type: "text",
             align: "",
             label: "数据接口名称",
-            prop: "interfaceName",
+            prop: "dataInterfaceName",
             width: "",
         },
         {
@@ -25,14 +25,14 @@ let published = {
             type: "text",
             align: "",
             label: "资源描述",
-            prop: "resourceDescribe",
+            prop: "dataInterfaceDesc",
             width: "",
         },
         {
             type: "text",
             align: "",
             label: "资源接口地址",
-            prop: "interfaceAddress",
+            prop: "urlSuccess",
             width: ""
         },
         {
@@ -61,6 +61,8 @@ let published = {
                             fromName: _this.$route.name,
                             user: _this.$route.query.user,
                             deptType: _this.$route.query.deptType,
+                            resourceId: row.resourceId,
+                            depart:_this.$route.query.depart
                         }
                     })
                 }
@@ -73,20 +75,20 @@ let published = {
             "type": "input-select", //输入文本
             label: "",
             "name": "conditionPa",
-            "value": "数据接口名称",
+            "value": "dataInterfaceName",
             "placeholder": "请选择",
             options: [{
-                value: '数据接口名称',
-                label: '数据接口名称'
+                value: 'dataInterfaceName',
+                name: '数据接口名称'
             }, {
-                value: '数据接口地址',
-                label: '数据接口地址'
+                value: 'urlSuccess',
+                name: '数据接口地址'
             }, {
-                value: '资源名称',
-                label: '资源名称'
+                value: 'resourceName',
+                name: '资源名称'
             }, {
-                value: '资源ID',
-                label: '资源ID'
+                value: 'resourceId',
+                name: '资源ID'
             },]
         }, {
             type: 'input-text',
@@ -97,200 +99,200 @@ let published = {
         }]
     },
     data: [{
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         resourceName: '资源数据名称',
-        resourceDescribe: '资源数据名称',
-        interfaceAddress: '资源数据名称',
+        dataInterfaceDesc: '资源数据名称',
+        urlSuccess: '资源数据名称',
         callTimes: '2',
     },]
 }
@@ -324,7 +326,7 @@ let unpublished = {
             type: "text",
             align: "",
             label: "资源描述",
-            prop: "resourceDescribe",
+            prop: "dataInterfaceDesc",
             width: "",
             'show-overflow-tooltip': true
         },
@@ -487,22 +489,109 @@ let unpublished = {
         ]
     },
     data: [{
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         applyStatus: '0',
-        resourceDescribe: '描述描述',
+        dataInterfaceDesc: '描述描述',
         applyNum: '中软申请流程的单据号',
         applyDay: '2019-01-10 13:56:23',
     }, {
-        interfaceName: '数据接口名称',
+        dataInterfaceName: '数据接口名称',
         resourceId: 'WERMKL345III0',
         applyStatus: '1',
-        resourceDescribe: '描述描述',
+        dataInterfaceDesc: '描述描述',
         applyNum: '中软申请流程的单据号',
         applyDay: '2019-01-10 13:56:23',
     },]
 }
+let apiParams = {
+    tableJson: {
+        column: [{
+            type: "text",
+            align: "",
+            label: "字段名称",
+            prop: "fieldName",
+            width: "",
+        },
+        {
+            type: "text",
+            align: "",
+            label: "字段类型",
+            prop: "fieldType",
+            width: "",
+        },
+        {
+            type: "text",
+            align: "",
+            label: "字段描述",
+            prop: "fieldDesc",
+            width: "",
+        }]
+    },
+
+}
+let apiUsage ={
+    tableJson:{
+        column: [{
+            type: "text",
+            align: "",
+            label: "资源申请单号",
+            prop: "interfaceName",
+            width: "",
+          },
+          {
+            type: "text",
+            align: "",
+            label: "申请部门",
+            prop: "resourceId",
+            width: "",
+          },
+          {
+            type: "text",
+            align: "",
+            label: "服务接口使用期限(天)",
+            prop: "resourceName",
+            width: "",
+          },
+          {
+            type: "text",
+            align: "",
+            label: "使用时间范围",
+            prop: "resourceDescribe",
+            width: "",
+          },
+          {
+            type: "text",
+            align: "",
+            label: "状态",
+            prop: "interfaceAddress",
+            width: ""
+          },
+          {
+            type: "handle",
+            align: "center",
+            label: "APIkey",
+            width: "80",
+            list: [{
+              label: "查看",
+              onClick(_this, self, row) {
+                console.log('查看详情')
+        
+                self.nomal = !self.nomal;
+                _this.$confirm('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', "APIkey", {
+                  confirmButtonText: '确定',
+                  showCancelButton: false,
+                  showConfirmButton: true,
+                  showClose: false,
+                })
+              }
+            }]
+          }]
+    }
+}
 export {
     published,
     unpublished,
+    apiParams,
+    apiUsage,
 }
