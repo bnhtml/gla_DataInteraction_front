@@ -62,7 +62,7 @@
         <h5>1.工具下载安装</h5>
         <br>
         <p>1.1 首先下载数据集成工具mt。解压压缩包migrationtool-1.0.6,双击migrationtool-1.0.6文件夹，进入到bin目录，双击starup.bat将迁移工具打开运行。</p>
-        <p>1.2 配置服务器host文件，host文件路径：C:\Windows\System32\drivers\etc\hosts,host文件配置：<a href="#"><span class="iconfont icon-bianjiqi_chaolian"></span>hosts文件配置.txt</a></p>
+        <p>1.2 配置服务器host文件，host文件路径：C:\Windows\System32\drivers\etc\hosts,host文件配置：<a target="_blank" href="/static/hosts文件.txt"><span class="iconfont icon-bianjiqi_chaolian"></span>hosts文件配置.txt</a></p>
         <br>
         <img src="../../../assets/images/step1-1.jpg" alt="">
         <br><br>

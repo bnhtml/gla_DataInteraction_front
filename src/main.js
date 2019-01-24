@@ -23,6 +23,7 @@ import * as list from '@/server/getData.js';
 import axios from "axios";
 import VueAxios from 'vue-axios';
 import { debounce, getrandom, numberFormat } from './utils'
+import { SERVER_BASE_URL } from '@/http/conf';
 window.eventBus = new Vue();
 window.onresize = debounce(function () {
   eventBus.$emit('RESIZE');
@@ -43,7 +44,7 @@ Vue.prototype.$appBase = appBase;
 Vue.prototype.$appClient = appClient;
 
 Vue.prototype.$getrandom = getrandom;
-
+Vue.prototype.$SERVER_BASE_URL = SERVER_BASE_URL;
 // 过滤器
 Vue.filter('number_format', numberFormat)
 new Vue({

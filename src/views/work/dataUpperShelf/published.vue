@@ -12,7 +12,7 @@
                     <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span>
                 </p>
                 <div>
-                    <NomalTable :table-json="tableJson" :data="data" v-if='isShow'></NomalTable>
+                    <NomalTable :table-json="tableJson" :url="url" v-if='isShow' :axiosType="'post'" :query="query"></NomalTable>
                 </div>
             </el-card>
         </c-admin>
@@ -23,7 +23,9 @@
     import NomalTable from '@/components/table/NomalTable.vue';
     import TableSearch from '@/components/table/TableSearch.vue';
     import cAdmin from '../admin.vue';
-    import {published} from  './JSON/table.js'
+    import {
+        published
+    } from './table.js';
     export default {
         data() {
             return {
@@ -31,8 +33,10 @@
                 searchs: {}, // 搜索类型数据
                 tableJson: {}, // 表头标题
                 data: [], //表格数据
-                tableQuery:published,
-                isShow:false,
+                url: '',
+                tableQuery: published,
+                isShow: false,
+                query: {}
             }
         },
         components: {
@@ -49,17 +53,26 @@
             next();
         },
         watch: {
-            deptType: function(e,b,c) {
+            deptType: function(e, b, c) {
                 this.init()
             }
         },
         mounted() {
-            this.init();
-            this.getDoneInterface();
+            if (this.$route.query.user == 0) {
+                this.query.depart = '国家工信部'
+            } else {
+                this.query.depart = '贵州省工商局'
+            }
+            this.handelClick({
+                depaprt : this.query.depart
+            })
         },
         methods: {
-            handelClick(name) {
-                console.log(name);
+            handelClick(e) {
+                if (e.depaprt) {
+                    this.query.depart = e.depaprt
+                    this.init();
+                }
             },
             init() {
                 this.isShow = false;
@@ -68,22 +81,12 @@
                 let data = this.tableQuery.data;
                 this.searchs = searchs;
                 this.tableJson = tableJson;
+                this.url = `${this.$SERVER_BASE_URL}/new_interface/getDone_interface`;
                 this.data = data;
                 this.$nextTick(() => {
                     this.isShow = true;
                 })
             },
-            /* 获得表格数据以及查询 */
-            getDoneInterface() {
-                this.$api.getDone_interface({
-                    region: '', //区域
-                    depaprt: '', //部门
-                    // conditionPa:'',//查询方式（例按数据接口名称查询）
-                    // conditionSo:'',//查询具体
-                }).then(res => {
-                    console.log(res)
-                })
-            }
         },
         beforeRouteUpdate(to, from, next) {
             this.deptType = to.query.deptType - 0;
