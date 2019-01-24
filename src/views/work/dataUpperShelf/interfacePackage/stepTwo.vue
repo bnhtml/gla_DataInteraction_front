@@ -190,7 +190,7 @@ export default {
     selectDataSource(value) {
       this.tableShow = false;
       this.$api
-        .get_fieldMsg({ departName: "贵州省大数据局", tabName: value })
+        .get_fieldMsg({ departName: this.$route.query.departName, tabName: value })
         .then(res => {
           this.sourceData = res.data.map(o => {
             let idKey =
