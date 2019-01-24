@@ -180,7 +180,7 @@ export default {
 <style lang='scss' scoped>
 .datainteration {
         .datainteration-header {
-            margin: 20px 20px 0 20px;
+            margin: 0px 20px 0 0px;
             .datainteration-tabs,.datainteration-table{
               margin: 20px 20px 0 0;
             }

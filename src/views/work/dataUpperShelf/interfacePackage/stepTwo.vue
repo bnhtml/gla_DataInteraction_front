@@ -110,6 +110,7 @@
                 resize='none'
                 :rows="4"
                 placeholder="请输入sql语句"
+								@change="changeSql"
                 v-model="remarks"></el-input>
        </div>
    </div>
@@ -123,7 +124,6 @@ export default {
       areaData: [
         { value: "Mysql", label: "Mysql" },
         { value: "Oracle", label: "Oracle" },
-        { value: "易鲸捷", label: "易鲸捷" }
       ],
       dataSource: "",
       tabMsg: [],
@@ -202,7 +202,9 @@ export default {
 			this.setSelected(row, false);
 		},
     //更新数据源
-    updateSource() {},
+    updateSource() {
+			this.selectDataSource(this.dataSource);
+		},
     selectAll(selection) {
       this.sourceData.forEach(o =>
         this.selectList(this.sourceData, o, !!selection.length)
@@ -236,19 +238,16 @@ export default {
         return;
       }
       this.$api
-        .make_sql({ fieldData: JSON.stringify(this.interfaceData) })
-        .then(res => {
-          console.log(res);
-          this.remarks = res.data.sqlVal;
-					this.$emit('rebackUrlAddress',this.remarks);
+        .make_sql({ fieldData: JSON.stringify(this.interfaceData) }).then(res => {
+					this.remarks = res.data.sqlVal;
+					let param = {urlAddress:this.remarks,dataArea:this.dataArea}
+					this.$emit('rebackUrlAddress',param);
         });
-    },
-    //sql语句测试
-    testSql() {},
-    //
-    handleClick(value) {
-      console.log(value);
-    }
+		},
+		changeSql(value){
+			let param = {urlAddress:value, dataArea:this.dataArea}
+			this.$emit('rebackUrlAddress',param);
+		}
   }
 };
 </script>
@@ -303,8 +302,7 @@ export default {
       font-size: 16px;
       color: #333333;
     }
-    .createSql,
-    .testSql {
+    .createSql{
       margin-right: 15px;
     }
   }
