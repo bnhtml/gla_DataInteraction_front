@@ -139,6 +139,7 @@
     methods: {
       search(query) {
         Object.assign(this.query, query);
+        console.log(this.query, '====')
         this.getData();
       },
       init() {

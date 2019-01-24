@@ -168,7 +168,7 @@
                 url: {
                     name: 'unpublished',
                     query: {
-                        user: 'abc'
+                        user: '贵州省大数据局'
                     }
                 },
                 name: '未发布接口',
@@ -181,7 +181,7 @@
                 url: {
                     name:'dataAreaManagement',
                     query:{
-                        user: 'abc',
+                        user: '贵州省大数据局',
                         deptType:3
                     }
                 },
