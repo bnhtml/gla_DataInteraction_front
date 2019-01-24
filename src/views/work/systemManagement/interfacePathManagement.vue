@@ -10,7 +10,8 @@
                         <ul class='ul-header'>
                             <li><span>序号</span><span>一级目录</span><span>映射路径</span></li>
                         </ul>
-                        <ul class="ul-cont" v-if='deptData.one.length'>
+                        {{deptData}}
+                        <ul class="ul-cont" v-if='deptData.one&&deptData.one.length'>
                             <li v-for='(v,i) in deptData.one' :key='i' @click='getSeconddir(v)'><span>{{i+1}}</span><span>{{v.first_dir}}</span><span>{{v.firstdir_mapping}}</span></li>
                         </ul>
                         <div class="noData" v-else>暂无数据</div>
@@ -20,7 +21,7 @@
                         <ul class='ul-header'>
                             <li><span>序号</span><span>二级目录</span><span>映射路径</span></li>
                         </ul>
-                        <ul class="ul-cont" v-if='deptData.two.length'>
+                        <ul class="ul-cont" v-if='deptData.two&&deptData.two.length'>
                             <li v-for='(v,i) in deptData.two' :key='i' @click='getThirddir(v)'><span>{{i+1}}</span><span>{{v.second_dir}}</span><span>{{v.sedir_map}}</span></li>
                         </ul>
                         <div class="noData" v-else>暂无数据</div>
@@ -30,7 +31,7 @@
                         <ul class='ul-header '>
                             <li><span>序号</span><span>三级目录</span><span>映射路径</span></li>
                         </ul>
-                        <ul class="ul-cont ul-three" v-if='deptData.three.length'>
+                        <ul class="ul-cont ul-three" v-if='deptData.three&&deptData.three.length'>
                             <li v-for='(v,i) in deptData.three' :key='i'><span>{{i+1}}</span><span>{{v.third_dir}}</span><span>{{v.thdir_map}}</span></li>
                         </ul>
                         <div class="noData" v-else>暂无数据</div>
@@ -81,11 +82,11 @@
         },
         methods: {
             deptChecked(e) {
-                this.deptData = e;
-                this.getFirstdir(e);
                 this.deptData.two = [];
                 this.deptData.three = [];
-                this.deptData.second_dir = [];
+                this.deptData.second_dir = '';
+                this.getFirstdir(e);
+
             },
             /* 一级目录 */
             getFirstdir(params) {

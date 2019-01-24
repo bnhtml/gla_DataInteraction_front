@@ -16,19 +16,19 @@
                 </div> -->
                 <!--  -->
                 <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" :background-color='"#316284"' :text-color="'#fff'" v-for="(menus, index) in leftMenu" :key="index">
-                    <el-submenu :index="index" v-if="menus.children && menus.children.length">
+                    <el-submenu :index="JSON.stringify(index)" v-if="menus.children && menus.children.length">
                         <template slot="title"><span slot="title">{{menus.name}}</span></template>
                         <el-menu-item-group v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length==0">
-                            <el-menu-item :index="idx"><router-link :to="menu.url">{{menu.name}}</router-link></el-menu-item>
+                            <el-menu-item :index="JSON.stringify(idx)"><router-link :to="menu.url">{{menu.name}}</router-link></el-menu-item>
                         </el-menu-item-group>
-                        <el-submenu index="1-4" v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length">
+                        <el-submenu :index="JSON.stringify(index)" v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length">
                             <span slot="title">{{menu.name}}</span>
-                            <el-menu-item index="1-4-1" v-for='(v,i) in menu.children' :key='i'><router-link :to="v.url">{{v.name}}</router-link></el-menu-item>
+                            <el-menu-item :index="JSON.stringify(idx)" v-for='(v,i) in menu.children' :key='i'><router-link :to="v.url">{{v.name}}</router-link></el-menu-item>
                         </el-submenu>
                         
                     </el-submenu>
                 
-                    <el-menu-item :index="index" v-else>
+                    <el-menu-item :index="JSON.stringify(index)" v-else>
                         <span slot="title"><router-link :to="menus.url">{{menus.name}}</router-link></span>
                     </el-menu-item>
                 </el-menu>

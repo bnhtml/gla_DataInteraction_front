@@ -27,7 +27,7 @@
            </div>
            <div><el-button type="primary" @click="updateSource">更新数据源</el-button></div>
        </div>
-       <div class="flex-block">
+       <div class="flex-block tabel-border">
            <div class="tabel-left">
                <p>源数据资字段</p>
                <el-table
@@ -45,6 +45,7 @@
                     <el-table-column prop="fieldTyep" label="字段类型" show-overflow-tooltip></el-table-column>
                </el-table>
            </div>
+					 <div class="jiantou"><span></span><span></span></div>
            <div class="tabel-right">
                <p>接口封装字段</p>
                <el-table
@@ -276,7 +277,7 @@ export default {
       margin-right: 10px;
     }
     .tabel-left {
-      margin-right: 70px;
+      margin-right: 20px;
       width: 30%;
     }
     .tabel-right {
@@ -312,5 +313,29 @@ export default {
       margin-right: 15px;
     }
   }
+	.tabel-border{
+		align-items: center;
+		.jiantou{
+			width: 30px;
+			height: 30px;
+			border: 1px solid #CCCCCC;;
+			margin-right: 20px;
+			position: relative;
+			span{
+				width: 15px;
+				height: 15px;
+				display: inline-block;
+				border-top: 1px solid #CCCCCC;;
+				border-right: 1px solid #CCCCCC;;
+				transform: rotate(45deg);
+				position: absolute;
+				top:6px;
+				left:0;
+				&:first-child{
+					left: 6px;
+				}
+			}
+		}
+	}
 }
 </style>
