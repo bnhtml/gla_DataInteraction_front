@@ -193,14 +193,14 @@
               }
             },
             textStyle: {
-              color: `rgba(${defaultColor}, .75)`,
+              color: `rgba(255, 255, 255, .75)`,
               fontSize: 11
             },
             formatter(res){
               let html = '';
               let label = '';
               let company = [];
-              let color = '#83bff6';
+              let color = '#fff';
               if(_this.bar.company&&_this.bar.company.length){
                 company = _this.bar.company;
               }

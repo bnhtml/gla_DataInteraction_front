@@ -68,7 +68,7 @@ export default {
 
          {
           label: "接口请求方式",
-          props: "requestInterType",
+          props: "requestInterMode",
           value:'',
         },
         {
@@ -113,7 +113,11 @@ export default {
             if(res.data[0][v.props]){
               v.value = res.data[0][v.props]
             }else{
-              v.value ='未找到相对应的字段匹配！！！'
+              if(v.label=='设置接口路径'){
+                v.value = res.data[0].firstAddress+res.data[0].secondAddress+res.data[0].thirdAddress
+              }else{
+                v.value ='未找到相对应的字段匹配！！！'
+              }
             }
           });
         }

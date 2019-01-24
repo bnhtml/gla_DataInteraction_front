@@ -69,7 +69,7 @@
                         padding: 8px 0;
                         @include font($fz: 12px, $color:#666);
                         img{
-                            width: 100%;
+                            width: 720px;
                             height: auto;
                             max-width: 1200px;
                         }
