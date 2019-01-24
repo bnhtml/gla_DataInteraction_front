@@ -102,7 +102,6 @@
            <div class="sqlHead">SQL语句</div>
            <div >
                <el-button type="success" class="createSql" @click="createSql">生成sql语句</el-button>
-               <el-button type="warning" class="testSql" @click="testSql">sql语句测试</el-button>
            </div>
        </div>
        <div class="flex-block">
@@ -241,6 +240,7 @@ export default {
         .then(res => {
           console.log(res);
           this.remarks = res.data.sqlVal;
+					this.$emit('rebackUrlAddress',this.remarks);
         });
     },
     //sql语句测试
