@@ -10,7 +10,6 @@
                         <ul class='ul-header'>
                             <li><span>序号</span><span>一级目录</span><span>映射路径</span></li>
                         </ul>
-                        {{deptData}}
                         <ul class="ul-cont" v-if='deptData.one&&deptData.one.length'>
                             <li v-for='(v,i) in deptData.one' :key='i' @click='getSeconddir(v)'><span>{{i+1}}</span><span>{{v.first_dir}}</span><span>{{v.firstdir_mapping}}</span></li>
                         </ul>
