@@ -73,8 +73,10 @@
         mounted() {
             if (this.$route.query.user == 'admin') {
                 this.getFirstdir({
+                    
                     depart: '贵州省大数据局'
                 });
+
             }
         },
         methods: {
