@@ -4,7 +4,7 @@ let published = {
             type: "text",
             align: "",
             label: "数据接口名称",
-            prop: "dataInterfaceName",
+            prop: "resourceName",
             width: "",
         },
         {
@@ -39,7 +39,7 @@ let published = {
             type: "text",
             align: "center",
             label: "被调用次数",
-            prop: "callTimes",
+            prop: "useResourceTimes",
             width: "",
 
         },

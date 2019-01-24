@@ -59,16 +59,16 @@
                 var ringChart = echarts.init(this.$refs.ring);
                 let _this = this;
                 let option = {
-                    tooltip: {
-                        show: true,
-                        textStyle: {
-                            color: 'rgba(255, 255, 255, .75)',
-                            fontSize: 14,
-                        },
-                        formatter(res) {
-                            return res.name + ' ' + (_this.allCount ? res.value : 0) + '% ' + res.data.num;
-                        }
-                    },
+                    // tooltip: {
+                    //     show: true,
+                    //     textStyle: {
+                    //         color: 'rgba(255, 255, 255, .75)',
+                    //         fontSize: 14,
+                    //     },
+                    //     formatter(res) {
+                    //         return res.name + ' ' + (_this.allCount ? res.value : 0) + '% ' + res.data.num;
+                    //     }
+                    // },
                     series: [{
                         type: 'pie',
                         clockWise: false,
@@ -77,7 +77,7 @@
                         radius: ['50%', '70%'],
                         // roseType: 'radius',
                         // hoverAnimation: true,,
-                        cursor: this.cursor, // 
+                        // cursor: this.cursor, // 
                         color: this.color,
                         label: {
                             normal: {
