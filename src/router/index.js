@@ -7,6 +7,7 @@ import index from '../views/work/index.vue'; //
 
 import leaderCockpit from '../views/work/leaderCockpit/leaderCockpit.vue';
 import adminIndex from '../views/work/leaderCockpit/adminIndex.vue';
+import  businessBureau from '../views/work/leaderCockpit/businessBureau.vue'
 /* 数据集成 */
 import datainteration from '../views/work/datainteration';
 import fileGuide from '../views/work/datainteration/fileGuide.vue';//文件指南
@@ -70,6 +71,14 @@ export default new Router({
                             meta: {
                                 keepAlive: true,
                                 title: '领导驾驶舱'
+                            }
+                        },{
+                            path: 'businessBureau',
+                            name: 'businessBureau',
+                            component: businessBureau,
+                            meta: {
+                                keepAlive: true,
+                                title: '领导驾驶舱 - 业务局委'
                             }
                         },
                         {
