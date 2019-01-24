@@ -56,6 +56,7 @@
                 }],
                 activeTab: 'dataArea',
                 activeTabTitle: '数据库',
+                query:{},
                 deptData: {
                     one: [],
                     two: [],
@@ -81,6 +82,7 @@
         },
         methods: {
             deptChecked(e) {
+                this.query = e;
                 this.deptData.two = [];
                 this.deptData.three = [];
                 this.deptData.second_dir = '';
@@ -96,7 +98,7 @@
             /* 二级目录 */
             getSeconddir(e) {
                 let params = {
-                    depart: this.deptData.depart,
+                    ...this.query,
                     first_dir: e.first_dir
                 }
                 this.$api.get_seconddir(params).then(res => {
@@ -108,7 +110,7 @@
             /* 三级目录 */
             getThirddir(e) {
                 let params = {
-                    depart: this.deptData.depart,
+                    ...this.query,
                     second_dir: e.second_dir
                 }
                 this.$api.get_thirddir(params).then(res => {
