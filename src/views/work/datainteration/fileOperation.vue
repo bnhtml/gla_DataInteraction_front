@@ -3,6 +3,7 @@
     <div class="fileOperation">
         <el-card shadow="always" class="fileOperation-cont ">
             <p class="titleLeftBorder">文件集成<span class="right" @click='goOperation'>操作指南 <i class="icon iconfont icon-shuangjiantou"></i> </span></p>
+            <iframe src="http://59.215.191.48"></iframe>
         </el-card>
     </div>
 </template>
@@ -17,7 +18,7 @@
         methods:{
             goOperation(){
                 this.$router.push({
-                    name:'fileOperation'
+                    name:'fileGuide'
                 })
             }
         }
@@ -37,7 +38,13 @@
                     }
                 }
             }
-           
+           iframe{
+               width: 100%;
+               min-height: 580px;
+               margin-top: 20px;
+               overflow: auto;
+               border: none;
+           }
         }
     }
 </style>

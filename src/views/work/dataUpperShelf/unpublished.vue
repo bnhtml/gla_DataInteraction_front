@@ -9,7 +9,7 @@
     <el-card shadow="always" class="unpublished-cont mt20">
       <p class="titleLeftBorder">
         未发布数据接口列表
-        <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口{{this.totalCount}}个</span>
+        <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口{{totalCount}}个</span>
       </p>
       <div>
         <NomalTable :table-json="tableJson" :url="url" :query="query" axiosType="post" @receive="receive" v-if='isShow'></NomalTable>
@@ -141,7 +141,7 @@
       publish(resourceId){
         this.$api.interface_commit({resourceId}).then(res => {
           console.log(res);
-        })
+        }).catch(error => this.$message({type: 'error', message: error}))
       },
       testApi(query){
         this.$api.testApikey(query).then(res => {

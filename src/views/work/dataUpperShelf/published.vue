@@ -9,10 +9,10 @@
             <el-card shadow="always" class="published-cont mt20">
                 <p class="titleLeftBorder">
                     已发布数据接口列表
-                    <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span>
+                    <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口{{totalCount}}个</span>
                 </p>
                 <div>
-                    <NomalTable :table-json="tableJson" :url="url" v-if='isShow' :axiosType="'post'" :query="query"></NomalTable>
+                    <NomalTable :table-json="tableJson" :url="url" v-if='isShow' :axiosType="'post'" @receive="receive" :query="query"></NomalTable>
                 </div>
             </el-card>
         </c-admin>
@@ -34,6 +34,7 @@
                 tableJson: {}, // 表头标题
                 data: [], //表格数据
                 url: '',
+                totalCount: 0,
                 tableQuery: published,
                 isShow: false,
                 query: {}
@@ -68,6 +69,9 @@
             })
         },
         methods: {
+            receive(res){
+                this.totalCount = res.page.totalCount;
+            },
             handelClick(e) {
                 this.query = e;
                 this.init();

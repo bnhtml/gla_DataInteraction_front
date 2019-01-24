@@ -38,7 +38,7 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/home/index/leaderCockpit',
+            redirect: '/home/index/businessBureau',
         },
         {
             path: '/home',

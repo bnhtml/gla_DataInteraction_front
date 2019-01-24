@@ -322,12 +322,21 @@ let unpublished = {
         {
             type: "text",
             align: "",
+            label: "数据接口名称",
+            prop: "resourceDescribe",
+            width: "",
+            'show-overflow-tooltip': true
+        },
+        {
+            type: "text",
+            align: "",
             label: "封装日期",
             prop: "createTime",
             width: "",
             'show-overflow-tooltip': true,
             formatter(row){
-                return row.createTime.replace('T', ' ')
+                console.log(row, '----')
+                return row.createTime && row.createTime.replace('T', ' ') || ''
             }
 
         },
