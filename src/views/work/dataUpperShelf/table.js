@@ -455,14 +455,6 @@ let unpublished = {
                 placeholder: "请选择",
                 options: [
                     {
-                        value: "数据接口名称",
-                        name: "数据接口名称"
-                    },
-                    {
-                        value: "数据接口地址",
-                        name: "数据接口地址"
-                    },
-                    {
                         value: "资源名称",
                         name: "资源名称"
                     },
