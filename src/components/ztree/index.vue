@@ -82,7 +82,7 @@ export default {
       this.$emit('onClick', {depaprt: depart.value});
     },
     getSelectDept(e, a, node){
-      let param = ['region', 'depaprt'][node.level];
+      let param = ['region', 'depart'][node.level];
       this.$emit('onClick', {[param]: node.name});
     }
   },
