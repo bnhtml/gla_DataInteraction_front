@@ -63,12 +63,12 @@
                         children: []
                     },
                     {
-                        url: 'leaderCockpit',
+                        url: 'nationalInterface',
                         name: '接口概况',
                         icon: '',
                         children: [
                             {
-                                url: 'leaderCockpit',
+                                url: 'nationalInterface',
                                 name: '国家接口',
                                 icon: '',
                                 children: []
@@ -243,7 +243,7 @@
         name: 'navBar',
         data() {
             let routerNames = [
-                ['leaderCockpit','businessBureau'],
+                ['leaderCockpit','businessBureau','nationalInterface'],
                 ['datainteration','fileGuide','fileOperation'],
                 ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage','interfacePackage','interfaceUpdate'],
                 ['systemManagement','dataAreaManagement','dataSheetDetails','configManagement','stateManagement','unitDomainNameManagement','interfacePathManagement']

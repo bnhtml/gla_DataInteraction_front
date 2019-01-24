@@ -1,52 +1,19 @@
-// 领导驾驶舱 - 业务局委
+// 接口概况 - 国家接口
 <template>
-    <div class="businessBureau">
-        <el-row :gutter="20">
-            <el-col :span="10">
-                <el-card shadow="always" class="g-top-left">
-                    <p class="titleLeftBorder">数据区概况</p>
-                    <el-row>
-                        <el-col :span="12">
-                            <dl :style="{background:'url('+dataList[0].img+') no-repeat center center','backgroundSize':'cover'}">
-                                <dt>{{dataList[0].title}}</dt>
-                                <dd>{{dataList[0].num}}</dd>
-                            </dl>
-                        </el-col>
-                        <el-col :span="12">
-                            <dl :style="{background:'url('+dataList[1].img+') no-repeat center center','backgroundSize':'cover'}">
-                                <dt>{{dataList[1].title}}</dt>
-                                <dd>{{dataList[1].num}}</dd>
-                            </dl>
-                        </el-col>
-                    </el-row>
-                </el-card>
-            </el-col>
-            <el-col :span="14">
-                <el-card shadow="always" class="g-top-right">
-                    <p class="titleLeftBorder">数据目录概况</p>
-                    <el-row :gutter="20">
-                        <el-col :span="12">
-                            <dl :style="{background:'url('+dataList[2].img+') no-repeat center center','backgroundSize':'cover'}">
-                                <dt>{{dataList[2].title}}</dt>
-                                <dd>{{dataList[2].num}}</dd>
-                            </dl>
-                        </el-col>
-                        <el-col :span="12">
-                            <dl :style="{background:'url('+dataList[3].img+') no-repeat center center','backgroundSize':'cover','height':'65px'}">
-                                <dt>{{dataList[3].title}}</dt>
-                                <dd>{{dataList[3].num}}</dd>
-                            </dl>
-                            <dl :style="{background:'url('+dataList[4].img+') no-repeat center center','backgroundSize':'cover','height':'65px','margin-top':'10px'}">
-                                <dt>{{dataList[4].title}}</dt>
-                                <dd>{{dataList[4].num}}</dd>
-                            </dl>
-                        </el-col>
-                    </el-row>
-                </el-card>
-            </el-col>
-        </el-row>
+    <div class="nationalInterface">
+        <!-- <el-card shadow="always" class="mt20 g-top">
+            <p class="titleLeftBorder">国家部委接口概况</p>
+            <el-row >
+                <el-col :span="8" v-for='(v,i) in top' :key='i'>
+                    <dl :style="{background:'url('+v.img+') no-repeat 100% 100%','backgroundSize':'contain'}">
+                        <dt>{{v.title}}</dt>
+                        <dd>{{v.num}}</dd>
+                    </dl>
+                </el-col>
+            </el-row>
+        </el-card> -->
         <el-card shadow="always" class="mt20 g-middle">
-            <p class="titleLeftBorder">已封装API分布概况</p>
+            <p class="titleLeftBorder">省直部门已封装接口概况</p>
             <el-row :gutter="20">
                 <el-col :span="6" v-for='(v,i) in middle' :key='i'>
                     <dl v-if='i==0' :style="{background:'url('+v.img+') no-repeat center center','backgroundSize':'cover'}">
@@ -55,10 +22,10 @@
                     </dl>
                     <dl v-else class="border">
                         <dt>
-                                <p>库表类接口总数</p>
-                                <p>{{v.num}}</p>
-                                <p>{{v.percent}}</p>
-                            </dt>
+                                    <p>库表类接口总数</p>
+                                    <p>{{v.num}}</p>
+                                    <p>{{v.percent}}</p>
+                                </dt>
                         <dd>
                             <!-- <Ring :data='v.data' :color='v.color'> </Ring> -->
                         </dd>
@@ -100,33 +67,27 @@
     export default {
         data() {
             return {
-                dataList: [{
-                    title: '数据表总数',
-                    num: '8846',
-                    img: require('@/assets/images/leaderCockpit_5.png'),
-                }, {
-                    title: '数据记录总数',
-                    num: '8848',
-                    img: require('@/assets/images/leaderCockpit_6.png'),
-                }, {
-                    title: '数据记录总数',
-                    num: '8848',
-                    img: require('@/assets/images/leaderCockpit_7.png'),
-                }, {
-                    title: '数据记录总数',
-                    num: '8848',
-                    img: require('@/assets/images/leaderCockpit_1.png'),
-                }, {
-                    title: '数据记录总数',
-                    num: '8848',
-                    img: require('@/assets/images/leaderCockpit_2.png'),
-                }],
+                top: [{
+                        title: '数据目录总数',
+                        num: 1234,
+                        img: require('@/assets/images/leaderCockpit_4.png'),
+                    },
+                    {
+                        title: '数据目录总数',
+                        num: 1234,
+                        img: require('@/assets/images/leaderCockpit_transparent_1.png'),
+                    },
+                    {
+                        title: '数据目录总数',
+                        num: 1234,
+                        img: require('@/assets/images/leaderCockpit_transparent_1.png'),
+                    },
+                ],
                 middle: [{
                     title: '数据记录总数',
                     num: '8848',
                     percent: '45%',
                     img: require('@/assets/images/leaderCockpit_3.png'),
-                    
                 }, {
                     title: '数据记录总数',
                     num: '8848',
@@ -202,63 +163,12 @@
 
 <style lang='scss' scoped>
     @import '@/assets/style/base/index.scss';
-    .businessBureau {
-        .g-top-left {
+    .nationalInterface {
+        .g-top {
             height: 220px;
-            .el-row {
-                margin: 0 -20px;
-                padding-top: 20px;
-            }
-            .el-col-12 {
-                &:first-child {
-                    padding: 0 10px 0 20px;
-                }
-                &:last-child {
-                    padding: 0 20px 0 10px;
-                }
-                dl {
-                    height: 140px;
-                    padding: 15px;
-                    dt {
-                        @include font($fz: 14px, $color:#fff);
-                    }
-                    dd {
-                        @include font($fz: 30px, $color:#fff);
-                    }
-                }
-            }
-        }
-        .g-top-right {
-            height: 220px;
-            .el-row {
-                margin: 0 -20px;
-                padding-top: 20px;
-                .el-col-12 {
-                    &:first-child {
-                        padding: 0 10px 0 20px;
-                    }
-                    &:last-child {
-                        padding: 0 20px 0 10px;
-                        dl {
-                            display: flex;
-                            justify-content: space-between;
-                            dd {
-                                position: relative;
-                                top: -10px;
-                            }
-                        }
-                    }
-                    dl {
-                        height: 140px;
-                        padding: 15px;
-                        dt {
-                            @include font($fz: 14px, $color:#fff);
-                        }
-                        dd {
-                            @include font($fz: 30px, $color:#fff);
-                        }
-                    }
-                }
+            dl {
+                height: 143px;
+                margin-top: 20px;
             }
         }
         .g-middle {
