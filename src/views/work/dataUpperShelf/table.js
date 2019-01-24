@@ -326,23 +326,15 @@ let unpublished = {
             type: "text",
             align: "",
             label: "资源描述",
-            prop: "dataInterfaceDesc",
+            prop: "resourceDescribe",
             width: "",
             'show-overflow-tooltip': true
         },
         {
             type: "text",
             align: "",
-            label: "申请单号",
-            prop: "applyNum",
-            width: "",
-            'show-overflow-tooltip': true
-        },
-        {
-            type: "text",
-            align: "",
-            label: "申请日期",
-            prop: "applyDay",
+            label: "封装日期",
+            prop: "createTime",
             width: "",
             'show-overflow-tooltip': true
 
@@ -360,7 +352,7 @@ let unpublished = {
                 },
                 onClick(_this, self, row) {
                     let name = 'interfaceUpdate';
-                    let { resourceId, departName, resourceName, resourceDescribe, departDomain} = row;
+                    let { resourceId, departName, resourceName, resourceDescribe, departDomain, dataInterfaceStatus} = row;
                     if (row.dataInterfaceStatus == 0) {
                         name = 'interfacePackage'
 
@@ -376,7 +368,9 @@ let unpublished = {
                             departName,
                             resourceName,
                             resourceDescribe,
-                            departDomain
+                            departDomain,
+                            dataInterfaceStatus,
+                            user: _this.$route.query.user
                         }
                     })
 
@@ -424,7 +418,7 @@ let unpublished = {
                     return ['', "测试apikey"][row.dataInterfaceStatus]
                 },
                 onClick(_this, self, row) {
-
+                    self.$parent.testApi({ resourceId: row.resourceId, depart: row.departName})
                 }
             }]
         }
@@ -461,14 +455,6 @@ let unpublished = {
                 value: "",
                 placeholder: "请选择",
                 options: [
-                    {
-                        value: "数据接口名称",
-                        name: "数据接口名称"
-                    },
-                    {
-                        value: "数据接口地址",
-                        name: "数据接口地址"
-                    },
                     {
                         value: "资源名称",
                         name: "资源名称"

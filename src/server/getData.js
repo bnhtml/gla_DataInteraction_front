@@ -102,19 +102,23 @@ export const get_interfaceFile = (params) => {
 
 /* 系统管理  数据区管理 数据库类查询 */
 export const query_databaseClass = (params) => {
-    return httpApi(' /new_interface/query_databaseClass', params, 'post');
+    return httpApi('/new_interface/query_databaseClass', params, 'post')
 }
 /* 系统管理  数据区管理 数据表查询 */
 export const query_table = (params) => {
-    return httpApi(' /new_interface/query_table', params, 'post')
+    return httpApi('/new_interface/query_table', params, 'post')
 }
 /* 系统管理  数据区管理 查询文件 */
 export const query_file = (params) => {
-    return httpApi(' /new_interface/query_file', params, 'post')
+    return httpApi('/new_interface/query_file', params, 'post')
 }
 
 // 接口发布
 
 export const interface_commit = (params) => {
-    return httpApi(' /new_interface/interface_commit', params, 'post')
+    return httpApi('/new_interface/interface_commit', params, 'post')
+}
+// 测试apikey
+export const testApikey = (params) => {
+    return httpApi('/new_interface/testApikey', params, 'post')
 }
