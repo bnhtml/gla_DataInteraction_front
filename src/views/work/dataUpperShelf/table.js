@@ -326,23 +326,15 @@ let unpublished = {
             type: "text",
             align: "",
             label: "资源描述",
-            prop: "dataInterfaceDesc",
+            prop: "resourceDescribe",
             width: "",
             'show-overflow-tooltip': true
         },
         {
             type: "text",
             align: "",
-            label: "申请单号",
-            prop: "applyNum",
-            width: "",
-            'show-overflow-tooltip': true
-        },
-        {
-            type: "text",
-            align: "",
-            label: "申请日期",
-            prop: "applyDay",
+            label: "封装日期",
+            prop: "createTime",
             width: "",
             'show-overflow-tooltip': true
 
@@ -360,7 +352,7 @@ let unpublished = {
                 },
                 onClick(_this, self, row) {
                     let name = 'interfaceUpdate';
-                    let { resourceId, departName, resourceName, resourceDescribe, departDomain} = row;
+                    let { resourceId, departName, resourceName, resourceDescribe, departDomain, dataInterfaceStatus} = row;
                     if (row.dataInterfaceStatus == 0) {
                         name = 'interfacePackage'
 
@@ -376,7 +368,8 @@ let unpublished = {
                             departName,
                             resourceName,
                             resourceDescribe,
-                            departDomain
+                            departDomain,
+                            dataInterfaceStatus
                         }
                     })
 
