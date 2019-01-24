@@ -87,12 +87,12 @@
                     </el-table-column>
                     <el-table-column label="操作">
                         <template slot-scope="scope">
-                            <!-- <el-button
-                                @click.native.prevent="deleteRow(scope.$index, tableData4)"
+                            <el-button
+                                @click.native.prevent="deleteRow(scope.$index, interfaceData)"
                                 type="text"
                                 size="small">
                                 移除
-                            </el-button> -->
+                            </el-button>
                         </template>
                     </el-table-column>
                </el-table>
@@ -102,7 +102,6 @@
            <div class="sqlHead">SQL语句</div>
            <div >
                <el-button type="success" class="createSql" @click="createSql">生成sql语句</el-button>
-               <el-button type="warning" class="testSql" @click="testSql">sql语句测试</el-button>
            </div>
        </div>
        <div class="flex-block">
@@ -125,7 +124,6 @@ export default {
         areaData: [
             {value: 'Mysql', label: 'Mysql'},
             {value: 'Oracle', label: 'Oracle'},
-            {value: '易鲸捷', label: '易鲸捷'},
         ],
         dataSource:'',
         tabMsg:[],
@@ -232,15 +230,8 @@ export default {
            this.$api.make_sql({fieldData: JSON.stringify(this.interfaceData)}).then(res => {
                console.log(res);
                this.remarks = res.data.sqlVal;
+               this.$emit('rebackUrlAddress',this.remarks);
            })
-       },
-       //sql语句测试
-       testSql() {
-
-       },
-       //
-       handleClick(value){
-           console.log(value)
        },
    }
 }
