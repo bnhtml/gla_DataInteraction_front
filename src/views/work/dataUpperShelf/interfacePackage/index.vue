@@ -101,9 +101,16 @@
             <el-form-item label="单位域名:">
                 <el-input v-model="formModels.departDomain" disabled></el-input>
             </el-form-item>
-            <el-form-item label="请求头:" prop="requestHeader"
-              :rules="{required: true, message: '请求头不能为空', trigger: 'blur'}">
-                <el-input v-model="formModels.requestHeader"></el-input>
+            <el-form-item label="请求头:">
+                <el-select v-model="formModels.requestHeader">
+                    <el-option
+                        v-for="item in requestHeader"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                    </el-option>
+                </el-select>
+                <!-- <el-input v-model="formModels.requestHeader"></el-input> -->
             </el-form-item>
             <el-form-item label="描述/备注:" prop="dataInterfaceDesc"
               :rules="{required: true, message: '描述/备注不能为空', trigger: 'blur'}">
@@ -143,7 +150,7 @@ export default {
         responseInterType:'xml',
         requestInterMode:'post',
         departDomain: '',
-        requestHeader:'',
+        requestHeader:'application/json',
         firstAddress:'',
         secondAddress:'',
         thirdAddress:'',
@@ -153,8 +160,8 @@ export default {
         dataArea:''
       },
       potDataType:[
-          {value: 'interface', label: '接口'},
           {value: 'db', label: '数据库表'},
+          {value: 'interface', label: '接口'},
           {value: 'file', label: '文件'},
       ],
       requestType: [
@@ -168,6 +175,12 @@ export default {
       requestWay: [
           {value: 'post', label: 'post'},
           {value: 'get', label: 'get'},
+      ],
+      requestHeader: [
+        {value:'application/json',label:'application/json'},
+        {value:'text/xml',label:'text/xml'},
+        {value:'application/x-www-form-urlencoded',label:'application/x-www-form-urlencoded'},
+        {value:'application/xml',label:'application/xml'},
       ],
       firstDir: [],
       secondDir: [],
