@@ -117,7 +117,8 @@ a:focus {
     font-size: 10px;
 }
 
-.f12 {
+.f12 ,
+.fz12{
     font-size: 12px;
 }
 
