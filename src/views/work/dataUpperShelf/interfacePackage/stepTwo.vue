@@ -20,7 +20,7 @@
                     <el-option
                         v-for="item in tabMsg"
                         :key="item.tabName"
-                        :label="item.tabName"
+                        :label="item.tabName+'  '+item.tabDesc"
                         :value="item.tabName">
                     </el-option>
                 </el-select>
@@ -118,6 +118,7 @@
 
 <script>
 export default {
+	props: ['urlData'],
   data() {
     return {
       dataArea: "Mysql",
@@ -157,18 +158,27 @@ export default {
   },
   components: {},
   mounted() {
-    this.selectDataArea(this.dataArea);
+		this.selectDataArea(this.dataArea);
+		if(this.urlData!=''){
+			this.remarks = this.urlData;
+			this.changeSql(this.remarks);
+		}
   },
   methods: {
     //选择数据区
     selectDataArea(value) {
-      this.dataSource = "";
+			this.dataSource = "";
+			this.tabMsg=[];
       this.$api
-        .get_tabMsg({ departName: "贵州省大数据局", dataArea: value })
+        .get_tabMsg({ departName: this.$route.query.departName, dataArea: value })
         .then(res => {
           this.tabMsg = res.data;
         });
-    },
+		},
+		//更新数据源
+    updateSource() {
+			this.selectDataArea(this.dataArea);
+		},
     setSelected(o, state = true) {
       //    console.log(this.$refs, '====')
       this.$nextTick(() =>
@@ -200,10 +210,6 @@ export default {
     deleteField(row) {
 			this.selectList([], row);
 			this.setSelected(row, false);
-		},
-    //更新数据源
-    updateSource() {
-			this.selectDataSource(this.dataSource);
 		},
     selectAll(selection) {
       this.sourceData.forEach(o =>

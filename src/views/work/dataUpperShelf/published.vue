@@ -64,15 +64,13 @@
                 this.query.depart = '贵州省工商局'
             }
             this.handelClick({
-                depaprt : this.query.depart
+                depart: this.query.depart
             })
         },
         methods: {
             handelClick(e) {
-                if (e.depaprt) {
-                    this.query.depart = e.depaprt
-                    this.init();
-                }
+                this.query = e;
+                this.init();
             },
             init() {
                 this.isShow = false;

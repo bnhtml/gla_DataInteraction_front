@@ -19,9 +19,7 @@
                 <el-input v-model="formModels.departName" disabled></el-input>
             </el-form-item>
             <el-form-item label="数据接口名称:" prop="dataInterfaceName"
-                :rules="[
-                  {required: true, message: '数据接口名称不能为空', trigger: 'blur'},
-                  {pattern: /^[a-zA-Z]{1,10}$/, message: '请输入1-10位的英文字母', trigger: 'blur'}]">
+                :rules="{required: true, message: '数据接口名称不能为空', trigger: 'blur'}">
                 <el-input v-model="formModels.dataInterfaceName"></el-input>
             </el-form-item>
             <el-form-item label="封装数据类型:">
@@ -101,16 +99,23 @@
             <el-form-item label="单位域名:">
                 <el-input v-model="formModels.departDomain" disabled></el-input>
             </el-form-item>
-            <el-form-item label="请求头:" prop="requestHeader"
-              :rules="{required: true, message: '请求头不能为空', trigger: 'blur'}">
-                <el-input v-model="formModels.requestHeader"></el-input>
+            <el-form-item label="请求头:">
+                <el-select v-model="formModels.requestHeader">
+                    <el-option
+                        v-for="item in requestHeader"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                    </el-option>
+                </el-select>
+                <!-- <el-input v-model="formModels.requestHeader"></el-input> -->
             </el-form-item>
             <el-form-item label="描述/备注:" prop="dataInterfaceDesc"
               :rules="{required: true, message: '描述/备注不能为空', trigger: 'blur'}">
                 <el-input type="textarea" v-model="formModels.dataInterfaceDesc"></el-input>
             </el-form-item>
         </el-form>
-        <stepTwo v-else @rebackUrlAddress="ReceiveUrl"/>
+        <stepTwo v-else @rebackUrlAddress="ReceiveUrl" :urlData="urlData"/>
         <div v-if='pageFlag=="stepOne"' class="oneSub"> 
             <el-button v-if='dataType!="type1"' type="primary" @click="onSubmit">提交</el-button>
             <span v-else>
@@ -132,6 +137,7 @@ export default {
   components: {stepTwo},
   data() {
     return {
+      urlData:'',
       formModels:{
         resourceName:'',
         resourceId:'',
@@ -143,7 +149,7 @@ export default {
         responseInterType:'xml',
         requestInterMode:'post',
         departDomain: '',
-        requestHeader:'',
+        requestHeader:'application/json',
         firstAddress:'',
         secondAddress:'',
         thirdAddress:'',
@@ -153,8 +159,8 @@ export default {
         dataArea:''
       },
       potDataType:[
-          {value: 'interface', label: '接口'},
           {value: 'db', label: '数据库表'},
+          {value: 'interface', label: '接口'},
           {value: 'file', label: '文件'},
       ],
       requestType: [
@@ -168,6 +174,12 @@ export default {
       requestWay: [
           {value: 'post', label: 'post'},
           {value: 'get', label: 'get'},
+      ],
+      requestHeader: [
+        {value:'application/json',label:'application/json'},
+        {value:'text/xml',label:'text/xml'},
+        {value:'application/x-www-form-urlencoded',label:'application/x-www-form-urlencoded'},
+        {value:'application/xml',label:'application/xml'},
       ],
       firstDir: [],
       secondDir: [],
@@ -207,6 +219,8 @@ export default {
           // 根据接口返回的封装数据类型，显示相应的表单
           if(this.formModels.dataInterfaceType=='db'){
               this.dataType = "type1";
+              this.urlData = this.formModels.urlAddress;
+              this.formModels.urlAddress = '';
           }else if(this.formModels.dataInterfaceType=='file'){
               this.dataType = "type2";
           }else if(this.formModels.dataInterfaceType=='interface'){

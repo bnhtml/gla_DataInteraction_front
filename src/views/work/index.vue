@@ -2,16 +2,16 @@
 <template>
     <div class="home">
     <el-container class="wrapper">
-      <el-aside style="width: 220px;" v-if="isMenuShow">
+      <el-aside style="width: 220px;background: #316284;" v-if="isMenuShow">
         <div v-for="(menus, index) in leftMenu" :key="index">
             <router-link :to="menus.url" class="g-bigmenu">{{menus.name}}</router-link>
             <div v-if="menus.children && menus.children.length" v-for="(menu, idx) in menus.children" :key="idx">
                 
-                    <router-link :to="menu.url" class="g-centermenu">
-                        {{menu.name}}
-                    </router-link>
-                    <router-link :to="o.url" v-if="menu.children && menu.children.length" v-for="(o, i) in menu.children" :key="i" class="g-smallmenu">{{o.name}}</router-link>
-                
+            <router-link :to="menu.url" class="g-centermenu">
+                {{menu.name}}
+            </router-link>
+            <router-link :to="o.url" v-if="menu.children && menu.children.length" v-for="(o, i) in menu.children" :key="i" class="g-smallmenu">{{o.name}}</router-link>
+        
             </div>
         </div>
       </el-aside>
@@ -343,27 +343,29 @@
     @import '../../assets/style/base/index.scss';
     .g-bigmenu{
         display: block;
-        background: #000;
+        // background: #000;
         color: #fff;
         line-height: 40px;
         font-size: 16px;
-        padding-left: 5px;
+        padding-left: 20px;
     }
     .g-centermenu{
         padding-left: 15px;
         display: block;
-        background: #333;
+        // background: #333;
         color: #fff;
         line-height: 40px;
         font-size: 14px;
+        padding-left: 20px;
     }
     .g-smallmenu{
         padding-left: 22px;
         display: block;
-        background: #444;
+        // background: #444;
         color: #fff;
         line-height: 40px;
         font-size: 12px;
+        padding-left: 20px;
 
     }
     .home {
