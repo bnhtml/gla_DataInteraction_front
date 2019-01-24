@@ -12,6 +12,7 @@
   import {
     SERVER_BASE_URL
   } from '@/http/conf.js';
+  const defaultColor = '72, 72, 72';
   let colorLineArr = [{
       color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
           offset: 0,
@@ -84,7 +85,7 @@
     axisLabel: {
       //y轴数据样式
       textStyle: {
-        color: "rgba(255, 255, 255, .65)",
+        color: `rgba(${defaultColor}, .65)`,
         fontSize: 12
       }
     },
@@ -96,7 +97,7 @@
     splitLine: {
       lineStyle: {
         // type: "dashed",
-        color: "rgba(255, 255, 255, .1)",
+        color: `rgba(${defaultColor}, .1)`,
         fontSize: 12
       }
     },
@@ -106,7 +107,7 @@
     //设置轴线的属性
     axisLine: {
       lineStyle: {
-        color: "rgba(255, 255, 255, .65)",
+        color: `rgba(${defaultColor}, .65)`,
         // color: "linear-gradient(0deg,#9314c8 0%,#5e92fe 100%)",
         width: 1,
         fontSize: 12
@@ -192,7 +193,7 @@
               }
             },
             textStyle: {
-              color: "rgba(255, 255, 255, .75)",
+              color: `rgba(${defaultColor}, .75)`,
               fontSize: 11
             },
             formatter(res){
@@ -221,7 +222,7 @@
             height: 15,
             end: itemLength ? parseInt((this.bar.num * 100 || 900) / itemLength) : 100,
             textStyle: {
-              color: "#fff"
+              color: `rgb(${defaultColor})`
             },
             bottom: 0,
             handleIcon: 'M10.7,11.9H9.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4h1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7v-1.2h6.6z M13.3,22H6.7v-1.2h6.6z M13.3,19.6H6.7v-1.2h6.6z', // jshint ignore:line',
@@ -247,7 +248,7 @@
               show:true,
               lineStyle: {
                 // type: "line",
-                color: "rgba(255, 255, 255, .1)",
+                color: `rgba(${defaultColor}, .1)`,
                 fontSize: 12
               }
             },
@@ -271,7 +272,7 @@
               margin: 10, // x轴数据距离图标的距离
               textStyle: {
                 // x轴数据样式设置
-                color: "rgba(255, 255, 255, .75)",
+                color: `rgba(${defaultColor}, .75)`,
                 fontSize: 12
               },
               //坐标轴刻度标签的相关设置。x轴数据换行显示
@@ -364,7 +365,7 @@
               },
               splitLine: {
                 lineStyle: {
-                  color: "rgba(255, 255, 255, .65)",
+                  color: `rgba(${defaultColor}, .65)`,
                   fontSize: 12
                 }
               },

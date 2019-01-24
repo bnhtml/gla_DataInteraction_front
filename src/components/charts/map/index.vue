@@ -26,7 +26,7 @@ export default {
       checkName: "",
       mapList: [], // 后台返回接口信息
       max: 100, // 最大值
-      min: 100000
+      min: 0
     };
   },
   props: {
@@ -83,7 +83,7 @@ export default {
         this.changeMap();
       }
     });
-    this.getMapList();
+    this.changeMap();
     setTimeout(() => {
       this.fnResize();
     }, 0);
@@ -121,41 +121,30 @@ export default {
           };
           // let isFather = this.jsonUrl === "geometryProvince/52";
           let isFather = this.checkName === "";
-          let showTooltip = isFather ? true : false;
+          let showTooltip = false;
           let guianxinqu = 0;
           let data = res.data.features.map(o => {
             let value = NaN;
+            if(isFather){
+              value = parseInt(
+                this.$getrandom(
+                  "mapdata" + this.jsonUrl + o.properties.name,
+                  this.max
+                )
+              );
+            }
             if (
               nameMap[o.properties.name] == this.checkName ||
               o.properties.name == this.checkName
             ) {
-              if (this.mapList.length) {
-                this.mapList.forEach((v, i) => {
-                  if (
-                    nameMap[o.properties.name] == v.city ||
-                    o.properties.name == v.city
-                  ) {
-                    value = v.countnum;
-                  }
-                });
-              }
+              
+              value = parseInt(
+                this.$getrandom(
+                  "mapdata" + this.jsonUrl + o.properties.name,
+                  this.max
+                )
+              );
 
-            }
-            // let value = parseInt(
-            //   this.$getrandom(
-            //     "mapdata" + this.jsonUrl + o.properties.name,
-            //     this.max
-            //   )
-            // );
-            if (this.mapList.length && isFather) {
-              this.mapList.forEach((v, i) => {
-                if (
-                  nameMap[o.properties.name] == v.city ||
-                  o.properties.name == v.city
-                ) {
-                  value = v.countnum;
-                }
-              });
             }
 
             return {
@@ -172,7 +161,7 @@ export default {
           } else if (this.$route.name == "assetWarning") {
             title = "资产填报预警指数";
           } else {
-            title = "业务系统数量";
+            title = "";
           }
           let option = {
             tooltip: {

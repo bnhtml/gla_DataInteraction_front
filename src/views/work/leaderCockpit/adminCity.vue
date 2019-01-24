@@ -1,71 +1,14 @@
 <!--  -->
 <template>
 <div class='leaderCockpit'>
-	<el-row :gutter="20">
-		<el-col :span="15">
-			<el-card>
-				<p class="titleLeftBorder">
-					省直部门数据区建设概况
-				</p>
-				<div class="">
-				</div>
-			</el-card>
-			
-		</el-col>
-		<el-col :span="9">
-			<el-card>
-				<p class="titleLeftBorder">
-					省直部门数据区概况
-				</p>
-			</el-card>
-			
-		</el-col>
-	</el-row>
 
 		<el-card class="mt20">
 			<p class="titleLeftBorder">
-				市州部门数据概况
+				省直部门接口概况
 			</p>
-			<div class="g-city-info mt10">
-				<el-row :gutter="20">
-					<el-col :span="12">
-						<div class="g-leftbox clearfix">
-							<div class="g-all">
-								<p class="g-a-t">未建设数据区部门</p>
-								<p class="g-a-n">{{datas[0]}}</p>
-							</div>
-							<div class="g-one">
-								<div class="g-a flex-between">
-									<p class="g-a-t">已建设数据区部门</p>
-									<p class="g-a-n">{{parseInt(datas[0] * 0.33)}}</p>
-								</div>
-								<div class="g-a flex-between">
-									<p class="g-a-t">未建设数据区部门</p>
-									<p class="g-a-n">{{parseInt(datas[0] * 0.67)}}</p>
-								</div>
-							</div>
-						</div>
-					</el-col>
-					<el-col :span="6">
-						<div class="g-centerbox">
-							<p class="g-a-t">数据表总数</p>
-							<p class="g-a-n">{{datas[1]}}</p>
-
-						</div>
-					</el-col>
-					<el-col :span="6">
-						<div class="g-rightbox">
-							<p class="g-a-t">数据记录总数</p>
-							<p class="g-a-n">{{datas[2]}}</p>
-
-						</div>
-					
-					</el-col>
-				</el-row>
+			<div class="g-bar">
+          <newBar v-if="isShow" :bar="barData" :series="barDataSeries"></newBar>
 			</div>
-		</el-card>
-		<el-card class="mt20">
-			<Map :jsonCode="jsonCode" :width="width" :height="height" :strip="strip" @mapClick="handelClick"></Map>
 		</el-card>
 </div>
 </template>
@@ -73,22 +16,25 @@
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import Map from "@/components/charts/map";
+import newBar from "@/components/charts/bar/newBar";
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: { Map },
+  components: { newBar },
   data() {
     //这里存放数据
     return {
-			jsonCode: 'guizhou',
-			width: 618,
-			height: 616,
-			strip: false,
-			datas: [
-				this.$getrandom('返回首页0', 10000),
-				this.$getrandom('返回首页1', 10000),
-				this.$getrandom('返回首页2', 10000),
-			]
+      isShow: false,
+      barData: {
+        company:['个'],
+        height: 330,
+        xData: [],
+        labelnames: ['数据目录总数'],
+
+      },
+      barDataSeries: [
+
+      ]
+      
 		};
   },
   //监听属性 类似于data概念
@@ -101,13 +47,25 @@ export default {
 			let name = e.name || e;
 			this.datas = [1000, 1000, 1000].map((o, i) => this.$getrandom(name + i, o));
 
-		}
+    },
+    getBumen(){
+      this.isShow = false;
+      this.$api.get_depart({region_name: '省直部门'}).then(res => {
+        this.barData.xData = res.data;
+        this.barDataSeries = [{
+
+          name: '数据目录总数',
+          type: 'bar',
+          data: res.data.map(o => this.$getrandom(o + '222', 323)),
+          barMaxWidth: 20,
+        }]
+        this.isShow = true;
+      });
+    }
 	},
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    this.$api.get_firstdir({ depart: "贵州省大数据局" }).then(res => {
-      console.log(res, "====");
-    });
+    this.getBumen();
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
