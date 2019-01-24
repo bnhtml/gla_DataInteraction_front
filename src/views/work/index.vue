@@ -74,13 +74,23 @@
                                 children: []
                             },
                             {
-                                url: 'leaderCockpit',
+                                url: {
+                                    name: 'adminCity',
+                                    query: {
+                                        type: 0
+                                    }
+                                },
                                 name: '省直接口',
                                 icon: '',
                                 children: []
                             },
                             {
-                                url: 'leaderCockpit',
+                                url: {
+                                    name: 'adminCity',
+                                    query: {
+                                        type: 1
+                                    }
+                                },
                                 name: '市州接口',
                                 icon: '',
                                 children: []
