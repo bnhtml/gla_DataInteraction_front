@@ -2,9 +2,9 @@
 <template>
     <div class="home">
         <el-container class="wrapper">
-            <div style='background: #58CAFD;width:60px'>
-            </div>
-            <el-aside style="width: 220px;background: #316284;" v-if="isMenuShow">
+                 <div style='background: #58CAFD;width:60px;position:absolute;left:0;top:0;height:100%'></div>
+           
+            <el-aside style="width: 220px;background: #316284;margin-left:60px" v-if="isMenuShow">
                 <!-- <div v-for="(menus, index) in leftMenu" :key="index">
                     <router-link :to="menus.url" class="g-bigmenu">{{menus.name}}</router-link>
                     <div v-if="menus.children && menus.children.length" v-for="(menu, idx) in menus.children" :key="idx">
@@ -21,9 +21,9 @@
                         <el-menu-item-group v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length==0">
                             <el-menu-item :index="JSON.stringify(idx)"><router-link :to="menu.url">{{menu.name}}</router-link></el-menu-item>
                         </el-menu-item-group>
-                        <el-submenu :index="JSON.stringify(index)" v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length">
+                        <el-submenu :index="JSON.stringify(idx)" v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length">
                             <span slot="title">{{menu.name}}</span>
-                            <el-menu-item :index="JSON.stringify(idx)" v-for='(v,i) in menu.children' :key='i'><router-link :to="v.url">{{v.name}}</router-link></el-menu-item>
+                            <el-menu-item :index="JSON.stringify(i)" v-for='(v,i) in menu.children' :key='i'><router-link :to="v.url">{{v.name}}</router-link></el-menu-item>
                         </el-submenu>
                         
                     </el-submenu>
@@ -518,6 +518,9 @@
     }
     /deep/ .el-submenu__title{
         font-size: 16px;
+    }
+    .el-menu{
+        border: 0;
     }
 </style>
 
