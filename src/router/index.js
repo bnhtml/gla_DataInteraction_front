@@ -6,6 +6,7 @@ import index from '../views/work/index.vue'; //
 
 
 import leaderCockpit from '../views/work/leaderCockpit/leaderCockpit.vue';
+import adminIndex from '../views/work/leaderCockpit/adminIndex.vue';
 import  businessBureau from '../views/work/leaderCockpit/businessBureau.vue';//领导驾驶舱 (业务局委)
 import nationalInterface from '../views/work/leaderCockpit/nationalInterface.vue';//国家接口
 /* 数据集成 */
@@ -65,6 +66,14 @@ export default new Router({
                             }
                         },
                         {
+                            path: 'adminIndex',
+                            name: 'adminIndex',
+                            component: adminIndex,
+                            meta: {
+                                keepAlive: true,
+                                title: '领导驾驶舱'
+                            }
+                        },{
                             path: 'businessBureau',
                             name: 'businessBureau',
                             component: businessBureau,
