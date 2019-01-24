@@ -46,7 +46,7 @@
     const leftMenus = [
         [
             {
-                url: 'leaderCockpit',
+                url: 'businessBureau',
                 name: '领导驾驶舱（业务局委）',
                 icon: 'icon-shouye',
                 children: []
@@ -57,7 +57,7 @@
                 icon: 'icon-shouye',
                 children: [
                     {
-                        url: 'leaderCockpit',
+                        url: 'adminIndex',
                         name: '数据区概况',
                         icon: '',
                         children: []
@@ -243,7 +243,7 @@
         name: 'navBar',
         data() {
             let routerNames = [
-                ['leaderCockpit'],
+                ['leaderCockpit', 'adminIndex', 'businessBureau'],
                 ['datainteration','fileGuide','fileOperation'],
                 ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage','interfacePackage','interfaceUpdate'],
                 ['systemManagement','dataAreaManagement','dataSheetDetails','configManagement','stateManagement','unitDomainNameManagement','interfacePathManagement']

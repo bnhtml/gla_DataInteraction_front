@@ -1,4 +1,4 @@
-// interfacePathManagement.vue
+// interfacePathManagement
 <template>
     <div class="interfacePathManagement">
         <c-admin :deptType="deptType" v-on:checked="deptChecked">
@@ -148,7 +148,7 @@
                         border: 1px solid #dcdfe6;
                         border-top: 0; // width: call(100%-100px);
                         li {
-                            height: 30px;
+                            // height: 30px;
                             line-height: 30px;
                             display: flex;
                             justify-content: space-between;
