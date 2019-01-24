@@ -51,6 +51,9 @@
                 tableJson: {},
                 data: [],
                 isShow: false,
+                query:{
+                    depart:''
+                }
             }
         },
         components: {
@@ -79,6 +82,9 @@
         methods: {
             handelClick(e) {
                 console.log(e)
+                if (e.depaprt) {
+                    this.query.depart = e.depaprt;
+                }
             },
             /* 更新表格数据信息 */
             init() {
@@ -99,6 +105,13 @@
                 this.activeTabTitle = tab.label;
                 this.init();
             },
+            getQueryDatabaseClass(){
+                this.$api.query_databaseClass({
+                    depart:this.query.depart
+                    }).then(res=>{
+                    console.log(res)
+                })
+            }
         },
     }
 </script>

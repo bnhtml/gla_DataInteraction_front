@@ -5,7 +5,7 @@
   <el-row v-for="(info, i) in infolist" :key="i"  :gutter="12" style="margin-top: 12px;">
     <el-col :span="6" style="text-align: right; line-height: 32px;">{{info.label}}</el-col>
     <el-col :span="18">
-      <p :style="`height:${info.height || '30'}px`">{{result[info.props]}}</p>
+      <p :style="`height:${info.height || '30'}px`">{{info.value}}</p>
     </el-col>
   </el-row>
 </div>
@@ -27,37 +27,68 @@ export default {
       infolist: [
         {
           label: "资源名称",
-          props: "name"
+          props: "resourceName",
+          value:'',
         },
         {
-          label: "资源名称",
-          props: "name"
+          label: "资源ID",
+          props: "resourceId",
+          value:'',
         },
         {
-          label: "资源名称",
-          props: "name"
+          label: "部门单位",
+          props: "departName",
+          value:'',
         },
         {
-          label: "资源名称",
-          props: "name"
+          label: "URL地址",
+          props: "urlAddress",
+          value:'',
         },
         {
-          label: "资源名称",
-          props: "name"
+          label: "数据接口名称",
+          props: "dataInterfaceName",
+          value:'',
         },
         {
-          label: "资源名称",
-          props: "name"
+          label: "封装数据类型",
+          props: "dataInterfaceType",
+          value:'',
         },
         {
-          label: "资源名称",
-          height: 100,
-          props: "name"
+          label: "请求数据类型",
+          props: "requestInterType",
+          value:'',
         },
         {
-          label: "资源名称",
-          height: 100,
-          props: "name"
+          label: "响应数据类型",
+          props: "responseInterType",
+          value:'',
+        },
+
+         {
+          label: "接口请求方式",
+          props: "requestInterType",
+          value:'',
+        },
+        {
+          label: "设置接口路径",
+          props: "name",
+          value:'',
+        }, {
+          label: "单位域名",
+          props: "name",
+          value:'',
+        },
+        {
+          label: "请求头",
+          props: "requestHeader",
+          value:'',
+        },
+        {
+          label: "描述/备注",
+          props: "dataInterfaceDesc",
+          value:'',
         },
       ]
     };
@@ -66,12 +97,31 @@ export default {
   computed: {},
   //监控data中的数据变化
   watch: {},
-  //方法集合
-  methods: {},
+ 
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+    this.getQueryResources({resourceId:this.$route.query.resourceId});
+  },
+   //方法集合
+  methods: {
+    getQueryResources(params){
+      this.$api.query_resources(params).then(res=>{
+        if(res.data.length>0){
+          this.infolist.forEach((v,i) => {
+            if(res.data[0][v.props]){
+              v.value = res.data[0][v.props]
+            }else{
+              v.value ='未找到相对应的字段匹配！！！'
+            }
+          });
+        }
+      console.log(this.infolist)
+
+      })
+    }
+  },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前
   beforeUpdate() {}, //生命周期 - 更新之前

@@ -26,7 +26,7 @@
   import cAdmin from "../admin.vue";
   import {
     unpublished
-  } from './JSON/table.js'
+  } from './table.js'
   export default {
     data() {
       return {
