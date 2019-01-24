@@ -369,7 +369,8 @@ let unpublished = {
                             resourceName,
                             resourceDescribe,
                             departDomain,
-                            dataInterfaceStatus
+                            dataInterfaceStatus,
+                            user: _this.$route.query.user
                         }
                     })
 
