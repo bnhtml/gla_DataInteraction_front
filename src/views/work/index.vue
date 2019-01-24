@@ -157,7 +157,7 @@
                 url: {
                     name: 'published',
                     query: {
-                        user: 'abc'
+                        user: '贵州省大数据局'
                     }
                 },
                 name: '已发布接口-业务局委',

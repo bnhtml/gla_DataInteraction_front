@@ -12,7 +12,7 @@
         <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span>
       </p>
       <div>
-        <NomalTable :table-json="tableJson" :url="url" axiosType="post"></NomalTable>
+        <NomalTable :table-json="tableJson" :url="url" :query="query" axiosType="post"></NomalTable>
       </div>
     </el-card>
     <!-- </c-admin> -->
@@ -31,6 +31,9 @@
   export default {
     data() {
       return {
+        query: {
+          depart: this.$route.query.user === 'admin' ? '' : this.$route.query.user
+        },
         url: SERVER_BASE_URL + '/new_interface/getUnpublished_interface',
         ...unpublished
       };
