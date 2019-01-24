@@ -130,9 +130,11 @@
             });
           });
       },
-      init() {
-                
-            },
+      publish(resourceId){
+        this.$api.interface_commit({resourceId}).then(res => {
+          console.log(res);
+        })
+      }
     },
     beforeRouteUpdate(to, from, next) {
       this.deptType = to.query.deptType - 0;

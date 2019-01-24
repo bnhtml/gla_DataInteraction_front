@@ -112,3 +112,9 @@ export const query_table = (params) => {
 export const query_file = (params) => {
     return httpApi(' /new_interface/query_file', params, 'post')
 }
+
+// 接口发布
+
+export const interface_commit = (params) => {
+    return httpApi(' /new_interface/interface_commit', params, 'post')
+}

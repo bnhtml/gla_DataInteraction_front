@@ -359,7 +359,7 @@ let unpublished = {
                 onClick(_this, self, row) {
                     let name = 'interfaceUpdate';
                     let { resourceId, departName, resourceName, resourceDescribe, departDomain} = row;
-                    if (row.applyStatus == 0) {
+                    if (row.dataInterfaceStatus == 0) {
                         name = 'interfacePackage'
 
                         console.log('封装接口')
@@ -395,24 +395,25 @@ let unpublished = {
                 },
                 onClick(_this, self, row) {
                     if (row.dataInterfaceStatus == 1) {
-                        _this.$confirm('数据资源发布后，将会再对外公布，请确认是否发布数据接口。', "数据接口发布", {
-                            confirmButtonText: '确定',
-                            cancelButtonText: '取消',
-                            showCancelButton: true,
-                            showConfirmButton: true,
-                            showClose: false,
-                            type: 'warning'
-                        }).then(() => {
-                            _this.$message({
-                                type: 'success',
-                                message: '发布成功!'
-                            });
-                        }).catch(() => {
-                            _this.$message({
-                                type: 'info',
-                                message: '已取消发布'
-                            });
-                        });
+                        self.$parent.publish(row.resourceId);
+                        // _this.$confirm('数据资源发布后，将会再对外公布，请确认是否发布数据接口。', "数据接口发布", {
+                        //     confirmButtonText: '确定',
+                        //     cancelButtonText: '取消',
+                        //     showCancelButton: true,
+                        //     showConfirmButton: true,
+                        //     showClose: false,
+                        //     type: 'warning'
+                        // }).then(() => {
+                        //     _this.$message({
+                        //         type: 'success',
+                        //         message: '发布成功!'
+                        //     });
+                        // }).catch(() => {
+                        //     _this.$message({
+                        //         type: 'info',
+                        //         message: '已取消发布'
+                        //     });
+                        // });
                     }
 
                 }
