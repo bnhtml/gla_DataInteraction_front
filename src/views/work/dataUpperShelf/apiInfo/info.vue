@@ -78,7 +78,7 @@ export default {
           value:'',
         }, {
           label: "单位域名",
-          props: "name",
+          props: "departDomain",
           value:'',
         },
         {

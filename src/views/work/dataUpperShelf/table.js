@@ -63,7 +63,7 @@ let published = {
                             deptType: _this.$route.query.deptType,
                             resourceId: row.resourceId,
                             depart:_this.$route.query.depart,
-                            dataInterfaceType: row.dataInterfaceType || 'db'
+                            dataInterfaceType:row.dataInterfaceType
                         }
                     })
                 }
