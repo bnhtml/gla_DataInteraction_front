@@ -303,24 +303,13 @@ let unpublished = {
             align: "",
             label: "资源ID",
             prop: "resourceId",
-            width: "",
+            width: "100",
         }, {
             type: "text",
             align: "",
             label: "资源名称",
             prop: "resourceName",
             width: "",
-        },
-
-        {
-            type: "text",
-            align: "",
-            label: "状态",
-            prop: "dataInterfaceStatus",
-            width: "100",
-            formatter(row) {
-                return ['未封装', '已封装'][row.dataInterfaceStatus]
-            }
         },
         {
             type: "text",
@@ -341,6 +330,17 @@ let unpublished = {
                 return row.createTime.replace('T', ' ')
             }
 
+        },
+
+        {
+            type: "text",
+            align: "",
+            label: "状态",
+            prop: "dataInterfaceStatus",
+            width: "100",
+            formatter(row) {
+                return ['未封装', '已封装'][row.dataInterfaceStatus]
+            }
         },
 
 
