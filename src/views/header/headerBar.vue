@@ -1,7 +1,7 @@
 <template>
     <div class="header-bar">
         <Header :style="{'background':bg}" class="layout-header-bar">
-            数据上架系统
+            <img src="../../assets/img/logo/logo.png" alt=""> 贵州省数据共享交换平台 数据上架系统(技术支持)
         </Header>
         <!-- 横向菜单 -->
         <div class="g-menu" v-if="isWorkPage">
@@ -246,14 +246,23 @@
     @import '../../assets/style/base/index.scss';
     .header-bar {
         position: relative; // height: 61px;
+        background: #fff;
     }
     .layout-header-bar {
         height: 61px;
         position: relative;
         padding: 0 20px;
         font-size: 28px;
+        font-size: 36px;
+            color: #275B80;
+        img{
+            position: relative;
+            bottom: -10px;
+            
+        }
     }
-    .ivu-select-dropdown {
+    .ivu-se
+    lect-dropdown {
         background: #1C2851!important;
     }
     .headerSearchInputBox {
@@ -291,21 +300,26 @@
         padding-left: 33px;
     }
     .g-menu {
-        @include nums($w: 100%, $h:36px);
-        background-image: radial-gradient(51% 100%, rgba(34, 235, 251, 0.2) 20%, transparent 100%)!important;
-        border-top: rgba(34, 235, 251, 0.4) solid 1px;
+        @include nums($w: 100%, $h:50px);
+        // background-image: radial-gradient(51% 100%, rgba(34, 235, 251, 0.2) 20%, transparent 100%)!important;
+        // border-top: rgba(34, 235, 251, 0.4) solid 1px;
         .ul {
-            @include flex($j: center);
+            @include flex($j: start);
             .li {
-                line-height: 36px;
-                padding: 0 40px;
-                @include font($fz: 18px, $color:#333);
+                height: 50px;
+                line-height: 50px;
+                margin: 0 40px;
+                @include font($fz: 20px, $color:#333);
                 cursor: pointer;
+                border-bottom: transparent solid 1px;
                 span.hover {
                     color: #111;
                 }
                 span:hover{
                     color: #111;
+                }
+                &.hover{
+                    border-bottom:solid 2px #33ABFB;
                 }
             }
             .ivu-dropdown-item-selected {
@@ -336,4 +350,5 @@
             color: #00ffe7;
         }
     }
+    
 </style>

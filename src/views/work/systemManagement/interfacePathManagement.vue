@@ -71,23 +71,19 @@
         },
         computed: {},
         mounted() {
-            if(this.$route.query.user == 'admin'){
+            if (this.$route.query.user == 'admin') {
                 this.getFirstdir({
-                        depart: '贵州省大数据局'
-                    });
+                    depart: '贵州省大数据局'
+                });
             }
         },
         methods: {
             deptChecked(e) {
-                if (e.depaprt) {
-                    this.deptData.depart = e.depaprt;
-                    this.getFirstdir({
-                        depart: e.depaprt
-                    });
-                    this.deptData.two = [];
-                    this.deptData.three = [];
-                    this.deptData.second_dir = [];
-                }
+                this.deptData = e;
+                this.getFirstdir(e);
+                this.deptData.two = [];
+                this.deptData.three = [];
+                this.deptData.second_dir = [];
             },
             /* 一级目录 */
             getFirstdir(params) {
@@ -133,8 +129,7 @@
             .cont-wrapper {
                 display: flex;
                 justify-content: space-between;
-                margin: 0 -10px;
-                // margin-bottom: 20px;
+                margin: 0 -10px; // margin-bottom: 20px;
                 height: 100%;
                 div {
                     flex: 1;
@@ -208,7 +203,7 @@
                         height: -moz-calc(100% - 100px);
                         height: -webkit-calc(100% - 100px);
                         height: calc(100% - 100px);
-                        @include flex($j:center);
+                        @include flex($j: center);
                         text-align: center;
                     }
                 }

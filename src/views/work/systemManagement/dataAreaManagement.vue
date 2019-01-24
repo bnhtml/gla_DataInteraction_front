@@ -82,9 +82,7 @@
         methods: {
             handelClick(e) {
                 console.log(e)
-                if (e.depaprt) {
-                    this.query.depart = e.depaprt;
-                }
+                 this.query.depart = e.depart;
             },
             /* 更新表格数据信息 */
             init() {
