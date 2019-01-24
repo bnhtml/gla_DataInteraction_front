@@ -253,7 +253,7 @@
         name: 'navBar',
         data() {
             let routerNames = [
-                ['leaderCockpit','businessBureau','nationalInterface','adminIndex'],
+                ['leaderCockpit','businessBureau','nationalInterface','adminIndex', 'adminCity'],
                 ['datainteration','fileGuide','fileOperation'],
                 ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage','interfacePackage','interfaceUpdate'],
                 ['systemManagement','dataAreaManagement','dataSheetDetails','configManagement','stateManagement','unitDomainNameManagement','interfacePathManagement']

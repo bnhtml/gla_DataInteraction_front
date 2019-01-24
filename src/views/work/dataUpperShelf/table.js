@@ -336,7 +336,10 @@ let unpublished = {
             label: "封装日期",
             prop: "createTime",
             width: "",
-            'show-overflow-tooltip': true
+            'show-overflow-tooltip': true,
+            formatter(row){
+                return row.createTime.replace('T', ' ')
+            }
 
         },
 

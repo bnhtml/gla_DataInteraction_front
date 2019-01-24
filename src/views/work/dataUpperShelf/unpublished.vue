@@ -4,15 +4,15 @@
     <!-- <c-admin :deptType="deptType"> -->
     <el-card shadow="always" class="unpublished-header">
       <p class="titleLeftBorder">筛选查询</p>
-      <TableSearch :searchs='searchs'></TableSearch>
+      <TableSearch :searchs='searchs' v-if='isShow'></TableSearch>
     </el-card>
     <el-card shadow="always" class="unpublished-cont mt20">
       <p class="titleLeftBorder">
         未发布数据接口列表
-        <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span>
+        <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口{{this.totalCount}}个</span>
       </p>
       <div>
-        <NomalTable :table-json="tableJson" :url="url" :query="query" axiosType="post"></NomalTable>
+        <NomalTable :table-json="tableJson" :url="url" :query="query" axiosType="post" @receive="receive" v-if='isShow'></NomalTable>
       </div>
     </el-card>
     <!-- </c-admin> -->
@@ -30,9 +30,11 @@
   export default {
     data() {
       return {
+        isShow: false,
         query: {
           depart: this.$route.query.user === 'admin' ? '' : this.$route.query.user
         },
+        totalCount: 0,
         url: this.$SERVER_BASE_URL + '/new_interface/getUnpublished_interface',
         ...unpublished
       };
@@ -43,10 +45,17 @@
       TableSearch,
       FileUpload
     },
+    created(){
+
+      this.isShow = false;
+      this.$nextTick(() => this.isShow = true);
+    },
     mounted() {
-      // this.init();
     },
     methods: {
+      receive(res){
+        this.totalCount = res.page.totalCount;
+      },
       fileUpload() {
         const h = this.$createElement;
         this.$confirm(
