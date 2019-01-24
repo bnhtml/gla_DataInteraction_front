@@ -52,7 +52,7 @@
                     height="250"
                     border
                     style="width: 100%">
-                    <el-table-column type="index"></el-table-column>
+                    <el-table-column type="index" label='序号' width="50px"></el-table-column>
                     <el-table-column 
                         v-for="item in tHeadDatas" 
                         :key="item.props"

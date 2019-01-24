@@ -1,17 +1,20 @@
 // 接口概况 - 国家接口
 <template>
     <div class="nationalInterface">
-        <!-- <el-card shadow="always" class="mt20 g-top">
+        <el-card shadow="always" class=" g-top">
             <p class="titleLeftBorder">国家部委接口概况</p>
             <el-row >
                 <el-col :span="8" v-for='(v,i) in top' :key='i'>
-                    <dl :style="{background:'url('+v.img+') no-repeat 100% 100%','backgroundSize':'contain'}">
-                        <dt>{{v.title}}</dt>
-                        <dd>{{v.num}}</dd>
+                    <dl>
+                        <dt><img :src="v.img" alt=""></dt>
+                        <dd>
+                            <p>{{v.title}}</p>
+                            <p>{{v.num}}</p>
+                        </dd>
                     </dl>
                 </el-col>
             </el-row>
-        </el-card> -->
+        </el-card>
         <el-card shadow="always" class="mt20 g-middle">
             <p class="titleLeftBorder">省直部门已封装接口概况</p>
             <el-row :gutter="20">
@@ -22,12 +25,12 @@
                     </dl>
                     <dl v-else class="border">
                         <dt>
-                                    <p>库表类接口总数</p>
-                                    <p>{{v.num}}</p>
-                                    <p>{{v.percent}}</p>
-                                </dt>
+                                <p>库表类接口总数</p>
+                                <p>{{v.num}}</p>
+                                <p>{{v.percent}}</p>
+                            </dt>
                         <dd>
-                            <!-- <Ring :data='v.data' :color='v.color'> </Ring> -->
+                            <Ring :data='v.data' :labelColor='v.labelColor' :color='v.color' :title='v.title' :hasLabel='v.hasLabel'></Ring>
                         </dd>
                     </dl>
                 </el-col>
@@ -69,87 +72,114 @@
             return {
                 top: [{
                         title: '数据目录总数',
-                        num: 1234,
+                        num: 2135,
                         img: require('@/assets/images/leaderCockpit_4.png'),
                     },
                     {
-                        title: '数据目录总数',
-                        num: 1234,
+                        title: '已封装接口总数',
+                        num: 1135,
                         img: require('@/assets/images/leaderCockpit_transparent_1.png'),
                     },
                     {
-                        title: '数据目录总数',
-                        num: 1234,
+                        title: '剩余需封装总数',
+                        num: 1000,
                         img: require('@/assets/images/leaderCockpit_transparent_1.png'),
                     },
                 ],
                 middle: [{
                     title: '数据记录总数',
-                    num: '8848',
+                    num: '1135',
                     percent: '45%',
                     img: require('@/assets/images/leaderCockpit_3.png'),
                 }, {
                     title: '数据记录总数',
-                    num: '8848',
+                    num: '500',
                     percent: '45%',
                     img: require('@/assets/images/leaderCockpit_6.png'),
-                    data: [{
-                        value: 50,
-                        num: 50,
-                        name: '',
-                    }],
-                    color: ['#33ABFB', '#D3DBE3']
+                    "data": [{
+                        "value": "11.60",
+                        "name": "",
+                        "number": "1789个"
+                    }, {
+                        "value": "54.26",
+                        "name": "",
+                        "number": "8369个"
+                    }, ],
+                    "labelColor": ['#D3DBE3', '#33ABFB'],
+                    "color": ['#D3DBE3', '#33ABFB'],
+                    "hasLabel": false,
+                    "title": {
+                        "title": " "
+                    }
                 }, {
                     title: '数据记录总数',
-                    num: '8848',
+                    num: '500',
                     percent: '45%',
                     img: require('@/assets/images/leaderCockpit_6.png'),
-                    data: [{
-                        value: 50,
-                        num: 50,
-                        name: '',
-                    }],
-                    color: ['#33ABFB', '#D3DBE3']
+                    "data": [{
+                        "value": "11.60",
+                        "name": "",
+                        "number": "1789个"
+                    }, {
+                        "value": "54.26",
+                        "name": "",
+                        "number": "8369个"
+                    }, ],
+                    "labelColor": ['#D3DBE3', '#33ABFB'],
+                    "color": ['#D3DBE3', '#33ABFB'],
+                    "hasLabel": false,
+                    "title": {
+                        "title": " "
+                    }
                 }, {
                     title: '数据记录总数',
-                    num: '8848',
-                    percent: '45%',
+                    num: '135',
+                    percent: '10%',
                     img: require('@/assets/images/leaderCockpit_6.png'),
-                    data: [{
-                        value: 50,
-                        num: 50,
-                        name: '',
-                    }],
-                    color: ['#33ABFB', '#D3DBE3']
+                    "data": [{
+                        "value": "11.60",
+                        "name": "",
+                        "number": "1789个"
+                    }, {
+                        "value": "54.26",
+                        "name": "",
+                        "number": "8369个"
+                    }, ],
+                    "labelColor": ['#D3DBE3', '#33ABFB'],
+                    "color": ['#D3DBE3', '#33ABFB'],
+                    "hasLabel": false,
+                    "title": {
+                        "title": " "
+                    }
                 }, ],
                 bottom: [{
                     title: '本单位开放接口总数',
-                    num: '8848',
+                    num: '135',
                     img: require('@/assets/images/leaderCockpit_line_1.png'),
                     borderColor: '#FB8533'
                 }, {
                     title: '服务其他部门总数',
-                    num: '8848',
+                    num: '21',
                     img: require('@/assets/images/leaderCockpit_line_2.png'),
                     borderColor: '#35C3C4 '
                 }, {
                     title: '接口被其他部门调用总数',
-                    num: '8848',
+                    num: '11350',
                     img: require('@/assets/images/leaderCockpit_line_3.png'),
                     borderColor: '#9045D5 '
                 }, {
                     title: '申请其他部门接口总数',
-                    num: '8848',
+                    num: '21',
                     img: require('@/assets/images/leaderCockpit_line_4.png'),
                     borderColor: '#FB8533'
                 }, {
                     title: '提供服务部门总数',
-                    num: '8848',
+                    num: '12',
                     img: require('@/assets/images/leaderCockpit_line_5.png'),
                     borderColor: '#35C3C4 '
                 }, {
                     title: '调用其他部门接口总数',
-                    num: '8848',
+                    num: '210',
                     img: require('@/assets/images/leaderCockpit_line_6.png'),
                     borderColor: '#9045D5 '
                 }, ]
@@ -157,6 +187,9 @@
         },
         components: {
             Ring,
+        },
+        methods: {
+            get() {}
         }
     }
 </script>
@@ -165,10 +198,43 @@
     @import '@/assets/style/base/index.scss';
     .nationalInterface {
         .g-top {
-            height: 220px;
+            height: 210px;
+            .el-row {
+                margin: 0 -10px;
+                margin-top: 5px;
+                .el-col-8 {
+                    padding: 0 10px;
+                    &:first-child {
+                        p {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
             dl {
                 height: 143px;
                 margin-top: 20px;
+                display: flex;
+                position: relative;
+                dt {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                    }
+                }
+                dd {
+                    position: absolute;
+                    top: 0;
+                    padding: 16px 13px;
+                    p {
+                        font-size: 14px;
+                        color: #666;
+                        &:last-child {
+                            font-size: 30px;
+                            color: #333;
+                        }
+                    }
+                }
             }
         }
         .g-middle {
@@ -188,8 +254,8 @@
                 background-color: rgba(51, 171, 251, 0.05);
                 border: 1px solid #33ABFB;
                 display: flex;
+                position: relative;
                 dt {
-                    flex: 1;
                     p {
                         @include font($fz: 14px, $color:#666);
                         &:nth-child(2) {
@@ -203,7 +269,11 @@
                     }
                 }
                 dd {
-                    flex: 1
+                    position: absolute;
+                    top: -45px;
+                    right: -100px;
+                    transform: scale(.5);
+                    /deep/ .ringBox {}
                 }
             }
         }

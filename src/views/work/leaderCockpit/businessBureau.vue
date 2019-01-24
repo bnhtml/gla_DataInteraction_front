@@ -55,12 +55,12 @@
                     </dl>
                     <dl v-else class="border">
                         <dt>
-                                <p>库表类接口总数</p>
-                                <p>{{v.num}}</p>
-                                <p>{{v.percent}}</p>
-                            </dt>
+                                    <p>库表类接口总数</p>
+                                    <p>{{v.num}}</p>
+                                    <p>{{v.percent}}</p>
+                                </dt>
                         <dd>
-                            <!-- <Ring :data='v.data' :color='v.color'> </Ring> -->
+                            <Ring :data='v.data' :labelColor='v.labelColor' :color='v.color' :title='v.title' :hasLabel='v.hasLabel'></Ring>
                         </dd>
                     </dl>
                 </el-col>
@@ -102,93 +102,119 @@
             return {
                 dataList: [{
                     title: '数据表总数',
-                    num: '8846',
+                    num: '28',
                     img: require('@/assets/images/leaderCockpit_5.png'),
                 }, {
                     title: '数据记录总数',
-                    num: '8848',
+                    num: '35',
                     img: require('@/assets/images/leaderCockpit_6.png'),
                 }, {
-                    title: '数据记录总数',
+                    title: '2135',
                     num: '8848',
                     img: require('@/assets/images/leaderCockpit_7.png'),
                 }, {
                     title: '数据记录总数',
-                    num: '8848',
+                    num: '1135',
                     img: require('@/assets/images/leaderCockpit_1.png'),
                 }, {
                     title: '数据记录总数',
-                    num: '8848',
+                    num: '1000',
                     img: require('@/assets/images/leaderCockpit_2.png'),
                 }],
                 middle: [{
                     title: '数据记录总数',
-                    num: '8848',
+                    num: '1135',
                     percent: '45%',
                     img: require('@/assets/images/leaderCockpit_3.png'),
-                    
                 }, {
                     title: '数据记录总数',
-                    num: '8848',
+                    num: '500',
                     percent: '45%',
                     img: require('@/assets/images/leaderCockpit_6.png'),
-                    data: [{
-                        value: 50,
-                        num: 50,
-                        name: '',
-                    }],
-                    color: ['#33ABFB', '#D3DBE3']
+                    "data": [{
+                        "value": "11.60",
+                        "name": "",
+                        "number": "1789个"
+                    }, {
+                        "value": "54.26",
+                        "name": "",
+                        "number": "8369个"
+                    }, ],
+                    "labelColor": ['#D3DBE3', '#33ABFB'],
+                    "color": ['#D3DBE3', '#33ABFB'],
+                    "hasLabel": false,
+                    "title": {
+                        "title": " "
+                    }
                 }, {
                     title: '数据记录总数',
-                    num: '8848',
+                    num: '500',
                     percent: '45%',
                     img: require('@/assets/images/leaderCockpit_6.png'),
-                    data: [{
-                        value: 50,
-                        num: 50,
-                        name: '',
-                    }],
-                    color: ['#33ABFB', '#D3DBE3']
+                    "data": [{
+                        "value": "11.60",
+                        "name": "",
+                        "number": "1789个"
+                    }, {
+                        "value": "54.26",
+                        "name": "",
+                        "number": "8369个"
+                    }, ],
+                    "labelColor": ['#D3DBE3', '#33ABFB'],
+                    "color": ['#D3DBE3', '#33ABFB'],
+                    "hasLabel": false,
+                    "title": {
+                        "title": " "
+                    }
                 }, {
                     title: '数据记录总数',
-                    num: '8848',
-                    percent: '45%',
+                    num: '135',
+                    percent: '10%',
                     img: require('@/assets/images/leaderCockpit_6.png'),
-                    data: [{
-                        value: 50,
-                        num: 50,
-                        name: '',
-                    }],
-                    color: ['#33ABFB', '#D3DBE3']
+                    "data": [{
+                        "value": "11.60",
+                        "name": "",
+                        "number": "1789个"
+                    }, {
+                        "value": "54.26",
+                        "name": "",
+                        "number": "8369个"
+                    }, ],
+                    "labelColor": ['#D3DBE3', '#33ABFB'],
+                    "color": ['#D3DBE3', '#33ABFB'],
+                    "hasLabel": false,
+                    "title": {
+                        "title": " "
+                    }
                 }, ],
                 bottom: [{
                     title: '本单位开放接口总数',
-                    num: '8848',
+                    num: '135',
                     img: require('@/assets/images/leaderCockpit_line_1.png'),
                     borderColor: '#FB8533'
                 }, {
                     title: '服务其他部门总数',
-                    num: '8848',
+                    num: '21',
                     img: require('@/assets/images/leaderCockpit_line_2.png'),
                     borderColor: '#35C3C4 '
                 }, {
                     title: '接口被其他部门调用总数',
-                    num: '8848',
+                    num: '11350',
                     img: require('@/assets/images/leaderCockpit_line_3.png'),
                     borderColor: '#9045D5 '
                 }, {
                     title: '申请其他部门接口总数',
-                    num: '8848',
+                    num: '21',
                     img: require('@/assets/images/leaderCockpit_line_4.png'),
                     borderColor: '#FB8533'
                 }, {
                     title: '提供服务部门总数',
-                    num: '8848',
+                    num: '12',
                     img: require('@/assets/images/leaderCockpit_line_5.png'),
                     borderColor: '#35C3C4 '
                 }, {
                     title: '调用其他部门接口总数',
-                    num: '8848',
+                    num: '210',
                     img: require('@/assets/images/leaderCockpit_line_6.png'),
                     borderColor: '#9045D5 '
                 }, ]
@@ -278,8 +304,8 @@
                 background-color: rgba(51, 171, 251, 0.05);
                 border: 1px solid #33ABFB;
                 display: flex;
+                position: relative;
                 dt {
-                    flex: 1;
                     p {
                         @include font($fz: 14px, $color:#666);
                         &:nth-child(2) {
@@ -293,7 +319,11 @@
                     }
                 }
                 dd {
-                    flex: 1
+                    position: absolute;
+                    top: -45px;
+                    right: -100px;
+                    transform: scale(.5);
+                    /deep/ .ringBox {}
                 }
             }
         }
