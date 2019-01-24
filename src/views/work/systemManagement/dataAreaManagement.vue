@@ -68,6 +68,8 @@
             if (oldUser !== newUser) {
                 this.init();
             }
+
+            this.deptType = to.query.deptType - 0;
             next();
         },
         watch: {

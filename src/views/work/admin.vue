@@ -3,7 +3,7 @@
 <div class='g-admin-page'>
     <el-container style="padding-bottom: 20px;">
       <el-aside v-if="$route.query.user === 'admin'" style="width: 300px;margin-right:20px">
-        <el-card shadow="always" class="published-header" style="height: 100%;">
+        <el-card shadow="always" class="published-header" style="height: 100%;overflow: auto">
             <p class="titleLeftBorder">已发布数据接口</p>
             <z-tree v-if="isShow" :node="node" :searchTitle="title" :deptType="deptType" v-on:onClick="checked"></z-tree>
         </el-card>
@@ -97,7 +97,6 @@ export default {
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-    this.loadedLength = 0;
     this.setFirst(this.deptType)
   },
   beforeCreate() {}, //生命周期 - 创建之前

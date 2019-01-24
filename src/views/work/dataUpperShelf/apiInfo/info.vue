@@ -54,6 +54,7 @@ export default {
           label: "封装数据类型",
           props: "dataInterfaceType",
           value:'',
+          formmater: res => ({'db': '数据库类型', 'interface': '接口类', 'file': '文件类'}[res])
         },
         {
           label: "请求数据类型",
@@ -111,17 +112,11 @@ export default {
         if(res.data.length>0){
           this.infolist.forEach((v,i) => {
             if(res.data[0][v.props]){
-              v.value = res.data[0][v.props]
-              if(v.props == 'dataInterfaceType'){
-                let valueArr = ['db','interface','file'];
-                let labelArr=['数据库类','接口类','文件']
-                if(valueArr.indexOf(res.data[0][v.props])!=-1){
-                  v.value = labelArr[valueArr.indexOf(res.data[0][v.props])]
-                }
-              }
+              let value = v.formmater && v.formmater(res.data[0][v.props]) || res.data[0][v.props];
+              v.value = value
             }else{
               if(v.label=='设置接口路径'){
-                v.value = res.data[0].firstAddress+res.data[0].secondAddress+res.data[0].thirdAddress
+                v.value = res.data[0].firstAddress + '/' + res.data[0].secondAddress + '/' + res.data[0].thirdAddress
               }else{
                 v.value ='未找到相对应的字段匹配！！！'
               }
