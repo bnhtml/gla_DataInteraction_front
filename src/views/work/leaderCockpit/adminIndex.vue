@@ -3,20 +3,50 @@
 <div class='leaderCockpit'>
 	<el-row :gutter="20">
 		<el-col :span="15">
-			<el-card>
+			<el-card class="g-top-right">
 				<p class="titleLeftBorder">
 					省直部门数据区建设概况
 				</p>
-				<div class="">
-				</div>
+				<el-row :gutter="20">
+						<el-col :span="12">
+								<dl :style="{background:'url('+dataList[2].img+') no-repeat center center','backgroundSize':'cover'}">
+										<dt>{{dataList[2].title}}</dt>
+										<dd>{{dataList[2].num}}</dd>
+								</dl>
+						</el-col>
+						<el-col :span="12">
+								<dl :style="{background:'url('+dataList[3].img+') no-repeat center center','backgroundSize':'cover','height':'65px'}">
+										<dt>{{dataList[3].title}}</dt>
+										<dd>{{dataList[3].num}}</dd>
+								</dl>
+								<dl :style="{background:'url('+dataList[4].img+') no-repeat center center','backgroundSize':'cover','height':'65px','margin-top':'10px'}">
+										<dt>{{dataList[4].title}}</dt>
+										<dd>{{dataList[4].num}}</dd>
+								</dl>
+						</el-col>
+				</el-row>
 			</el-card>
 			
 		</el-col>
 		<el-col :span="9">
-			<el-card>
+			<el-card class="g-top-left">
 				<p class="titleLeftBorder">
 					省直部门数据区概况
 				</p>
+				<el-row>
+						<el-col :span="12">
+								<dl :style="{background:'url('+dataList[0].img+') no-repeat center center','backgroundSize':'cover'}">
+										<dt>{{dataList[0].title}}</dt>
+										<dd>{{dataList[0].num}}</dd>
+								</dl>
+						</el-col>
+						<el-col :span="12">
+								<dl :style="{background:'url('+dataList[1].img+') no-repeat center center','backgroundSize':'cover'}">
+										<dt>{{dataList[1].title}}</dt>
+										<dd>{{dataList[1].num}}</dd>
+								</dl>
+						</el-col>
+				</el-row>
 			</el-card>
 			
 		</el-col>
@@ -26,7 +56,7 @@
 			<p class="titleLeftBorder">
 				市州部门数据概况
 			</p>
-			<div class="g-city-info mt10">
+			<div class="g-city-info mt20 mb20">
 				<el-row :gutter="20">
 					<el-col :span="12">
 						<div class="g-leftbox clearfix">
@@ -80,16 +110,43 @@ export default {
   data() {
     //这里存放数据
     return {
-			jsonCode: 'guizhou',
-			width: 618,
-			height: 616,
-			strip: false,
-			datas: [
-				this.$getrandom('返回首页0', 10000),
-				this.$getrandom('返回首页1', 10000),
-				this.$getrandom('返回首页2', 10000),
-			]
-		};
+      jsonCode: "guizhou",
+      width: 618,
+      height: 616,
+      strip: false,
+      datas: [
+        this.$getrandom("返回首页0", 10000),
+        this.$getrandom("返回首页1", 10000),
+        this.$getrandom("返回首页2", 10000)
+      ],
+      dataList: [
+        {
+          title: "数据表总数",
+          num: this.$getrandom('数据表总数', 10000),
+          img: require("@/assets/images/leaderCockpit_5.png")
+        },
+        {
+          title: "数据记录总数",
+          num: this.$getrandom('数据记录总数', 10000),
+          img: require("@/assets/images/leaderCockpit_6.png")
+        },
+        {
+          title: "省直部门总数",
+          num: this.$getrandom('省直部门总数000', 10000),
+          img: require("@/assets/images/leaderCockpit_7.png")
+        },
+        {
+          title: "已建设数据区部门",
+          num: parseInt(this.$getrandom('省直部门总数000', 10000) * .43),
+          img: require("@/assets/images/leaderCockpit_1.png")
+        },
+        {
+          title: "未建设数据区部门",
+          num: parseInt(this.$getrandom('省直部门总数000', 10000) * .57),
+          img: require("@/assets/images/leaderCockpit_2.png")
+        }
+      ]
+    };
   },
   //监听属性 类似于data概念
   computed: {},
@@ -97,17 +154,16 @@ export default {
   watch: {},
   //方法集合
   methods: {
-		handelClick(e) {
-			let name = e.name || e;
-			this.datas = [1000, 1000, 1000].map((o, i) => this.$getrandom(name + i, o));
-
-		}
-	},
+    handelClick(e) {
+      let name = e.name || e;
+      this.datas = [1000, 1000, 1000].map((o, i) =>
+        this.$getrandom(name + i, o)
+      );
+    }
+  },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    this.$api.get_firstdir({ depart: "贵州省大数据局" }).then(res => {
-      console.log(res, "====");
-    });
+		
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
@@ -122,6 +178,7 @@ export default {
 </script>
 <style lang='scss' scoped>
 //@import url(); 引入公共css类
+    @import '@/assets/style/base/index.scss';
 .g-a-t {
   color: #666;
   font-size: 14px;
@@ -159,7 +216,7 @@ export default {
 .g-centerbox {
   padding: 12px;
   height: 120px;
-  background: url(../../../assets/images/leaderCockpit_transparent_1.png)
+  background: url(../../../assets/images/leaderCockpit_transparent_3.png)
     no-repeat;
   background-size: 100% 100%;
 }
@@ -170,4 +227,64 @@ export default {
     no-repeat;
   background-size: 100% 100%;
 }
+
+
+        .g-top-left {
+            height: 220px;
+            .el-row {
+                margin: 0 -20px;
+                padding-top: 20px;
+            }
+            .el-col-12 {
+                &:first-child {
+                    padding: 0 10px 0 20px;
+                }
+                &:last-child {
+                    padding: 0 20px 0 10px;
+                }
+                dl {
+                    height: 140px;
+                    padding: 15px;
+                    dt {
+                        @include font($fz: 14px, $color:#fff);
+                    }
+                    dd {
+                        @include font($fz: 30px, $color:#fff);
+                    }
+                }
+            }
+        }
+        .g-top-right {
+            height: 220px;
+            .el-row {
+                margin: 0 -20px;
+                padding-top: 20px;
+                .el-col-12 {
+                    &:first-child {
+                        padding: 0 10px 0 20px;
+                    }
+                    &:last-child {
+                        padding: 0 20px 0 10px;
+                        dl {
+                            display: flex;
+                            justify-content: space-between;
+                            dd {
+                                position: relative;
+                                top: -10px;
+                            }
+                        }
+                    }
+                    dl {
+                        height: 140px;
+                        padding: 15px;
+                        dt {
+                            @include font($fz: 14px, $color:#fff);
+                        }
+                        dd {
+                            @include font($fz: 30px, $color:#fff);
+                        }
+                    }
+                }
+            }
+        }
 </style>
