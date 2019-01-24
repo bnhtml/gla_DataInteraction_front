@@ -316,10 +316,10 @@ let unpublished = {
             type: "text",
             align: "",
             label: "状态",
-            prop: "applyStatus",
+            prop: "dataInterfaceStatus",
             width: "100",
             formatter(row) {
-                return ['已封装', '未封装'][row.applyStatus]
+                return ['未封装', '已封装'][row.dataInterfaceStatus]
             }
         },
         {
@@ -356,11 +356,12 @@ let unpublished = {
             width: "300",
             list: [{
                 formatter(row, column, columnIndex, rowIndex) {
-                    return ['封装接口', "修改接口"][row.applyStatus]
+                    return ['封装接口', "修改接口"][row.dataInterfaceStatus]
                 },
                 onClick(_this, self, row) {
-                    let name = 'interfaceUpdate'
-                    if (row.applyStatus == 0) {
+                    let name = 'interfaceUpdate';
+                    let { resourceId, departName, resourceName, resourceDescribe, departDomain} = row;
+                    if (row.dataInterfaceStatus == 0) {
                         name = 'interfacePackage'
 
                         console.log('封装接口')
@@ -371,54 +372,56 @@ let unpublished = {
                     _this.$router.push({
                         name,
                         query: {
-                            backQuery: JSON.stringify(_this.$route.query),
-                            id: row.id,
-                            tableTitle: row.name,
-                            type: row.type,
+                            resourceId,
+                            departName,
+                            resourceName,
+                            resourceDescribe,
+                            departDomain
                         }
                     })
 
                 }
             }, {
                 formatter(row, column, columnIndex, rowIndex) {
-                    return ['', "接口文档"][row.applyStatus]
+                    return ['', "接口文档"][row.dataInterfaceStatus]
                 },
                 onClick(_this, self, row) {
-                    if (row.applyStatus == 1) {
+                    if (row.dataInterfaceStatus == 1) {
                         self.$parent.fileUpload();
                     }
 
                 }
             }, {
                 formatter(row, column, columnIndex, rowIndex) {
-                    return ['', "发布"][row.applyStatus]
+                    return ['', "发布"][row.dataInterfaceStatus]
                 },
                 onClick(_this, self, row) {
-                    if (row.applyStatus == 1) {
-                        _this.$confirm('数据资源发布后，将会再对外公布，请确认是否发布数据接口。', "数据接口发布", {
-                            confirmButtonText: '确定',
-                            cancelButtonText: '取消',
-                            showCancelButton: true,
-                            showConfirmButton: true,
-                            showClose: false,
-                            type: 'warning'
-                        }).then(() => {
-                            _this.$message({
-                                type: 'success',
-                                message: '发布成功!'
-                            });
-                        }).catch(() => {
-                            _this.$message({
-                                type: 'info',
-                                message: '已取消发布'
-                            });
-                        });
+                    if (row.dataInterfaceStatus == 1) {
+                        self.$parent.publish(row.resourceId);
+                        // _this.$confirm('数据资源发布后，将会再对外公布，请确认是否发布数据接口。', "数据接口发布", {
+                        //     confirmButtonText: '确定',
+                        //     cancelButtonText: '取消',
+                        //     showCancelButton: true,
+                        //     showConfirmButton: true,
+                        //     showClose: false,
+                        //     type: 'warning'
+                        // }).then(() => {
+                        //     _this.$message({
+                        //         type: 'success',
+                        //         message: '发布成功!'
+                        //     });
+                        // }).catch(() => {
+                        //     _this.$message({
+                        //         type: 'info',
+                        //         message: '已取消发布'
+                        //     });
+                        // });
                     }
 
                 }
             }, {
                 formatter(row, column, columnIndex, rowIndex) {
-                    return ['', "测试apikey"][row.applyStatus]
+                    return ['', "测试apikey"][row.dataInterfaceStatus]
                 },
                 onClick(_this, self, row) {
 
@@ -433,53 +436,53 @@ let unpublished = {
             {
                 type: "input-select", //输入文本
                 label: "",
-                name: "apiName",
+                name: "isEncap",
                 value: "",
                 placeholder: "请选择",
                 options: [
                     {
                         value: "全部",
-                        label: "全部"
+                        name: "全部"
                     },
                     {
                         value: "已封装",
-                        label: "已封装"
+                        name: "已封装"
                     },
                     {
                         value: "未封装",
-                        label: "未封装"
+                        name: "未封装"
                     }
                 ]
             },
             {
                 type: "input-select", //输入文本
                 label: "",
-                name: "apiName",
+                name: "conditionPa",
                 value: "",
                 placeholder: "请选择",
                 options: [
                     {
                         value: "数据接口名称",
-                        label: "数据接口名称"
+                        name: "数据接口名称"
                     },
                     {
                         value: "数据接口地址",
-                        label: "数据接口地址"
+                        name: "数据接口地址"
                     },
                     {
                         value: "资源名称",
-                        label: "资源名称"
+                        name: "资源名称"
                     },
                     {
                         value: "资源ID",
-                        label: "资源ID"
+                        name: "资源ID"
                     }
                 ]
             },
             {
                 type: "input-text",
                 label: "",
-                name: "name",
+                name: "conditionSo",
                 value: "",
                 placeholder: "请输入"
             }

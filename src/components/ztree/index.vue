@@ -99,7 +99,7 @@ export default {
     callback: {
       onClick: this.getSelectDept
     }}, this.node);
-    deptDomeObj.expandAll(true);
+    if(this.node.length === 1)deptDomeObj.expandAll(true);
   },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前
