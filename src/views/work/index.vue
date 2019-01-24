@@ -1,19 +1,38 @@
  // 首页展示
 <template>
     <div class="home">
-    <el-container class="wrapper">
-      <el-aside style="width: 220px;background: #316284;" v-if="isMenuShow">
-        <div v-for="(menus, index) in leftMenu" :key="index">
-            <router-link :to="menus.url" class="g-bigmenu">{{menus.name}}</router-link>
-            <div v-if="menus.children && menus.children.length" v-for="(menu, idx) in menus.children" :key="idx">
-                
-            <router-link :to="menu.url" class="g-centermenu">
-                {{menu.name}}
-            </router-link>
-            <router-link :to="o.url" v-if="menu.children && menu.children.length" v-for="(o, i) in menu.children" :key="i" class="g-smallmenu">{{o.name}}</router-link>
-        
+        <el-container class="wrapper">
+            <div style='background: #58CAFD;width:60px'>
             </div>
-        </div>
+            <el-aside style="width: 220px;background: #316284;" v-if="isMenuShow">
+                <!-- <div v-for="(menus, index) in leftMenu" :key="index">
+                    <router-link :to="menus.url" class="g-bigmenu">{{menus.name}}</router-link>
+                    <div v-if="menus.children && menus.children.length" v-for="(menu, idx) in menus.children" :key="idx">
+                        <router-link :to="menu.url" class="g-centermenu">
+                            {{menu.name}}
+                        </router-link>
+                        <router-link :to="o.url" v-if="menu.children && menu.children.length" v-for="(o, i) in menu.children" :key="i" class="g-smallmenu">{{o.name}}</router-link>
+                    </div>
+                </div> -->
+                <!--  -->
+                <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" :background-color='"#316284"' :text-color="'#fff'" v-for="(menus, index) in leftMenu" :key="index">
+                    <el-submenu :index="index" v-if="menus.children && menus.children.length">
+                        <template slot="title"><span slot="title">{{menus.name}}</span></template>
+                        <el-menu-item-group v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length==0">
+                            <el-menu-item :index="idx"><router-link :to="menu.url">{{menu.name}}</router-link></el-menu-item>
+                        </el-menu-item-group>
+                        <el-submenu index="1-4" v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length">
+                            <span slot="title">{{menu.name}}</span>
+                            <el-menu-item index="1-4-1" v-for='(v,i) in menu.children' :key='i'><router-link :to="v.url">{{v.name}}</router-link></el-menu-item>
+                        </el-submenu>
+                        
+                    </el-submenu>
+                
+                    <el-menu-item :index="index" v-else>
+                        <span slot="title"><router-link :to="menus.url">{{menus.name}}</router-link></span>
+                    </el-menu-item>
+                </el-menu>
+        <!--  -->
       </el-aside>
       <el-main ref="containerLayout">
         <router-view></router-view>
@@ -44,8 +63,7 @@
 
 <script type="text/javascript">
     const leftMenus = [
-        [
-            {
+        [{
                 url: 'businessBureau',
                 name: '领导驾驶舱（业务局委）',
                 icon: 'icon-shouye',
@@ -55,8 +73,7 @@
                 url: 'leaderCockpit',
                 name: '领导驾驶舱（大数据局）',
                 icon: 'icon-shouye',
-                children: [
-                    {
+                children: [{
                         url: 'adminIndex',
                         name: '数据区概况',
                         icon: '',
@@ -66,9 +83,13 @@
                         url: 'nationalInterface',
                         name: '接口概况',
                         icon: '',
-                        children: [
-                            {
-                                url: 'nationalInterface',
+                        children: [{
+                                url: {
+                                    name: 'nationalInterface',
+                                    query: {
+                                        type: 0
+                                    }
+                                },
                                 name: '国家接口',
                                 icon: '',
                                 children: []
@@ -100,8 +121,7 @@
                 ]
             }
         ],
-        [
-            {
+        [{
                 url: 'datainteration',
                 name: '数据库类',
                 icon: 'icon-shouye',
@@ -114,8 +134,7 @@
                 children: []
             },
         ],
-        [
-            {
+        [{
                 url: {
                     name: 'published',
                     query: {
@@ -125,43 +144,43 @@
                 },
                 name: '已发布接口-大数据局',
                 icon: 'icon-shouye',
-                children: [
-                {
-                    url: {
-                        name: 'published',
-                        query: {
-                            user: 'admin',
-                            deptType: 0
-                        }
+                children: [{
+                        url: {
+                            name: 'published',
+                            query: {
+                                user: 'admin',
+                                deptType: 0
+                            }
+                        },
+                        name: '国家接口',
+                        icon: '',
+                        children: []
                     },
-                    name: '国家接口',
-                    icon: '',
-                    children: []
-                },
-                {
-                    url: {
-                        name: 'published',
-                        query: {
-                            user: 'admin',
-                            deptType: 1
-                        }
+                    {
+                        url: {
+                            name: 'published',
+                            query: {
+                                user: 'admin',
+                                deptType: 1
+                            }
+                        },
+                        name: '省直接口',
+                        icon: '',
+                        children: []
                     },
-                    name: '省直接口',
-                    icon: '',
-                    children: []
-                },
-                {
-                    url: {
-                        name: 'published',
-                        query: {
-                            user: 'admin',
-                            deptType: 2
-                        }
-                    },
-                    name: '市州接口',
-                    icon: '',
-                    children: []
-                }]
+                    {
+                        url: {
+                            name: 'published',
+                            query: {
+                                user: 'admin',
+                                deptType: 2
+                            }
+                        },
+                        name: '市州接口',
+                        icon: '',
+                        children: []
+                    }
+                ]
             },
             {
                 url: {
@@ -186,13 +205,12 @@
                 children: []
             }
         ],
-        [
-            {
+        [{
                 url: {
-                    name:'dataAreaManagement',
-                    query:{
+                    name: 'dataAreaManagement',
+                    query: {
                         user: '贵州省大数据局',
-                        deptType:3
+                        deptType: 3
                     }
                 },
                 name: '数据区管理-业务局委',
@@ -201,10 +219,10 @@
             },
             {
                 url: {
-                    name:'dataAreaManagement',
-                    query:{
+                    name: 'dataAreaManagement',
+                    query: {
                         user: 'admin',
-                        deptType:3
+                        deptType: 3
                     }
                 },
                 name: '数据区管理-大数据局',
@@ -213,10 +231,10 @@
             },
             {
                 url: {
-                    name:'interfacePathManagement',
-                    query:{
-                        user:'admin',
-                        deptType:3
+                    name: 'interfacePathManagement',
+                    query: {
+                        user: 'admin',
+                        deptType: 3
                     }
                 },
                 name: '接口路径管理',
@@ -225,10 +243,10 @@
             },
             {
                 url: {
-                    name:'unitDomainNameManagement',
-                    query:{
-                        user:'admin',
-                        deptType:3
+                    name: 'unitDomainNameManagement',
+                    query: {
+                        user: 'admin',
+                        deptType: 3
                     }
                 },
                 name: '单位域名管理',
@@ -253,10 +271,10 @@
         name: 'navBar',
         data() {
             let routerNames = [
-                ['leaderCockpit','businessBureau','nationalInterface','adminIndex', 'adminCity'],
-                ['datainteration','fileGuide','fileOperation'],
-                ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage','interfacePackage','interfaceUpdate'],
-                ['systemManagement','dataAreaManagement','dataSheetDetails','configManagement','stateManagement','unitDomainNameManagement','interfacePathManagement']
+                ['leaderCockpit', 'businessBureau', 'nationalInterface', 'adminIndex', 'adminCity'],
+                ['datainteration', 'fileGuide', 'fileOperation'],
+                ['dataUpperShelf', 'dataUpperShelfAdmin', 'published', 'unpublished', 'info', 'params', 'usage', 'interfacePackage', 'interfaceUpdate'],
+                ['systemManagement', 'dataAreaManagement', 'dataSheetDetails', 'configManagement', 'stateManagement', 'unitDomainNameManagement', 'interfacePathManagement']
             ]
             let idx = routerNames.map((o, i) => o.indexOf(this.$route.name) > -1).indexOf(true);
             return {
@@ -266,21 +284,21 @@
                 isCollapsed: false,
                 isMenuShow: true,
                 routerInfo: leftMenus[idx],
+                isCollapse: false,
             }
         },
-        components: {
-        },
-        beforeRouteUpdate(to, from, next){
-            let {fullPath} = to;
-            if(fullPath !== from.fullPath){
+        components: {},
+        beforeRouteUpdate(to, from, next) {
+            let {
+                fullPath
+            } = to;
+            if (fullPath !== from.fullPath) {
                 let dom = this.$refs.containerLayout.$el;
                 dom.scrollTop = 0;
-
             }
             next();
-            if(fullPath !== from.fullPath){
+            if (fullPath !== from.fullPath) {
                 this.showMenu();
-
             }
         },
         computed: {
@@ -317,10 +335,9 @@
                 return activeName;
             }
         },
-        mounted() {
-        },
+        mounted() {},
         methods: {
-            showMenu(){
+            showMenu() {
                 this.isMenuShow = false;
                 let idx = this.routerNames.map((o, i) => o.indexOf(this.$route.name) > -1).indexOf(true);
                 this.routerInfo = leftMenus[idx];
@@ -334,6 +351,12 @@
             },
             handleSelect(e) {
                 e = JSON.parse(e);
+            },
+            handleOpen(key, keyPath) {
+                // console.log(key, keyPath);
+            },
+            handleClose(key, keyPath) {
+                // console.log(key, keyPath);
             }
         }
     }
@@ -341,32 +364,28 @@
 
 <style lang='scss' scoped>
     @import '../../assets/style/base/index.scss';
-    .g-bigmenu{
-        display: block;
-        // background: #000;
+    .g-bigmenu {
+        display: block; // background: #000;
         color: #fff;
         line-height: 40px;
         font-size: 16px;
         padding-left: 20px;
     }
-    .g-centermenu{
+    .g-centermenu {
         padding-left: 15px;
-        display: block;
-        // background: #333;
+        display: block; // background: #333;
         color: #fff;
         line-height: 40px;
-        font-size: 14px;
+        font-size: 16px;
         padding-left: 20px;
     }
-    .g-smallmenu{
+    .g-smallmenu {
         padding-left: 22px;
-        display: block;
-        // background: #444;
+        display: block; // background: #444;
         color: #fff;
         line-height: 40px;
-        font-size: 12px;
+        font-size: 16px;
         padding-left: 20px;
-
     }
     .home {
         position: absolute;
@@ -379,8 +398,8 @@
             i {
                 font-size: 18px;
             }
-            .menu{
-                @include nums($w:100%,$h:36px);
+            .menu {
+                @include nums($w: 100%, $h:36px);
                 margin-top: 27px;
             }
         }
@@ -463,8 +482,7 @@
         content: ' ';
     }
     .content {
-        height: auto; 
-        // background: #182142; 
+        height: auto; // background: #182142; 
         // background: #1C2851;
         // border-radius: 8px;
         // box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.40);
@@ -476,6 +494,30 @@
     }
     .container-layout {
         overflow-y: scroll;
+    }
+    // .hover, // .router-link-active,
+    // .router-link-exact-active {
+    //     background: #4D92BC;
+    // }
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+        // width: 200px;
+        // min-height: 400px;
+    }
+    .el-menu-vertical-demo ,.el-menu{
+
+    }
+    a{
+        // width: 220px;
+        // height:62px;
+        // margin-left: -20px;
+        // padding-left: 20px;
+        // display: inline-block;
+        font-size: 16px;
+        color: #fff;
+
+    }
+    /deep/ .el-submenu__title{
+        font-size: 16px;
     }
 </style>
 
