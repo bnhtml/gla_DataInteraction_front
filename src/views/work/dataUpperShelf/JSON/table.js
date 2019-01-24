@@ -422,7 +422,7 @@ let unpublished = {
                     return ['', "测试apikey"][row.dataInterfaceStatus]
                 },
                 onClick(_this, self, row) {
-
+                    self.$parent.testApi({ resourceId: row.resourceId, depart: row.departName})
                 }
             }]
         }

@@ -27,14 +27,13 @@
   import {
     unpublished
   } from './JSON/table.js';
-  import { SERVER_BASE_URL } from '@/http/conf.js';
   export default {
     data() {
       return {
         query: {
           depart: this.$route.query.user === 'admin' ? '' : this.$route.query.user
         },
-        url: SERVER_BASE_URL + '/new_interface/getUnpublished_interface',
+        url: this.$SERVER_BASE_URL + '/new_interface/getUnpublished_interface',
         ...unpublished
       };
     },
@@ -133,6 +132,20 @@
       publish(resourceId){
         this.$api.interface_commit({resourceId}).then(res => {
           console.log(res);
+        })
+      },
+      testApi(query){
+        this.$api.testApikey(query).then(res => {
+          console.log(res)
+          if(res.data && res.data.apiKey){
+            
+            this.$confirm(res.data.apiKey, "APIkey", {
+              confirmButtonText: '确定',
+              showCancelButton: false,
+              showConfirmButton: true,
+              showClose: false,
+            })
+          }
         })
       }
     },

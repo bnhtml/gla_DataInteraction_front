@@ -118,3 +118,7 @@ export const query_file = (params) => {
 export const interface_commit = (params) => {
     return httpApi('/new_interface/interface_commit', params, 'post')
 }
+// 测试apikey
+export const testApikey = (params) => {
+    return httpApi('/new_interface/testApikey', params, 'post')
+}
