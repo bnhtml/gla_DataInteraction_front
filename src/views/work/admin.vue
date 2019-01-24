@@ -63,8 +63,8 @@ export default {
       this.node = [];
       if(n < 2){
         let firstleval = [['国家部门'], ['省直部门']][n];
-        this.setNode(firstleval, this.node);
         this.firstleval = firstleval;
+        this.setNode(firstleval, this.node);
       }else{
         this.$api.getdep_region({dire_ide: n - 2}).then(res => {
           this.firstleval = res.data;
@@ -76,11 +76,9 @@ export default {
       firstleval.forEach((o, i) => {
         arr.push({name: o, children: []});
         if(noChild && (i === firstleval.length - 1 || firstleval.length === 0)){
-          // this.isShow = true;
-          console.log(this.loadedLength, '====')
           this.loadedLength ++;
         }
-        console.log(this.loadedLength === this.firstleval.length)
+        console.log(this.loadedLength === this.firstleval.length, this.loadedLength, this.firstleval.length)
         if(this.loadedLength === this.firstleval.length){
           this.isShow = true;
         }
@@ -96,11 +94,12 @@ export default {
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
+  },
+  //生命周期 - 挂载完成（可以访问DOM元素）
+  mounted() {
     this.loadedLength = 0;
     this.setFirst(this.deptType)
   },
-  //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前
   beforeUpdate() {}, //生命周期 - 更新之前
