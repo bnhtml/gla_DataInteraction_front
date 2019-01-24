@@ -79,7 +79,7 @@ export default {
       })
     },
     searchDept(depart){
-      this.$emit('onClick', {depaprt: depart.value});
+      this.$emit('onClick', {depart: depart.value});
     },
     getSelectDept(e, a, node){
       let param = ['region', 'depart'][node.level];
