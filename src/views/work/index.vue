@@ -68,7 +68,12 @@
                         icon: '',
                         children: [
                             {
-                                url: 'nationalInterface',
+                                url: {
+                                    name: 'nationalInterface',
+                                    query: {
+                                        type: 0
+                                    }
+                                },
                                 name: '国家接口',
                                 icon: '',
                                 children: []
@@ -355,7 +360,7 @@
         // background: #333;
         color: #fff;
         line-height: 40px;
-        font-size: 14px;
+        font-size: 16px;
         padding-left: 20px;
     }
     .g-smallmenu{
@@ -364,7 +369,7 @@
         // background: #444;
         color: #fff;
         line-height: 40px;
-        font-size: 12px;
+        font-size: 16px;
         padding-left: 20px;
 
     }
@@ -476,6 +481,11 @@
     }
     .container-layout {
         overflow-y: scroll;
+    }
+    .hover,
+    // .router-link-active,
+   .router-link-exact-active {
+        background: #4D92BC;
     }
 </style>
 

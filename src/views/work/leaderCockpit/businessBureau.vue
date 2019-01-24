@@ -132,13 +132,13 @@
                     percent: '45%',
                     img: require('@/assets/images/leaderCockpit_6.png'),
                     "data": [{
-                        "value": "11.60",
+                        "value": "55.00",
                         "name": "",
-                        "number": "1789个"
+                        "number": "55"
                     }, {
-                        "value": "54.26",
+                        "value": "45.00",
                         "name": "",
-                        "number": "8369个"
+                        "number": "45"
                     }, ],
                     "labelColor": ['#D3DBE3', '#33ABFB'],
                     "color": ['#D3DBE3', '#33ABFB'],
@@ -152,13 +152,13 @@
                     percent: '45%',
                     img: require('@/assets/images/leaderCockpit_6.png'),
                     "data": [{
-                        "value": "11.60",
+                        "value": "55.00",
                         "name": "",
-                        "number": "1789个"
+                        "number": "55"
                     }, {
-                        "value": "54.26",
+                        "value": "45.00",
                         "name": "",
-                        "number": "8369个"
+                        "number": "45"
                     }, ],
                     "labelColor": ['#D3DBE3', '#33ABFB'],
                     "color": ['#D3DBE3', '#33ABFB'],
@@ -172,13 +172,13 @@
                     percent: '10%',
                     img: require('@/assets/images/leaderCockpit_6.png'),
                     "data": [{
-                        "value": "11.60",
+                        "value": "90",
                         "name": "",
-                        "number": "1789个"
+                        "number": "90"
                     }, {
-                        "value": "54.26",
+                        "value": "10.00",
                         "name": "",
-                        "number": "8369个"
+                        "number": "10"
                     }, ],
                     "labelColor": ['#D3DBE3', '#33ABFB'],
                     "color": ['#D3DBE3', '#33ABFB'],
