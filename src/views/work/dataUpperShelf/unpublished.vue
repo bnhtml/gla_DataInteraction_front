@@ -45,7 +45,7 @@
       FileUpload
     },
     mounted() {
-      this.init();
+      // this.init();
     },
     methods: {
       fileUpload() {
