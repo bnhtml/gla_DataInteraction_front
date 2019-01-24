@@ -102,7 +102,7 @@ export const get_interfaceFile = (params) => {
 
 /* 系统管理  数据区管理 数据库类查询 */
 export const query_databaseClass = (params) => {
-    return httpApi(' /new_interface/query_databaseClass', params, 'post')
+    return httpApi(' /new_interface/query_databaseClass', params, 'post');
 }
 /* 系统管理  数据区管理 数据表查询 */
 export const query_table = (params) => {

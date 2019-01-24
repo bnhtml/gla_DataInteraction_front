@@ -44,7 +44,7 @@ Vue.prototype.$appBase = appBase;
 Vue.prototype.$appClient = appClient;
 
 Vue.prototype.$getrandom = getrandom;
-Vue.prototype.$SERVER_BASE_URL = SERVER_BASE_URL
+Vue.prototype.$SERVER_BASE_URL = SERVER_BASE_URL;
 
 // 过滤器
 Vue.filter('number_format', numberFormat)
