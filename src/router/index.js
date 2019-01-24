@@ -7,6 +7,7 @@ import index from '../views/work/index.vue'; //
 
 import leaderCockpit from '../views/work/leaderCockpit/leaderCockpit.vue';
 import adminIndex from '../views/work/leaderCockpit/adminIndex.vue';
+import adminCity from '../views/work/leaderCockpit/adminCity.vue';
 import  businessBureau from '../views/work/leaderCockpit/businessBureau.vue'
 /* 数据集成 */
 import datainteration from '../views/work/datainteration';
@@ -68,6 +69,15 @@ export default new Router({
                             path: 'adminIndex',
                             name: 'adminIndex',
                             component: adminIndex,
+                            meta: {
+                                keepAlive: true,
+                                title: '领导驾驶舱'
+                            }
+                        },
+                        {
+                            path: 'adminCity',
+                            name: 'adminCity',
+                            component: adminCity,
                             meta: {
                                 keepAlive: true,
                                 title: '领导驾驶舱'
