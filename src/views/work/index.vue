@@ -15,7 +15,7 @@
                     </div>
                 </div> -->
                 <!--  -->
-                <el-menu class="el-menu-vertical-demo" :default-active='indexClass' @open="handleOpen" @close="handleClose" :collapse="isCollapse" :background-color='"#316284"' :text-color="'#fff'" v-for="(menus, index) in leftMenu" :key="index" @select='changeMenu'>
+                <el-menu class="el-menu-vertical-demo" :default-active='indexClass'  :collapse="isCollapse" :background-color='"#316284"' :text-color="'#fff'" v-for="(menus, index) in leftMenu" :key="index" @select='changeMenu'>
                     <el-submenu :index="JSON.stringify(menus)" v-if="menus.children && menus.children.length" :class='indexClass==JSON.stringify(menus)?"is-active":""'>
                         <template slot="title"><span slot="title">{{menus.name}}</span></template>
                         <el-menu-item-group v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length==0">

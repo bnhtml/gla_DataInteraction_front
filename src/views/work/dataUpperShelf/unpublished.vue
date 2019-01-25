@@ -1,10 +1,14 @@
 // 未发布
 <template>
   <div class="unpublished">
-    <!-- <c-admin :deptType="deptType"> -->
     <el-card shadow="always" class="unpublished-header">
       <p class="titleLeftBorder">筛选查询</p>
       <TableSearch :searchs='searchs' v-if='isShow'></TableSearch>
+      <el-radio-group v-model="query.isEncap" size="small" class="radio">
+        <el-radio-button label="全部"></el-radio-button>
+        <el-radio-button label="待发布"></el-radio-button>
+        <el-radio-button label="未封装"></el-radio-button>
+      </el-radio-group>
     </el-card>
     <el-card shadow="always" class="unpublished-cont mt20 g-tableCard">
       <p class="titleLeftBorder">
@@ -15,7 +19,6 @@
         <NomalTable :table-json="tableJson" :url="url" :query="query" axiosType="post" @receive="receive" v-if='isShow'></NomalTable>
       </div>
     </el-card>
-    <!-- </c-admin> -->
   </div>
 </template>
 
@@ -32,11 +35,12 @@
       return {
         isShow: false,
         query: {
-          depart: this.$route.query.user === 'admin' ? '' : this.$route.query.user
+          depart: this.$route.query.user === 'admin' ? '' : this.$route.query.user,
+          isEncap: '',
         },
         totalCount: 0,
         url: this.$SERVER_BASE_URL + '/new_interface/getUnpublished_interface',
-        ...unpublished
+        ...unpublished,
       };
     },
     components: {
@@ -45,15 +49,13 @@
       TableSearch,
       FileUpload
     },
-    created(){
-
+    created() {
       this.isShow = false;
       this.$nextTick(() => this.isShow = true);
     },
-    mounted() {
-    },
+    mounted() {},
     methods: {
-      receive(res){
+      receive(res) {
         this.totalCount = res.page.totalCount;
       },
       fileUpload() {
@@ -138,16 +140,17 @@
             });
           });
       },
-      publish(resourceId){
-        this.$api.interface_commit({resourceId}).then(res => {
-          console.log(res);
-        }).catch(error => this.$message({type: 'error', message: error}))
+      publish(resourceId) {
+        this.$api.interface_commit({
+          resourceId
+        }).then(res => {}).catch(error => this.$message({
+          type: 'error',
+          message: error
+        }))
       },
-      testApi(query){
+      testApi(query) {
         this.$api.testApikey(query).then(res => {
-          console.log(res)
-          if(res.data && res.data.apiKey){
-            
+          if (res.data && res.data.apiKey) {
             this.$confirm(res.data.apiKey, "APIkey", {
               confirmButtonText: '确定',
               showCancelButton: false,
@@ -166,7 +169,14 @@
 </script>
 
 <style scoped lang="scss">
-
+  .unpublished-header {
+    position: relative;
+    .radio {
+      position: absolute;
+      left: 560px;
+      top: 51px;
+    }
+  }
 </style>
 
 

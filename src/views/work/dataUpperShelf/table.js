@@ -157,7 +157,7 @@ let unpublished = {
             prop: "dataInterfaceStatus",
             width: "100",
             formatter(row) {
-                return ['未封装', '已封装'][row.dataInterfaceStatus]
+                return ['未封装', '待发布'][row.dataInterfaceStatus]
             }
         },
 
@@ -273,23 +273,23 @@ let unpublished = {
                 value: "",
                 placeholder: "请输入"
             },
-            {
-                type: "input-radio", //输入文本
-                label: "",
-                name: "isEncap",
-                value: "",
-                placeholder: "请选择",
-                options: [
-                    {
-                        value: "待发布",
-                        name: "待发布"
-                    },
-                    {
-                        value: "未封装",
-                        name: "未封装"
-                    }
-                ]
-            },
+            // {
+            //     type: "input-radio", //输入文本
+            //     label: "",
+            //     name: "isEncap",
+            //     value: "",
+            //     placeholder: "请选择",
+            //     options: [
+            //         {
+            //             value: "待发布",
+            //             name: "待发布"
+            //         },
+            //         {
+            //             value: "未封装",
+            //             name: "未封装"
+            //         }
+            //     ]
+            // },
         ]
     },
     data: [{
