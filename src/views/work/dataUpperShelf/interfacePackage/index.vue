@@ -314,6 +314,7 @@ export default {
     },
     //上一步
     preStep() {
+      this.formModels.urlAddress = '';
       this.pageFlag='stepOne';
     },
     //取消

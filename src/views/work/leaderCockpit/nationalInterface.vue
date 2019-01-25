@@ -213,13 +213,14 @@
             }
             dl {
                 height: 143px;
-                margin-top: 20px;
+                margin-top: 10px;
                 display: flex;
                 position: relative;
                 dt {
                     width: 100%;
                     img {
                         width: 100%;
+                        height: 100%;
                     }
                 }
                 dd {

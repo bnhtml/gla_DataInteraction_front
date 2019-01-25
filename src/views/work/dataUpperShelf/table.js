@@ -103,203 +103,7 @@ let published = {
             "placeholder": "请输入",
         }]
     },
-    data: [{
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    }, {
-        dataInterfaceName: '数据接口名称',
-        resourceId: 'WERMKL345III0',
-        resourceName: '资源数据名称',
-        dataInterfaceDesc: '资源数据名称',
-        urlSuccess: '资源数据名称',
-        callTimes: '2',
-    },]
+    
 }
 let unpublished = {
     tableJson: {
@@ -444,27 +248,7 @@ let unpublished = {
     },
     searchs: {
         list: [
-            {
-                type: "input-select", //输入文本
-                label: "",
-                name: "isEncap",
-                value: "",
-                placeholder: "请选择",
-                options: [
-                    {
-                        value: "全部",
-                        name: "全部"
-                    },
-                    {
-                        value: "已封装",
-                        name: "已封装"
-                    },
-                    {
-                        value: "未封装",
-                        name: "未封装"
-                    }
-                ]
-            },
+            
             {
                 type: "input-select", //输入文本
                 label: "",
@@ -488,7 +272,24 @@ let unpublished = {
                 name: "conditionSo",
                 value: "",
                 placeholder: "请输入"
-            }
+            },
+            {
+                type: "input-radio", //输入文本
+                label: "",
+                name: "isEncap",
+                value: "",
+                placeholder: "请选择",
+                options: [
+                    {
+                        value: "待发布",
+                        name: "待发布"
+                    },
+                    {
+                        value: "未封装",
+                        name: "未封装"
+                    }
+                ]
+            },
         ]
     },
     data: [{

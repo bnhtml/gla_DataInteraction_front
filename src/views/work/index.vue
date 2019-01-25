@@ -15,21 +15,19 @@
                     </div>
                 </div> -->
                 <!--  -->
-                <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" :background-color='"#316284"' :text-color="'#fff'" v-for="(menus, index) in leftMenu" :key="index">
-                    <el-submenu :index="JSON.stringify(index)" v-if="menus.children && menus.children.length">
+                <el-menu class="el-menu-vertical-demo" :default-active='indexClass' @open="handleOpen" @close="handleClose" :collapse="isCollapse" :background-color='"#316284"' :text-color="'#fff'" v-for="(menus, index) in leftMenu" :key="index" @select='changeMenu'>
+                    <el-submenu :index="JSON.stringify(menus)" v-if="menus.children && menus.children.length" :class='indexClass==JSON.stringify(menus)?"is-active":""'>
                         <template slot="title"><span slot="title">{{menus.name}}</span></template>
                         <el-menu-item-group v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length==0">
-                            <el-menu-item :index="JSON.stringify(idx)"><router-link :to="menu.url">{{menu.name}}</router-link></el-menu-item>
+                            <el-menu-item :index="JSON.stringify(menu)" :class='indexClass==JSON.stringify(menu)?"is-active":""'>{{menu.name}}</el-menu-item>
                         </el-menu-item-group>
-                        <el-submenu :index="JSON.stringify(idx)" v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length">
+                        <el-submenu :index="JSON.stringify(menu)" v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length" :class='indexClass==JSON.stringify(menu)?"is-active":""'>
                             <span slot="title">{{menu.name}}</span>
-                            <el-menu-item :index="JSON.stringify(i)" v-for='(v,i) in menu.children' :key='i'><router-link :to="v.url">{{v.name}}</router-link></el-menu-item>
+                            <el-menu-item :index="JSON.stringify(v)" v-for='(v,i) in menu.children' :key='i' :class='indexClass==JSON.stringify(v)?"is-active":""'>{{v.name}}</el-menu-item>
                         </el-submenu>
-                        
                     </el-submenu>
-                
-                    <el-menu-item :index="JSON.stringify(index)" v-else>
-                        <span slot="title"><router-link :to="menus.url">{{menus.name}}</router-link></span>
+                    <el-menu-item :index="JSON.stringify(menus)" v-else :class='indexClass==JSON.stringify(menus)?"is-active":""'>
+                        <span slot="title">{{menus.name}}</span>
                     </el-menu-item>
                 </el-menu>
         <!--  -->
@@ -186,7 +184,9 @@
                 url: {
                     name: 'published',
                     query: {
-                        user: '贵州省大数据局'
+                        // user: '贵州省大数据局'
+                        user: 'admin',
+                        deptType: 0
                     }
                 },
                 name: '已发布接口-业务局委',
@@ -278,6 +278,7 @@
             ]
             let idx = routerNames.map((o, i) => o.indexOf(this.$route.name) > -1).indexOf(true);
             return {
+
                 routerNames,
                 show: true,
                 indexClass: this.$route.name,
@@ -335,7 +336,9 @@
                 return activeName;
             }
         },
-        mounted() {},
+        mounted() {
+            // this.indexClass = JSON.stringify(this.leftMenus[0].url)
+        },
         methods: {
             showMenu() {
                 this.isMenuShow = false;
@@ -357,6 +360,18 @@
             },
             handleClose(key, keyPath) {
                 // console.log(key, keyPath);
+            },
+            changeMenu(e){
+                this.indexClass = e
+                e = JSON.parse(e)
+                if(typeof e.url == 'string'){
+                    
+                    this.$router.push({
+                        name:e.url
+                    })
+                }else{
+                    this.$router.push(e.url)
+                }
             }
         }
     }
@@ -453,7 +468,7 @@
     .ivu-menu-dark,
     .ivu-menu,
     .ivu-menu-dark.ivu-menu-vertical .ivu-menu-opened {
-        background: #0B1539!important;
+        background: #0B1539;
     }
     .ivu-menu-dark.ivu-menu-vertical .ivu-menu-opened {
         background: #131F45;
@@ -495,10 +510,11 @@
     .container-layout {
         overflow-y: scroll;
     }
-    // .hover, // .router-link-active,
-    // .router-link-exact-active {
-    //     background: #4D92BC;
-    // }
+    .is-active, // .router-link-active,
+    .router-link-exact-active {
+        background: #4D92BC!important;
+        color: #fff;
+    }
     .el-menu-vertical-demo:not(.el-menu--collapse) {
         // width: 200px;
         // min-height: 400px;
@@ -507,11 +523,11 @@
 
     }
     a{
-        // width: 220px;
-        // height:62px;
+        width: 100%;
+        height:100%;
         // margin-left: -20px;
         // padding-left: 20px;
-        // display: inline-block;
+        display: inline-block;
         font-size: 16px;
         color: #fff;
 
