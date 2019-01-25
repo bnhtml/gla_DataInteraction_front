@@ -2,21 +2,11 @@
 <template>
     <div class="home">
         <el-container class="wrapper">
-                 <div style='background: #58CAFD;width:60px;position:absolute;left:0;top:0;height:100%'></div>
-           
-            <el-aside style="width: 220px;background: #316284;margin-left:60px" v-if="isMenuShow">
-                <!-- <div v-for="(menus, index) in leftMenu" :key="index">
-                    <router-link :to="menus.url" class="g-bigmenu">{{menus.name}}</router-link>
-                    <div v-if="menus.children && menus.children.length" v-for="(menu, idx) in menus.children" :key="idx">
-                        <router-link :to="menu.url" class="g-centermenu">
-                            {{menu.name}}
-                        </router-link>
-                        <router-link :to="o.url" v-if="menu.children && menu.children.length" v-for="(o, i) in menu.children" :key="i" class="g-smallmenu">{{o.name}}</router-link>
-                    </div>
-                </div> -->
-                <!--  -->
-                <el-menu class="el-menu-vertical-demo" :default-active='indexClass'  :collapse="isCollapse" :background-color='"#316284"' :text-color="'#fff'" v-for="(menus, index) in leftMenu" :key="index" @select='changeMenu'>
-                    <el-submenu :index="JSON.stringify(menus)" v-if="menus.children && menus.children.length" :class='indexClass==JSON.stringify(menus)?"is-active":""'>
+            <div style='background: #58CAFD;width:60px;position:absolute;left:0;top:0;height:100%;z-index: 99;'></div>
+            <el-aside style='background: #316284;'>
+                <el-menu class="el-menu-vertical-demo" :default-active='indexClass'  :background-color='"#316284"' :text-color="'#fff'" @select='changeMenu' >
+                    <div v-for="(menus, index) in leftMenu" :key="index" style='margin-left:60px;'>
+                        <el-submenu :index="JSON.stringify(menus)" v-if="menus.children && menus.children.length" :class='indexClass==JSON.stringify(menus)?"is-active":""'>
                         <template slot="title"><span slot="title">{{menus.name}}</span></template>
                         <el-menu-item-group v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length==0">
                             <el-menu-item :index="JSON.stringify(menu)" :class='indexClass==JSON.stringify(menu)?"is-active":""'>{{menu.name}}</el-menu-item>
@@ -29,33 +19,14 @@
                     <el-menu-item :index="JSON.stringify(menus)" v-else :class='indexClass==JSON.stringify(menus)?"is-active":""'>
                         <span slot="title">{{menus.name}}</span>
                     </el-menu-item>
+                    </div>
                 </el-menu>
-        <!--  -->
-      </el-aside>
+                </el-aside>
       <el-main ref="containerLayout">
         <router-view></router-view>
       </el-main>
     </el-container>
-        <!-- <Layout>
-            <Sider hide-trigger :style="{background: '#fff'}" v-if="isMenuShow">
-                <div v-for="(menus, index) in leftMenu" :key="index">
-                    <router-link :to="menus.url" class="g-bigmenu">{{menus.name}}</router-link>
-                    <Menu v-if="menus.children && menus.children.length" v-for="(menu, idx) in menus.children" :key="idx" active-name="" theme="light" width="auto" :open-names="['1']">
-                        
-                            <router-link :to="menu.url" class="g-centermenu">
-                                {{menu.name}}
-                            </router-link>
-                            <MenuItem :to="o.url" v-if="menu.children && menu.children.length" v-for="(o, i) in menu.children" :key="i" :name="o.name">{{o.name}}</MenuItem>
-                        
-                    </Menu>
-                </div>
-            </Sider>
-            <layout style='paddding: 20px' class="container-layout" ref="containerLayout">
-                <Content class="content">
-                    <router-view v-if="show"></router-view>
-                </Content>
-            </layout>
-        </Layout> -->
+       
     </div>
 </template>
 
@@ -63,22 +34,26 @@
     const leftMenus = [
         [{
                 url: 'businessBureau',
+                shorthref: 'businessBureau',
                 name: '领导驾驶舱（业务局委）',
                 icon: 'icon-shouye',
                 children: []
             },
             {
                 url: 'leaderCockpit',
+                shorthref: 'leaderCockpit',
                 name: '领导驾驶舱（大数据局）',
                 icon: 'icon-shouye',
                 children: [{
                         url: 'adminIndex',
+                        shorthref: 'adminIndex',
                         name: '数据区概况',
                         icon: '',
                         children: []
                     },
                     {
                         url: 'nationalInterface',
+                        shorthref: 'nationalInterface',
                         name: '接口概况',
                         icon: '',
                         children: [{
@@ -88,6 +63,7 @@
                                         type: 0
                                     }
                                 },
+                                shorthref: 'nationalInterface',
                                 name: '国家接口',
                                 icon: '',
                                 children: []
@@ -99,6 +75,7 @@
                                         type: 0
                                     }
                                 },
+                                shorthref: 'adminCity',
                                 name: '省直接口',
                                 icon: '',
                                 children: []
@@ -110,6 +87,7 @@
                                         type: 1
                                     }
                                 },
+                                shorthref: 'adminCity',
                                 name: '市州接口',
                                 icon: '',
                                 children: []
@@ -121,12 +99,14 @@
         ],
         [{
                 url: 'datainteration',
+                shorthref: 'datainteration',
                 name: '数据库类',
                 icon: 'icon-shouye',
                 children: []
             },
             {
                 url: 'fileGuide',
+                shorthref: 'fileGuide',
                 name: '文件类',
                 icon: 'icon-shouye',
                 children: []
@@ -140,6 +120,7 @@
                         deptType: 0
                     }
                 },
+                shorthref: 'published',
                 name: '已发布接口-大数据局',
                 icon: 'icon-shouye',
                 children: [{
@@ -150,6 +131,7 @@
                                 deptType: 0
                             }
                         },
+                        shorthref: 'published',
                         name: '国家接口',
                         icon: '',
                         children: []
@@ -162,6 +144,7 @@
                                 deptType: 1
                             }
                         },
+                        shorthref: 'published',
                         name: '省直接口',
                         icon: '',
                         children: []
@@ -174,6 +157,7 @@
                                 deptType: 2
                             }
                         },
+                        shorthref: 'published',
                         name: '市州接口',
                         icon: '',
                         children: []
@@ -189,6 +173,7 @@
                         deptType: 0
                     }
                 },
+                shorthref: 'published',
                 name: '已发布接口-业务局委',
                 icon: 'icon-shouye',
                 children: []
@@ -200,6 +185,7 @@
                         user: 'admin'
                     }
                 },
+                shorthref: 'unpublished',
                 name: '未发布接口',
                 icon: 'icon-shouye',
                 children: []
@@ -213,6 +199,7 @@
                         deptType: 3
                     }
                 },
+                shorthref: 'dataAreaManagement',
                 name: '数据区管理-业务局委',
                 icon: 'icon-shouye',
                 children: []
@@ -225,6 +212,7 @@
                         deptType: 3
                     }
                 },
+                shorthref: 'dataAreaManagement',
                 name: '数据区管理-大数据局',
                 icon: 'icon-shouye',
                 children: []
@@ -237,6 +225,7 @@
                         deptType: 3
                     }
                 },
+                shorthref: 'interfacePathManagement',
                 name: '接口路径管理',
                 icon: 'icon-shouye',
                 children: []
@@ -249,18 +238,21 @@
                         deptType: 3
                     }
                 },
+                shorthref: 'unitDomainNameManagement',
                 name: '单位域名管理',
                 icon: 'icon-shouye',
                 children: []
             },
             {
                 url: 'configManagement',
+                shorthref: 'configManagement',
                 name: '配置管理',
                 icon: 'icon-shouye',
                 children: []
             },
             {
                 url: 'stateManagement',
+                shorthref: 'stateManagement',
                 name: '状态管理',
                 icon: 'icon-shouye',
                 children: []
@@ -278,14 +270,12 @@
             ]
             let idx = routerNames.map((o, i) => o.indexOf(this.$route.name) > -1).indexOf(true);
             return {
-
                 routerNames,
                 show: true,
-                indexClass: this.$route.name,
                 isCollapsed: false,
                 isMenuShow: true,
                 routerInfo: leftMenus[idx],
-                isCollapse: false,
+                indexClass: this.$route.name,
             }
         },
         components: {},
@@ -315,24 +305,16 @@
                     this.isCollapsed ? 'collapsed-menu' : '',
                 ]
             },
+            MenuShow() {
+                return this.isCollapsed ? this.isMenuShow == false : this.isMenuShow == true
+            },
             leftMenu() {
-                // this.routerInfo = window.sessionStorage.getItem('homeRouterList') && JSON.parse(window.sessionStorage.getItem('homeRouterList'));
-                //  this.routerInfo && this.routerInfo.unshift({
-                //         shorthref: 'homepage',
-                //         mdlname: '首页',
-                //         children:[],
-                //         mdliconcss: 'icon-shouye',
-                //     })
-                // console.log(this.routerInfo, '====')
+              
                 return this.routerInfo
             },
             activeName() {
                 let activeName = this.$route.path;
-                // if (this.leftMenu && this.leftMenu.children) {
-                //     activeName = this.leftMenu[1].children[0].path
-                // } else {
-                //     activeName = this.leftMenu[1].path
-                // }
+             
                 return activeName;
             }
         },
@@ -361,47 +343,34 @@
             handleClose(key, keyPath) {
                 // console.log(key, keyPath);
             },
-            changeMenu(e){
+            changeMenu(e) {
                 this.indexClass = e
                 e = JSON.parse(e)
-                if(typeof e.url == 'string'){
-                    
+                if (typeof e.url == 'string') {
                     this.$router.push({
-                        name:e.url
+                        name: e.url
                     })
-                }else{
+                } else {
                     this.$router.push(e.url)
                 }
-            }
+            },
+            handleSelect(e) {
+                e = JSON.parse(e);
+                this.indexClass = e.shorthref;
+                this.$router.push({
+                    name: e.shorthref,
+                    // query:{
+                    //     ...e.url.query||null
+                    // }
+                })
+            },
         }
     }
 </script>
 
 <style lang='scss' scoped>
     @import '../../assets/style/base/index.scss';
-    .g-bigmenu {
-        display: block; // background: #000;
-        color: #fff;
-        line-height: 40px;
-        font-size: 16px;
-        padding-left: 20px;
-    }
-    .g-centermenu {
-        padding-left: 15px;
-        display: block; // background: #333;
-        color: #fff;
-        line-height: 40px;
-        font-size: 16px;
-        padding-left: 20px;
-    }
-    .g-smallmenu {
-        padding-left: 22px;
-        display: block; // background: #444;
-        color: #fff;
-        line-height: 40px;
-        font-size: 16px;
-        padding-left: 20px;
-    }
+ 
     .home {
         position: absolute;
         left: 0;
@@ -417,6 +386,7 @@
                 @include nums($w: 100%, $h:36px);
                 margin-top: 27px;
             }
+            
         }
     }
     .layout-header-bar {
@@ -468,7 +438,7 @@
     .ivu-menu-dark,
     .ivu-menu,
     .ivu-menu-dark.ivu-menu-vertical .ivu-menu-opened {
-        background: #0B1539;
+        background: #316284;
     }
     .ivu-menu-dark.ivu-menu-vertical .ivu-menu-opened {
         background: #131F45;
@@ -486,25 +456,20 @@
     .ivu-menu-item-selected {
         color: #fff;
         box-sizing: border-box;
-    }
-    .ivu-menu-item-selected::before {
-        position: absolute;
-        height: 100%;
-        left: 0;
-        bottom: 0;
-        display: block;
-        border: 1px solid #2d8cf0;
-        content: ' ';
-    }
+    } // .ivu-menu-item-selected::before {
+    //     position: absolute;
+    //     height: 100%;
+    //     left: 0;
+    //     bottom: 0;
+    //     display: block;
+    //     border: 1px solid #2d8cf0;
+    //     content: ' ';
+    // }
     .content {
-        height: auto; // background: #182142; 
-        // background: #1C2851;
-        // border-radius: 8px;
-        // box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.40);
+        height: auto;
         padding: 0 20px;
         div {
-            margin-bottom: 20px; // border-radius: 8px;
-            // box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.40);
+            margin-bottom: 20px;
         }
     }
     .container-layout {
@@ -515,28 +480,12 @@
         background: #4D92BC!important;
         color: #fff;
     }
-    .el-menu-vertical-demo:not(.el-menu--collapse) {
-        // width: 200px;
-        // min-height: 400px;
+   
+    .el-menu-vertical-demo,
+    .el-menu {
+        border-right: 0;
     }
-    .el-menu-vertical-demo ,.el-menu{
-
-    }
-    a{
-        width: 100%;
-        height:100%;
-        // margin-left: -20px;
-        // padding-left: 20px;
-        display: inline-block;
-        font-size: 16px;
-        color: #fff;
-
-    }
-    /deep/ .el-submenu__title{
-        font-size: 16px;
-    }
-    .el-menu{
-        border: 0;
-    }
+    
+ 
 </style>
 

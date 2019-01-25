@@ -6,18 +6,23 @@
         <!-- 横向菜单 -->
         <div class="g-menu" v-if="isWorkPage">
             <ul class="ul">
+                <i class="iconfont icon-zhankai"></i>
                 <li class="li" v-for='(v,i) in menu' :key='i' @click.prevent='changeMenu(v,i)' :class="changeMenuIndex==i?'hover':''">
                     <!-- <span v-if='v.children&&v.children.length==0'>{{v.mdlname}}</span> -->
-                    <Dropdown @on-click='changeMenuItem' >
-                        <span :class="{'hover': v.isAct}"> {{v.mdlname}}</span>
+                    <!-- <Dropdown @on-click='changeMenuItem' >
+                        <span :class="{'hover': v.isAct}"> <i :class="'iconfont '+v.mdliconcss"></i>{{v.mdlname}}</span>
                         <DropdownMenu slot="list" v-if="v.children.length">
                             <DropdownItem v-for='(val,ind) in v.children' :key='ind' :name='JSON.stringify(val)' :selected="activeName === val.mdlhref">
-                                <p class="g-menu-down">{{val.mdlname}}</p>
+                                <p class="g-menu-down">  {{val.mdlname}}</p>
                             </DropdownItem>
                         </DropdownMenu>
-                    </Dropdown>
+                    </Dropdown> -->
                 </li>
             </ul>
+        </div>
+        <div class="userInfo">
+            <img src="../../assets/img/logo/default.jpeg" alt="">
+            <span>用户名</span>
         </div>
     </div>
 </template>
@@ -71,22 +76,22 @@
                     mdlhref: 'leaderCockpit',
                     mdlname: '领导驾驶舱',
                     children: [],
-                    mdliconcss: 'icon-shouye',
+                    mdliconcss: 'icon-lingdaojiashicang',
                 },{
                     mdlhref: 'datainteration',
                     mdlname: '数据集成',
                     children: [],
-                    mdliconcss: 'icon-shouye',
+                    mdliconcss: 'icon-shujujicheng',
                 },{
                     mdlhref: 'published',
                     mdlname: '数据上架',
                     children: [],
-                    mdliconcss: 'icon-shouye',
+                    mdliconcss: 'icon-shujushangjia',
                 },{
                     mdlhref: 'dataAreaManagement',
                     mdlname: '系统管理',
                     children: [],
-                    mdliconcss: 'icon-shouye',
+                    mdliconcss: 'icon-xitongguanli',
                 }, ...this.$store.state.homeRouterList];
             },
             activeName() {
@@ -305,6 +310,10 @@
         // border-top: rgba(34, 235, 251, 0.4) solid 1px;
         .ul {
             @include flex($j: start);
+            i{
+                font-size: 22px;
+                padding-left: 25px;
+            }
             .li {
                 height: 50px;
                 line-height: 50px;
@@ -312,6 +321,10 @@
                 @include font($fz: 20px, $color:#333);
                 cursor: pointer;
                 border-bottom: transparent solid 1px;
+                i{
+                    font-size: 22px;
+                    padding-right: 5px;
+                }
                 span.hover {
                     color: #111;
                 }
@@ -350,5 +363,19 @@
             color: #00ffe7;
         }
     }
-    
+    .userInfo{
+        position: absolute;
+        right: 30px;
+        top: 65px;
+        @include flex($j:space-between);
+        font-size: 14px;
+        color: #33ABFB;
+        cursor: pointer;
+        img{
+            width: 35px;
+            height: 35px;
+            border-radius: 100%;
+            margin-right: 10px;
+        }
+    }
 </style>

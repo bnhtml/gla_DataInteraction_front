@@ -139,3 +139,17 @@ margin:0 -20px;
 .g-admin-page{
     height: 100%;
 }
+
+
+
+.el-submenu__title,
+    .el-menu-item{
+        font-size: 16px!important;
+        i {
+            color: #fff;
+            font-size: 16px;
+        }
+    }
+    .el-menu-item-group__title{
+        padding: 0;
+    }
