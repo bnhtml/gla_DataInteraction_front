@@ -8,15 +8,15 @@
             <ul class="ul">
                 <i class="iconfont icon-zhankai"></i>
                 <li class="li" v-for='(v,i) in menu' :key='i' @click.prevent='changeMenu(v,i)' :class="changeMenuIndex==i?'hover':''">
-                    <span v-if='v.children&&v.children.length==0'>{{v.mdlname}}</span> -->
-                    <!-- <Dropdown @on-click='changeMenuItem' >
+                    <span v-if='v.children&&v.children.length==0'><i :class="'iconfont '+v.mdliconcss"></i>{{v.mdlname}}</span>
+                     <!-- <Dropdown @on-click='changeMenuItem' >
                         <span :class="{'hover': v.isAct}"> <i :class="'iconfont '+v.mdliconcss"></i>{{v.mdlname}}</span>
                         <DropdownMenu slot="list" v-if="v.children.length">
                             <DropdownItem v-for='(val,ind) in v.children' :key='ind' :name='JSON.stringify(val)' :selected="activeName === val.mdlhref">
                                 <p class="g-menu-down">  {{val.mdlname}}</p>
                             </DropdownItem>
                         </DropdownMenu>
-                    </Dropdown>
+                    </Dropdown> -->
                 </li>
             </ul>
         </div>
@@ -266,8 +266,7 @@
             
         }
     }
-    .ivu-se
-    lect-dropdown {
+    .ivu-select-dropdown {
         background: #1C2851!important;
     }
     .headerSearchInputBox {
@@ -310,7 +309,7 @@
         // border-top: rgba(34, 235, 251, 0.4) solid 1px;
         .ul {
             @include flex($j: start);
-            i{
+            >i{
                 font-size: 22px;
                 padding-left: 25px;
             }
