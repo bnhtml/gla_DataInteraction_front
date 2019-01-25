@@ -55,10 +55,10 @@ export default {
           label: "封装数据类型",
           props: "dataInterfaceType",
           value:'',
-          formmater: res => ({'db': '数据库类型', 'interface': '接口类', 'file': '文件类'}[res])
+          formmater: res => ({'db': '数据库', 'interface': '接口', 'file': '文件'}[res])
         },
         {
-          label: "原URL地址",
+          label: "接口原URL地址",
           props: "urlAddress",
           value:'',
         },
@@ -123,7 +123,7 @@ export default {
               let value = v.formmater && v.formmater(res.data[0][v.props]) || res.data[0][v.props];
               v.value = value;
               if(v.props=='urlAddress'){
-                v.label={'db': 'sql语句', 'interface': '原URL地址', 'file': '原文件下载地址'}[res.data[0].dataInterfaceType]
+                v.label={'db': 'sql语句', 'interface': '接口原URL地址', 'file': '原文件下载地址'}[res.data[0].dataInterfaceType]
               }
             }else{
               if(v.label=='设置接口路径'){
