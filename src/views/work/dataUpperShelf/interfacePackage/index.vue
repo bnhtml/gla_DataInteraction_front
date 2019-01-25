@@ -37,7 +37,7 @@
                 <el-input v-model="formModels.urlAddress"></el-input>
             </el-form-item>
             <el-form-item v-if="dataType!='type2'" label="请求数据类型:">
-                <el-input v-if='dataType=="type1"' value='json' disabled></el-input>
+                <el-input v-if='dataType=="type1"' v-model="formModels.requestInterType" disabled></el-input>
                 <el-select v-else v-model="formModels.requestInterType" placeholder="请选择">
                     <el-option
                         v-for="item in requestType"
@@ -48,7 +48,7 @@
                 </el-select>
             </el-form-item>
             <el-form-item v-if="dataType!='type2'" label="响应数据类型:">
-                <el-input v-if='dataType=="type1"' value='json' disabled></el-input>
+                <el-input v-if='dataType=="type1"' v-model="formModels.responseInterType" disabled></el-input>
                 <el-select v-else v-model="formModels.responseInterType" placeholder="请选择">
                     <el-option
                         v-for="item in responseType"
@@ -59,7 +59,7 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="接口请求方式:">
-                <el-input v-if='dataType=="type2"' value='get' disabled></el-input>
+                <el-input v-if='dataType=="type2"' v-model="formModels.requestInterMode" disabled></el-input>
                 <el-select v-else v-model="formModels.requestInterMode" placeholder="请选择">
                     <el-option
                         v-for="item in requestWay"
@@ -145,8 +145,8 @@ export default {
         urlAddress:'',
         dataInterfaceName:'',
         dataInterfaceType:'db', //给封装数据类型初始值
-        requestInterType:'xml',
-        responseInterType:'xml',
+        requestInterType:'json',
+        responseInterType:'json',
         requestInterMode:'post',
         departDomain: '',
         requestHeader:'application/json',
@@ -242,8 +242,8 @@ export default {
       if(value == 'db'){
         //数据库类型：请求数据类型和响应数据类型固定为json
         this.dataType = "type1";
-        this.formModels.requestInterType == 'json';
-        this.formModels.responseInterType == 'json';
+        this.formModels.requestInterType = 'json';
+        this.formModels.responseInterType = 'json';
         //文件类型：请求方式固定为get请求数据类型和响应数据类型不显示
       }else if(value == 'file'){
         this.dataType = "type2";
@@ -293,7 +293,7 @@ export default {
             this.loading = true;
             this.$api.submit_interface(this.formModels).then(res=>{
               if(res.status=='200'){
-                  this.$router.push({path:'api/info',query:{fromName: 'unpublished',resourceId:this.formModels.resourceId}})
+                  this.$router.push({path:'api/info',query:{fromName: 'unpublished',resourceId:this.formModels.resourceId,dataInterfaceType:this.formModels.dataInterfaceType}})
                   this.loading = false;
               }})
           }
@@ -306,7 +306,7 @@ export default {
         this.loading = true;
         this.$api.submit_interface(this.formModels).then(res=>{
           if(res.status=='200'){
-            this.$router.push({path:'api/info',query:{fromName: 'unpublished',resourceId:this.formModels.resourceId}})
+            this.$router.push({path:'api/info',query:{fromName: 'unpublished',resourceId:this.formModels.resourceId,dataInterfaceType:this.formModels.dataInterfaceType}})
             this.loading = false;
           }
         })
