@@ -293,7 +293,7 @@ export default {
             this.loading = true;
             this.$api.submit_interface(this.formModels).then(res=>{
               if(res.status=='200'){
-                  this.$router.push({path:'api/info',query:{fromName: 'unpublished',resourceId:this.formModels.resourceId}})
+                  this.$router.push({path:'api/info',query:{fromName: 'unpublished',resourceId:this.formModels.resourceId,dataInterfaceType:this.formModels.dataInterfaceType}})
                   this.loading = false;
               }})
           }
@@ -306,7 +306,7 @@ export default {
         this.loading = true;
         this.$api.submit_interface(this.formModels).then(res=>{
           if(res.status=='200'){
-            this.$router.push({path:'api/info',query:{fromName: 'unpublished',resourceId:this.formModels.resourceId}})
+            this.$router.push({path:'api/info',query:{fromName: 'unpublished',resourceId:this.formModels.resourceId,dataInterfaceType:this.formModels.dataInterfaceType}})
             this.loading = false;
           }
         })
