@@ -182,7 +182,7 @@
         params.pageSize = params.pageSize || this.page.pageSize || 10;
         params = Object.assign({}, this.$route.query, this.query, params);
         // console.log(this.$route.query)
-        this.setRouter(params);
+        // this.setRouter(params);
         this.loading = true;
         let httpobj = {
           url: _this.url,

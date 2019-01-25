@@ -197,7 +197,7 @@
                 url: {
                     name: 'unpublished',
                     query: {
-                        user: '贵州省大数据局'
+                        user: 'admin'
                     }
                 },
                 name: '未发布接口',
