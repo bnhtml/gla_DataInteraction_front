@@ -195,7 +195,10 @@
             },
             {
                 url: {
-                    name: 'unpublished'
+                    name: 'unpublished',
+                    query: {
+                        user: 'admin'
+                    }
                 },
                 name: '未发布接口',
                 icon: 'icon-shouye',
