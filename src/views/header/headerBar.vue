@@ -260,7 +260,8 @@
         padding: 0 20px;
         font-size: 28px;
         font-size: 36px;
-            color: #275B80;
+        color: #275B80;
+        font-weight: 800;
         img{
             position: relative;
             bottom: -10px;

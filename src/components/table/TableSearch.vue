@@ -125,7 +125,7 @@
         //重置
         search.list.forEach((e, i) => {
           if (e.type == 'input-select') {
-            e.value == e.options[0].value
+            e.value =e.options[0].value
           } else {
             e.value = "";
           }
