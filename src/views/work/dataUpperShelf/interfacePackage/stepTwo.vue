@@ -63,7 +63,7 @@
                     </el-table-column>
                     <el-table-column label="修饰符" width="120px">
                         <template slot-scope="scope">
-                            <el-select v-model="scope.row.modifier" placeholder="请选择" size="mini">
+                            <el-select v-model="scope.row.modifier" clearable placeholder="请选择" size="mini">
                                 <el-option
                                     v-for="item in modifierData"
                                     :key="item.value"
@@ -80,7 +80,7 @@
                     </el-table-column>
                     <el-table-column label="关系" width="120px">
                         <template slot-scope="scope">
-                            <el-select v-model="scope.row.relation" placeholder="请选择" size="mini">
+                            <el-select v-model="scope.row.relation" clearable placeholder="请选择" size="mini">
                                 <el-option label="or" value="or"></el-option>
                                 <el-option label="and" value="and"></el-option>
                             </el-select>

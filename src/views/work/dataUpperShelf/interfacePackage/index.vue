@@ -1,5 +1,5 @@
 <template>
-   <div class="page">
+   <div class="page" v-loading="loading">
        <p class="title" v-if='pageFlag=="stepOne"'>数据接口封装——第一步：基本信息维护</p>
        <p class="title" v-else>数据接口封装——第二步：生成sql语句</p>
        <el-form 
@@ -186,6 +186,7 @@ export default {
       thirdDir: [],
       dataType: 1, //封装数据类型
       pageFlag: 'stepOne',
+      loading: false,
     }
   },
   methods: {
@@ -289,9 +290,11 @@ export default {
       if (this.pageFlag=='stepOne') {
         this.$refs.formTabel.validate((valid) => {
           if (valid) {
+            this.loading = true;
             this.$api.submit_interface(this.formModels).then(res=>{
               if(res.status=='200'){
                   this.$router.push({path:'api/info',query:{fromName: 'unpublished',resourceId:this.formModels.resourceId}})
+                  this.loading = false;
               }})
           }
         })
@@ -300,9 +303,11 @@ export default {
           this.$message.warning('请完善SQL语句');
           return
         }
+        this.loading = true;
         this.$api.submit_interface(this.formModels).then(res=>{
           if(res.status=='200'){
-              this.$router.push({path:'api/info',query:{fromName: 'unpublished',resourceId:this.formModels.resourceId}})
+            this.$router.push({path:'api/info',query:{fromName: 'unpublished',resourceId:this.formModels.resourceId}})
+            this.loading = false;
           }
         })
       }
