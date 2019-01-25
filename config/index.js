@@ -6,7 +6,7 @@ var path = require('path')
 var HOSTDATA = [{
   index: '../dataAssets/index.html',
   assetsRoot: '../dataAssets',
-  baseServerUrl: 'http://58.132.200.3:8888/datalink'
+  baseServerUrl: 'http://59.215.191.43:2000'
   // baseServerUrl: 'http://192.168.22.202:8013/v1/assets',
 }, {
   index: '../chart/index.html',
