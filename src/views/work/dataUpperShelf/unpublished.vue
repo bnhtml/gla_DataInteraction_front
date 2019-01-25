@@ -4,11 +4,6 @@
     <el-card shadow="always" class="unpublished-header">
       <p class="titleLeftBorder">筛选查询</p>
       <TableSearch :searchs='searchs' v-if='isShow'></TableSearch>
-      <el-radio-group v-model="query.isEncap" size="small" class="radio">
-        <el-radio-button label="全部"></el-radio-button>
-        <el-radio-button label="待发布"></el-radio-button>
-        <el-radio-button label="未封装"></el-radio-button>
-      </el-radio-group>
     </el-card>
     <el-card shadow="always" class="unpublished-cont mt20 g-tableCard">
       <p class="titleLeftBorder">
