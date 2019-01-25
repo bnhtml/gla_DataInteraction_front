@@ -43,7 +43,7 @@
       init() {
         this.isShow = false;
         this.tableJson = this.tableQuery.tableJson;
-        this.url = `${this.$SERVER_BASE_URL}/new_interface/api_desc`;
+        this.url = `${this.$SERVER_BASE_URL}/new_interface/api_status`;
         this.$nextTick(() => {
           this.isShow = true;
         })

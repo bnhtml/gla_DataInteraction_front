@@ -4,7 +4,7 @@
   <el-card shadow="always" class="datainteration-header">
     <p class="titleLeftBorder">数据集成操作指南
       <a href="#" class="right tool"><span class="iconfont icon-xiazai"></span>下载数据集成工具</a>
-      <a href="#" class="right guide"><span class="iconfont icon-xiazai"></span>下载数据集成操作指南</a>
+      <a href="/static/易鲸捷数据区使用管理文档.docx" class="right guide"><span class="iconfont icon-xiazai"></span>下载数据集成操作指南</a>
     </p>
     <div class="datainteration-table">
       <div class="database_box">

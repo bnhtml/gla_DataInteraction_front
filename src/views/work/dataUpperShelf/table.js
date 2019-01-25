@@ -352,36 +352,39 @@ let apiUsage = {
             type: "text",
             align: "",
             label: "资源申请单号",
-            prop: "interfaceName",
+            prop: "resApplyOnumber",
             width: "",
         },
         {
             type: "text",
             align: "",
             label: "申请部门",
-            prop: "resourceId",
+            prop: "applyDepart",
             width: "",
         },
         {
             type: "text",
             align: "",
             label: "服务接口使用期限(天)",
-            prop: "resourceName",
+            prop: "interfaceLifetime",
             width: "",
         },
         {
             type: "text",
             align: "",
             label: "使用时间范围",
-            prop: "resourceDescribe",
+            prop: "useTimeRange",
             width: "",
         },
         {
             type: "text",
             align: "",
             label: "状态",
-            prop: "interfaceAddress",
-            width: ""
+            prop: "interfaceStatus",
+            width: "",
+            // formatter(row){
+
+            // }
         },
         {
             type: "handle",
