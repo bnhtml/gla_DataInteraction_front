@@ -56,7 +56,7 @@
                 }],
                 activeTab: 'dataArea',
                 activeTabTitle: '数据库',
-                query:{},
+                query: {},
                 deptData: {
                     one: [],
                     two: [],
@@ -72,22 +72,21 @@
         },
         computed: {},
         mounted() {
-            if (this.$route.query.user == 'admin') {
-                this.getFirstdir({
-                    
-                    depart: '贵州省大数据局'
-                });
-
-            }
+            // if (this.$route.query.user == 'admin') {
+            //     this.getFirstdir({
+            //         depart: '贵州省大数据局'
+            //     });
+            // }
         },
         methods: {
             deptChecked(e) {
-                this.query = e;
-                this.deptData.two = [];
-                this.deptData.three = [];
-                this.deptData.second_dir = '';
-                this.getFirstdir(e);
-
+                if (e.depart) {
+                    this.query = e;
+                    this.deptData.two = [];
+                    this.deptData.three = [];
+                    this.deptData.second_dir = '';
+                    this.getFirstdir(e);
+                }
             },
             /* 一级目录 */
             getFirstdir(params) {

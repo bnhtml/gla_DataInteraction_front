@@ -17,7 +17,9 @@
           </el-date-picker>
           <!-- 单选框 -->
           <span v-else-if="search.type == 'input-radio'">
-                <el-radio v-for="(radio, index) in search.options" :key="index" v-model="search.value" :label="radio.value">{{radio.name}}</el-radio>
+            <el-radio-group v-model="search.value" size="small">
+              <el-radio-button v-for="(radio, index) in search.options" :key="index" v-model="search.value" :label="radio.value">{{radio.name}}</el-radio-button>
+            </el-radio-group>
             </span>
         </el-form-item>
         <el-form-item>

@@ -50,6 +50,11 @@ export default {
           props: "dataInterfaceName",
           value:'',
         },
+         {
+          label: "数据接口地址",
+          props: "urlSuccess",
+          value:'',
+        },
         {
           label: "封装数据类型",
           props: "dataInterfaceType",
@@ -110,10 +115,14 @@ export default {
     getQueryResources(params){
       this.$api.query_resources(params).then(res=>{
         if(res.data.length>0){
+          // res.data[0].dataInterfaceType
           this.infolist.forEach((v,i) => {
             if(res.data[0][v.props]){
               let value = v.formmater && v.formmater(res.data[0][v.props]) || res.data[0][v.props];
-              v.value = value
+              v.value = value;
+              if(v.props=='urlAddress'){
+                v.label={'db': 'sql语句', 'interface': 'URL地址', 'file': '原文件下载地址'}[res.data[0].dataInterfaceType]
+              }
             }else{
               if(v.label=='设置接口路径'){
                 v.value = res.data[0].firstAddress + '/' + res.data[0].secondAddress + '/' + res.data[0].thirdAddress
