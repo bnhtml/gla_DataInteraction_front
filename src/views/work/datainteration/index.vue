@@ -55,7 +55,7 @@
       </div>
       </div>
   </el-card>
-  <el-card shadow="always" class="datainteration-header">
+  <el-card shadow="always" class="datainteration-header second">
     <p class="titleLeftBorder">操作步骤</p> 
     <el-tabs class="datainteration-tabs" v-model="activeName2" type="border-card" @tab-click="handleClick">
       <el-tab-pane label="第一步" name="first">
@@ -184,6 +184,9 @@ export default {
             .datainteration-tabs,.datainteration-table{
               margin: 20px 20px 0 0;
             }
+        }
+        .second {
+            margin-top: 10px;
         }
 }
 * {
