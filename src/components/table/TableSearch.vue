@@ -3,8 +3,8 @@
   <div class="nomaltable">
     <!-- <div class="search-header">筛选查询</div> -->
     <div class="search-box" v-loading="loading">
-      <el-form :inline="true" :model="searchVal" class='search-box-cont'>
-        <el-form-item :label="search.label" v-for="(search, searchIndex) in searchs.list" :key="searchIndex">
+      <el-form :inline="true" :model="searchVal" class='search-box-cont' style="position: relative">
+        <el-form-item :label="search.label" v-for="(search, searchIndex) in searchs.list" :key="searchIndex" :class="search.class">
           <!-- 输入框 -->
           <el-input v-if="search.type == 'input-text'" v-model="search.value" :placeholder="search.placeholder" style='width:300px'></el-input>
           <!-- 下拉框 -->
@@ -16,9 +16,9 @@
             :value-format="search.valueFormat">
           </el-date-picker>
           <!-- 单选框 -->
-          <span v-else-if="search.type == 'input-radio'">
-            <el-radio-group v-model="search.value" size="small">
-              <el-radio-button v-for="(radio, index) in search.options" :key="index" v-model="search.value" :label="radio.value">{{radio.name}}</el-radio-button>
+          <span v-else-if="search.type == 'input-radio'" >
+            <el-radio-group v-model="search.value" size="small" @change="selectChange">
+              <el-radio-button v-for="(radio, index) in search.options" :key="index" v-model="search.value" :label="radio.value" :value="radio.value">{{radio.name}}</el-radio-button>
             </el-radio-group>
             </span>
         </el-form-item>
@@ -111,10 +111,8 @@
       this.resetForm(this.searchs);
     },
     methods: {
-      selectChange(value, {
-        change = () => {}
-      }) {
-        change(this, value);
+      selectChange() {
+        this.search(this.searchs);
       },
       search(search) {
         //搜索
@@ -265,6 +263,11 @@
     input {
       background: transparent; // color: #fff;
     }
+  }
+  .g-right{
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 </style>
 

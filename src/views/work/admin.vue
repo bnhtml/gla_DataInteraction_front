@@ -59,7 +59,12 @@ export default {
 
     },
     setFirst(n){
-      if(isNaN(n))return;
+      if(isNaN(n)){
+        if(this.$route.name === 'published'){
+          this.$emit('checked', {depart: this.$route.query.user})
+        }
+        return
+      };
       this.node = [];
       if(n < 2){
         let firstleval = [['国家部门'], ['省直部门']][n];
@@ -69,8 +74,14 @@ export default {
         this.$api.getdep_region({dire_ide: n - 2}).then(res => {
           this.firstleval = res.data;
           this.setNode(res.data, this.node);
-        })
+        });
       }
+
+
+        if(this.$route.name === 'published'){
+          this.$emit('checked', {region: ['国家部门', '省直部门', '市州部门'][n]})
+        }
+
     },
     setNode(firstleval, arr, noChild, idx){
       firstleval.forEach((o, i) => {

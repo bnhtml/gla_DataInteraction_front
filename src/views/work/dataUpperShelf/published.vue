@@ -59,14 +59,6 @@
             }
         },
         mounted() {
-            if (this.$route.query.user == 0) {
-                this.query.depart = '国家工信部'
-            } else {
-                this.query.depart = '贵州省工商局'
-            }
-            this.handelClick({
-                depart: this.query.depart
-            })
         },
         methods: {
             receive(res){
@@ -80,11 +72,10 @@
                 this.isShow = false;
                 let tableJson = this.tableQuery.tableJson;
                 let searchs = this.tableQuery.searchs;
-                let data = this.tableQuery.data;
+                // let data = this.tableQuery.data;
                 this.searchs = searchs;
                 this.tableJson = tableJson;
                 this.url = `${this.$SERVER_BASE_URL}/new_interface/getDone_interface`;
-                this.data = data;
                 this.$nextTick(() => {
                     this.isShow = true;
                 })
