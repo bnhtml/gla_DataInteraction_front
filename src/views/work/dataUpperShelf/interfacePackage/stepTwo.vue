@@ -16,7 +16,7 @@
        <div class="flex-block">
            <div class="label-name">选择数据源:</div>
            <div>
-               <el-select v-model="dataSource" placeholder="请选择" @change='selectDataSource'>
+               <el-select v-model="dataSource" placeholder="请选择" filterable @change='selectDataSource'>
                     <el-option
                         v-for="item in tabMsg"
                         :key="item.tabName"
