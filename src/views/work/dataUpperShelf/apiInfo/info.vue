@@ -5,7 +5,7 @@
   <el-row v-for="(info, i) in infolist" :key="i"  :gutter="12" style="margin-top: 12px;">
     <el-col :span="6" style="text-align: right; line-height: 32px;">{{info.label}}</el-col>
     <el-col :span="18">
-      <p :style="`height:${info.height || '30'}px`">{{info.value}}</p>
+      <p :style="`min-height:${info.height || '30'}px`">{{info.value}}</p>
     </el-col>
   </el-row>
 </div>
@@ -40,11 +40,7 @@ export default {
           props: "departName",
           value:'',
         },
-        {
-          label: "URL地址",
-          props: "urlAddress",
-          value:'',
-        },
+        
         {
           label: "数据接口名称",
           props: "dataInterfaceName",
@@ -62,10 +58,16 @@ export default {
           formmater: res => ({'db': '数据库类型', 'interface': '接口类', 'file': '文件类'}[res])
         },
         {
+          label: "原URL地址",
+          props: "urlAddress",
+          value:'',
+        },
+        {
           label: "请求数据类型",
           props: "requestInterType",
           value:'',
         },
+        
         {
           label: "响应数据类型",
           props: "responseInterType",
@@ -121,7 +123,7 @@ export default {
               let value = v.formmater && v.formmater(res.data[0][v.props]) || res.data[0][v.props];
               v.value = value;
               if(v.props=='urlAddress'){
-                v.label={'db': 'sql语句', 'interface': 'URL地址', 'file': '原文件下载地址'}[res.data[0].dataInterfaceType]
+                v.label={'db': 'sql语句', 'interface': '原URL地址', 'file': '原文件下载地址'}[res.data[0].dataInterfaceType]
               }
             }else{
               if(v.label=='设置接口路径'){

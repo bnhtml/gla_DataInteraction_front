@@ -164,7 +164,7 @@ let unpublished = {
             prop: "dataInterfaceStatus",
             width: "100",
             formatter(row) {
-                return ['未封装', '已封装'][row.dataInterfaceStatus]
+                return ['未封装', '待发布'][row.dataInterfaceStatus]
             }
         },
 
