@@ -8,7 +8,7 @@
             <ul class="ul">
                 <i class="iconfont icon-zhankai"></i>
                 <li class="li" v-for='(v,i) in menu' :key='i' @click.prevent='changeMenu(v,i)' :class="changeMenuIndex==i?'hover':''">
-                    <!-- <span v-if='v.children&&v.children.length==0'>{{v.mdlname}}</span> -->
+                    <span v-if='v.children&&v.children.length==0'>{{v.mdlname}}</span> -->
                     <!-- <Dropdown @on-click='changeMenuItem' >
                         <span :class="{'hover': v.isAct}"> <i :class="'iconfont '+v.mdliconcss"></i>{{v.mdlname}}</span>
                         <DropdownMenu slot="list" v-if="v.children.length">
@@ -16,7 +16,7 @@
                                 <p class="g-menu-down">  {{val.mdlname}}</p>
                             </DropdownItem>
                         </DropdownMenu>
-                    </Dropdown> -->
+                    </Dropdown>
                 </li>
             </ul>
         </div>
