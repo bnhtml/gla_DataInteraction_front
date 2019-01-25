@@ -1,15 +1,55 @@
 <!--  -->
 <template>
 <div class='leaderCockpit'>
-
-		<el-card class="mt20">
+      <el-card shadow="always" class="g-top">
+        <p class="titleLeftBorder">{{typeName}}接口概况</p>
+        <el-row >
+            <el-col :span="8" v-for='(v,i) in top' :key='i'>
+                <dl>
+                    <dt><img :src="v.img" alt=""></dt>
+                    <dd>
+                        <p>{{v.title}}</p>
+                        <p>{{v.num}}</p>
+                    </dd>
+                </dl>
+            </el-col>
+        </el-row>
+        <div class="g-bar" style="height: 350px">
+          <newBar v-if="isShow" :bar="barData" :series="barDataSeries"></newBar>
+			</div>
+    </el-card>
+    <el-card shadow="always" class="mt20 g-middle">
+        <p class="titleLeftBorder">{{typeName}}已封装接口概况</p>
+        <el-row :gutter="20">
+            <el-col :span="6" v-for='(v,i) in middle' :key='i'>
+                <dl v-if='i==0' :style="{background:'url('+v.img+') no-repeat center center','backgroundSize':'cover'}">
+                    <dt>{{v.title}}</dt>
+                    <dd>{{v.num}}</dd>
+                </dl>
+                <dl v-else class="border">
+                    <dt>
+                            <p>库表类接口总数</p>
+                            <p>{{v.num}}</p>
+                            <p>{{v.percent}}</p>
+                        </dt>
+                    <dd>
+                        <Ring :data='v.data' :labelColor='v.labelColor' :color='v.color' :title='v.title' :hasLabel='v.hasLabel'></Ring>
+                    </dd>
+                </dl>
+            </el-col>
+        </el-row>
+        <div class="g-bar" style="height: 350px">
+          <newBar v-if="isShow" :bar="barData" :series="barDataSeries"></newBar>
+			</div>
+    </el-card>
+		<!-- <el-card class="mt20">
 			<p class="titleLeftBorder">
 				{{typeName}}接口概况
 			</p>
 			<div class="g-bar" style="height: 350px">
           <newBar v-if="isShow" :bar="barData" :series="barDataSeries"></newBar>
 			</div>
-		</el-card>
+		</el-card> -->
 
         <el-row class="mt20 g-bottom">
             <el-col :span="12">
@@ -44,11 +84,12 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 import newBar from "@/components/charts/bar/newBar";
+import Ring from '../../../components/charts/ring/ring.vue';
 import { cityId } from "@/components/charts/map/association";
 const citys = Object.keys(cityId);
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: { newBar },
+  components: { newBar,Ring },
   data() {
     //这里存放数据
     return {
@@ -60,7 +101,88 @@ export default {
         labelnames: ["数据目录总数"]
       },
       barDataSeries: [],
-
+      top: [{
+            title: '数据目录总数',
+            num: 2135,
+            img: require('@/assets/images/leaderCockpit_4.png'),
+        },
+        {
+            title: '已封装接口总数',
+            num: 1135,
+            img: require('@/assets/images/leaderCockpit_transparent_1.png'),
+        },
+        {
+            title: '剩余需封装总数',
+            num: 1000,
+            img: require('@/assets/images/leaderCockpit_transparent_1.png'),
+        },
+      ],
+      middle: [{
+          title: '数据记录总数',
+          num: '1135',
+          percent: '45%',
+          img: require('@/assets/images/leaderCockpit_3.png'),
+      }, {
+          title: '数据记录总数',
+          num: '500',
+          percent: '45%',
+          img: require('@/assets/images/leaderCockpit_6.png'),
+        "data": [{
+              "value": "55.00",
+              "name": "",
+              "number": "55"
+          }, {
+              "value": "45.00",
+              "name": "",
+              "number": "45"
+          }, ],
+          "labelColor": ['#D3DBE3', '#33ABFB'],
+          "color": ['#D3DBE3', '#33ABFB'],
+          "hasLabel": false,
+          "title": {
+              "title": " "
+          }
+      }, {
+          title: '数据记录总数',
+          num: '500',
+          percent: '45%',
+          img: require('@/assets/images/leaderCockpit_6.png'),
+          "data": [{
+              "value": "55.00",
+              "name": "",
+              "number": "55"
+          }, {
+              "value": "45.00",
+              "name": "",
+              "number": "45"
+          }, ],
+          "labelColor": ['#D3DBE3', '#33ABFB'],
+          "color": ['#D3DBE3', '#33ABFB'],
+          "hasLabel": false,
+          "title": {
+              "title": " "
+          }
+      }, {
+          title: '数据记录总数',
+          num: '135',
+          percent: '10%',
+          img: require('@/assets/images/leaderCockpit_6.png'),
+            "data": [{
+              "value": "90",
+              "name": "",
+              "number": "90"
+          }, {
+              "value": "10.00",
+              "name": "",
+              "number": "10"
+          }, ],
+          "labelColor": ['#D3DBE3', '#33ABFB'],
+          "color": ['#D3DBE3', '#33ABFB'],
+          "hasLabel": false,
+          "title": {
+              "title": " "
+          }
+      }, ],
       bottom: [
         {
           title: "开发接口总数",
@@ -178,7 +300,88 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
+@import '@/assets/style/base/index.scss';
 //@import url(); 引入公共css类
+.g-top {
+    height: 560px;
+    .el-row {
+        margin: 0 -10px;
+        margin-top: 5px;
+        .el-col-8 {
+            padding: 0 10px;
+            &:first-child {
+                p {
+                    color: #fff;
+                }
+            }
+        }
+    }
+    dl {
+        height: 143px;
+        margin-top: 20px;
+        display: flex;
+        position: relative;
+        dt {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+        dd {
+            position: absolute;
+            top: 0;
+            padding: 16px 13px;
+            p {
+                font-size: 14px;
+                color: #666;
+                &:last-child {
+                    font-size: 30px;
+                    color: #333;
+                }
+            }
+        }
+    }
+}
+.g-middle {
+  height: 560px;
+  dl {
+      height: 140px;
+      padding: 15px;
+      margin-top: 20px;
+      dt {
+          @include font($fz: 14px, $color:#fff);
+      }
+      dd {
+          @include font($fz: 30px, $color:#fff);
+      }
+  }
+  dl.border {
+      background-color: rgba(51, 171, 251, 0.05);
+      border: 1px solid #33ABFB;
+      display: flex;
+      position: relative;
+      dt {
+          p {
+              @include font($fz: 14px, $color:#666);
+              &:nth-child(2) {
+                  font-size: 30px;
+                  color: rgba(0, 0, 0, 0.85);
+              }
+              &:nth-child(3) {
+                  font-size: 24px;
+                  color: rgba(0, 0, 0, 0.85);
+              }
+          }
+      }
+      dd {
+          position: absolute;
+          top: -45px;
+          right: -100px;
+          transform: scale(.5);
+          /deep/ .ringBox {}
+      }
+  }
+}
 .g-a-t {
   color: #666;
   font-size: 14px;

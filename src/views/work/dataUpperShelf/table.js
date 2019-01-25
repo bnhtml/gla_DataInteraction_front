@@ -1,18 +1,20 @@
 let published = {
     tableJson: {
-        column: [{
-            type: "text",
-            align: "",
-            label: "数据接口名称",
-            prop: "resourceName",
-            width: "",
-        },
+        column: [
+
         {
             type: "text",
             align: "",
             label: "资源ID",
             prop: "resourceId",
+            width: "100",
+        },{
+            type: "text",
+            align: "",
+            label: "数据接口名称",
+            prop: "dataInterfaceName",
             width: "",
+            'show-overflow-tooltip': true
         },
         {
             type: "text",
@@ -20,20 +22,22 @@ let published = {
             label: "资源名称",
             prop: "resourceName",
             width: "",
+            'show-overflow-tooltip': true
         },
+        // {
+        //     type: "text",
+        //     align: "",
+        //     label: "资源描述",
+        //     prop: "dataInterfaceDesc",
+        //     width: "",
+        // },
         {
             type: "text",
             align: "",
-            label: "资源描述",
-            prop: "dataInterfaceDesc",
-            width: "",
-        },
-        {
-            type: "text",
-            align: "",
-            label: "资源接口地址",
+            label: "数据接口地址",
             prop: "urlSuccess",
-            width: ""
+            width: "",
+            'show-overflow-tooltip': true
         },
         {
             type: "text",

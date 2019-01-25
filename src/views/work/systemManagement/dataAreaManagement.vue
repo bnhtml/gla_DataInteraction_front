@@ -9,7 +9,7 @@
                 <p class="titleLeftBorder mt5">筛选查询</p>
                 <TableSearch :searchs='searchs' v-if='isShow'></TableSearch>
             </el-card>
-            <el-card shadow="always" class="dataAreaManagement-cont mt20">
+            <el-card shadow="always" class="dataAreaManagement-cont mt20 g-tableCard">
                 <p class="titleLeftBorder">
                     {{activeTabTitle}}列表
                     <!-- <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span> -->

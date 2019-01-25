@@ -114,7 +114,7 @@ export default {
 //@import url(); 引入公共css类
 .g-ztreedom {
   width: 100%;
-  min-height: 500px;
+  min-height: 400px;
 }
 .g-search{
   padding-top: 40px;

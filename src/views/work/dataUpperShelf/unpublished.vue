@@ -6,7 +6,7 @@
       <p class="titleLeftBorder">筛选查询</p>
       <TableSearch :searchs='searchs' v-if='isShow'></TableSearch>
     </el-card>
-    <el-card shadow="always" class="unpublished-cont mt20">
+    <el-card shadow="always" class="unpublished-cont mt20 g-tableCard">
       <p class="titleLeftBorder">
         未发布数据接口列表
         <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口{{totalCount}}个</span>

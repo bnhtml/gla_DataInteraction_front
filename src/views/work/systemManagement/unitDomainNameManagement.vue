@@ -6,7 +6,7 @@
                 <p class="titleLeftBorder mt5">筛选查询</p>
                 <TableSearch :searchs='searchs' v-if='isShow'></TableSearch>
             </el-card>
-            <el-card shadow="always" class="unitDomainNameManagement-cont mt20">
+            <el-card shadow="always" class="unitDomainNameManagement-cont mt20 g-tableCard">
                 <p class="titleLeftBorder">
                     单位域名管理列表
                     <!-- <span class="right">共有数据接口XXX个</span> -->
