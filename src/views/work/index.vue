@@ -195,10 +195,7 @@
             },
             {
                 url: {
-                    name: 'unpublished',
-                    query: {
-                        user: '贵州省大数据局'
-                    }
+                    name: 'unpublished'
                 },
                 name: '未发布接口',
                 icon: 'icon-shouye',

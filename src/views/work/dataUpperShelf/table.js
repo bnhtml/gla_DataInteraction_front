@@ -2,77 +2,77 @@ let published = {
     tableJson: {
         column: [
 
-        {
-            type: "text",
-            align: "",
-            label: "资源ID",
-            prop: "resourceId",
-            width: "100",
-        },{
-            type: "text",
-            align: "",
-            label: "数据接口名称",
-            prop: "dataInterfaceName",
-            width: "",
-            'show-overflow-tooltip': true
-        },
-        {
-            type: "text",
-            align: "",
-            label: "资源名称",
-            prop: "resourceName",
-            width: "",
-            'show-overflow-tooltip': true
-        },
-        // {
-        //     type: "text",
-        //     align: "",
-        //     label: "资源描述",
-        //     prop: "dataInterfaceDesc",
-        //     width: "",
-        // },
-        {
-            type: "text",
-            align: "",
-            label: "数据接口地址",
-            prop: "urlSuccess",
-            width: "",
-            'show-overflow-tooltip': true
-        },
-        {
-            type: "text",
-            align: "center",
-            label: "被调用次数",
-            prop: "useResourceTimes",
-            width: "",
+            {
+                type: "text",
+                align: "",
+                label: "资源ID",
+                prop: "resourceId",
+                width: "100",
+            }, {
+                type: "text",
+                align: "",
+                label: "数据接口名称",
+                prop: "dataInterfaceName",
+                width: "",
+                'show-overflow-tooltip': true
+            },
+            {
+                type: "text",
+                align: "",
+                label: "资源名称",
+                prop: "resourceName",
+                width: "",
+                'show-overflow-tooltip': true
+            },
+            // {
+            //     type: "text",
+            //     align: "",
+            //     label: "资源描述",
+            //     prop: "dataInterfaceDesc",
+            //     width: "",
+            // },
+            {
+                type: "text",
+                align: "",
+                label: "数据接口地址",
+                prop: "urlSuccess",
+                width: "",
+                'show-overflow-tooltip': true
+            },
+            {
+                type: "text",
+                align: "center",
+                label: "被调用次数",
+                prop: "useResourceTimes",
+                width: "",
 
-        },
-        {
-            type: "handle",
-            align: "center",
-            label: "操作",
-            width: "80",
-            list: [{
-                label: "查看详情",
-                onClick(_this, self, row) {
-                    console.log('查看详情')
+            },
+            {
+                type: "handle",
+                align: "center",
+                label: "操作",
+                width: "80",
+                list: [{
+                    label: "查看详情",
+                    onClick(_this, self, row) {
+                        console.log('查看详情')
 
-                    self.nomal = !self.nomal;
-                    _this.isShow = !_this.isShow;
-                    _this.$router.push({
-                        name: 'info',
-                        query: {
-                            fromName: _this.$route.name,
-                            user: _this.$route.query.user,
-                            deptType: _this.$route.query.deptType,
-                            resourceId: row.resourceId,
-                            depart:_this.$route.query.depart,
-                            dataInterfaceType:row.dataInterfaceType
-                        }
-                    })
-                }
-            }]
-        }
+                        self.nomal = !self.nomal;
+                        _this.isShow = !_this.isShow;
+                        _this.$router.push({
+                            name: 'info',
+                            query: {
+                                fromName: _this.$route.name,
+                                user: _this.$route.query.user,
+                                deptType: _this.$route.query.deptType,
+                                resourceId: row.resourceId,
+                                depart: _this.$route.query.depart,
+                                dataInterfaceType: row.dataInterfaceType
+                            }
+                        })
+                    }
+                }]
+            }
         ]
     },
     searchs: {
@@ -80,19 +80,19 @@ let published = {
             "type": "input-select", //输入文本
             label: "",
             "name": "conditionPa",
-            "value": "dataInterfaceName",
+            "value": "",
             "placeholder": "请选择",
             options: [{
-                value: 'dataInterfaceName',
+                value: '数据接口名称',
                 name: '数据接口名称'
             }, {
-                value: 'urlSuccess',
+                value: '数据接口地址',
                 name: '数据接口地址'
             }, {
-                value: 'resourceName',
+                value: '资源名称',
                 name: '资源名称'
             }, {
-                value: 'resourceId',
+                value: '资源ID',
                 name: '资源ID'
             },]
         }, {
@@ -339,7 +339,7 @@ let unpublished = {
             prop: "createTime",
             width: "",
             'show-overflow-tooltip': true,
-            formatter(row){
+            formatter(row) {
                 console.log(row, '----')
                 return row.createTime && row.createTime.replace('T', ' ') || ''
             }
@@ -369,7 +369,7 @@ let unpublished = {
                 },
                 onClick(_this, self, row) {
                     let name = 'interfaceUpdate';
-                    let { resourceId, departName, resourceName, resourceDescribe, departDomain, dataInterfaceStatus} = row;
+                    let { resourceId, departName, resourceName, resourceDescribe, departDomain, dataInterfaceStatus } = row;
                     if (row.dataInterfaceStatus == 0) {
                         name = 'interfacePackage'
 
@@ -435,7 +435,7 @@ let unpublished = {
                     return ['', "测试apikey"][row.dataInterfaceStatus]
                 },
                 onClick(_this, self, row) {
-                    self.$parent.testApi({ resourceId: row.resourceId, depart: row.departName})
+                    self.$parent.testApi({ resourceId: row.resourceId, depart: row.departName })
                 }
             }]
         }
@@ -533,63 +533,63 @@ let apiParams = {
     },
 
 }
-let apiUsage ={
-    tableJson:{
+let apiUsage = {
+    tableJson: {
         column: [{
             type: "text",
             align: "",
             label: "资源申请单号",
             prop: "interfaceName",
             width: "",
-          },
-          {
+        },
+        {
             type: "text",
             align: "",
             label: "申请部门",
             prop: "resourceId",
             width: "",
-          },
-          {
+        },
+        {
             type: "text",
             align: "",
             label: "服务接口使用期限(天)",
             prop: "resourceName",
             width: "",
-          },
-          {
+        },
+        {
             type: "text",
             align: "",
             label: "使用时间范围",
             prop: "resourceDescribe",
             width: "",
-          },
-          {
+        },
+        {
             type: "text",
             align: "",
             label: "状态",
             prop: "interfaceAddress",
             width: ""
-          },
-          {
+        },
+        {
             type: "handle",
             align: "center",
             label: "APIkey",
             width: "80",
             list: [{
-              label: "查看",
-              onClick(_this, self, row) {
-                console.log('查看详情')
-        
-                self.nomal = !self.nomal;
-                _this.$confirm('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', "APIkey", {
-                  confirmButtonText: '确定',
-                  showCancelButton: false,
-                  showConfirmButton: true,
-                  showClose: false,
-                })
-              }
+                label: "查看",
+                onClick(_this, self, row) {
+                    console.log('查看详情')
+
+                    self.nomal = !self.nomal;
+                    _this.$confirm('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', "APIkey", {
+                        confirmButtonText: '确定',
+                        showCancelButton: false,
+                        showConfirmButton: true,
+                        showClose: false,
+                    })
+                }
             }]
-          }]
+        }]
     }
 }
 export {
