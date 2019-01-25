@@ -331,18 +331,10 @@
             collapsedSider() {
                 this.$refs.side1.toggleCollapse();
             },
-            getPath(item, children0) {
-                return item.path ? item.path : (children0 ? item.children[0].path : item.path);
-            },
-            handleSelect(e) {
-                e = JSON.parse(e);
-            },
-            handleOpen(key, keyPath) {
-                // console.log(key, keyPath);
-            },
-            handleClose(key, keyPath) {
-                // console.log(key, keyPath);
-            },
+            // getPath(item, children0) {
+            //     return item.path ? item.path : (children0 ? item.children[0].path : item.path);
+            // },
+           
             changeMenu(e) {
                 this.indexClass = e
                 e = JSON.parse(e)
@@ -354,16 +346,7 @@
                     this.$router.push(e.url)
                 }
             },
-            handleSelect(e) {
-                e = JSON.parse(e);
-                this.indexClass = e.shorthref;
-                this.$router.push({
-                    name: e.shorthref,
-                    // query:{
-                    //     ...e.url.query||null
-                    // }
-                })
-            },
+           
         }
     }
 </script>
@@ -382,100 +365,22 @@
             i {
                 font-size: 18px;
             }
-            .menu {
-                @include nums($w: 100%, $h:36px);
-                margin-top: 27px;
-            }
+            
             
         }
     }
-    .layout-header-bar {
-        background: #0F193D;
-        img {
-            padding: 17px 0 17px 8px;
-        }
-    }
-    .layout-logo-left {
-        width: 90%;
-        height: 30px;
-        background: #5b6270;
-        border-radius: 3px;
-        margin: 15px auto;
-    }
-    .menu-icon {
-        transition: all .3s;
-    }
+    // .menu-icon {
+    //     transition: all .3s;
+    // }
     .rotate-icon {
         transform: rotate(-90deg);
     }
-    .menu-item span {
-        display: inline-block;
-        overflow: hidden;
-        width: 110px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        vertical-align: bottom;
-        transition: width .2s ease .2s;
-    }
-    .menu-item i {
-        transform: translateX(0px);
-        transition: font-size .2s ease, transform .2s ease;
-        vertical-align: middle;
-        font-size: 16px;
-        display: inline-block;
-    }
+   
     .collapsed-menu {
         display: none;
         transition: display .2s ease;
     }
-    .ivu-layout-has-sider {
-        min-height: 100%;
-        &>.ivu-layout {
-            position: relative; // min-height: 100%;
-        }
-    }
-    .ivu-layout-sider,
-    .ivu-menu-dark,
-    .ivu-menu,
-    .ivu-menu-dark.ivu-menu-vertical .ivu-menu-opened {
-        background: #316284;
-    }
-    .ivu-menu-dark.ivu-menu-vertical .ivu-menu-opened {
-        background: #131F45;
-    }
-    .ivu-menu-vertical .ivu-menu-item,
-    .ivu-menu-vertical .ivu-menu-submenu-title,
-    {
-        padding: 0;
-        @include nums($w: 100%, $h:50px);
-        line-height: 50px;
-        padding-left: 16px;
-        box-sizing: border-box;
-    }
-    .ivu-menu-item-active,
-    .ivu-menu-item-selected {
-        color: #fff;
-        box-sizing: border-box;
-    } // .ivu-menu-item-selected::before {
-    //     position: absolute;
-    //     height: 100%;
-    //     left: 0;
-    //     bottom: 0;
-    //     display: block;
-    //     border: 1px solid #2d8cf0;
-    //     content: ' ';
-    // }
-    .content {
-        height: auto;
-        padding: 0 20px;
-        div {
-            margin-bottom: 20px;
-        }
-    }
-    .container-layout {
-        overflow-y: scroll;
-    }
-    .is-active, // .router-link-active,
+    .is-active, 
     .router-link-exact-active {
         background: #4D92BC!important;
         color: #fff;

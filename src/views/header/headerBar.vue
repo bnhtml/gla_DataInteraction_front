@@ -20,6 +20,7 @@
                 </li>
             </ul>
         </div>
+        <!-- 个人信息 -->
         <div class="userInfo">
             <img src="../../assets/img/logo/default.jpeg" alt="">
             <span>用户名</span>
@@ -305,8 +306,6 @@
     }
     .g-menu {
         @include nums($w: 100%, $h:50px);
-        // background-image: radial-gradient(51% 100%, rgba(34, 235, 251, 0.2) 20%, transparent 100%)!important;
-        // border-top: rgba(34, 235, 251, 0.4) solid 1px;
         .ul {
             @include flex($j: start);
             >i{
