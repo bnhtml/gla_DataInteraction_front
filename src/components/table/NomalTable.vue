@@ -21,7 +21,7 @@
       <el-table-column v-if="tableJson.selectBox" type="selection" :align="tableJson.selectBox.center || 'left'" :width="tableJson.selectBox.width">
       </el-table-column>
       <el-table-column v-for="(column, columnIndex) in tableJson.column" :key="columnIndex" :sortable="column.sortable || false" :label="column.label" :prop="column.prop" :width="column.width || ''" :fixed="column.fixed || false" :min-width="column.minWidth"
-        :align="column.align || 'left'" :header-align="column.headerAlign" :class-name="column['class-name'] || ''" :show-overflow-tooltip="column['show-overflow-tooltip']||false">
+        :align="column.align || 'left'" :header-align="column.headerAlign" :class-name="column['class-name'] || ''" :show-overflow-tooltip="column['show-overflow-tooltip']||true">
         <template slot-scope="scope">
                 <p v-if="column.type == 'text'" v-html="formatter(scope.row,column,columnIndex,scope.$index)"></p>
                 <!-- <p v-if="column.type == 'text'" v-html="formatter(scope.row[column.prop])"></p> -->

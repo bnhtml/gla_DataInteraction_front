@@ -11,6 +11,13 @@ let published = {
             }, {
                 type: "text",
                 align: "",
+                label: "单位名称",
+                prop: "departName",
+                width: "",
+                'show-overflow-tooltip': true
+            }, {
+                type: "text",
+                align: "",
                 label: "数据接口名称",
                 prop: "dataInterfaceName",
                 width: "",
@@ -39,14 +46,14 @@ let published = {
                 width: "",
                 'show-overflow-tooltip': true
             },
-            {
-                type: "text",
-                align: "center",
-                label: "被调用次数",
-                prop: "useResourceTimes",
-                width: "",
+            // {
+            //     type: "text",
+            //     align: "center",
+            //     label: "被调用次数",
+            //     prop: "useResourceTimes",
+            //     width: "",
 
-            },
+            // },
             {
                 type: "handle",
                 align: "center",
@@ -279,9 +286,14 @@ let unpublished = {
                 name: "isEncap",
                 value: "",
                 placeholder: "请选择",
+                class: 'g-right',
                 options: [
                     {
-                        value: "待发布",
+                        value: "",
+                        name: "全部"
+                    },
+                    {
+                        value: "已封装",
                         name: "待发布"
                     },
                     {

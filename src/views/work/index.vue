@@ -184,9 +184,7 @@
                 url: {
                     name: 'published',
                     query: {
-                        // user: '贵州省大数据局'
-                        user: 'admin',
-                        deptType: 0
+                        user: '贵州省大数据局'
                     }
                 },
                 name: '已发布接口-业务局委',
