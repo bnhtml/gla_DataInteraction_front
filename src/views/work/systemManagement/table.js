@@ -1,3 +1,4 @@
+import {SERVER_BASE_URL} from '../../../http/conf'
 /* 数据库类 - 数据表详情 */
 
 let dataArea = {
@@ -6,25 +7,25 @@ let dataArea = {
             type: "text",
             align: "",
             label: "schema库名",
-            prop: "databaseName",
+            prop: "schemaName",
             width: "",
         }, {
             type: "text",
             align: "",
             label: "schema库描述",
-            prop: "databaseDescribe",
+            prop: "schemaDesc",
             width: "",
         }, {
             type: "text",
             align: "",
             label: "数据量(行)",
-            prop: "tableNum",
+            prop: "dataNum",
             width: "",
         }, {
             type: "text",
             align: "",
             label: "存储空间(MB)",
-            prop: "storageSpace",
+            prop: "tableSize",
             width: "",
         }, {
             type: "handle",
@@ -41,9 +42,9 @@ let dataArea = {
                         name: 'dataSheetDetails',
                         query: {
                             backQuery: JSON.stringify(_this.$route.query),
-                            // id: row.id,
-                            // tableTitle: row.interfaceName,
-                            // type: row.type,
+                            databaseName:row.schemaName,
+                            depart:_this.$route.query.depart||''
+                            
                         }
                     })
                 }
@@ -58,11 +59,11 @@ let dataArea = {
             "value": "schema库名",
             "placeholder": "请选择",
             options: [{
-                value: 'schema库名',
-                label: 'schema库名'
+                name: 'schema库名',
+                value: 'schema库名' // schemaName
             }, {
-                value: 'schema库描述',
-                label: 'schema库描述'
+                name: 'schema库描述',
+                value: 'schema库描述' //schemaDesc
             }]
         }, {
             type: 'input-text',
@@ -72,19 +73,7 @@ let dataArea = {
             "placeholder": "请输入",
         }]
     },// 搜索类型数据
-    data: [{
-        tableName: '表名',
-        dataAreaDec: '描述',
-        num: '0',
-        resourceDescribe: '34',
-        storageSpace: '457',
-    }, {
-        tableName: '表名',
-        dataAreaDec: '描述',
-        num: '0',
-        resourceDescribe: '34',
-        storageSpace: '457',
-    },]
+    url:`${SERVER_BASE_URL}/new_interface/query_databaseClass`
 }
 /* 文件类 */
 let dataAreaFile = {
@@ -137,17 +126,7 @@ let dataAreaFile = {
             "placeholder": "请输入",
         }]
     },// 搜索类型数据
-    data: [{
-        filename: '文件名',
-        resourceId: 'size',
-        time: '0',
-        address: '描述描述',
-    }, {
-        filename: '文件名',
-        resourceId: 'size',
-        time: '0',
-        address: '描述描述',
-    },]
+    url:`${SERVER_BASE_URL}/new_interface/query_file`
 }
 /* 数据表详情 */
 let dataSheetDetails = {
@@ -200,17 +179,7 @@ let dataSheetDetails = {
             "placeholder": "请输入",
         }]
     },// 搜索类型数据
-    data: [{
-        filename: '文件名',
-        resourceId: 'size',
-        time: '0',
-        address: '描述描述',
-    }, {
-        filename: '文件名',
-        resourceId: 'size',
-        time: '0',
-        address: '描述描述',
-    },]
+    url:`${SERVER_BASE_URL}/new_interface/query_table`
 }
 /* 配置管理 */
 let configManagement = {

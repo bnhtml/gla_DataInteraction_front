@@ -15,7 +15,7 @@
                     <!-- <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span> -->
                 </p>
                 <div>
-                    <NomalTable :table-json="tableJson" :data="data" v-if='isShow'></NomalTable>
+                   <NomalTable :table-json="tableJson" :url="url" v-if='isShow' :axiosType="'post'"  :query="query"></NomalTable>
                 </div>
             </el-card>
         </c-admin>
@@ -49,7 +49,7 @@
                 },
                 searchs: {},
                 tableJson: {},
-                data: [],
+                url:'',
                 isShow: false,
                 query:{
                     depart:''
@@ -85,16 +85,15 @@
             handelClick(e) {
                 console.log(e)
                  this.query.depart = e.depart;
+                 this.init();
             },
+            
             /* 更新表格数据信息 */
             init() {
                 this.isShow = false;
-                let tableJson = this.tableQuery[this.activeTab].tableJson;
-                let searchs = this.tableQuery[this.activeTab].searchs;
-                let data = this.tableQuery[this.activeTab].data;
-                this.searchs = searchs;
-                this.tableJson = tableJson;
-                this.data = data;
+                this.tableJson = this.tableQuery[this.activeTab].tableJson;
+                this.searchs = this.tableQuery[this.activeTab].searchs;
+                this.url = this.tableQuery[this.activeTab].url;
                 this.$nextTick(() => {
                     this.isShow = true;
                 })
