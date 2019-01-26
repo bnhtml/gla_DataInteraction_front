@@ -4,10 +4,11 @@
         <el-container class="wrapper">
             <div style='background: #58CAFD;width:60px;position:absolute;left:0;top:0;height:100%;z-index: 99;'></div>
             <el-aside style='background: #316284;'>
-                <el-menu class="el-menu-vertical-demo" :default-active='indexClass'  :background-color='"#316284"' :text-color="'#fff'" @select='changeMenu' >
+                <el-menu class="el-menu-vertical-demo" :default-active='indexClass' :background-color='"#316284"' :text-color="'#fff'" @select='changeMenu'>
                     <div v-for="(menus, index) in leftMenu" :key="index" style='margin-left:60px;'>
                         <el-submenu :index="JSON.stringify(menus)" v-if="menus.children && menus.children.length" :class='indexClass==JSON.stringify(menus)?"is-active":""'>
-                        <template slot="title"><span slot="title">{{menus.name}}</span></template>
+                            <template slot="title"><span slot="title">{{menus.name}}</span>
+</template>
                         <el-menu-item-group v-for="(menu, idx) in menus.children" :key="idx" v-if="menu.children && menu.children.length==0">
                             <el-menu-item :index="JSON.stringify(menu)" :class='indexClass==JSON.stringify(menu)?"is-active":""'>{{menu.name}}</el-menu-item>
                         </el-menu-item-group>
@@ -307,17 +308,17 @@
                 return this.isCollapsed ? this.isMenuShow == false : this.isMenuShow == true
             },
             leftMenu() {
-              
+                this.indexClass = JSON.stringify(this.routerInfo[0].url)
+                console.log(this.routerInfo[0].url)
                 return this.routerInfo
             },
             activeName() {
                 let activeName = this.$route.path;
-             
                 return activeName;
             }
         },
         mounted() {
-            // this.indexClass = JSON.stringify(this.leftMenus[0].url)
+            console.log(this.leftMenu[0].url)
         },
         methods: {
             showMenu() {
@@ -332,7 +333,6 @@
             // getPath(item, children0) {
             //     return item.path ? item.path : (children0 ? item.children[0].path : item.path);
             // },
-           
             changeMenu(e) {
                 this.indexClass = e
                 e = JSON.parse(e)
@@ -344,14 +344,12 @@
                     this.$router.push(e.url)
                 }
             },
-           
         }
     }
 </script>
 
 <style lang='scss' scoped>
     @import '../../assets/style/base/index.scss';
- 
     .home {
         position: absolute;
         left: 0;
@@ -363,32 +361,25 @@
             i {
                 font-size: 18px;
             }
-            
-            
         }
-    }
-    // .menu-icon {
+    } // .menu-icon {
     //     transition: all .3s;
     // }
     .rotate-icon {
         transform: rotate(-90deg);
     }
-   
     .collapsed-menu {
         display: none;
         transition: display .2s ease;
     }
-    .is-active, 
+    .is-active,
     .router-link-exact-active {
         background: #4D92BC!important;
         color: #fff;
     }
-   
     .el-menu-vertical-demo,
     .el-menu {
         border-right: 0;
     }
-    
- 
 </style>
 

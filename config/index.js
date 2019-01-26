@@ -42,7 +42,7 @@ dev: {
     // set this to false - it *may* help
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
-
+// 
     cssSourceMap: true
   },
 
