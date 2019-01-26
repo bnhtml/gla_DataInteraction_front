@@ -70,3 +70,7 @@
   font-family: 'PangMenZhengDao';
   src: url("../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.ttf") format("truetype"), url("../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.woff"), url("../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.woff2"), url("../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.svg"), url("../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.eot"), url("../../font-face/PangMenZhengDaoBiaoTiTi-1/PangMenZhengDaoBiaoTiTi-1.otf");
 }
+
+.red {
+  color: red;
+}

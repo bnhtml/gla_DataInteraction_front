@@ -80,6 +80,7 @@
         },
         methods: {
             deptChecked(e) {
+                console.log(e)
                 if (e.depart) {
                     this.query = e;
                     this.deptData.two = [];

@@ -1,6 +1,6 @@
 <!-- api接口配置详情 -->
 <template>
-<div class='g-info'>
+<div class='g-info mb20'>
   
   <el-row v-for="(info, i) in infolist" :key="i"  :gutter="12" style="margin-top: 12px;">
     <el-col :span="6" style="text-align: right; line-height: 32px;">{{info.label}}</el-col>
@@ -154,8 +154,9 @@ export default {
   width: 60%;
   border: 1px solid #ccc;
   border-radius: 4px;
-  height: 30px;
+  min-height: 30px;
   line-height: 30px;
   padding: 0 10px;
+ word-wrap:break-word;
 }
 </style>

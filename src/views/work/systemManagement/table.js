@@ -1,4 +1,8 @@
-import {SERVER_BASE_URL} from '../../../http/conf'
+import { SERVER_BASE_URL } from '@/http/conf.js';
+import Vue from 'vue';
+import VueClipboard from 'vue-clipboard2';
+VueClipboard.config.autoSetContainer = true
+Vue.use(VueClipboard)
 /* 数据库类 - 数据表详情 */
 
 let dataArea = {
@@ -42,9 +46,9 @@ let dataArea = {
                         name: 'dataSheetDetails',
                         query: {
                             backQuery: JSON.stringify(_this.$route.query),
-                            databaseName:row.schemaName,
-                            depart:_this.$route.query.depart||''
-                            
+                            databaseName: row.schemaName,
+                            depart: _this.$route.query.depart || ''
+
                         }
                     })
                 }
@@ -73,7 +77,7 @@ let dataArea = {
             "placeholder": "请输入",
         }]
     },// 搜索类型数据
-    url:`${SERVER_BASE_URL}/new_interface/query_databaseClass`
+    url: `${SERVER_BASE_URL}/new_interface/query_databaseClass`
 }
 /* 文件类 */
 let dataAreaFile = {
@@ -110,9 +114,17 @@ let dataAreaFile = {
             list: [{
                 label: "复制路径",
                 onClick(_this, self, row) {
-                    console.log('复制路径');
-                    self.nomal = !self.nomal;
-                    _this.isShow = !_this.isShow;
+                    _this.$copyText(row.filePath).then(res => {
+                        _this.$message({
+                            message: 'Success',
+                            type: 'success'
+                          });
+                    }, err => {
+                        _this.$message({
+                            message: '该浏览器不支持',
+                            type: 'warning'
+                          });
+                    })
                 }
             }]
         }]
@@ -126,7 +138,7 @@ let dataAreaFile = {
             "placeholder": "请输入",
         }]
     },// 搜索类型数据
-    url:`${SERVER_BASE_URL}/new_interface/query_file`
+    url: `${SERVER_BASE_URL}/new_interface/query_file`
 }
 /* 数据表详情 */
 let dataSheetDetails = {
@@ -155,7 +167,7 @@ let dataSheetDetails = {
             label: "存储空间(MB)",
             prop: "storageSpace",
             width: "",
-        }, ]
+        },]
     },
     searchs: {
         list: [{
@@ -179,7 +191,7 @@ let dataSheetDetails = {
             "placeholder": "请输入",
         }]
     },// 搜索类型数据
-    url:`${SERVER_BASE_URL}/new_interface/query_table`
+    url: `${SERVER_BASE_URL}/new_interface/query_table`
 }
 /* 配置管理 */
 let configManagement = {

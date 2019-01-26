@@ -38,6 +38,7 @@ Vue.use(ElementUI, 'small')
 /* eslint-disable no-new */
 Vue.use(iView);
 
+
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$api = list;
 Vue.prototype.$appBase = appBase;

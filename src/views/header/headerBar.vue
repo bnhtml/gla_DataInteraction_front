@@ -74,7 +74,7 @@
             },
             leftMenu() {
                 return [{
-                    mdlhref: 'leaderCockpit',
+                    mdlhref: 'businessBureau',
                     mdlname: '领导驾驶舱',
                     children: [],
                     mdliconcss: 'icon-lingdaojiashicang',
