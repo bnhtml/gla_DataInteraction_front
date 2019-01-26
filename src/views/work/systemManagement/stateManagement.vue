@@ -7,7 +7,7 @@
                 <!-- <span class="right"><i class="icon iconfont icon-gantanhao"></i>共有数据接口XXX个</span> -->
             </p>
             <div>
-                <NomalTable :table-json="tableJson" :data="data" v-if='isShow'></NomalTable>
+                <NomalTable :table-json="tableJson" :url="url" axiosType="post" v-if='isShow' :query="query"></NomalTable>
             </div>
         </el-card>
     </div>
@@ -26,7 +26,8 @@
                 tableQuery: stateManagement,
                 searchs: {},
                 tableJson: {},
-                data: [],
+                query: {},
+                url: ''
             }
         },
         
@@ -46,7 +47,7 @@
                 let data = this.tableQuery.data;
                 this.searchs = searchs;
                 this.tableJson = tableJson;
-                this.data = data;
+                this.url = `${this.$SERVER_BASE_URL}/new_interface/get_staLog`;;
                 this.$nextTick(() => {
                     this.isShow = true;
                 })

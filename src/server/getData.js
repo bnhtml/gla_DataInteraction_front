@@ -95,6 +95,10 @@ export const get_fieldMsg = (params) => {
 export const get_tabMsg = (params) => {
     return httpApi('/new_interface/get_tabMsg', params, 'post')
 }
+/* 数据上架 更新数据源 */
+export const update_tabMsg = (params) => {
+    return httpApi('/new_interface/metadata_synchro', params, 'post')
+}
 /* 数据上架 查看接口说明文档（点击后直接打开文档） */
 export const get_interfaceFile = (params) => {
     return httpApi('/new_interface/get_interfaceFile', params, 'post')
