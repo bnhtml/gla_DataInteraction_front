@@ -2,6 +2,7 @@
 node_modules/
 /chart/
 /dataAssets/
+/dataAssets-master/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

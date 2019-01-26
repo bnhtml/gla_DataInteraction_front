@@ -33,8 +33,16 @@
                 </el-select>
             </el-form-item>
             <el-form-item v-if="dataType!='type1'" label="接口URL源地址:" prop="urlAddress"
-                :rules="{required: true, message: '接口URL源地址不能为空', trigger: 'blur'}">
-                <el-input v-model="formModels.urlAddress"></el-input>
+                :rules="{required:true, message: '接口URL源地址不能为空', trigger: dataType =='type3'?'blur':'change'}">
+                <el-input v-if="dataType =='type3'" v-model="formModels.urlAddress"></el-input>
+                <el-select v-else v-model="formModels.urlAddress" placeholder="请选择">
+                    <el-option
+                        v-for="item in urlAddressData"
+                        :key="item.fileName"
+                        :label="item.fileName"
+                        :value="item.fileAddress">
+                    </el-option>
+                </el-select>
             </el-form-item>
             <el-form-item v-if="dataType!='type2'" label="请求数据类型:">
                 <el-input v-if='dataType=="type1"' v-model="formModels.requestInterType" disabled></el-input>
@@ -187,6 +195,7 @@ export default {
       dataType: 1, //封装数据类型
       pageFlag: 'stepOne',
       loading: false,
+      urlAddressData:[], //文件类型，接口URL源地址
     }
   },
   methods: {
@@ -248,8 +257,10 @@ export default {
       }else if(value == 'file'){
         this.dataType = "type2";
         this.formModels.requestInterMode = "get";
+        this.formModels.urlAddress = '';
       }else if(value == 'interface'){
         this.dataType = "type3";
+        this.formModels.urlAddress = '';
       }
     },
     //切换一级路经
@@ -324,6 +335,10 @@ export default {
   },
   mounted(){
     this.getData();
+    // 查询文件
+    this.$api.query_file({depart: this.$route.query.departName}).then(res=>{
+        this.urlAddressData = res.data;
+    })
   },
 }
 </script>
