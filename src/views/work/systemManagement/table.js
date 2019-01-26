@@ -115,10 +115,10 @@ let dataAreaFile = {
                 label: "复制路径",
                 onClick(_this, self, row) {
                     _this.$copyText(row.fileAddress).then(res => {
-                        // _this.$message({
-                        //     message: 'Success',
-                        //     type: 'success'
-                        //   });
+                        _this.$message({
+                            message: '复制成功',
+                            type: 'success'
+                          });
                     }, err => {
                         _this.$message({
                             message: '该浏览器不支持',
