@@ -88,7 +88,7 @@ let dataAreaFile = {
             label: "文件名",
             prop: "fileName",
             width: "",
-        }, {
+        },/*  {
             type: "text",
             align: "",
             label: "文件大小(MB)",
@@ -100,11 +100,11 @@ let dataAreaFile = {
             label: "修改时间",
             prop: "updateTime",
             width: "",
-        }, {
+        },  */{
             type: "text",
             align: "",
             label: "路径地址",
-            prop: "filePath",
+            prop: "fileAddress",
             width: "",
         }, {
             type: "handle",
@@ -114,11 +114,11 @@ let dataAreaFile = {
             list: [{
                 label: "复制路径",
                 onClick(_this, self, row) {
-                    _this.$copyText(row.filePath).then(res => {
-                        _this.$message({
-                            message: 'Success',
-                            type: 'success'
-                          });
+                    _this.$copyText(row.fileAddress).then(res => {
+                        // _this.$message({
+                        //     message: 'Success',
+                        //     type: 'success'
+                        //   });
                     }, err => {
                         _this.$message({
                             message: '该浏览器不支持',

@@ -69,6 +69,7 @@
     @import '@/assets/style/base/index.scss';
     .dataSheetDetails {
         .dataSheetDetails-header {
+            position: relative;
             h6 {
                 @include font($fz: 18px, $color:#333);
                 border-bottom: solid 1px #EBEEF5;
