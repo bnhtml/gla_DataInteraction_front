@@ -25,7 +25,7 @@
                     </el-option>
                 </el-select>
            </div>
-           <div><el-button type="primary" @click="updateSource">更新数据源</el-button></div>
+           <div><el-button type="primary" @click="updateSource" v-loading.fullscreen.lock="fullscreenLoading">更新数据源</el-button></div>
        </div>
        <div class="flex-block tabel-border">
            <div class="tabel-left">
@@ -154,7 +154,8 @@ export default {
       ],
       tValue: "",
       relation: "",
-      remarks: ""
+      remarks: "",
+      fullscreenLoading:false,
     };
   },
   components: {},
@@ -178,7 +179,13 @@ export default {
 		},
 		//更新数据源
     updateSource() {
-			this.selectDataArea(this.dataArea);
+      this.fullscreenLoading = true;
+      this.$api.update_tabMsg({depart:this.$route.query.departName}).then(res=>{
+        if(res.code=="200"){
+          this.fullscreenLoading = false;
+          this.selectDataArea(this.dataArea);
+        }
+      })
 		},
     setSelected(o, state = true) {
       //    console.log(this.$refs, '====')
