@@ -78,9 +78,9 @@ export default {
       }
 
 
-        if(this.$route.name === 'published'){
-          this.$emit('checked', {region: ['国家部门', '省直部门', '市州部门'][n]})
-        }
+      if(this.$route.name === 'published'){
+        this.$emit('checked', {region: ['国家部门', '省直部门', '市州部门'][n]})
+      }
 
     },
     setNode(firstleval, arr, noChild, idx){

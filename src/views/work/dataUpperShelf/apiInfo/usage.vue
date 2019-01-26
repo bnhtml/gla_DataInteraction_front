@@ -1,6 +1,6 @@
 <!-- api接口配置详情 -->
 <template>
-  <div class=''>
+  <div class='g-tableCard'>
     <NomalTable v-if='isShow' :table-json="tableJson" :url='url' :axiosType="'post'"></NomalTable>
   </div>
 </template>

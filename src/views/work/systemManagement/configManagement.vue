@@ -1,10 +1,10 @@
 // 配置管理
 <template>
     <div class="configManagement">
-        <el-card shadow="always" class="configManagement-cont ">
+        <el-card shadow="always" class="configManagement-cont g-tableCard">
             <p class="titleLeftBorder">配置日志</p>
             <div>
-                <NomalTable :table-json="tableJson" :data="data" v-if='isShow'></NomalTable>
+                <NomalTable :table-json="tableJson" :url="url" v-if='isShow' :axiosType="'post'" ></NomalTable>
             </div>
         </el-card>
     </div>
@@ -24,6 +24,8 @@
                 searchs: {},
                 tableJson: {},
                 data: [],
+                url: '',
+                query: {}
             }
         },
         
@@ -43,7 +45,7 @@
                 let data = this.tableQuery.data;
                 this.searchs = searchs;
                 this.tableJson = tableJson;
-                this.data = data;
+                this.url = `${this.$SERVER_BASE_URL}/new_interface/get_confLog`;
                 this.$nextTick(() => {
                     this.isShow = true;
                 })
