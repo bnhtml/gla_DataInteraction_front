@@ -209,7 +209,7 @@ let unpublished = {
                 },
                 onClick(_this, self, row) {
                     if (row.dataInterfaceStatus == 1) {
-                        self.$parent.fileUpload();
+                        self.$parent.fileUpload(row);
                     }
 
                 }
