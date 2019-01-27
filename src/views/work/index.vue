@@ -309,7 +309,7 @@
             },
             leftMenu() {
                 this.indexClass = JSON.stringify(this.routerInfo[0].url)
-                console.log(this.routerInfo[0].url)
+                console.log(this.routerInfo[0].u)
                 return this.routerInfo
             },
             activeName() {

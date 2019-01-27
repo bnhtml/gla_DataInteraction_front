@@ -52,7 +52,7 @@
                 url:'',
                 isShow: false,
                 query:{
-                    depart:''
+                    // depart:''
                 }
             }
         },
@@ -84,7 +84,7 @@
         methods: {
             handelClick(e) {
                 console.log(e)
-                 this.query.depart = e.depart;
+                 this.query = e;
                  this.init();
             },
             
