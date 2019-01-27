@@ -144,12 +144,25 @@
         }))
       },
       testApi(query) {
+
+        const loading = this.$loading({
+          lock: true,
+          // text: 'Loading',
+          // spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
         this.$api.testApikey(query).then(res => {
           if (res.data && res.data.apiKey) {
-            this.$confirm(res.data.apiKey, "APIkey", {
+            loading.close();
+            this.$confirm(`
+              <div style="display:flex;"><p>APIkey：</p><p>${res.data.apiKey}</p></div>
+              <div style="display:flex;"><p>有效期：</p><p>${res.data.apiKey}</p></div>
+              <div style="display:flex;"><p>当前状态：</p><p>${['有效', '失效'][0]}</p></div>
+            `, "测试APIkey", {
               confirmButtonText: '确定',
               showCancelButton: false,
               showConfirmButton: true,
+              dangerouslyUseHTMLString: true,
               showClose: false,
             })
           }
