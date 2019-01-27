@@ -32,10 +32,9 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item v-if="dataType!='type1'" label="接口URL源地址:" prop="urlAddress"
-                :rules="{required:true, message: '接口URL源地址不能为空', trigger: dataType =='type3'?'blur':'change'}">
-                <el-input v-if="dataType =='type3'" v-model="formModels.urlAddress"></el-input>
-                <el-select v-else v-model="formModels.urlAddress" placeholder="请选择">
+            <el-form-item v-if="dataType=='type2'" :label="'请选择文件'" prop="urlAddress"
+                :rules="{required:true, message: '文件不能为空', trigger:'change'}">
+                <el-select  v-model="formModels.urlAddress" placeholder="请选择">
                     <el-option
                         v-for="item in urlAddressData"
                         :key="item.fileName"
@@ -43,6 +42,10 @@
                         :value="item.fileAddress">
                     </el-option>
                 </el-select>
+            </el-form-item>
+            <el-form-item v-if="dataType=='type3'" :label="'接口URL源地址'" prop="urlAddress"
+                :rules="{required:true, message: '接口URL源地址不能为空', trigger:'blur'}">
+                <el-input v-model="formModels.urlAddress"></el-input>
             </el-form-item>
             <el-form-item v-if="dataType!='type2'" label="请求数据类型:">
                 <el-input v-if='dataType=="type1"' v-model="formModels.requestInterType" disabled></el-input>

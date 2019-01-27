@@ -237,13 +237,13 @@ export default {
     },
     getBumen() {
       this.isShow = false;
-      this.$api.get_depart({ region_name: "省直部门" }).then(res => {
-        this.barData.xData = res.data;
+      this.$nextTick(() => {
+        this.barData.xData = ['贵州省人民政府办公厅', '省发展改革委', '省教育厅', '省科技厅', '省经信委', '省民宗委', '省公安厅', '省民政厅', '省司法厅', '贵州省财政厅', '省人力资源社会保障厅', '省国土资源厅', '省环境保护厅', '省住房城乡建设厅', '省交通运输厅', '省农委', '省水利厅', '省商务厅', '省文化厅', '省卫生计生委', '省审计厅', '省农林厅', '省外事办', '省国资委', '省税务局', '省工商局', '省质监局', '省新闻出版广电局', '省体育局'];
         this.barDataSeries = [
           {
             name: "数据目录总数",
             type: "bar",
-            data: res.data.map(o => this.$getrandom(o + "222", 323)),
+            data: this.barData.xData.map(o => this.$getrandom(o + "222", 323)),
             barMaxWidth: 20
           }
         ];
