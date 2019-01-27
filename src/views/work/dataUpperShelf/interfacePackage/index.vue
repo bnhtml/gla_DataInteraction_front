@@ -32,7 +32,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item v-if="dataType=='type2'" :label="'请选择文件'" prop="urlAddress"
+            <el-form-item v-show="dataType=='type2'" :label="'请选择文件'" prop="urlAddress"
                 :rules="{required:true, message: '文件不能为空', trigger:'change'}">
                 <el-select  v-model="formModels.urlAddress" placeholder="请选择">
                     <el-option
@@ -43,7 +43,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item v-if="dataType=='type3'" :label="'接口URL源地址'" prop="urlAddress"
+            <el-form-item v-show="dataType=='type3'" :label="'接口URL源地址'" prop="urlAddress"
                 :rules="{required:true, message: '接口URL源地址不能为空', trigger:'blur'}">
                 <el-input v-model="formModels.urlAddress"></el-input>
             </el-form-item>
@@ -285,6 +285,7 @@ export default {
     },
     //下一步
     nextStep() {
+      this.formModels.urlAddress="urlData";
       this.$refs.formTabel.validate((valid) => {
         if (valid) {
           this.pageFlag='stepTwo';
