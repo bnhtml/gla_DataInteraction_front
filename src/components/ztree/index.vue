@@ -30,6 +30,12 @@ export default {
   //import引入的组件需要注入到对象中才能使用
   components: {},
   props: {
+    query: {
+      type: Object,
+      default(){
+        return {}
+      }
+    },
     deptType: {
       type: Number
     },
@@ -73,7 +79,7 @@ export default {
   methods: {
     querySearchAsync(depart, cb) {
       let region_name = ['国家部门', '省直部门', '市州部门', '省内部门'][this.deptType];
-      this.$api.sear_depcode({depart, region_name }).then(res => {
+      this.$api.sear_depcode({...this.query, depart, region_name }).then(res => {
         let data = res.data.map(value => ({value}))
         cb(data);
       })

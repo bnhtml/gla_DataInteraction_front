@@ -58,7 +58,7 @@
             back() {
                 this.$router.push({
                     name: 'dataAreaManagement',
-                    query: {}
+                    query: JSON.parse(this.$route.query.backQuery)
                 })
             }
         }

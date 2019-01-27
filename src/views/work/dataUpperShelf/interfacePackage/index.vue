@@ -19,7 +19,7 @@
                 <el-input v-model="formModels.departName" disabled></el-input>
             </el-form-item>
             <el-form-item label="数据接口名称:" prop="dataInterfaceName"
-                :rules="{required: true, message: '数据接口名称不能为空', trigger: 'blur'}">
+                :rules="[{required: true, message: '数据接口名称不能为空', trigger: 'blur'},{validator, trigger: 'blur'}]">
                 <el-input v-model="formModels.dataInterfaceName"></el-input>
             </el-form-item>
             <el-form-item label="封装数据类型:">
@@ -202,6 +202,13 @@ export default {
     }
   },
   methods: {
+    validator(rule, value, callback){
+        if(!/[\u4e00-\u9fa5]/g.test(value)){
+            callback( new Error('数据接口名称必须包含中文'))
+        }else{
+            callback()
+        }
+    },
     getData(){
       var queryParam = this.$route.query;
       this.formModels.dataInterfaceStatus = queryParam.dataInterfaceStatus;//数据资源状态
