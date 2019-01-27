@@ -50,6 +50,10 @@ export default {
       this.$api.del_interfaceFile(this.sendData).then(res => {
         console.log(res);
         this.fileHref = '';
+        this.$message({
+          type: 'success',
+          message: '已删除'
+        })
       })
     }, 
     onSuccess(response, file, fileList){

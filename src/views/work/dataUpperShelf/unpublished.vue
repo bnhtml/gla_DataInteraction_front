@@ -59,7 +59,7 @@
           h("FileUpload", {
             props: {
               sendData: {resourceId: row.resourceId},
-              fileLink: row.fileLink
+              fileLink: row.filedDownloadUrl
             }
           }),
             "数据接口文档上传", {
@@ -71,11 +71,11 @@
             }
           )
           .then(() => {
-
-            this.$message({
-              type: "success",
-              message: "上传成功!"
-            });
+            this.created();
+            // this.$message({
+            //   type: "success",
+            //   message: "上传成功!"
+            // });
           })
           .catch(() => {
             // this.$message({
