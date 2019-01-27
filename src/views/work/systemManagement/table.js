@@ -46,7 +46,7 @@ let dataArea = {
                         name: 'dataSheetDetails',
                         query: {
                             backQuery: JSON.stringify(_this.$route.query),
-                            databaseName: row.schemaName,
+                            schemaName: row.schemaName,
                             depart: _this.$route.query.depart || ''
 
                         }
