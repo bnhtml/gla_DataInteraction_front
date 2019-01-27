@@ -45,11 +45,15 @@
       FileUpload
     },
     created() {
-      this.isShow = false;
-      this.$nextTick(() => this.isShow = true);
+      this.init()
     },
     mounted() {},
     methods: {
+      init(){
+        this.isShow = false;
+        this.$nextTick(() => this.isShow = true);
+
+      },
       receive(res) {
         this.totalCount = res.page.totalCount;
       },
@@ -57,40 +61,41 @@
         const h = this.$createElement;
         this.$confirm(
           h("FileUpload", {
+            key: row.resourceId,
             props: {
               sendData: {resourceId: row.resourceId},
-              fileLink: row.filedDownloadUrl
+              fileLink: row.filedDownloadUrl,
+              fileName1: row.fileName
             }
           }),
             "数据接口文档上传", {
               confirmButtonText: "确定",
               cancelButtonText: "取消",
-              showCancelButton: true,
+              showCancelButton: false,
               showConfirmButton: true,
               showClose: false
             }
           )
           .then(() => {
-            this.created();
-            // this.$message({
-            //   type: "success",
-            //   message: "上传成功!"
-            // });
+            this.init();
           })
-          .catch(() => {
-            // this.$message({
-            //   type: "info",
-            //   message: "已取消"
-            // });
-          });
       },
       publish(resourceId) {
+        // debugger
         this.$api.interface_commit({
           resourceId
-        }).then(res => {}).catch(error => this.$message({
-          type: 'error',
-          message: error
-        }))
+        }).then(res => {
+          this.$message({
+            type: 'success',
+            message: res.msg
+          })
+          this.init();
+        }, error => {
+          this.$message({
+            type: 'error',
+            message: error
+          })
+        })
       },
       testApi(query) {
 

@@ -130,16 +130,16 @@ let unpublished = {
         {
             type: "text",
             align: "",
-            label: "资源描述",
-            prop: "resourceDescribe",
+            label: "数据接口名称",
+            prop: "dataInterfaceName",
             width: "",
             'show-overflow-tooltip': true
         },
         {
             type: "text",
             align: "",
-            label: "数据接口名称",
-            prop: "dataInterfaceName",
+            label: "数据接口描述",
+            prop: "resourceDescribe",
             width: "",
             'show-overflow-tooltip': true
         },
@@ -151,7 +151,6 @@ let unpublished = {
             width: "",
             'show-overflow-tooltip': true,
             formatter(row) {
-                console.log(row, '----')
                 return row.createTime && row.createTime.replace('T', ' ') || ''
             }
 

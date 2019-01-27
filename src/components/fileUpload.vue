@@ -4,10 +4,10 @@
   <p>接口说明文档：</p>
   <div style="line-height: 40px">
     <a v-if="!!fileHref" target="_blank" :href="fileHref" class="g-linkstyle">
-      接口文档 <i class="g-deleteicon" @click.prevent="deleteFile">x</i>
+      {{fileName}} <i class="g-deleteicon" @click.prevent="deleteFile">x</i>
     </a>
     <div class='g-upload'>
-      <el-upload :disabled="false" :action="this.$SERVER_BASE_URL + '/new_interface/upload_interFile'" :data="sendData" :show-file-list="false" :on-success="onSuccess" :on-error="onError" accept=".rar,.zip,.doc,.docx,.pdf"><i class="iconfont icon-shangchuan"></i>上传文档</el-upload>
+      <el-upload :disabled="false" name="fileName" :action="this.$SERVER_BASE_URL + '/new_interface/upload_interFile'" :data="sendData" :show-file-list="false" :on-success="onSuccess" :on-error="onError" :on-progress="onProgress" accept=".rar,.zip,.doc,.docx,.pdf"><i class="iconfont icon-shangchuan"></i>上传文档</el-upload>
     </div>
     <a href="a.txt" target="_blank" style="color: #33ABFB; margin-left: 10px">模板下载</a>
     <p style="color: #999;">支持扩展名：.rar .zip .doc .docx .pdf</p>
@@ -34,6 +34,10 @@ export default {
     fileLink: {
       type: String,
       default: ''
+    },
+    fileName1: {
+      type: String,
+      default: ''
     }
   },
   //监听属性 类似于data概念
@@ -48,7 +52,6 @@ export default {
   methods: {
     deleteFile(){
       this.$api.del_interfaceFile(this.sendData).then(res => {
-        console.log(res);
         this.fileHref = '';
         this.$message({
           type: 'success',
@@ -59,6 +62,7 @@ export default {
     onSuccess(response, file, fileList){
       if(response.code === 200){
         this.fileHref = response.result.data.filedDownloadUrl;
+        this.fileName = response.result.data.fileName;
       }
     },
     onError(error, file, fileList){
@@ -66,6 +70,9 @@ export default {
         type: 'error',
         message: error
       })
+    },
+    onProgress(event, file, fileList){
+      console.log(event, file, fileList)
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
@@ -73,6 +80,7 @@ export default {
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
     this.fileHref = this.fileLink;
+    this.fileName = this.fileName1
   },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前

@@ -2,7 +2,7 @@
 <template>
 <div class='g-info mb20'>
   
-  <el-row v-for="(info, i) in infolist" :key="i"  :gutter="12" style="margin-top: 12px;">
+  <el-row v-for="(info, i) in list" :key="i"  :gutter="12" style="margin-top: 12px;">
     <el-col :span="6" style="text-align: right; line-height: 32px;">{{info.label}}</el-col>
     <el-col :span="18">
       <p :style="`min-height:${info.height || '30'}px`">{{info.value}}</p>
@@ -58,6 +58,11 @@ export default {
           formmater: res => ({'db': '数据库', 'interface': '接口', 'file': '文件'}[res])
         },
         {
+          label: "文件名",
+          props: "fileName",
+          value: ''
+        },
+        {
           label: "接口原URL地址",
           props: "urlAddress",
           value:'',
@@ -102,7 +107,11 @@ export default {
     };
   },
   //监听属性 类似于data概念
-  computed: {},
+  computed: {
+    list(){
+      return this.infolist.filter(o => o.value)
+    }
+  },
   //监控data中的数据变化
   watch: {},
  
@@ -128,6 +137,8 @@ export default {
             }else{
               if(v.label=='设置接口路径'){
                 v.value = res.data[0].firstAddress + '/' + res.data[0].secondAddress + '/' + res.data[0].thirdAddress
+              }else if(v.props === 'fileName' && res.data[0].dataInterfaceType !== 'file'){
+                // v.noShow = true;
               }else{
                 v.value ='未找到相对应的字段匹配！！！'
               }
