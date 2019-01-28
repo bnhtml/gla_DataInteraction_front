@@ -5,7 +5,7 @@
       <el-aside v-if="$route.query.user === 'admin'" style="width: 300px;margin-right:20px">
         <el-card shadow="always" class="published-header" style="height: 100%;overflow: auto">
             <p class="titleLeftBorder">已发布数据接口</p>
-            <z-tree v-if="isShow" :node="node" :searchTitle="title" :deptType="deptType" v-on:onClick="checked"></z-tree>
+            <z-tree v-if="isShow" :node="node" :searchTitle="title" :deptType="deptType" v-on:onClick="checked" :query="query"></z-tree>
         </el-card>
       </el-aside>
       <el-main style="padding: 0 ;">
@@ -35,6 +35,7 @@ export default {
     return {
       isShow: false,
       title,
+      query: {dirParameter: ['dataAreaManagement', 'published', 'interfacePathManagement', 'unitDomainNameManagement'].indexOf(this.$route.name)},
       loadedLength: 0,
       node: [],
       firstleval: []
@@ -71,7 +72,7 @@ export default {
         this.firstleval = firstleval;
         this.setNode(firstleval, this.node);
       }else{
-        this.$api.getdep_region({dire_ide: n - 2}).then(res => {
+        this.$api.getdep_region({...this.query, dire_ide: n - 2}).then(res => {
           this.firstleval = res.data;
           this.setNode(res.data, this.node);
         });
@@ -94,7 +95,7 @@ export default {
           this.isShow = true;
         }
         if(!noChild){
-          this.$api.get_depart({region_name: o}).then(res => {
+          this.$api.get_depart({...this.query, region_name: o}).then(res => {
             this.setNode(res.data, arr[i]['children'], true, i);
           }).catch(err => {
             console.log(err)

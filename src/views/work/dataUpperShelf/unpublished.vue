@@ -53,67 +53,15 @@
       receive(res) {
         this.totalCount = res.page.totalCount;
       },
-      fileUpload() {
+      fileUpload(row) {
         const h = this.$createElement;
         this.$confirm(
-            h(
-              "div", {
-                style: {
-                  display: "flex"
-                }
-              }, [
-                h("p", null, "接口说明文档："),
-                h("div", {
-                  style: {
-                    lineHeight: '40px'
-                  }
-                }, [
-                  h(
-                    "span", {
-                      src: "a.txt",
-                      style: {
-                        display: 'block',
-                        color: "#33ABFB",
-                        lineHeight: '24px',
-                        position: 'relative'
-                      }
-                    }, [
-                      h("i", {
-                        style: {
-                          position: "absolute",
-                          zIndex: '10',
-                          left: '60px',
-                          top: '-6px',
-                          color: '#666',
-                          fontSize: '10px',
-                          cursor: 'pointer'
-                        }
-                      }, 'x'),
-                      "接口文档"
-                    ]
-                  ),
-                  h("FileUpload", null),
-                  h(
-                    "a", {
-                      src: "a.txt",
-                      style: {
-                        color: "#33ABFB",
-                        marginLeft: "10px"
-                      }
-                    },
-                    "模板下载"
-                  ),
-                  h(
-                    "p", {
-                      style: {
-                        color: "#999"
-                      }
-                    },
-                    "支持扩展名：.rar .zip .doc .docx .pdf"
-                  )
-                ])
-              ]
-            ),
+          h("FileUpload", {
+            props: {
+              sendData: {resourceId: row.resourceId},
+              fileLink: row.filedDownloadUrl
+            }
+          }),
             "数据接口文档上传", {
               confirmButtonText: "确定",
               cancelButtonText: "取消",
@@ -123,16 +71,17 @@
             }
           )
           .then(() => {
-            this.$message({
-              type: "success",
-              message: "上传成功!"
-            });
+            this.created();
+            // this.$message({
+            //   type: "success",
+            //   message: "上传成功!"
+            // });
           })
           .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消上传"
-            });
+            // this.$message({
+            //   type: "info",
+            //   message: "已取消"
+            // });
           });
       },
       publish(resourceId) {
@@ -152,12 +101,12 @@
           background: 'rgba(0, 0, 0, 0.7)'
         });
         this.$api.testApikey(query).then(res => {
-          if (res.data && res.data.apiKey) {
+          if (res.data) {
             loading.close();
             this.$confirm(`
               <div style="display:flex;"><p>APIkey：</p><p>${res.data.apiKey}</p></div>
-              <div style="display:flex;"><p>有效期：</p><p>${res.data.apiKey}</p></div>
-              <div style="display:flex;"><p>当前状态：</p><p>${['有效', '失效'][0]}</p></div>
+              <div style="display:flex;"><p>有效期：</p><p>${res.data.effectiveTime}</p></div>
+              <div style="display:flex;"><p>当前状态：</p><p>${['失效', '有效'][res.data.apiKeyStatus]}</p></div>
             `, "测试APIkey", {
               confirmButtonText: '确定',
               showCancelButton: false,

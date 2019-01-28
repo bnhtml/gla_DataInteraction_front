@@ -22,7 +22,7 @@ let dataArea = {
         }, {
             type: "text",
             align: "",
-            label: "数据量(行)",
+            label: "表数量",
             prop: "dataNum",
             width: "",
         }, {
@@ -156,12 +156,12 @@ let dataSheetDetails = {
             prop: "tableDesc",
             width: "",
         }, {
-            type: "text",
-            align: "",
-            label: "数据量(行)",
-            prop: "dataNum",
-            width: "",
-        }, {
+        //     type: "text",
+        //     align: "",
+        //     label: "数据量(行)",
+        //     prop: "dataNum",
+        //     width: "",
+        // }, {
             type: "text",
             align: "",
             label: "存储空间(MB)",

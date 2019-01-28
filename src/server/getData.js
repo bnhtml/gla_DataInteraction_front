@@ -126,3 +126,8 @@ export const interface_commit = (params) => {
 export const testApikey = (params) => {
     return httpApi('/new_interface/testApikey', params, 'post')
 }
+
+// 删除接口文档  del_interfaceFile
+export const del_interfaceFile = (params) => {
+    return httpApi('/new_interface/del_interfaceFile', params, 'post')
+}
