@@ -3,9 +3,12 @@
 <div style="display: flex">
   <p>接口说明文档：</p>
   <div style="line-height: 40px">
-    <a v-if="!!fileHref" target="_blank" :href="fileHref" class="g-linkstyle">
-      {{fileName}} <i class="g-deleteicon" @click.prevent="deleteFile">x</i>
-    </a>
+    <p>
+      <a v-if="!!fileHref" target="_blank" :href="fileHref" class="g-linkstyle">
+        {{fileName}} 
+        <!-- <i class="g-deleteicon" @click.prevent="deleteFile">x</i> -->
+      </a>
+    </p>
     <div class='g-upload'>
       <el-upload :disabled="false" name="fileName" :action="this.$SERVER_BASE_URL + '/new_interface/upload_interFile'" :data="sendData" :show-file-list="false" :on-success="onSuccess" :on-error="onError" :on-progress="onProgress" accept=".rar,.zip,.doc,.docx,.pdf"><i class="iconfont icon-shangchuan"></i>上传文档</el-upload>
     </div>
@@ -107,7 +110,7 @@ export default {
 }
 .g-linkstyle{
 
-    display: block;
+    // display: block;
     color: #33ABFB;
     line-height: 24px;
     position: relative;
