@@ -5,7 +5,8 @@
   <el-row v-for="(info, i) in list" :key="i"  :gutter="12" style="margin-top: 12px;">
     <el-col :span="6" style="text-align: right; line-height: 32px;">{{info.label}}</el-col>
     <el-col :span="18">
-      <p :style="`min-height:${info.height || '30'}px`">{{info.value}}</p>
+      <p v-if="info.type !== 'download'" :style="`min-height:${info.height || '30'}px`">{{info.value}}</p>
+      <a v-if="info.type === 'download'" class="g-download-link" :href="info.href"><i class="iconfont icon-bianjiqi_chaolian"></i>{{info.name}}</a>
     </el-col>
   </el-row>
 </div>
@@ -51,6 +52,12 @@ export default {
           props: "urlSuccess",
           value:'',
         },
+        // {
+        //   label: "接口请求文档",
+        //   type: 'download',
+        //   href: 'http://abc.com/a.zip',
+        //   name: '接口文档'
+        // },
         {
           label: "封装数据类型",
           props: "dataInterfaceType",
@@ -169,5 +176,9 @@ export default {
   line-height: 30px;
   padding: 0 10px;
  word-wrap:break-word;
+}
+.g-download-link{
+  color: #33ABFB;
+  line-height: 30px;
 }
 </style>

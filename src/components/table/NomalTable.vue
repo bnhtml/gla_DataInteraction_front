@@ -36,7 +36,7 @@
                     <el-button type="text" size="small" slot="reference" v-html="column.hover.label"></el-button>
                 </el-popover>
                 <el-button 
-                    v-if="column.type == 'handle'" 
+                    v-if="column.type == 'handle' && (handle.label || handle.formatter(scope.row,column,columnIndex,scope.$index))" 
                     v-for="(handle, handleIndex) in column.list" 
                     :key="handleIndex" 
                     size="small" 

@@ -175,7 +175,24 @@ let unpublished = {
             width: "300",
             list: [{
                 formatter(row, column, columnIndex, rowIndex) {
-                    return ['封装接口', "修改接口"][row.dataInterfaceStatus]
+                    return ['', "查看"][row.dataInterfaceStatus]
+                },
+                onClick(_this, self, row) {
+                    let name = 'info';
+                    let { resourceId } = row;
+                    _this.$router.push({
+                        name,
+                        query: {
+                            fromName: 'unpublished',
+                            resourceId,
+                            user: _this.$route.query.user
+                        }
+                    })
+
+                }
+            }, {
+                formatter(row, column, columnIndex, rowIndex) {
+                    return ['封装接口', "修改"][row.dataInterfaceStatus]
                 },
                 onClick(_this, self, row) {
                     let name = 'interfaceUpdate';
@@ -197,6 +214,23 @@ let unpublished = {
                             resourceDescribe,
                             departDomain,
                             dataInterfaceStatus,
+                            user: _this.$route.query.user
+                        }
+                    })
+
+                }
+            }, {
+                formatter(row, column, columnIndex, rowIndex) {
+                    return ['', "查看"][row.dataInterfaceStatus]
+                },
+                onClick(_this, self, row) {
+                    let name = 'info';
+                    let { resourceId } = row;
+                    _this.$router.push({
+                        name,
+                        query: {
+                            fromName: 'unpublished',
+                            resourceId,
                             user: _this.$route.query.user
                         }
                     })
