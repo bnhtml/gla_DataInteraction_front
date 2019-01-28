@@ -259,7 +259,11 @@ export default {
         });
 		},
 		changeSql(value){
-			let param = {urlAddress:value, dataArea:this.dataArea}
+      if(value==''){
+        var param = {urlAddress:value, dataArea:''}
+      }else{
+        var param = {urlAddress:value, dataArea:this.dataArea}
+      }
 			this.$emit('rebackUrlAddress',param);
 		}
   }
