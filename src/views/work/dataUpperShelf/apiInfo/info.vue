@@ -146,7 +146,7 @@ export default {
                 v.value = res.data[0].firstAddress + '/' + res.data[0].secondAddress + '/' + res.data[0].thirdAddress
               }else if(v.type === 'download'){
                 v.value = res.data[0].filedDownloadUrl;
-                v.name = res.data[0].fileName || '接口文档'
+                v.name = res.data[0].fileInterefaceName || '接口文档'
               }else if(v.props === 'fileName' && res.data[0].dataInterfaceType !== 'file'){
                 // v.noShow = true;
               }else{
