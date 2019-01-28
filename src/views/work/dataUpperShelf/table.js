@@ -221,23 +221,6 @@ let unpublished = {
                 }
             }, {
                 formatter(row, column, columnIndex, rowIndex) {
-                    return ['', "查看"][row.dataInterfaceStatus]
-                },
-                onClick(_this, self, row) {
-                    let name = 'info';
-                    let { resourceId } = row;
-                    _this.$router.push({
-                        name,
-                        query: {
-                            fromName: 'unpublished',
-                            resourceId,
-                            user: _this.$route.query.user
-                        }
-                    })
-
-                }
-            }, {
-                formatter(row, column, columnIndex, rowIndex) {
                     return ['', "接口文档"][row.dataInterfaceStatus]
                 },
                 onClick(_this, self, row) {
