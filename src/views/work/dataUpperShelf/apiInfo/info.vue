@@ -6,7 +6,7 @@
     <el-col :span="6" style="text-align: right; line-height: 32px;">{{info.label}}</el-col>
     <el-col :span="18">
       <p v-if="info.type !== 'download'" :style="`min-height:${info.height || '30'}px`">{{info.value}}</p>
-      <a v-if="info.type === 'download'" class="g-download-link" :href="info.href"><i class="iconfont icon-bianjiqi_chaolian"></i>{{info.name}}</a>
+      <a v-if="info.type === 'download'" target="_blank" class="g-download-link" :href="info.value"><i class="iconfont icon-bianjiqi_chaolian"></i>{{info.name}}</a>
     </el-col>
   </el-row>
 </div>
@@ -52,12 +52,12 @@ export default {
           props: "urlSuccess",
           value:'',
         },
-        // {
-        //   label: "接口请求文档",
-        //   type: 'download',
-        //   href: 'http://abc.com/a.zip',
-        //   name: '接口文档'
-        // },
+        {
+          label: "接口请求文档",
+          type: 'download',
+          href: '',
+          name: ''
+        },
         {
           label: "封装数据类型",
           props: "dataInterfaceType",
@@ -144,6 +144,9 @@ export default {
             }else{
               if(v.label=='设置接口路径'){
                 v.value = res.data[0].firstAddress + '/' + res.data[0].secondAddress + '/' + res.data[0].thirdAddress
+              }else if(v.type === 'download'){
+                v.value = res.data[0].filedDownloadUrl;
+                v.name = res.data[0].fileName || '接口文档'
               }else if(v.props === 'fileName' && res.data[0].dataInterfaceType !== 'file'){
                 // v.noShow = true;
               }else{
