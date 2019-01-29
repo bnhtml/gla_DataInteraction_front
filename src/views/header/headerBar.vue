@@ -1,7 +1,7 @@
 <template>
     <div class="header-bar">
         <Header :style="{'background':bg}" class="layout-header-bar">
-            <img src="../../assets/img/logo/logo.png" alt=""> 贵州省数据共享交换平台 数据上架系统(技术支持)
+            <img src="../../assets/img/logo/logo.png" alt=""> 贵州省数据共享交换平台 数据上架系统
         </Header>
         <!-- 横向菜单 -->
         <div class="g-menu" v-if="isWorkPage">
