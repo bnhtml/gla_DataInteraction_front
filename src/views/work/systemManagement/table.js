@@ -285,7 +285,7 @@ let stateManagement = {
 		}, {
 			type: "text",
 			align: "",
-			label: "用户名",
+			label: "数据调用方",
 			prop: "staUser",
 			width: "",
 		}, {
