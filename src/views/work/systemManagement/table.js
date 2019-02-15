@@ -264,6 +264,9 @@ let stateManagement = {
             label: "时间",
 			prop: "staTime",
             width: "",
+            formatter(row) {
+                return row.staTime && row.staTime.replace('T', ' ') || ''
+            }
         }, {
             type: "text",
             align: "",
