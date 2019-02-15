@@ -141,7 +141,10 @@ let unpublished = {
             label: "数据接口描述",
             prop: "resourceDescribe",
             width: "",
-            'show-overflow-tooltip': true
+            'show-overflow-tooltip': true,
+            formatter(row){
+                return row.resourceDescribe.replace(/<[^>]*>|/g, "");
+            }
         },
         {
             type: "text",
