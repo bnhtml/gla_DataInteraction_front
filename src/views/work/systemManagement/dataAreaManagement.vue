@@ -35,7 +35,7 @@
             return {
                 deptType: this.$route.query.deptType - 0,
                 tabList: [{
-                    label: '数据库1',
+                    label: '数据库',
                     name: 'dataArea'
                 }, {
                     label: '文件类',
