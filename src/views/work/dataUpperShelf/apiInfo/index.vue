@@ -3,7 +3,7 @@
 <div class='g-api-info'>
   <el-card class="pos-relative">
 
-    <router-link :to="{name: $route.query.fromName || '', query: {user: $route.query.user || '', deptType: $route.query.deptType || 0}}" class="g-routerlink">返回列表页<i class="iconfont icon-shuangjiantou f"></i></router-link>
+    <router-link :to="{name: $route.query.fromName || '', query: {...{user: $route.query.user || ''}, ...(typeof $route.query.deptType === 'undefined' ? {deptType: $route.query.deptType} : {})}}" class="g-routerlink">返回列表页<i class="iconfont icon-shuangjiantou f"></i></router-link>
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="API基本信息" name="info"></el-tab-pane>
       <!-- <el-tab-pane label="API参数" name="params" v-if="$route.query.dataInterfaceType === 'db'"></el-tab-pane> -->
