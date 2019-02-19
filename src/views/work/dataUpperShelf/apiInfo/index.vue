@@ -3,7 +3,7 @@
 <div class='g-api-info'>
   <el-card class="pos-relative">
 
-    <router-link :to="{name: $route.query.fromName || '', query: {...{user: $route.query.user || ''}, ...(typeof $route.query.deptType === 'undefined' ? {deptType: $route.query.deptType} : {})}}" class="g-routerlink">返回列表页<i class="iconfont icon-shuangjiantou f"></i></router-link>
+    <router-link :to="{name: $route.query.fromName || '', query: {...{user: $route.query.user || ''}, ...(typeof $route.query.deptType === 'undefined' ? {} : {deptType: $route.query.deptType})}}" class="g-routerlink">返回列表页<i class="iconfont icon-shuangjiantou f"></i></router-link>
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="API基本信息" name="info"></el-tab-pane>
       <!-- <el-tab-pane label="API参数" name="params" v-if="$route.query.dataInterfaceType === 'db'"></el-tab-pane> -->
@@ -46,7 +46,10 @@ export default {
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+    console.log(typeof this.$route.query.deptType)
+    console.log(typeof this.$route.query.deptType === 'undefined')
+  },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前
   beforeUpdate() {}, //生命周期 - 更新之前
