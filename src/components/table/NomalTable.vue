@@ -16,7 +16,7 @@
     </div>
     <el-table v-if="isShow" :data="tableData" :border='border' :row-class-name="tableRow" :span-method="tableJson.spanMethod" :cell-style="tableJson.cellstyle" header-row-class-name="head-row" :show-header="!nohead" v-loading="loading" ref="multipleTable"
       @sort-change="sortable" @selection-change="handleSelectionChange" :height="height">
-      <el-table-column v-if="!noid" type="index" :index="(page.pageNumber - 1) * page.pageSize + 1" label="序号" width="50">
+      <el-table-column v-if="!noid" type="index" :index="(page.pageNumber - 1) * page.pageSize + 1" label="序号" width="80">
       </el-table-column>
       <el-table-column v-if="tableJson.selectBox" type="selection" :align="tableJson.selectBox.center || 'left'" :width="tableJson.selectBox.width">
       </el-table-column>
