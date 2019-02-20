@@ -4,7 +4,7 @@
     <el-container style="padding-bottom: 20px;">
       <el-aside v-if="$route.query.user === 'admin'" style="width: 300px;margin-right:20px">
         <el-card shadow="always" class="published-header" style="height: 100%;overflow: auto">
-            <p class="titleLeftBorder">已发布数据接口</p>
+            <p class="titleLeftBorder">{{pageName}}</p>
             <z-tree v-if="isShow" :node="node" :searchTitle="title" :deptType="deptType" v-on:onClick="checked" :query="query"></z-tree>
         </el-card>
       </el-aside>
@@ -38,7 +38,8 @@ export default {
       query: {dirParameter: ['dataAreaManagement', 'published', 'interfacePathManagement', 'unitDomainNameManagement'].indexOf(this.$route.name)},
       loadedLength: 0,
       node: [],
-      firstleval: []
+      firstleval: [],
+      pageName: ''
     };
   },
   //监听属性 类似于data概念
@@ -52,9 +53,20 @@ export default {
       this.title = ["国家部委组织机构", "贵州省组织机构", "贵州省组织机构"][n];
       this.setFirst(n);
     },
+    $route(n, o){
+      this.changeName(n);
+    }
   },
   //方法集合
   methods: {
+    changeName(n){
+      this.pageName = {
+        published: '已发布数据接口',
+        dataAreaManagement: '数据区管理',
+        interfacePathManagement: '接口路径管理',
+        unitDomainNameManagement: '单位域名管理'
+      }[n.name]
+    },
     checked(name){
       this.$emit('checked', name)
 
@@ -109,7 +121,8 @@ export default {
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-    this.setFirst(this.deptType)
+    this.setFirst(this.deptType);
+    this.changeName(this.$route);
   },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前
