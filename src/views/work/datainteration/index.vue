@@ -2,7 +2,7 @@
 <template>
 <div class='datainteration'>
   <el-card shadow="always" class="datainteration-header">
-    <p class="titleLeftBorder">数据集成操作指南
+    <p class="titleLeftBorder">数据集成操作指南11
       <a href="http://59.215.191.45:1553/shared//tool/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E5%B7%A5%E5%85%B7.zip" class="right tool"><span class="iconfont icon-xiazai"></span>下载数据集成工具</a>
       <a href="http://59.215.191.45:1553/shared//tool/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E5%B7%A5%E5%85%B7%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.pdf" class="right guide"><span class="iconfont icon-xiazai"></span>下载数据集成操作指南</a>
     </p>
