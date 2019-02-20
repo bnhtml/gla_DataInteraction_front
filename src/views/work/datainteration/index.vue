@@ -46,7 +46,7 @@
       <div class="database_box">
       <div class="source_dataname_text">目标数据库名称</div>
       <div class="target_dataname_con">
-      <div class="content">数据原来存储的数据库名称</div>
+      <div class="content">数据准备导入的目标数据库名称</div>
       </div>
       <div class="source_password_text">密码</div>
       <div class="target_password_con">
